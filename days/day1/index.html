@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第一天 · 出发路上埃及哲思之旅</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --card-hover: #231f19;
+      --gold: #c8973a;
+      --gold-light: #e8bf6a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --blue: #4a8fd4;
+      --blue-dim: rgba(74,143,212,.12);
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% -5%, rgba(200,151,58,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 95% 100%, rgba(74,143,212,.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 80px;
+    }
+
+    /* ── NAV ── */
+    .topbar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 40px;
+      font-size: 12px;
+      color: var(--ink-faint);
+      flex-wrap: wrap;
+    }
+    .topbar a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color .2s;
+      letter-spacing: .3px;
+    }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 40px;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      opacity: .8;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-meta {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .hero-date {
+      font-size: 13px;
+      color: var(--ink-faint);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+    .hero-route {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: .5px;
+    }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.85;
+      max-width: 680px;
+    }
+
+    /* ── TWO COLUMNS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .entry-card {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      padding: 28px 32px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s, border-color .2s;
+    }
+    .entry-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+    }
+    .entry-card:hover { background: var(--card-hover); border-color: var(--line); }
+    .entry-card:hover::before { transform: scaleY(1); }
+
+    .entry-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+      opacity: .7;
+    }
+    .entry-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .entry-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .entry-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .entry-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--gold);
+      border: 1px solid var(--line);
+      padding: 6px 16px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .entry-btn:hover { background: var(--gold-dim); }
+
+    /* ── NOTES BOX ── */
+    .notes {
+      background: var(--surface);
+      border: 1px solid var(--line-faint);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+    }
+    .notes-title {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      opacity: .8;
+    }
+    .notes ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .notes li {
+      font-size: 13px;
+      color: var(--ink-muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .notes li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: .5;
+    }
+
+    /* ── BACK LINK ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--ink-faint);
+      text-decoration: none;
+      border: 1px solid var(--line-faint);
+      padding: 8px 16px;
+      transition: all .2s;
+    }
+    .back-btn:hover { color: var(--gold); border-color: var(--line); }
+
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+      .entry-card { padding: 20px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../index.html">← 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <span>第一天</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 01 · 2026.02.22</div>
+      <h1>出发路上<em>埃及哲思</em>之旅</h1>
+      <div class="hero-meta">
+        <span class="hero-date">2026 · 02 · 22</span>
+        <span class="hero-route">中国 ✈ 开罗 · 萨拉丁城堡区域</span>
+      </div>
+      <p class="hero-lead">
+        这一天有两条并行的线。一条在飞机上：翻开《古埃及历史》，用众神体系给整趟旅行搭起一个思想底座。另一条在地面：落地开罗，直接进萨拉丁城堡区域，用警察博物馆、军事博物馆和一杯 Nefertiti 奶茶打开第一天。思考是行动的前置底稿，行动是思考的现实落点。
+      </p>
+    </header>
+
+    <div class="two-col">
+      <a class="entry-card" href="think/index.html">
+        <span class="entry-icon">𓂀</span>
+        <div class="entry-label">思考 · Think</div>
+        <div class="entry-title">古埃及众神关系图</div>
+        <div class="entry-desc">在飞往开罗的路上，我把读到的古埃及神话体系整理成一张可以交互的关系地图。拉、奥西里斯、伊西斯……这不只是神话学知识，而是一套用来理解埃及文明底层逻辑的坐标系。</div>
+        <span class="entry-btn">进入思考页 →</span>
+      </a>
+
+      <a class="entry-card" href="action/index.html">
+        <span class="entry-icon">🏰</span>
+        <div class="entry-label">行动 · Action</div>
+        <div class="entry-title">萨拉丁城堡区域走访</div>
+        <div class="entry-desc">从警察博物馆到军事博物馆，再到一家温州90后女生开的 Nefertiti 奶茶店——这不是打卡，而是在同一片空间里看见国家叙事、历史积层与当代全球化流动如何叠压在一起。</div>
+        <span class="entry-btn">进入行动页 →</span>
+      </a>
+    </div>
+
+    <div class="notes">
+      <div class="notes-title">记录说明</div>
+      <ul>
+        <li>思考页保留了我对古埃及众神关系的原始整理，可以点击互动；这是进入埃及之前的知识底稿。</li>
+        <li>行动页按时间线呈现城堡区域的走访，4张现场照片已写入。</li>
+        <li>第一天的重点不只是"去了哪里"——更重要的是，我如何在现场理解开罗历史的多重时间同时运行。</li>
+        <li>奶茶店那段观察我会持续扩写，它是这一天最鲜活的当代注脚。</li>
+      </ul>
+    </div>
+
+    <a class="back-btn" href="../../index.html">← 返回旅行目录</a>
+
+  </div>
+</body>
+</html>

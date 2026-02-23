@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第8天 · 启示与救赎</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09; --surface: #161310; --card: #1c1813; --card-hover: #231f19;
+      --gold: #c8973a; --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
+      --blue: #4a8fd4; --blue-dim: rgba(74,143,212,.14);
+      --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Serif SC', serif; background: var(--bg); color: var(--ink); line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+                  radial-gradient(ellipse 50% 40% at 92% 105%, rgba(74,143,212,.04) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap { position: relative; z-index: 1; width: min(900px, calc(100% - 40px)); margin: 0 auto; padding: 36px 0 96px; }
+    .topbar { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; font-size: 12px; flex-wrap: wrap; }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+    .draft-banner {
+      background: rgba(200,151,58,.08); border: 1px solid var(--line); border-left: 3px solid var(--gold);
+      padding: 12px 18px; margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--ink-muted);
+    }
+    .draft-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+    .hero { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+    .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(26px, 4.5vw, 46px); font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-route { font-size: 13px; color: var(--gold); margin-bottom: 16px; letter-spacing: .5px; }
+    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; max-width: 680px; margin-bottom: 20px; }
+    .placeholder-area {
+      background: var(--surface); border: 1px dashed var(--line-faint);
+      padding: 60px 40px; text-align: center;
+    }
+    .ph-icon { font-size: 36px; opacity: .2; margin-bottom: 14px; }
+    .ph-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--ink-faint); margin-bottom: 10px; }
+    .ph-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; max-width: 400px; margin: 0 auto; }
+    .structure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 32px; }
+    .structure-box { background: var(--card); border: 1px solid var(--line-faint); padding: 20px 24px; }
+    .structure-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
+    .structure-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .structure-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; }
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap; gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--ink-muted); text-decoration: none;
+      border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+    @media (max-width: 640px) { .structure-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topbar">
+      <a href="../../index.html">← 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <span>第8天</span>
+    </nav>
+
+    <div class="draft-banner">
+      <span class="draft-dot"></span>
+      <span>待写 · 行程尚未开始，结构框架已搭好，内容将在到达后逐步写入</span>
+    </div>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 08 · 2026-03-01</div>
+      <h1><em>启示与救赎</em></h1>
+      <div class="hero-route">沙姆沙伊赫</div>
+      <p class="hero-lead">在西奈半岛与红海之间放慢脚步，把前几天密集的历史现场沉淀成更安静的个人感受。</p>
+    </header>
+
+    <div class="structure-grid">
+      <div class="structure-box">
+        <div class="structure-label">思考 · Think</div>
+        <div class="structure-title">哲学框架与背景资料</div>
+        <div class="structure-desc">这天的思考线将在出发前或当天整理写入——包括老师讲义、参考书目与个人预判。</div>
+      </div>
+      <div class="structure-box">
+        <div class="structure-label">行动 · Action</div>
+        <div class="structure-title">现场时间线与照片</div>
+        <div class="structure-desc">行程结束后，现场照片、地点记录与个人观察将按时间线整理写入。</div>
+      </div>
+    </div>
+
+    <div class="placeholder-area">
+      <div class="ph-icon">𓂀</div>
+      <div class="ph-title">内容待写入</div>
+      <div class="ph-desc">第8天的行程还未开始。照片、现场感受与哲学资料将在到达后逐步补入这个页面。</div>
+    </div>
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../day7/index.html">← 第7天</a>
+      <a class="nav-btn" href="../../index.html">旅行目录</a>
+      <a class="nav-btn" href="../day9/index.html">第9天 →</a>
+    </div>
+  </div>
+</body>
+</html>
