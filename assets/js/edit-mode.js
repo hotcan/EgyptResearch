@@ -169,7 +169,22 @@
     });
   }
 
-  function persistSave() {
+  /** 生成干净的 HTML（移除 edit-mode 注入的元素和临时属性） */
+  function getCleanHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    ['#em-styles', '.em-fab', '.em-toast'].forEach(sel => {
+      const el = clone.querySelector(sel);
+      if (el) el.remove();
+    });
+    clone.querySelectorAll('[data-em-id]').forEach(el => {
+      el.removeAttribute('data-em-id');
+      el.removeAttribute('contenteditable');
+    });
+    return '<!DOCTYPE html>\n' + clone.outerHTML;
+  }
+
+  async function persistSave() {
+    // 始终先存 localStorage（离线备份 / GitHub Pages 降级）
     const data = {};
     candidates().forEach(el => {
       if (el.dataset.emId !== undefined) {
@@ -177,6 +192,19 @@
       }
     });
     localStorage.setItem(storageKey(), JSON.stringify(data));
+
+    // 尝试写回源文件（仅本地 dev server 有此端点）
+    try {
+      const resp = await fetch('/em-save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filePath: location.pathname, html: getCleanHTML() }),
+      });
+      showToast(resp.ok ? '✓ 已写入文件' : '✓ 已保存（本地）');
+    } catch (e) {
+      // GitHub Pages 或其他静态托管：正常降级
+      showToast('✓ 已保存（本地）');
+    }
   }
 
   function restoreSaved() {
@@ -228,7 +256,7 @@
     btnCancel.style.display = '';
   }
 
-  function exitEdit(save) {
+  async function exitEdit(save) {
     if (!active) return;
     active = false;
     document.body.classList.remove('em-active');
@@ -247,8 +275,7 @@
     btnCancel.style.display = 'none';
 
     if (save) {
-      persistSave();
-      showToast('✓ 已保存');
+      await persistSave();   // toast 由 persistSave 内部显示
     } else {
       showToast('已取消');
     }
