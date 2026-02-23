@@ -1,81 +1,74 @@
-# 𓂀 EgyptResearch — 埃及神话交互应用
+# EgyptResearch · 埃及旅行手记（Egypt Travel Journal）
 
-> 一个基于古埃及历史的神话可视化交互应用，探索众神体系、神灵关系与神圣庇佑。
+一个以埃及旅行为主线的静态游记站点。
 
-![Egyptian Mythology](https://img.shields.io/badge/Ancient%20Egypt-Mythology-C9A84C?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHRleHQgeT0iMjAiIGZvbnQtc2l6ZT0iMjAiPvCfkoA8L3RleHQ+PC9zdmc+)
-![Language](https://img.shields.io/badge/Language-中文%20%2F%20EN-blue?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+项目最初从“古埃及众神关系页面”开始，随后扩展为分日记录的旅行手记：把阅读笔记、课堂讲解、历史背景和现场照片放在同一套页面结构里，按“第一天、第二天……”持续更新。
 
-## ✨ 功能特性
+## 项目内容
 
-### 𓅃 众神殿
-- 收录 12 位核心埃及神灵（拉、奥西里斯、伊西斯、荷鲁斯等）
-- 按领域筛选（太阳、死亡、魔法、天空、智慧……）
-- 点击任意神灵查看详细弹窗：神话描述、属性、关系、庇佑领域
+- 旅行目录首页（按天索引）
+- 每日页面（以游记正文为主）
+- `思考` 与 `行动` 双线记录
+- 时间线相册样式（适合插入实拍照片与图注）
+- 保留第一天的古埃及众神关系可视化页面作为“思考”部分
 
-### 𓆣 神灵关系图谱
-- 可视化交互关系图，支持节点拖拽
-- 三类关系线：金色（家族）、绿色（友盟）、红色虚线（对立）
-- 悬停高亮相关节点与关系，点击打开详情
+## 当前进度
 
-### 𓂀 神圣庇佑
-- 9 大庇佑领域：长寿健康、尼罗河丰收、王权、来世安息、家庭生育、知识书写、战争胜利、夜晚庇护、航海贸易
-- 详述古埃及人向不同神灵祈求的内容与仪式
+- `第一天`：已完成正文与时间线相册（萨拉丁城堡、警察博物馆、军事博物馆、Nefertiti 奶茶）
+- `第二天`：已完成游记风格正文（上午吉萨金字塔群，下午开罗老城）
+- `第三天` ~ `第十一天`：已创建页面骨架，等待逐日补写
 
-### 𓇯 神话传说
-- 6 则核心神话故事
-  - 奥西里斯的死与复活
-  - 赫利奥波利斯创世神话
-  - 荷鲁斯之眼的故事
-  - 拉神与人类的惩罚
-  - 托特与月亮时光
-  - 冥界审判——心脏称量
+## 目录结构（简要）
 
-## 🚀 使用方式
-
-### 在线访问
-直接访问：**https://hotcan.github.io/EgyptResearch**
-
-### 本地运行
-```bash
-git clone https://github.com/hotcan/EgyptResearch.git
-cd EgyptResearch
-open index.html   # macOS
-# 或直接用浏览器打开 index.html
+```text
+.
+├── index.html                # 旅行手记首页（总目录）
+├── days/
+│   ├── day1/
+│   │   ├── index.html        # 第一天总览
+│   │   ├── think/index.html  # 古埃及众神关系页面（保留）
+│   │   └── action/index.html # 第一天行动时间线相册
+│   ├── day2/index.html       # 第二天游记正文（时间线相册）
+│   └── day3 ... day11        # 预留页面
+└── assets/
+    └── day1/jpg/             # 第一天照片资源（由 HEIC 转换而来）
 ```
 
-## 🛠 技术栈
+## 本地查看
 
-- 纯 HTML5 + CSS3 + Vanilla JavaScript，零依赖
-- Canvas API 实现关系图谱可视化
-- CSS 动画实现星空背景与交互效果
-- Google Fonts：Cinzel Decorative + Noto Serif SC
+```bash
+open index.html   # macOS
+```
 
-## 🎨 设计理念
+或直接用浏览器打开 `/Users/hotcan/Downloads/EgyptResearch/index.html`。
 
-以古埃及美学为核心：
-- 金箔配色（`#C9A84C`）+ 深蓝青金石（`#1A3A5C`）
-- 莎草纸质感背景与星空
-- 象形文字装饰带（𓂀 𓅃 𓆣 𓋴 𓏏 𓊖）
-- Cinzel Decorative 字体致敬罗马-埃及碑刻风格
+## 图片处理（HEIC -> JPG）
 
-## 📖 主要神灵列表
+项目中的第一天照片由 HEIC 转换为 JPG 后使用。当前验证通过的命令：
 
-| 神灵 | 中文 | 领域 |
-|------|------|------|
-| Ra | 拉 | 太阳、创造、众神之王 |
-| Osiris | 奥西里斯 | 死亡、复活、农业 |
-| Isis | 伊西斯 | 魔法、治愈、母性 |
-| Horus | 荷鲁斯 | 天空、王权、战争 |
-| Thoth | 托特 | 智慧、书写、月亮 |
-| Set | 赛特 | 混乱、风暴、沙漠 |
-| Anubis | 阿努比斯 | 亡者、审判、引导 |
-| Hathor | 哈托尔 | 爱与美、音乐、丰饶 |
-| Bastet | 芭丝特 | 家庭、生育、保护 |
-| Nephthys | 奈芙蒂斯 | 哀悼、夜晚、魔法 |
-| Ptah | 普塔 | 创造、工艺、艺术 |
-| Sekhmet | 赛克迈特 | 战争、疾病、力量 |
+```bash
+magick input.HEIC -auto-orient -quality 92 output.jpg
+```
 
-## 📜 License
+批量转换示例：
 
-MIT © 2026 hotcan
+```bash
+mkdir -p assets/day1/jpg
+for f in *.HEIC; do
+  magick "$f" -auto-orient -quality 92 "assets/day1/jpg/${f%.*}.jpg"
+done
+```
+
+## 写作方向
+
+这个仓库不是传统“景点攻略”，而是偏个人观察的旅行手记：
+
+- 现场见闻（我看见了什么）
+- 历史背景（这些地方曾经发生过什么）
+- 个人感受（我在当下如何理解它）
+- 照片图注（让图像和文字互相补充）
+
+## 备注
+
+- 页面均为纯 HTML/CSS，便于快速编辑与持续追加
+- 后续可以继续把第二天及之后的页面补成实拍时间线相册
