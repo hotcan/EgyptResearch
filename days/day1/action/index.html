@@ -3,307 +3,622 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>第一天行动 · 开罗萨拉丁城堡与博物馆（时间线相册）</title>
+  <title>第一天行动 · 萨拉丁城堡区域</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f2eee5;
-      --paper: #fffdf7;
-      --ink: #2c261f;
-      --muted: #71675b;
-      --line: #dccdb1;
-      --accent: #bf6717;
-      --accent2: #1f5fb1;
-      --rail: #d78b42;
-      --dot: #9a4f0d;
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --card-hover: #231f19;
+      --gold: #c8973a;
+      --gold-light: #e8bf6a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --blue: #4a8fd4;
+      --blue-dim: rgba(74,143,212,.14);
+      --green: #4a9e6e;
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
+      --rail: rgba(200,151,58,.35);
+      --dot: #c8973a;
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Noto Serif SC", "PingFang SC", serif;
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
       color: var(--ink);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
       background:
-        radial-gradient(circle at 15% 8%, rgba(191,103,23,.08), transparent 40%),
-        radial-gradient(circle at 90% 0%, rgba(31,95,177,.06), transparent 34%),
-        var(--bg);
-      line-height: 1.7;
+        radial-gradient(ellipse 70% 55% at 10% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 90% 110%, rgba(74,143,212,.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
-    .wrap { width: min(1080px, calc(100% - 28px)); margin: 22px auto 40px; }
-    .topbar { margin-bottom: 14px; display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
-    .topbar a { color: inherit; text-decoration: none; }
-    .hero, .panel {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 8px 26px rgba(0,0,0,.04);
-      padding: 18px;
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 96px;
     }
-    h1 { margin: 0; font-size: clamp(22px, 4vw, 32px); color: var(--accent2); }
-    .meta { margin-top: 8px; color: var(--muted); font-size: 14px; }
-    .lead { margin-top: 10px; }
-    .pill {
-      display: inline-block;
-      border: 1px solid rgba(31,95,177,.22);
-      background: rgba(31,95,177,.06);
-      color: var(--accent2);
+
+    /* ── NAV ── */
+    .topbar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 40px;
       font-size: 12px;
-      padding: 3px 8px;
-      margin-right: 6px;
-      border-radius: 999px;
+      flex-wrap: wrap;
     }
-    .warn {
-      margin-top: 12px;
-      padding: 10px 12px;
-      background: #fff5e8;
-      border: 1px solid #efcd9f;
-      color: #704818;
-      font-size: 13px;
+    .topbar a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color .2s;
     }
-    .timeline-wrap { margin-top: 16px; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      opacity: .8;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.9;
+      max-width: 680px;
+      margin-bottom: 20px;
+    }
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      color: var(--gold);
+      letter-spacing: .3px;
+      border-radius: 2px;
+    }
+
+    /* ── TIMELINE ── */
     .timeline {
       position: relative;
-      margin: 0;
-      padding: 8px 0 0 0;
       list-style: none;
     }
     .timeline::before {
-      content: "";
+      content: '';
       position: absolute;
-      left: 114px;
-      top: 0;
+      left: 88px;
+      top: 8px;
       bottom: 0;
-      width: 2px;
-      background: linear-gradient(var(--rail), rgba(215,139,66,.25));
+      width: 1px;
+      background: linear-gradient(to bottom, var(--rail), transparent);
     }
+
     .event {
-      position: relative;
       display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 18px;
-      margin-bottom: 18px;
-      align-items: start;
-    }
-    .time {
-      text-align: right;
-      color: var(--muted);
-      font-size: 13px;
-      padding-top: 8px;
-    }
-    .time strong { display: block; color: #4e453b; font-size: 14px; }
-    .card {
+      grid-template-columns: 88px 1fr;
+      gap: 0 28px;
+      margin-bottom: 0;
+      padding-bottom: 48px;
       position: relative;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 14px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.03);
     }
-    .card::before {
-      content: "";
+    .event:last-child { padding-bottom: 0; }
+
+    .event-time {
+      text-align: right;
+      padding-top: 20px;
+      position: relative;
+    }
+    .event-time::after {
+      content: '';
       position: absolute;
-      left: -25px;
-      top: 18px;
-      width: 11px;
-      height: 11px;
+      right: -35px;
+      top: 26px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: var(--dot);
-      border: 2px solid #f3e6d2;
-      box-shadow: 0 0 0 2px rgba(154,79,13,.15);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--dot), 0 0 12px rgba(200,151,58,.4);
     }
-    .card h2 { margin: 0; color: var(--accent); font-size: 19px; }
-    .card p { margin: 8px 0 0; }
+    .time-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: var(--gold);
+      display: block;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+    .time-sub {
+      font-size: 10px;
+      color: var(--ink-faint);
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* ── EVENT CARD ── */
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .event-card:hover { border-color: var(--line); }
+
+    .event-body {
+      padding: 20px 24px;
+    }
+    .event-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .event-text {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.85;
+    }
+    .event-text + .event-text { margin-top: 10px; }
+    .event-text strong { color: var(--ink); font-weight: 600; }
+
+    /* ── PHOTO GRID ── */
     .photo-grid {
-      margin-top: 12px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      margin-top: 2px;
     }
     figure {
       margin: 0;
-      border: 1px solid var(--line);
-      background: #fff;
-      padding: 10px;
-      border-radius: 10px;
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
     }
     figure img {
       display: block;
       width: 100%;
-      height: auto;
-      object-fit: initial;
-      background: #faf7f1;
-      border-radius: 8px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
     }
+    figure:hover img { transform: scale(1.03); }
     figcaption {
-      padding: 10px;
-      font-size: 13px;
-      color: #4f463b;
-      border-top: 1px solid #efe3cf;
+      padding: 10px 14px;
+      border-top: 1px solid var(--line-faint);
     }
-    .caption-title { color: #6f420f; font-weight: 600; }
-    .small { color: var(--muted); font-size: 12px; }
-    .summary-box { margin-top: 14px; }
-    .summary-box h3 { margin: 0 0 6px; color: #6a4317; font-size: 17px; }
-    .summary-box ul { margin: 0; padding-left: 18px; }
-    .summary-box li { margin: 5px 0; }
-    .history-list { margin: 10px 0 0; padding-left: 18px; }
-    .history-list li { margin: 6px 0; }
-    @media (max-width: 760px) {
-      .timeline::before { left: 16px; }
-      .event { grid-template-columns: 1fr; gap: 8px; margin-left: 0; }
-      .time { text-align: left; padding-left: 36px; }
-      .card { margin-left: 36px; }
-      .card::before { left: -28px; }
+    .cap-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+    .cap-sub {
+      font-size: 11px;
+      color: var(--ink-faint);
+      line-height: 1.5;
+    }
+
+    /* ── THINKING BLOCK (inline reflection) ── */
+    .think-block {
+      margin-top: 14px;
+      background: var(--surface);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
+    }
+    .think-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: 8px;
+    }
+    .think-text {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+    }
+    .think-text + .think-text { margin-top: 8px; }
+
+    /* ── PHILOSOPHY CARD ── */
+    .phil-card {
+      margin-top: 14px;
+      background: var(--surface);
+      border: 1px solid var(--blue-dim);
+      border-left: 3px solid var(--blue);
+      padding: 14px 18px;
+    }
+    .phil-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--blue);
+      opacity: .8;
+      margin-bottom: 8px;
+    }
+    .phil-text {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+    }
+    .phil-source {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--ink-faint);
+      font-style: italic;
+    }
+
+    /* ── SUMMARY CARD ── */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 28px 32px;
+      margin-top: 48px;
+    }
+    .summary-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 14px;
+      opacity: .8;
+    }
+    .summary-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .summary-text {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.9;
+    }
+    .summary-text + .summary-text { margin-top: 12px; }
+    .summary-text strong { color: var(--ink); }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border: 1px solid var(--line-faint);
+      padding: 8px 16px;
+      transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+
+    @media (max-width: 640px) {
+      .timeline::before { left: 20px; }
+      .event { grid-template-columns: 1fr; gap: 8px; }
+      .event-time { text-align: left; padding-top: 0; padding-left: 36px; }
+      .event-time::after { right: auto; left: 0; top: 4px; }
+      .event-card { margin-left: 0; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="topbar">
-      <a href="../index.html">← 返回第一天</a>
-      <a href="../../../index.html">返回旅行目录</a>
-      <a href="../think/index.html">查看第一天思考（众神关系）</a>
-    </div>
 
-    <section class="hero">
-      <h1>第一天行动 · 开罗萨拉丁城堡与博物馆</h1>
-      <div class="meta">2026-02-22 · 开罗萨拉丁城堡区域</div>
-      <p class="lead">我在第一天的行动线从萨拉丁城堡区域展开，串起城堡空间、两座博物馆以及一家由温州人经营的 Nefertiti 奶茶店。历史景观、国家叙事和当代日常消费在同一片区域里并置，构成了我抵达开罗后的第一层现实感。</p>
-      <div>
+    <nav class="topbar">
+      <a href="../index.html">← 第一天概览</a>
+      <span class="topbar-sep">/</span>
+      <a href="../../../index.html">旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../think/index.html">思考：众神关系</a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 01 · Action · 2026.02.22</div>
+      <h1>萨拉丁城堡：<em>三层埃及</em>叠在一起</h1>
+      <p class="hero-lead">
+        历史景观、国家叙事和当代日常消费，在开罗这片山地堡垒上同时运行。
+        这是我抵达埃及后的第一层现实感——并不是纯粹的古迹，而是一个被几个时代反复使用、反复写入故事的权力空间。
+      </p>
+      <div class="tags">
         <span class="pill">萨拉丁城堡</span>
-        <span class="pill">Nefertiti 奶茶</span>
         <span class="pill">警察博物馆</span>
         <span class="pill">军事博物馆</span>
+        <span class="pill">Nefertiti 奶茶</span>
+        <span class="pill">穆罕默德·阿里清真寺</span>
       </div>
-      <div class="warn">本页采用时间线相册形式，记录我在萨拉丁城堡区域的第一天行动轨迹，包括警察博物馆、军事博物馆、Nefertiti 奶茶店，以及在穆罕默德·阿里清真寺前的现场照片。</div>
-    </section>
+    </header>
 
-    <div class="timeline-wrap">
-      <ol class="timeline">
-        <li class="event">
-          <div class="time"><strong>第一天</strong>到达开罗后</div>
-          <article class="card">
-            <h2>进入萨拉丁城堡区域</h2>
-            <p>行动线从城堡开始。这里提供了 第一天的第一层“现场感”：高处视角、石质建筑、权力与宗教建筑在城市中的层叠关系。和思考页里的古埃及神话不同，这里是现代旅行者直接用脚步进入历史空间。</p>
-            <div class="summary-box">
-              <h3>现场感受</h3>
-              <ul>
-                <li>城墙、庭院和高地视角迅速建立起我对开罗空间尺度的第一印象。</li>
-                <li>同一片区域内并置的建筑与机构让我直接感受到开罗历史的多层叠加。</li>
-                <li>从抵达到开始步行观察的转换，也在这里完成了真正意义上的“进入埃及”。</li>
-              </ul>
-            </div>
-          </article>
-        </li>
+    <ol class="timeline">
 
-        <li class="event">
-          <div class="time"><strong>背景</strong>城堡历史线</div>
-          <article class="card">
-            <h2>萨拉丁城堡的历史与几个关键故事</h2>
-            <p>补一条历史线，会让 第一天的照片从“打卡”变成“有时间纵深的现场”。萨拉丁城堡（Cairo Citadel）并不只是一个单点景区，而是数个时代不断叠加的权力中心。</p>
-            <ul class="history-list">
-              <li><strong>起点（12世纪）</strong>：埃及文物与旅游部页面显示，萨拉丁在穆盖塔姆山上于 <strong>1176 年</strong> 下令修建堡垒，利用高地获得防御优势和俯瞰开罗的视角。</li>
-              <li><strong>成为权力中心</strong>：工程并未在萨拉丁生前全部完成，后续统治者继续扩建并入驻；这座城堡后来长期作为埃及统治者的居所与政务中心。</li>
-              <li><strong>我照片里的主角之一</strong>：穆罕默德·阿里清真寺是19世纪加建并主导天际线的建筑，也是今天多数游客在城堡内最强烈的视觉记忆点。</li>
-              <li><strong>著名历史事件（1811）</strong>：城堡见证过穆罕默德·阿里巩固权力时期的“马穆鲁克大屠杀”事件，地点就在城堡体系之内，这让这里不仅是建筑景观，也是一处权力更替的剧场。</li>
-              <li><strong>工程故事</strong>：城堡内有著名的“优素福井（Joseph's Well / Bir Yusuf）”，以萨拉丁本名 Yusuf 命名，是供水系统的重要部分，体现了这座山地堡垒对长期驻守与防御的工程考虑。</li>
-            </ul>
-            <div class="summary-box">
-              <h3>这段历史在我第一天里的意义</h3>
-              <ul>
-                <li>我在清真寺前的合影不只是旅行纪念照，也是在一处长期权力中心中的在场记录。</li>
-                <li>把警察博物馆和军事博物馆放回城堡历史脉络里看，我更容易理解这些馆为何集中在同一区域。</li>
-                <li>这一天我看到的不只是风景，而是一处仍在持续讲述国家记忆的空间集合。</li>
-              </ul>
-            </div>
-          </article>
-        </li>
+      <!-- EVENT 1 -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">进入</span>
+          <span class="time-sub">城堡区域</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">第一步踏上穆盖塔姆山</div>
+            <p class="event-text">
+              城墙、庭院、高地视角——这是我对开罗空间尺度的第一印象。
+              从山下的现代城市切换到山上的石质堡垒，这个过渡比我预想的更突然。
+              开罗本来就是一座垂直的城市，贫民窟、清真寺、现代高楼、古代城堡同时存在于视野之内。
+              站在城堡上看，你会意识到这座城市没有一个单一的时间层，所有历史都叠在一起，同时压过来。
+            </p>
+            <p class="event-text">
+              进城堡之前，我其实已经在思考页里把古埃及众神关系图梳理了一遍。
+              结果一到现场就发现：这里和法老埃及关系不大，它讲的是另一段故事——伊斯兰统治、马穆鲁克、奥斯曼……
+              埃及在时间轴上有好几段"转折"，萨拉丁城堡正好卡在其中一个转折点上。
+            </p>
 
-        <li class="event">
-          <div class="time"><strong>12:13</strong>IMG_9550</div>
-          <article class="card">
-            <h2>警察博物馆</h2>
-            <p>这张照片记录的是警察博物馆。它把我的 第一天行动线从“城堡与城市空间”推进到“现代国家机构的记忆展示”层面，也让我当天的观察从风景转向展陈叙事。</p>
-            <div class="photo-grid">
-              <figure>
-                <img src="../../../assets/day1/jpg/IMG_9550.jpg" alt="第一天 警察博物馆外景" />
-                <figcaption>
-                  <div class="caption-title">警察博物馆 · 馆外立面与入口广场</div>
-                  <div class="small">馆名标识、入口台阶与开阔前场共同建立起清晰的机构空间氛围。</div>
-                </figcaption>
-              </figure>
+            <div class="phil-card">
+              <div class="phil-label">参考资料 · Citadel of Cairo</div>
+              <p class="phil-text">
+                萨拉丁（Saladin，本名 Ṣalāḥ al-Dīn Yūsuf）于 <strong>1176 年</strong>下令在穆盖塔姆山（Muqattam Hill）修建这座堡垒，旨在获得防御高地并统一开罗与福斯塔特两座城市的防御体系。工程在萨拉丁生前并未全部完成，后续统治者持续扩建，城堡逐渐成为埃及统治者长达 700 年的政务与居所中心——直到穆罕默德·阿里在 19 世纪将权力中心迁往阿比丁宫。
+              </p>
+              <p class="phil-source">— Citadel of Cairo: A History and Guide</p>
             </div>
-          </article>
-        </li>
+          </div>
+        </article>
+      </li>
 
-        <li class="event">
-          <div class="time"><strong>12:29</strong>IMG_9561</div>
-          <article class="card">
-            <h2>军事博物馆</h2>
-            <p>这张照片记录的是军事博物馆，和上一站警察博物馆形成天然对照。两者都在讲述国家记忆，但对象、语气与视觉符号并不相同，这也构成了我在第一天 中最明确的一条观察线。</p>
-            <div class="photo-grid">
-              <figure>
-                <img src="../../../assets/day1/jpg/IMG_9561.jpg" alt="第一天 军事博物馆外景" />
-                <figcaption>
-                  <div class="caption-title">军事博物馆 · 主楼立面与中庭</div>
-                  <div class="small">建筑尺度、纪念性雕塑与中庭布局强化了军事叙事的仪式感。</div>
-                </figcaption>
-              </figure>
+      <!-- EVENT 2 -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">12:13</span>
+          <span class="time-sub">IMG_9550</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">警察博物馆：国家记忆的一种叙事方式</div>
+            <p class="event-text">
+              警察博物馆是城堡里最容易被跳过的地方，但我觉得它值得停一下。
+              一个国家把什么样的历史放进"警察博物馆"，本身就是一种政治表达：
+              哪些时刻被展示、哪些被略去、用什么语气讲述，构成了一套关于"正当性"的叙述框架。
+            </p>
+            <p class="event-text">
+              展陈的重点是现代警察体系的建立，以及若干历史事件中警察的角色。
+              但我印象更深的是建筑本身——馆外的开阔前场、台阶和立面，
+              带着一种刻意的仪式感，像是在提醒你：你正在进入一个关于国家权力的陈列室。
+            </p>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <img src="../../../assets/day1/jpg/IMG_9550.jpg" alt="警察博物馆外景" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">警察博物馆 · 馆外立面</div>
+                <div class="cap-sub">馆名标识、入口台阶与开阔前场，建立起清晰的国家机构空间氛围</div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="event-body" style="border-top: 1px solid var(--line-faint);">
+            <div class="think-block">
+              <div class="think-label">现场思考</div>
+              <p class="think-text">
+                警察博物馆和军事博物馆放在同一片区域绝非偶然——这是城堡作为权力中心的历史延伸。
+                把这两个馆放回萨拉丁城堡的历史脉络里看，你会发现"国家对暴力的垄断"这件事
+                在这里被用两种不同的面孔同时展示：一个是执法，一个是军事。
+                它们讲的是同一个主权故事，但语气有微妙的差异。
+              </p>
             </div>
-          </article>
-        </li>
+          </div>
+        </article>
+      </li>
 
-        <li class="event">
-          <div class="time"><strong>13:04</strong>IMG_9571</div>
-          <article class="card">
-            <h2>Nefertiti 奶茶（温州人开的店）</h2>
-            <p>这张照片记录的是 Nefertiti 奶茶店，也是我第一天最有“生活现场感”的细节之一。古埃及符号命名、旅游场景和中文世界熟悉的奶茶消费体验在同一时刻重叠，形成了非常有记忆点的旅行片段。</p>
-            <div class="photo-grid">
-              <figure>
-                <img src="../../../assets/day1/jpg/IMG_9571.jpg" alt="第一天 Nefertiti 奶茶" />
-                <figcaption>
-                  <div class="caption-title">Nefertiti 奶茶 · 城堡里的意外惊喜</div>
-                  <div class="small">手持饮品的近景与店招同框，把旅行现场与日常生活感叠在同一张照片里。</div>
-                </figcaption>
-              </figure>
+      <!-- EVENT 3 -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">12:29</span>
+          <span class="time-sub">IMG_9561</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">军事博物馆：仪式感更强的那一面</div>
+            <p class="event-text">
+              和警察博物馆相比，军事博物馆的体量更大，仪式感更强。
+              纪念性雕塑、武器陈列、历史战役的场景复原——这里用的是一种"史诗语气"，
+              把埃及军事史讲成一条英雄叙事线。
+            </p>
+            <p class="event-text">
+              1973 年十月战争是展陈的高潮，相关展品密度明显更高。
+              这和埃及现代政治逻辑高度吻合：军事力量在这个国家从来不只是"手段"，而是"正当性来源"本身。
+              看完这个馆，你对"为什么埃及历任领导人都来自军方"这个问题，会有一种具体的感受，
+              而不只是一个干巴巴的政治学结论。
+            </p>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <img src="../../../assets/day1/jpg/IMG_9561.jpg" alt="军事博物馆外景" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">军事博物馆 · 主楼立面与中庭</div>
+                <div class="cap-sub">建筑尺度与纪念性雕塑强化了军事叙事的仪式感</div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="event-body" style="border-top: 1px solid var(--line-faint);">
+            <div class="phil-card">
+              <div class="phil-label">参考资料 · 城堡历史</div>
+              <p class="phil-text">
+                城堡历史上最著名的权力更替事件之一是 <strong>1811 年的马穆鲁克大屠杀</strong>（Massacre of the Mamluks）：
+                穆罕默德·阿里以庆典之名将马穆鲁克领袖们邀入城堡，随后在堡内将其悉数杀害，彻底清除了对其统治的威胁。
+                城堡从这一刻起，不再只是一个防御工事，而成为权力剧场的注脚——它见证的，是一次对"暴力垄断"的彻底重申。
+              </p>
+              <p class="phil-source">— Citadel of Cairo: A History and Guide</p>
             </div>
-            <div class="summary-box">
-              <h3>关于“温州90后女生在萨拉丁城堡开奶茶店”的思考</h3>
-              <ul>
-                <li>这不是简单的“景区开店”，而是一次很典型的华人商业能力迁移：把在中文世界已经成熟的产品与门店运营方式，带到新的旅游与消费场景里。</li>
-                <li>温州商人的关键词通常是灵活、吃苦、快速试错、强关系网络。放到开罗城堡这个位置上，优势会变成：选点敏感度、供应组织能力、以及对游客即时需求的把握。</li>
-                <li>我拍下的“手持奶茶 + 店招同框”画面很有代表性：游客并不是在“纯历史空间”里行动，而是在一个被当代商业重新缝合过的复合空间里行动。</li>
-                <li>店名用 <strong>Nefertiti</strong>（古埃及知名符号），同时店招又出现中文信息，这种命名方式本身就是一种在地化叙事：既让游客一眼认出“埃及感”，也让华语游客感到亲切。</li>
-                <li>对我来说，这家店最有意思的地方并不只是“在城堡里喝到奶茶”，而是它把古迹空间、旅游消费和中文语境自然缝合在一起，成为第一天最鲜活的当代切片。</li>
-              </ul>
-            </div>
-          </article>
-        </li>
+          </div>
+        </article>
+      </li>
 
-        <li class="event">
-          <div class="time"><strong>13:58</strong>d1624…</div>
-          <article class="card">
-            <h2>萨拉丁城堡与我（穆罕默德·阿里清真寺前）</h2>
-            <p>这张照片是第一天很好的收束画面：我与萨拉丁城堡内的穆罕默德·阿里清真寺同框。和前面的建筑与馆藏照片相比，它把第一天从“看见什么”推进到“我如何在场”，让这一天真正从景点记录转为个人旅行日记。</p>
-            <div class="photo-grid">
-              <figure>
-                <img src="../../../assets/day1/jpg/d1624d8ad5c2e8dc392d33d6a42d9082.jpg" alt="第一天 萨拉丁城堡与穆罕默德阿里清真寺前合影" />
-                <figcaption>
-                  <div class="caption-title">萨拉丁城堡 · 我在现场（穆罕默德·阿里清真寺）</div>
-                  <div class="small">人物与穹顶建筑同框形成强烈尺度对比，也完整保留了我抵达开罗后的身体在场感。</div>
-                </figcaption>
-              </figure>
+      <!-- EVENT 4 -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">13:04</span>
+          <span class="time-sub">IMG_9571</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">Nefertiti 奶茶：一杯装在古埃及符号里的全球化</div>
+            <p class="event-text">
+              这家店是当天最意外的细节，也是我觉得最有意思的当代切片。
+              店名用了 Nefertiti（古埃及最著名的王后之一），
+              但经营者是一个温州90后女生——她把中国新茶饮那套成熟的产品与门店运营逻辑，直接搬进了萨拉丁城堡的旅游动线里。
+            </p>
+            <p class="event-text">
+              表面上看，这是景区开个奶茶店。但往里想一层：
+              <strong>温州商人的逻辑是什么？</strong>
+              选点敏感度——城堡景区游客流量稳定；
+              供应链迁移能力——原料体系可以复制；
+              产品在地化命名——"Nefertiti"让游客一眼识别"埃及感"，同时对华语游客格外亲切。
+              这不是随机的个体行为，而是一整套商业基因在新场景里的精准表达。
+            </p>
+            <p class="event-text">
+              我拍下这张照片的时候，脑子里想的是：
+              游客其实从来都不在"纯粹的历史空间"里行动——他们在一个被当代商业反复缝合过的复合空间里穿行。
+              奶茶店让这件事变得非常可见。
+            </p>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <img src="../../../assets/day1/jpg/IMG_9571.jpg" alt="Nefertiti 奶茶店" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">Nefertiti 奶茶 · 城堡里的意外惊喜</div>
+                <div class="cap-sub">手持饮品与店招同框，古迹空间、旅游消费与中文语境自然缝合</div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="event-body" style="border-top: 1px solid var(--line-faint);">
+            <div class="think-block">
+              <div class="think-label">现场思考</div>
+              <p class="think-text">
+                店名是 Nefertiti，但这个名字在这里并不是在讲古埃及历史——
+                它是一个<strong>符号的商业化使用</strong>：借用古埃及的文化资本，给产品包上一层"在地感"。
+                这个操作逻辑其实在全世界旅游景区无处不在，
+                但这里的特殊之处在于：使用这套逻辑的是一个中国人，在一座中世纪伊斯兰城堡里，
+                卖一种起源于台湾、在中国大陆成熟的饮品。
+                这几层叠压在一杯奶茶里，是第一天最鲜活的全球化注脚。
+              </p>
             </div>
-          </article>
-        </li>
+          </div>
+        </article>
+      </li>
 
-        <li class="event">
-          <div class="time"><strong>收束</strong>晚间整理</div>
-          <article class="card">
-            <h2>第一天行动小结（完整版）</h2>
-            <p>这一天可以被写成“三层埃及”的叠加。第一层是我在思考页里整理的古埃及神话结构，它提供了理解埃及文明的抽象框架；第二层是萨拉丁城堡、穆罕默德·阿里清真寺、警察博物馆和军事博物馆，它们把“国家、权力、宗教、历史叙事”具体化成可走入的空间；第三层则是 Nefertiti 奶茶店这样的生活切片，它提醒我当代旅行从来不是只看古迹，而是在古迹、商业、语言和人的流动之间不断切换。</p>
-            <p>如果说上午和白天在城堡里看到的是“历史如何被保存在建筑与机构中”，那么奶茶店让我看到的是“历史如何被继续使用”，甚至被重新包装成新的日常消费体验。一个温州90后女生在萨拉丁城堡开店这件事，本身就像一条很短但很有力的全球化注脚：古老帝国的山地堡垒、开罗的旅游流线、中国的新茶饮文化、华人跨境经营能力，在一杯奶茶里短暂交汇。</p>
-            <p>因此，第一天最好的收束方式不是“我今天去了哪几个点”，而是：我第一次在开罗看见了历史的多重时间同时运行。城堡讲中世纪与近代权力，博物馆讲国家记忆的整理方式，奶茶店讲当下世界如何把远方变成日常。这也让我第一天的“思考”与“行动”真正合上了。</p>
-          </article>
-        </li>
-      </ol>
+      <!-- EVENT 5 -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">13:58</span>
+          <span class="time-sub">在场</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">我站在穆罕默德·阿里清真寺前</div>
+            <p class="event-text">
+              最后这张合影，是我第一天很好的收束画面。
+              穆罕默德·阿里清真寺是19世纪加建的，穹顶的轮廓今天仍然主导着开罗的天际线。
+              从萨拉丁的12世纪堡垒，到穆罕默德·阿里的19世纪清真寺，再到我在2026年站在这里——
+              同一片土地，三个时间层，都可以用"权力想留下一点什么"来概括。
+            </p>
+            <p class="event-text">
+              和前面那些建筑与馆藏照片相比，这张照片把第一天从"看见什么"推进到"我如何在场"。
+              旅行手记最终要回答的问题不是"去了哪里"，而是"这些地方如何改变了我的认知"。
+              这是第一天的第一个答案：原来历史并不是线性陈列的，它是垂直压缩在同一块土地上的。
+            </p>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <img src="../../../assets/day1/jpg/d1624d8ad5c2e8dc392d33d6a42d9082.jpg" alt="我在穆罕默德·阿里清真寺前" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">萨拉丁城堡 · 穆罕默德·阿里清真寺前</div>
+                <div class="cap-sub">人物与穹顶同框，尺度对比里藏着历史的多重时间</div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="event-body" style="border-top: 1px solid var(--line-faint);">
+            <div class="phil-card">
+              <div class="phil-label">参考资料 · 城堡建筑</div>
+              <p class="phil-text">
+                穆罕默德·阿里清真寺（Muhammad Ali Mosque，又称雪花石膏清真寺）建于 <strong>1830–1848 年间</strong>，
+                以其奥斯曼式穹顶和双宣礼塔主导了城堡天际线。
+                设计灵感来自伊斯坦布尔的蓝色清真寺，是埃及近代统治者借助宗教建筑确立"与奥斯曼传统的连续性"的典型案例。
+                城堡内部同时保存有萨拉丁时期的水井（Bir Yusuf，约深 87 米）——两者相距不足百米，
+                却跨越了将近七百年的建筑史。
+              </p>
+              <p class="phil-source">— Citadel of Cairo: A History and Guide</p>
+            </div>
+          </div>
+        </article>
+      </li>
+
+    </ol>
+
+    <!-- SUMMARY -->
+    <div class="summary-card">
+      <div class="summary-eyebrow">Day 01 · Summary</div>
+      <div class="summary-title">三层埃及，叠在同一天</div>
+      <p class="summary-text">
+        这一天可以被读成三个同心圆。最外层是我在思考页里整理的古埃及神话结构——那是一套理解埃及文明的抽象框架，也是行前的知识底稿。中间层是萨拉丁城堡、穆罕默德·阿里清真寺、警察博物馆和军事博物馆，它们把"国家、权力、宗教、历史叙事"具体化成可以走入的空间。最内层，是 Nefertiti 奶茶店这样的生活切片，它提醒我：当代旅行从来不是只看古迹，而是在古迹、商业、语言和人的流动之间不断切换。
+      </p>
+      <p class="summary-text">
+        如果说博物馆让我看到的是"历史如何被保存在建筑与机构里"，那么奶茶店让我看到的是"历史如何被继续使用"——甚至被重新包装成新的消费体验。<strong>一个温州90后女生在萨拉丁城堡开奶茶店这件事，本身就是一条很短但很有力的全球化注脚</strong>：古老帝国的山地堡垒、开罗的旅游流线、中国的新茶饮文化、华人跨境经营能力，在一杯奶茶里短暂交汇。
+      </p>
+      <p class="summary-text">
+        这就是第一天"思考"与"行动"最终合上的地方：来之前我以为我会看见"古埃及"，结果我看见的是历史的多重时间在同一座城市里同时运行——而我自己，也是这种运行里的一个变量。
+      </p>
     </div>
+
+    <!-- NAV FOOTER -->
+    <div class="nav-footer">
+      <a class="nav-btn" href="../index.html">← 返回第一天概览</a>
+      <a class="nav-btn" href="../think/index.html">查看思考：众神关系 →</a>
+    </div>
+
   </div>
 </body>
 </html>

@@ -3,259 +3,619 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>第二天 · 神王家族进埃及（时间线相册）</title>
+  <title>第二天 · 神王家族进埃及</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f3efe7;
-      --paper: #fffdf8;
-      --ink: #2c261f;
-      --muted: #6f665a;
-      --line: #dccfb6;
-      --blue: #1f5fb1;
-      --orange: #bf6717;
-      --green: #2f7d4b;
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --card-hover: #231f19;
+      --gold: #c8973a;
+      --gold-light: #e8bf6a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --blue: #4a8fd4;
+      --blue-dim: rgba(74,143,212,.14);
+      --green: #4a9e6e;
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
+      --rail: rgba(200,151,58,.35);
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Noto Serif SC", "PingFang SC", serif;
-      background:
-        radial-gradient(circle at 12% 0%, rgba(31,95,177,.06), transparent 35%),
-        radial-gradient(circle at 85% 6%, rgba(191,103,23,.08), transparent 38%),
-        var(--bg);
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
       color: var(--ink);
-      line-height: 1.75;
+      line-height: 1.8;
+      overflow-x: hidden;
     }
-    .wrap { width: min(1120px, calc(100% - 28px)); margin: 22px auto 40px; }
-    .topbar { margin-bottom: 14px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
-    .topbar a { color: inherit; text-decoration: none; }
-    .hero, .panel {
-      background: var(--paper);
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 92% 105%, rgba(74,143,212,.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 96px;
+    }
+
+    /* ── NAV ── */
+    .topbar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 40px;
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── DRAFT BANNER ── */
+    .draft-banner {
+      background: rgba(200,151,58,.08);
       border: 1px solid var(--line);
-      padding: 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.04);
+      border-left: 3px solid var(--gold);
+      padding: 12px 18px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--ink-muted);
     }
-    h1 { margin: 0; font-size: clamp(24px, 4vw, 34px); color: var(--blue); }
-    .meta { margin-top: 8px; color: var(--muted); font-size: 14px; }
-    .route { margin-top: 8px; color: var(--orange); font-weight: 600; }
-    .lead { margin-top: 10px; }
-    .tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(31,95,177,.25); background: rgba(31,95,177,.06); color: var(--blue); }
-    .layout { margin-top: 16px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; }
-    .panel h2 { margin: 0 0 8px; font-size: 18px; color: #6a4214; }
-    .panel ul { margin: 0; padding-left: 18px; }
-    .panel li { margin: 6px 0; }
-    .quote-note {
-      border-left: 3px solid #e3b178;
-      background: #fff8ee;
-      padding: 10px 12px;
-      color: #5c4831;
-      font-size: 14px;
+    .draft-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
     }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      opacity: .8;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.9;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      color: var(--gold);
+      letter-spacing: .3px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 40px 0 20px;
+    }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: .7;
+      white-space: nowrap;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line-faint);
+    }
+
+    /* ── SPLIT PANELS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .context-panel {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      padding: 24px 28px;
+    }
+    .context-panel h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .context-panel p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .context-panel p:last-child { margin-bottom: 0; }
+
+    /* ── TIMELINE ── */
     .timeline {
       position: relative;
       list-style: none;
-      margin: 16px 0 0;
-      padding: 0;
     }
     .timeline::before {
-      content: "";
+      content: '';
       position: absolute;
-      left: 118px;
-      top: 0;
+      left: 88px;
+      top: 8px;
       bottom: 0;
-      width: 2px;
-      background: linear-gradient(var(--orange), rgba(191,103,23,.2));
+      width: 1px;
+      background: linear-gradient(to bottom, var(--rail), transparent);
     }
     .event {
-      position: relative;
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 18px;
-      margin-bottom: 16px;
-      align-items: start;
+      grid-template-columns: 88px 1fr;
+      gap: 0 28px;
+      padding-bottom: 40px;
+      position: relative;
     }
-    .time {
+    .event:last-child { padding-bottom: 0; }
+    .event-time {
       text-align: right;
-      color: var(--muted);
-      font-size: 13px;
-      padding-top: 8px;
-    }
-    .time strong { display: block; color: #4f463b; font-size: 14px; }
-    .card {
+      padding-top: 18px;
       position: relative;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 14px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.03);
     }
-    .card::before {
-      content: "";
+    .event-time::after {
+      content: '';
       position: absolute;
-      left: -25px;
-      top: 18px;
-      width: 11px;
-      height: 11px;
+      right: -35px;
+      top: 24px;
+      width: 9px; height: 9px;
       border-radius: 50%;
-      background: #9c4f09;
-      border: 2px solid #f4e7d4;
-      box-shadow: 0 0 0 2px rgba(156,79,9,.16);
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--gold), 0 0 12px rgba(200,151,58,.4);
     }
-    .card h3 { margin: 0; font-size: 18px; color: var(--orange); }
-    .card p { margin: 8px 0 0; }
-    .split {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 10px;
+    .time-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: var(--gold);
+      display: block;
+      letter-spacing: 1px;
     }
-    .subbox {
-      border: 1px dashed #d9c3a0;
-      background: #fff8ef;
-      padding: 10px;
+    .time-sub {
+      font-size: 10px;
+      color: var(--ink-faint);
+      display: block;
+      margin-top: 3px;
     }
-    .subbox strong { color: #6c4517; }
+
+    /* ── EVENT CARD ── */
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      transition: border-color .2s;
+    }
+    .event-card:hover { border-color: var(--line); }
+    .event-body { padding: 20px 24px; }
+    .event-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .event-text {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.85;
+    }
+    .event-text + .event-text { margin-top: 10px; }
+    .event-text strong { color: var(--ink); }
+
+    /* ── PHOTO PLACEHOLDER ── */
     .photo-grid {
-      margin-top: 10px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px;
+      gap: 2px;
+      margin-top: 2px;
     }
-    figure { margin: 0; border: 1px solid var(--line); background: #fff; }
-    .ph {
-      height: 180px;
-      background: linear-gradient(135deg, #f4ead8, #eee4d0);
+    .photo-ph {
+      background: var(--surface);
+      aspect-ratio: 4/3;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #7a6547;
-      text-align: center;
-      padding: 12px;
-      font-size: 14px;
+      gap: 8px;
+      color: var(--ink-faint);
+      font-size: 12px;
+      letter-spacing: .5px;
+      border: 1px dashed var(--line-faint);
     }
-    figcaption { padding: 8px 10px; font-size: 13px; color: #53483d; border-top: 1px solid #efe2cf; }
-    .caption-title { color: var(--blue); font-weight: 600; }
-    .footer-note {
+    .photo-ph-icon { font-size: 24px; opacity: .3; }
+    .photo-ph-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; }
+
+    /* ── THINKING BLOCK ── */
+    .think-block {
       margin-top: 14px;
-      background: #eef5ff;
-      border: 1px solid #cfe0ff;
-      color: #334d74;
-      padding: 12px;
-      font-size: 14px;
+      background: var(--surface);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
     }
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; }
+    .think-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: 8px;
     }
-    @media (max-width: 760px) {
-      .timeline::before { left: 16px; }
+    .think-text { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+    .think-text + .think-text { margin-top: 8px; }
+
+    /* ── PHILOSOPHY CARD ── */
+    .phil-card {
+      margin-top: 14px;
+      background: var(--surface);
+      border: 1px solid var(--blue-dim);
+      border-left: 3px solid var(--blue);
+      padding: 14px 18px;
+    }
+    .phil-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--blue);
+      opacity: .8;
+      margin-bottom: 8px;
+    }
+    .phil-text { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+    .phil-text strong { color: var(--ink); }
+    .phil-source { margin-top: 8px; font-size: 11px; color: var(--ink-faint); font-style: italic; }
+
+    /* ── DRAFT PLACEHOLDER ── */
+    .draft-section {
+      background: var(--surface);
+      border: 1px dashed var(--line-faint);
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .draft-icon { font-size: 32px; opacity: .25; margin-bottom: 10px; }
+    .draft-title {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+    .draft-desc { font-size: 13px; color: var(--ink-faint); }
+
+    /* ── SUMMARY ── */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 28px 32px;
+      margin-top: 48px;
+    }
+    .summary-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 14px;
+      opacity: .8;
+    }
+    .summary-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .summary-text { font-size: 14px; color: var(--ink-muted); line-height: 1.9; }
+    .summary-text + .summary-text { margin-top: 10px; }
+    .summary-text strong { color: var(--ink); }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border: 1px solid var(--line-faint);
+      padding: 8px 16px;
+      transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+      .timeline::before { left: 20px; }
       .event { grid-template-columns: 1fr; gap: 8px; }
-      .time { text-align: left; padding-left: 36px; }
-      .card { margin-left: 36px; }
-      .card::before { left: -28px; }
+      .event-time { text-align: left; padding-top: 0; padding-left: 36px; }
+      .event-time::after { right: auto; left: 0; top: 4px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="topbar">
-      <a href="../../index.html">← 返回旅行目录</a>
-      <a href="../day1/index.html">查看第一天</a>
-      <a href="../day3/index.html">下一天（第三天）</a>
+
+    <nav class="topbar">
+      <a href="../../index.html">← 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <span>第二天</span>
+    </nav>
+
+    <!-- DRAFT BANNER -->
+    <div class="draft-banner">
+      <span class="draft-dot"></span>
+      <span>行程草稿 · 今天刚去，内容持续更新中——结构已搭好，照片和现场感受写完后会填入</span>
     </div>
 
-    <section class="hero">
-      <h1>第二天 · 神王家族进埃及</h1>
-      <div class="meta">2026-02-23</div>
-      <div class="route">路线：开罗 · 上午吉萨金字塔群，下午开罗老城（科普特开罗）</div>
-      <p class="lead">第二天的节奏像两段完全不同的时间在同一天里接力。上午站在吉萨高地，我面对的是法老时代关于永生、王权与宇宙秩序的巨大石头；下午走进开罗老城，我看到的则是神圣家族避难传说、科普特传统与多重宗教空间在狭窄街区里的并置。</p>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Day 02 · 2026.02.23</div>
+      <h1><em>神王家族</em>进埃及</h1>
+      <p class="hero-lead">
+        这一天的节奏像两段完全不同的时间在同一天里接力。
+        上午站在吉萨高地，面对的是法老时代关于永生、王权与宇宙秩序的巨大石头；
+        下午走进开罗老城，看到的是神圣家族避难传说、科普特传统与多重宗教空间在狭窄街区里的并置。
+        从永恒到日常，从法老纪念碑到活着的信仰街区——同一座城市，两种时间尺度。
+      </p>
       <div class="tags">
-        <span class="tag">吉萨高地</span>
-        <span class="tag">金字塔与狮身人面像</span>
-        <span class="tag">开罗老城</span>
-        <span class="tag">科普特开罗</span>
+        <span class="pill">吉萨高地</span>
+        <span class="pill">金字塔</span>
+        <span class="pill">狮身人面像</span>
+        <span class="pill">科普特开罗</span>
+        <span class="pill">阿布塞尔加教堂</span>
       </div>
-    </section>
+    </header>
 
-    <section class="layout">
-      <article class="panel">
-        <h2>上午：吉萨高地的第一层震撼</h2>
-        <div class="quote-note">
-          在老师的讲解里，吉萨金字塔群首先不是“著名景点”，而是古埃及人对来世观念的巨大建筑回应。金字塔不仅是陵墓，更是一套帮助法老通往永生、与太阳神拉汇合的秩序化工程。
-        </div>
-        <ul style="margin-top:10px;">
-          <li>这让我在现场看金字塔时，不只是在看“巨大石堆”，而是在看一套被建筑化的宇宙观。</li>
-          <li>三大金字塔与狮身人面像的组合，也让我更容易把古王国时期的权力结构想象成真实的空间，而不只是课本里的名词。</li>
-          <li>“世界七大奇迹唯一现存”这句话在现场变得具体，因为它不再只是标签，而是进入视野后的尺度压迫感。</li>
-        </ul>
-      </article>
+    <!-- OVERVIEW PANELS -->
+    <div class="section-header">
+      <span class="section-eyebrow">两段时间</span>
+      <div class="section-line"></div>
+    </div>
 
-      <article class="panel">
-        <h2>下午：开罗老城里的信仰叠层</h2>
-        <div class="quote-note" style="border-left-color:#87b596; background:#f3fbf5;">
-          下午在开罗老城的行走，把我从法老时代的永恒叙事带进另一条线索：神圣家族“下埃及”的避难故事，以及它在本地基督教历史中的长期回响。
+    <div class="two-col">
+      <div class="context-panel">
+        <h2>上午 · 吉萨高地</h2>
+        <p>在老师的讲解里，吉萨金字塔群首先不是"著名景点"，而是古埃及人对来世观念的巨大建筑回应——不只是陵墓，而是一套帮助法老通往永生、与太阳神拉汇合的秩序化工程。</p>
+        <p>这让我在现场看金字塔时，不只是在看"巨大石堆"，而是在看一套被建筑化的宇宙观。"世界七大奇迹唯一现存"这句话在现场变得具体，因为它不再只是标签，而是进入视野后的尺度压迫感。</p>
+        <div class="phil-card" style="margin-top:14px">
+          <div class="phil-label">老师资料 · 来世观与金字塔</div>
+          <p class="phil-text">
+            古王国时期（约公元前2686–2181年），金字塔建造的核心逻辑是<strong>马特（Ma'at）秩序神学</strong>：法老作为宇宙秩序的维护者，其死后的复活与来世旅程不仅是个人救赎，更关乎整个文明的运转。金字塔的几何精度（朝向、角度、地势）本身就是这套宇宙秩序的空间表达。吉萨三大金字塔的排列被认为与猎户座腰带星群对应，将天上的永恒秩序落地为建筑。
+          </p>
+          <p class="phil-source">— 课堂讲义 · 古埃及历史与文明</p>
         </div>
-        <ul style="margin-top:10px;">
-          <li>阿布塞尔加教堂及其地下洞穴传统，是这条叙事在城市里的核心锚点之一。</li>
-          <li>科普特开罗最打动人的地方，在于古罗马遗址、科普特教堂、犹太会堂与伊斯兰空间并置出现，历史不是被分开陈列，而是挤在同一片街区里。</li>
-          <li>和上午的吉萨高地相比，下午的老城更像“可步行的历史层”，需要靠慢慢走来读懂。</li>
-        </ul>
-        <div class="footer-note">这一天的主题不是“看完两个景点”，而是在同一天里经历两种不同的历史时间：一边是纪念永恒的石头，一边是在城市里持续回响的信仰记忆。</div>
-      </article>
-    </section>
+      </div>
+
+      <div class="context-panel">
+        <h2>下午 · 科普特开罗</h2>
+        <p>下午在开罗老城的行走，把我从法老时代的永恒叙事带进另一条线索：神圣家族"下埃及"的避难故事，以及它在本地基督教历史中的长期回响。</p>
+        <p>科普特开罗最打动人的地方，在于古罗马遗址、科普特教堂、犹太会堂与伊斯兰空间并置出现——历史不是被分开陈列，而是挤在同一片街区里，彼此照面。</p>
+        <div class="phil-card" style="margin-top:14px">
+          <div class="phil-label">老师资料 · 科普特艺术与信仰传统</div>
+          <p class="phil-text">
+            科普特基督教（Coptic Christianity）是目前已知<strong>最古老的基督教传统之一</strong>，据传由使徒马可约于公元55年在亚历山大港创立。"科普特"一词来自希腊语 Aigyptos（埃及），意指"埃及本土的基督徒"，区别于后来的阿拉伯裔穆斯林人口。科普特艺术融合了古埃及象形传统、希腊化美学与基督教图像学，形成了独特的视觉语言——其中早期圣像画（icon）的平面性、金色背景与正面构图，可以追溯到古埃及丧葬艺术中的法尤姆肖像画（Fayum portraits）。
+          </p>
+          <p class="phil-source">— The Treasures of Coptic Art · Cawdat Gabra</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section-header">
+      <span class="section-eyebrow">行程时间线</span>
+      <div class="section-line"></div>
+    </div>
 
     <ol class="timeline">
+
+      <!-- EVENT 1 -->
       <li class="event">
-        <div class="time"><strong>上午</strong>吉萨高地</div>
-        <article class="card">
-          <h3>吉萨金字塔群：石头、风沙与秩序感</h3>
-          <p>从开罗城市边缘进入吉萨高地的过程，很像从现代城市一步踏进另一种时间尺度。眼前的金字塔并不只是在“巨大”这件事上压人，它更强烈的地方在于秩序感：边线、朝向、地势关系，以及人站在它们面前时自然缩小的身体感受。</p>
-          <div class="split">
-            <div class="subbox"><strong>现场理解</strong><br />老师关于“复活机器 / 登天阶梯”的说法，让我在看金字塔时一直意识到：这不是单纯的墓，而是一整套与来世观念相连的工程实践。</div>
-            <div class="subbox"><strong>当日观察</strong><br />三大金字塔与狮身人面像共同构成了吉萨高地的叙事核心，游客的流动、观景点的停留方式和沙漠边缘的地貌也一起参与了这份现场感。</div>
+        <div class="event-time">
+          <span class="time-label">上午</span>
+          <span class="time-sub">吉萨高地</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">吉萨金字塔群：石头、风沙与秩序感</div>
+            <p class="event-text">
+              从开罗城市边缘进入吉萨高地的过程，很像从现代城市一步踏进另一种时间尺度。
+              眼前的金字塔并不只是在"巨大"这件事上压人——它更强烈的地方在于秩序感：
+              边线、朝向、地势关系，以及人站在它们面前时自然缩小的身体感受。
+            </p>
+            <p class="event-text draft-placeholder" style="color:var(--ink-faint); font-style:italic;">
+              ※ 现场感受和照片待补入 ——
+            </p>
           </div>
           <div class="photo-grid">
-            <figure>
-              <div class="ph">图位 A（待上传）<br />吉萨全景 / 金字塔主视角</div>
-              <figcaption><span class="caption-title">照片说明</span>：我站在吉萨高地看见的第一层震撼，是尺度、风沙与秩序同时压过来的感觉。</figcaption>
-            </figure>
-            <figure>
-              <div class="ph">图位 B（待上传）<br />金字塔细节 / 石块纹理 / 对齐感</div>
-              <figcaption><span class="caption-title">照片说明</span>：当视线从“巨大”移向细部，石块、边线与方向感让工程精度变得更具体。</figcaption>
-            </figure>
+            <div class="photo-ph">
+              <div class="photo-ph-icon">📷</div>
+              <div class="photo-ph-label">待上传</div>
+              <div style="font-size:11px;">吉萨全景 / 金字塔主视角</div>
+            </div>
+            <div class="photo-ph">
+              <div class="photo-ph-icon">📷</div>
+              <div class="photo-ph-label">待上传</div>
+              <div style="font-size:11px;">石块纹理 / 边线细节</div>
+            </div>
+          </div>
+          <div class="event-body" style="border-top:1px solid var(--line-faint);">
+            <div class="think-block">
+              <div class="think-label">现场思考（草稿）</div>
+              <p class="think-text">老师关于"复活机器 / 登天阶梯"的说法，让我在看金字塔时一直意识到：这不是单纯的墓，而是一整套与来世观念相连的工程实践。三大金字塔与狮身人面像共同构成了吉萨高地的叙事核心——游客的流动、观景点的停留方式和沙漠边缘的地貌也一起参与了这份现场感。</p>
+            </div>
           </div>
         </article>
       </li>
 
+      <!-- EVENT 2 -->
       <li class="event">
-        <div class="time"><strong>下午</strong>开罗老城</div>
-        <article class="card">
-          <h3>开罗老城：在街区里阅读神圣家族的回响</h3>
-          <p>下午进入开罗老城后，旅行的节奏明显慢了下来。和吉萨高地的开阔视野不同，这里需要用步行、转角、停留去感受历史层次。阿布塞尔加教堂与地下洞穴传统，把神圣家族避难叙事固定在具体空间里，也让“圣经故事”从文本进入街区。</p>
-          <div class="split">
-            <div class="subbox"><strong>历史感</strong><br />在这片区域里，古罗马遗址、科普特传统、犹太会堂与伊斯兰空间不是线性出现，而是彼此邻近、互相照面，形成一种压缩后的文明叠层。</div>
-            <div class="subbox"><strong>当日感受</strong><br />如果上午让我感到的是宏大与秩序，下午更像是在小尺度空间里慢慢辨认历史留下的纹理与回声。</div>
-          </div>
-          <div class="photo-grid">
-            <figure>
-              <div class="ph">图位 C（待上传）<br />阿布塞尔加教堂 / 老城街区入口</div>
-              <figcaption><span class="caption-title">照片说明</span>：从街区入口进入老城时，历史不再以单一朝代出现，而是以叠层方式同时在场。</figcaption>
-            </figure>
-            <figure>
-              <div class="ph">图位 D（待上传）<br />教堂内部 / 柱列 / 细节符号</div>
-              <figcaption><span class="caption-title">照片说明</span>：在建筑细部与柱列结构里，我更清楚地感受到本地信仰传统与地方历史的长期交织。</figcaption>
-            </figure>
+        <div class="event-time">
+          <span class="time-label">中午</span>
+          <span class="time-sub">转场</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">从永恒到日常：换挡的感受</div>
+            <p class="event-text">
+              上午的吉萨高地给了我宏大与秩序的感受，下午进老城后旅行节奏明显慢了下来。
+              和开阔的高地视野不同，这里需要用步行、转角、停留去感受历史层次。
+            </p>
+            <p class="event-text" style="color:var(--ink-faint); font-style:italic;">
+              ※ 午餐和转场细节待补入 ——
+            </p>
           </div>
         </article>
       </li>
 
+      <!-- EVENT 3 -->
       <li class="event">
-        <div class="time"><strong>夜间</strong>回顾整理</div>
-        <article class="card">
-          <h3>第二天 小结</h3>
-          <p>这一天像一条从“为法老建造永恒”走向“为避难与信仰留下空间记忆”的路线。上午的吉萨高地让我在石头与几何秩序中直面古王国时代的宏大想象，下午的开罗老城则让我在街巷与教堂之间看见历史如何被持续居住、持续讲述。它们放在同一天里，让我对“埃及”这个词的时间厚度有了更具体的体会。</p>
+        <div class="event-time">
+          <span class="time-label">下午</span>
+          <span class="time-sub">科普特区</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">开罗老城：在街区里阅读神圣家族的回响</div>
+            <p class="event-text">
+              阿布塞尔加教堂与地下洞穴传统，把神圣家族避难叙事固定在具体空间里，
+              也让"圣经故事"从文本进入街区。在这片区域里，古罗马遗址、科普特传统、
+              犹太会堂与伊斯兰空间不是线性出现，而是彼此邻近、互相照面，
+              形成一种压缩后的文明叠层。
+            </p>
+            <p class="event-text" style="color:var(--ink-faint); font-style:italic;">
+              ※ 现场感受和照片待补入 ——
+            </p>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-ph">
+              <div class="photo-ph-icon">📷</div>
+              <div class="photo-ph-label">待上传</div>
+              <div style="font-size:11px;">阿布塞尔加教堂 / 老城入口</div>
+            </div>
+            <div class="photo-ph">
+              <div class="photo-ph-icon">📷</div>
+              <div class="photo-ph-label">待上传</div>
+              <div style="font-size:11px;">教堂内部 / 柱列细节</div>
+            </div>
+          </div>
+          <div class="event-body" style="border-top:1px solid var(--line-faint);">
+            <div class="phil-card">
+              <div class="phil-label">参考资料 · 科普特艺术</div>
+              <p class="phil-text">
+                阿布塞尔加教堂（Abu Serga，正式名称 Saints Sergius and Bacchus Church）建于<strong>约4–5世纪</strong>，
+                坐落在古罗马要塞巴比伦（Babylon Fortress）遗址之上。
+                地下洞穴（crypt）相传是神圣家族（圣母玛利亚、约瑟夫与婴儿耶稣）
+                在逃往埃及途中的避难处所，是科普特朝圣传统中最重要的圣地之一。
+                其建筑形制采用<strong>巴西利卡式（basilica）</strong>布局，
+                体现了早期基督教建筑从罗马公民建筑形式向宗教场所转化的历史过程。
+              </p>
+              <p class="phil-source">— The Treasures of Coptic Art · Cawdat Gabra</p>
+            </div>
+          </div>
         </article>
       </li>
+
+      <!-- EVENT 4: SUMMARY -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">夜间</span>
+          <span class="time-sub">回顾</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">第二天小结（草稿）</div>
+            <p class="event-text" style="color:var(--ink-faint); font-style:italic;">
+              ※ 完整总结待补入 ——
+            </p>
+            <p class="event-text">
+              初步感受：这一天像一条从"为法老建造永恒"走向"为避难与信仰留下空间记忆"的路线。
+              上午的吉萨高地让我在石头与几何秩序中直面古王国时代的宏大想象，
+              下午的开罗老城则让我在街巷与教堂之间看见历史如何被持续居住、持续讲述。
+              它们放在同一天里，让我对"埃及"这个词的时间厚度有了更具体的体会。
+            </p>
+          </div>
+        </article>
+      </li>
+
     </ol>
+
+    <!-- SUMMARY -->
+    <div class="summary-card">
+      <div class="summary-eyebrow">Day 02 · Preview</div>
+      <div class="summary-title">两种时间尺度，同一座城市</div>
+      <p class="summary-text">
+        这一天最有意思的对比，不是"金字塔很大 vs. 教堂很小"，而是两种不同的<strong>时间使用方式</strong>：
+        金字塔是把时间压缩进石头里，用永恒来抗拒消亡；
+        科普特老城是让时间持续流动，用活着的信仰和日常生活来抵抗遗忘。
+        前者是"一次性的宏大声明"，后者是"持续性的低声陈述"。
+      </p>
+      <p class="summary-text" style="color:var(--ink-faint); font-style:italic; margin-top:12px;">
+        ※ 完整总结待今晚或明天补入——
+      </p>
+    </div>
+
+    <!-- NAV FOOTER -->
+    <div class="nav-footer">
+      <a class="nav-btn" href="../day1/index.html">← 第一天</a>
+      <a class="nav-btn" href="../../index.html">旅行目录</a>
+      <a class="nav-btn" href="../day3/index.html">第三天 →</a>
+    </div>
+
   </div>
 </body>
 </html>

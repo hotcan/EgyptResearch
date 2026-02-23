@@ -3,8 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>埃及神话 · 众神殿</title>
+<title>第一天思考 · 古埃及众神殿</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  .site-nav {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 16px 24px;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(200,151,58,.12);
+    background: rgba(10,8,6,.6);
+    backdrop-filter: blur(8px);
+    flex-wrap: wrap;
+  }
+  .site-nav a {
+    color: rgba(200,151,58,.6);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    transition: color .2s;
+  }
+  .site-nav a:hover { color: #C9A84C; }
+  .site-nav-sep { color: rgba(200,151,58,.25); }
+  .site-nav-cur { color: rgba(212,196,160,.5); font-family: 'Cinzel', serif; letter-spacing: 1px; }
+
+  .context-strip {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+  }
+  .context-card {
+    background: rgba(26,58,92,.15);
+    border: 1px solid rgba(200,151,58,.18);
+    border-left: 3px solid rgba(200,151,58,.5);
+    padding: 14px 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .context-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #C9A84C;
+    opacity: .7;
+    margin-bottom: 4px;
+  }
+  .context-text {
+    font-size: 13px;
+    color: rgba(212,196,160,.75);
+    line-height: 1.7;
+    flex: 1;
+    min-width: 240px;
+  }
+  .context-link {
+    align-self: center;
+    white-space: nowrap;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #C9A84C;
+    text-decoration: none;
+    border: 1px solid rgba(200,151,58,.3);
+    padding: 6px 14px;
+    transition: all .2s;
+  }
+  .context-link:hover { background: rgba(200,151,58,.1); }
+</style>
 <style>
   :root {
     --gold: #C9A84C;
@@ -652,6 +723,26 @@
 </style>
 </head>
 <body>
+
+<!-- Site Nav -->
+<nav class="site-nav">
+  <a href="../../../index.html">旅行目录</a>
+  <span class="site-nav-sep">/</span>
+  <a href="../index.html">第一天</a>
+  <span class="site-nav-sep">/</span>
+  <span class="site-nav-cur">思考 · 众神殿</span>
+</nav>
+
+<!-- Context Strip -->
+<div class="context-strip">
+  <div class="context-card">
+    <div style="flex:1; min-width:240px;">
+      <div class="context-eyebrow">Day 01 · Think · 2026.02.22</div>
+      <div class="context-text">在飞往开罗的航班上，我把读到的古埃及众神关系整理成这张可交互的关系图——不是为了背名字，而是为了在落地之后，脑子里有一套理解埃及文明底层逻辑的坐标系。点击任意神灵查看详情，切换「关系图」标签可以看到神灵之间的家族、同盟与对立关系。</div>
+    </div>
+    <a class="context-link" href="../action/index.html">查看第一天行动 →</a>
+  </div>
+</div>
 
 <!-- Starfield -->
 <div class="stars" id="stars"></div>

@@ -3,245 +3,635 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>埃及旅行手记</title>
+  <title>埃及旅行手记 · hotcan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f2efe8;
-      --ink: #26211b;
-      --paper: #fffaf0;
-      --line: #d8c9aa;
-      --accent: #c46a14;
-      --accent-2: #1e5cb3;
-      --muted: #6f6558;
-      --ok: #2f7d4b;
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --card-hover: #231f19;
+      --gold: #c8973a;
+      --gold-light: #e8bf6a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --blue: #4a8fd4;
+      --blue-dim: rgba(74,143,212,.12);
+      --green: #4a9e6e;
+      --green-dim: rgba(74,158,110,.12);
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
+      --radius: 2px;
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: "Noto Serif SC", "PingFang SC", "Microsoft YaHei", serif;
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
       color: var(--ink);
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── ambient background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
       background:
-        radial-gradient(circle at 20% 10%, rgba(196,106,20,.08), transparent 40%),
-        radial-gradient(circle at 80% 0%, rgba(30,92,179,.06), transparent 35%),
-        var(--bg);
-      line-height: 1.65;
+        radial-gradient(ellipse 80% 60% at 15% -10%, rgba(200,151,58,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 110%, rgba(74,143,212,.05) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
     }
+
+    /* ── grain texture ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: .5;
+    }
+
     .wrap {
-      width: min(1080px, calc(100% - 32px));
-      margin: 28px auto 48px;
+      position: relative;
+      z-index: 1;
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
     }
-    header {
-      background: linear-gradient(180deg, #fffdf7, #f7f1e4);
-      border: 1px solid var(--line);
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.05);
+
+    /* ── HERO ── */
+    .hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
     }
-    h1 {
-      margin: 0;
-      font-size: clamp(26px, 5vw, 42px);
-      color: var(--accent);
-      letter-spacing: 1px;
-    }
-    .subtitle {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .route-box {
-      margin-top: 18px;
-      border-top: 1px dashed var(--line);
-      padding-top: 14px;
-      display: grid;
-      gap: 10px;
-    }
-    .route-note {
-      background: rgba(255,255,255,.75);
-      border: 1px solid var(--line);
-      padding: 10px 12px;
-      font-size: 14px;
-    }
-    .days {
-      margin-top: 22px;
-      display: grid;
-      gap: 14px;
-    }
-    .day-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.03);
-    }
-    .day-head {
-      display: flex;
-      gap: 12px;
-      align-items: baseline;
-      flex-wrap: wrap;
-    }
-    .day-title {
-      margin: 0;
-      font-size: 22px;
-      color: var(--accent-2);
-    }
-    .day-date {
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .day-route {
-      margin-top: 6px;
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .day-desc {
-      margin-top: 8px;
-      color: #40382f;
-      font-size: 14px;
-    }
-    .links {
-      margin-top: 12px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--ink);
-      padding: 7px 10px;
-      font-size: 13px;
-    }
-    .btn.primary {
-      border-color: #d98c46;
-      color: #8a4502;
-      background: #fff6ea;
-    }
-    .tag {
-      display: inline-block;
-      margin-left: 8px;
-      padding: 2px 6px;
-      border-radius: 999px;
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
       font-size: 11px;
-      border: 1px solid rgba(47,125,75,.25);
-      color: var(--ok);
-      background: rgba(47,125,75,.08);
-      vertical-align: middle;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: .8;
     }
-    .tag.pending {
-      color: #8c6b2e;
-      border-color: rgba(140,107,46,.25);
-      background: rgba(140,107,46,.08);
+    .hero h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
     }
-    footer {
-      margin-top: 26px;
-      color: var(--muted);
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--ink-muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .route-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 13px;
+      color: var(--ink-muted);
+      flex-wrap: wrap;
+    }
+    .route-node {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .route-arrow {
+      color: var(--ink-faint);
+      font-size: 11px;
+    }
+
+    /* ── STATS ROW ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line-faint);
+      border: 1px solid var(--line-faint);
+      margin-bottom: 48px;
+    }
+    .stat {
+      background: var(--surface);
+      padding: 20px 24px;
       text-align: center;
     }
-    @media (max-width: 640px) {
-      .day-title { font-size: 19px; }
-      .day-card { padding: 14px; }
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--ink-muted);
+      letter-spacing: .5px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line-faint);
+    }
+
+    /* ── DAY CARDS ── */
+    .days {
+      display: grid;
+      gap: 2px;
+    }
+    .day-card {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 0 28px;
+      align-items: start;
+      transition: background .2s, border-color .2s;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+    .day-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+    }
+    .day-card:hover {
+      background: var(--card-hover);
+      border-color: var(--line);
+    }
+    .day-card:hover::before {
+      transform: scaleY(1);
+    }
+    .day-card.done::before {
+      transform: scaleY(1);
+    }
+    .day-card.pending::before {
+      background: var(--ink-faint);
+    }
+
+    .day-meta {
+      padding-top: 3px;
+    }
+    .day-num {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .day-date {
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: .5px;
+    }
+
+    .day-body {}
+    .day-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .day-route {
+      font-size: 12px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      letter-spacing: .5px;
+    }
+    .day-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .day-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+      padding-top: 3px;
+      min-width: 90px;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 6px 14px;
+      border: 1px solid var(--line-faint);
+      background: transparent;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .3px;
+      white-space: nowrap;
+    }
+    .btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+    .btn.primary {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .btn.primary:hover {
+      background: var(--gold-dim);
+    }
+    .btn.ghost {
+      border-color: var(--line-faint);
+      color: var(--ink-faint);
+      font-size: 11px;
+      padding: 4px 10px;
+    }
+    .btn.ghost:hover {
+      border-color: var(--ink-muted);
+      color: var(--ink-muted);
+      background: transparent;
+    }
+
+    /* ── STATUS TAGS ── */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    .tag.done {
+      background: var(--green-dim);
+      color: var(--green);
+      border: 1px solid rgba(74,158,110,.3);
+    }
+    .tag.pending {
+      background: rgba(255,255,255,.04);
+      color: var(--ink-faint);
+      border: 1px solid var(--line-faint);
+    }
+    .tag-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* ── PENDING SECTION ── */
+    .days-pending .day-card {
+      opacity: .55;
+    }
+    .days-pending .day-card:hover {
+      opacity: .75;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-text {
+      font-size: 12px;
+      color: var(--ink-faint);
+    }
+    .footer-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: .5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 760px) {
+      .wrap { padding: 32px 0 60px; }
+      .hero { padding: 40px 0 32px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .day-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .day-meta {
+        display: flex;
+        gap: 12px;
+        align-items: baseline;
+      }
+      .day-num { font-size: 18px; }
+      .day-links {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 480px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 32px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <h1>埃及旅行手记</h1>
-      <div class="subtitle">沿着开罗、亚历山大、卢克索与红海写下的分日记录，每天分成「思考」与「行动」两条线</div>
-      <div class="route-box">
-        <div class="route-note"><strong>行程路线：</strong>中国 → 开罗 → 亚历山大 → 卢克索 → 沙姆沙伊赫 → 开罗 → 中国。一路上我把阅读、课堂讲解和现场见闻并排记录，尽量让历史知识和个人感受同时留在页面里。</div>
-        <div class="route-note">第一天已整理为完整时间线相册：萨拉丁城堡区域、警察博物馆、军事博物馆、Nefertiti 奶茶店，以及我在穆罕默德·阿里清真寺前的现场照片已经写入正文。</div>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Travel Journal · 2026</div>
+      <h1>埃及<em>旅行</em>手记</h1>
+      <p class="hero-sub">沿着开罗、亚历山大、卢克索与红海写下的分日记录。每天分成「思考」与「行动」两条线——一条追问历史与文明，一条记录脚步与现场。</p>
+      <div class="route-line">
+        <span class="route-node">中国</span>
+        <span class="route-arrow">✈</span>
+        <span class="route-node">开罗</span>
+        <span class="route-arrow">→</span>
+        <span class="route-node">亚历山大</span>
+        <span class="route-arrow">→</span>
+        <span class="route-node">卢克索</span>
+        <span class="route-arrow">→</span>
+        <span class="route-node">沙姆沙伊赫</span>
+        <span class="route-arrow">✈</span>
+        <span class="route-node">中国</span>
       </div>
     </header>
 
-    <main class="days">
-      <section class="day-card">
-        <div class="day-head">
-          <h2 class="day-title">第一天 · 出发路上埃及哲思之旅 <span class="tag">已写</span></h2>
-          <div class="day-date">2026-02-22</div>
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">11</span>
+        <span class="stat-label">行程天数</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">城市 / 地区</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5000</span>
+        <span class="stat-label">年文明跨度</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">未解之谜</span>
+      </div>
+    </div>
+
+    <!-- COMPLETED DAYS -->
+    <div class="section-header">
+      <span class="section-title">已完成</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="days" style="margin-bottom: 48px;">
+      <!-- DAY 1 -->
+      <div class="day-card done">
+        <div class="day-meta">
+          <span class="day-num">01</span>
+          <div class="day-date">2026·02·22</div>
         </div>
-        <div class="day-route">中国 ✈ 开罗</div>
-        <div class="day-desc">在飞往开罗的路上，我先用《古埃及历史》与众神关系图搭起思考框架；落地之后进入萨拉丁城堡区域，用警察博物馆、军事博物馆和一杯 Nefertiti 奶茶打开在开罗的第一天。</div>
-        <div class="links">
-          <a class="btn primary" href="days/day1/index.html">进入第一天</a>
-          <a class="btn" href="days/day1/think/index.html">思考</a>
-          <a class="btn" href="days/day1/action/index.html">行动</a>
+        <div class="day-body">
+          <div class="day-title">出发路上埃及哲思之旅</div>
+          <div class="day-route">中国 ✈ 开罗 · 萨拉丁城堡区域</div>
+          <div class="day-desc">在飞往开罗的路上用古埃及众神体系搭起思考框架；落地之后进入萨拉丁城堡，走完警察博物馆、军事博物馆，在 Nefertiti 奶茶店喝下了第一杯"全球化"。</div>
         </div>
-      </section>
+        <div class="day-links">
+          <span class="tag done"><span class="tag-dot"></span>已写</span>
+          <a class="btn primary" href="days/day1/index.html">进入 →</a>
+          <a class="btn ghost" href="days/day1/think/index.html">思考</a>
+          <a class="btn ghost" href="days/day1/action/index.html">行动</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第二天 · 神王家族进埃及 <span class="tag">已写</span></h2><div class="day-date">2026-02-23</div></div>
-        <div class="day-route">开罗</div>
-        <div class="day-desc">上午在吉萨高地面对金字塔与狮身人面像，下午走进开罗老城与科普特街区。在同一天里，我从法老陵墓的永恒叙事走到神圣家族避难的城市记忆。</div>
-        <div class="links"><a class="btn" href="days/day2/index.html">进入第二天</a></div>
-      </section>
+      <!-- DAY 2 -->
+      <div class="day-card done">
+        <div class="day-meta">
+          <span class="day-num">02</span>
+          <div class="day-date">2026·02·23</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">神王家族进埃及</div>
+          <div class="day-route">开罗 · 吉萨高地 + 科普特老城</div>
+          <div class="day-desc">上午在吉萨高地面对金字塔与狮身人面像，下午走进科普特开罗。同一天里，我从法老陵墓的永恒叙事走到神圣家族避难的城市记忆——两种时间在同一座城市里并跑。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag done"><span class="tag-dot"></span>草稿</span>
+          <a class="btn primary" href="days/day2/index.html">进入 →</a>
+        </div>
+      </div>
+    </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第三天 · 人与神的契约 <span class="tag pending">待写</span></h2><div class="day-date">2026-02-24</div></div>
-        <div class="day-route">开罗</div>
-        <div class="day-desc">继续沿宗教与文明的线索行走，在修道传统与城市历史之间展开第三天的观察。</div>
-        <div class="links"><a class="btn" href="days/day3/index.html">查看页面</a></div>
-      </section>
+    <!-- UPCOMING DAYS -->
+    <div class="section-header">
+      <span class="section-title">行程中</span>
+      <div class="section-line"></div>
+    </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第四天 · 希腊化与犹太教 <span class="tag pending">待写</span></h2><div class="day-date">2026-02-25</div></div>
-        <div class="day-route">开罗 → 亚历山大</div>
-        <div class="day-desc">从开罗转向亚历山大，进入希腊化文明与地中海城市气质交织的另一种埃及。</div>
-        <div class="links"><a class="btn" href="days/day4/index.html">查看页面</a></div>
-      </section>
+    <div class="days days-pending">
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">03</span>
+          <div class="day-date">2026·02·24</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">人与神的契约</div>
+          <div class="day-route">开罗</div>
+          <div class="day-desc">继续沿宗教与文明的线索行走，在修道传统与城市历史之间展开观察。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day3/index.html">查看</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第五天 · 埃及的神秘与永恒 <span class="tag pending">待写</span></h2><div class="day-date">2026-02-26</div></div>
-        <div class="day-route">开罗 ✈ 卢克索</div>
-        <div class="day-desc">在文明全景与城市切换之间的一天：白天回看埃及的宏大叙事，傍晚转场前往卢克索。</div>
-        <div class="links"><a class="btn" href="days/day5/index.html">查看页面</a></div>
-      </section>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">04</span>
+          <div class="day-date">2026·02·25</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">希腊化与犹太教</div>
+          <div class="day-route">开罗 → 亚历山大</div>
+          <div class="day-desc">从开罗转向亚历山大，进入希腊化文明与地中海城市气质交织的另一种埃及。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day4/index.html">查看</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第六天 · 王权与灵魂的回响 <span class="tag pending">待写</span></h2><div class="day-date">2026-02-27</div></div>
-        <div class="day-route">卢克索</div>
-        <div class="day-desc">在卢克索继续深入古代王权与神庙空间，白天与夜晚呈现出两种截然不同的遗址表情。</div>
-        <div class="links"><a class="btn" href="days/day6/index.html">查看页面</a></div>
-      </section>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">05</span>
+          <div class="day-date">2026·02·26</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">埃及的神秘与永恒</div>
+          <div class="day-route">开罗 ✈ 卢克索</div>
+          <div class="day-desc">在文明全景与城市切换之间的一天：白天回看埃及的宏大叙事，傍晚转场卢克索。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day5/index.html">查看</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第七天 · 废墟中的新生 <span class="tag pending">待写</span></h2><div class="day-date">2026-02-28</div></div>
-        <div class="day-route">卢克索 ✈ 沙姆沙伊赫</div>
-        <div class="day-desc">从卡纳克神庙与帝王谷转向红海海岸，旅程在古代废墟与度假城市之间突然换挡。</div>
-        <div class="links"><a class="btn" href="days/day7/index.html">查看页面</a></div>
-      </section>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">06</span>
+          <div class="day-date">2026·02·27</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">王权与灵魂的回响</div>
+          <div class="day-route">卢克索</div>
+          <div class="day-desc">深入古代王权与神庙空间，白天与夜晚呈现出两种截然不同的遗址表情。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day6/index.html">查看</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第八天 · 启示与救赎 <span class="tag pending">待写</span></h2><div class="day-date">2026-03-01</div></div>
-        <div class="day-route">沙姆沙伊赫</div>
-        <div class="day-desc">在西奈半岛与红海之间放慢脚步，把前几天密集的历史现场沉淀成更安静的个人感受。</div>
-        <div class="links"><a class="btn" href="days/day8/index.html">查看页面</a></div>
-      </section>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">07</span>
+          <div class="day-date">2026·02·28</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">废墟中的新生</div>
+          <div class="day-route">卢克索 ✈ 沙姆沙伊赫</div>
+          <div class="day-desc">从卡纳克神庙与帝王谷转向红海海岸，旅程在古代废墟与度假城市之间突然换挡。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day7/index.html">查看</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第九天 · 凝视今日与未来 <span class="tag pending">待写</span></h2><div class="day-date">2026-03-02</div></div>
-        <div class="day-route">沙姆沙伊赫 ✈ 开罗 ✈ 中国</div>
-        <div class="day-desc">返程前后的收束日，在离开埃及之前回看这一路的时间、空间与情绪层次。</div>
-        <div class="links"><a class="btn" href="days/day9/index.html">查看页面</a></div>
-      </section>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">08</span>
+          <div class="day-date">2026·03·01</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">启示与救赎</div>
+          <div class="day-route">沙姆沙伊赫</div>
+          <div class="day-desc">在西奈半岛与红海之间放慢脚步，把前几天密集的历史现场沉淀成更安静的个人感受。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day8/index.html">查看</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第十天 · 预留扩展 <span class="tag pending">待写</span></h2><div class="day-date">2026-03-03（预估）</div></div>
-        <div class="day-route">待定</div>
-        <div class="day-desc">作为补记与延伸篇章，留给遗漏细节、回看照片和专题化书写。</div>
-        <div class="links"><a class="btn" href="days/day10/index.html">查看页面</a></div>
-      </section>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">09</span>
+          <div class="day-date">2026·03·02</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">凝视今日与未来</div>
+          <div class="day-route">沙姆沙伊赫 ✈ 开罗 ✈ 中国</div>
+          <div class="day-desc">返程前后的收束日，在离开埃及之前回看这一路的时间、空间与情绪层次。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day9/index.html">查看</a>
+        </div>
+      </div>
 
-      <section class="day-card">
-        <div class="day-head"><h2 class="day-title">第十一天 · 预留扩展 <span class="tag pending">待写</span></h2><div class="day-date">2026-03-04（预估）</div></div>
-        <div class="day-route">待定</div>
-        <div class="day-desc">留给返程后的整理工作，把零散笔记、照片与主题感受慢慢写成完整结尾。</div>
-        <div class="links"><a class="btn" href="days/day11/index.html">查看页面</a></div>
-      </section>
-    </main>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">10</span>
+          <div class="day-date">2026·03·03</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">延伸与补记</div>
+          <div class="day-route">待定</div>
+          <div class="day-desc">留给遗漏的细节、回看照片和专题化书写。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day10/index.html">查看</a>
+        </div>
+      </div>
 
-    <footer>这份手记会在旅途中持续更新，新的照片、当日感受与课堂内容会逐天补入对应页面。</footer>
+      <div class="day-card pending">
+        <div class="day-meta">
+          <span class="day-num">11</span>
+          <div class="day-date">2026·03·04</div>
+        </div>
+        <div class="day-body">
+          <div class="day-title">收尾与整理</div>
+          <div class="day-route">待定</div>
+          <div class="day-desc">把零散笔记、照片与主题感受慢慢写成完整结尾。</div>
+        </div>
+        <div class="day-links">
+          <span class="tag pending"><span class="tag-dot"></span>待写</span>
+          <a class="btn ghost" href="days/day11/index.html">查看</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p class="footer-text">手记持续更新中，照片与现场感受逐天补入 · hotcan 于旅途中</p>
+      <span class="footer-brand">EGYPT · MMXXVI</span>
+    </footer>
+
   </div>
 </body>
 </html>
