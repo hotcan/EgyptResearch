@@ -6,6 +6,12 @@
 (function () {
   'use strict';
 
+  /* ── 密码保护 ─────────────────────────────────────────────────────
+   * 在下面填入你的密码（字符串）。
+   * 留空 '' 则不需要密码。
+   * ──────────────────────────────────────────────────────────────── */
+  const EM_PASSWORD = '';
+
   /* ── CSS ─────────────────────────────────────────────────────────── */
   const CSS = `
     .em-fab {
@@ -197,6 +203,14 @@
   /* ── 进入 / 退出编辑模式 ──────────────────────────────────────── */
   function enterEdit() {
     if (active) return;
+    // 密码校验（EM_PASSWORD 不为空时生效）
+    if (EM_PASSWORD) {
+      const input = prompt('请输入编辑密码：');
+      if (input !== EM_PASSWORD) {
+        if (input !== null) showToast('密码错误');
+        return;
+      }
+    }
     active = true;
     originals = {};
     document.body.classList.add('em-active');
