@@ -7,10 +7,13 @@
   'use strict';
 
   // 根据当前页面路径深度计算到根目录的相对路径
-  // /index.html          → depth=0 → prefix=''
-  // /days/day1/index.html → depth=2 → prefix='../../'
+  // /index.html               → depth=0 → prefix=''
+  // /days/day1/index.html     → depth=2 → prefix='../../'
+  // /days/day1/action/        → depth=3 → prefix='../../../'  (目录URL，无文件名)
   const parts = location.pathname.split('/').filter(Boolean);
-  const depth = parts.length > 0 ? parts.length - 1 : 0;
+  const lastPart = parts.length > 0 ? parts[parts.length - 1] : '';
+  const isFile = lastPart.includes('.');  // 有扩展名则为文件，否则为目录
+  const depth = isFile ? parts.length - 1 : parts.length;
   const prefix = depth > 0 ? '../'.repeat(depth) : '';
 
   /** 按点号路径读取嵌套对象值（支持数组下标）
