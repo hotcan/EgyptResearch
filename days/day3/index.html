@@ -3,113 +3,298 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>第3天 · 人与神的契约</title>
+  <title>第三天 · 信仰的寻踪</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0e0c09; --surface: #161310; --card: #1c1813; --card-hover: #231f19;
-      --gold: #c8973a; --gold-dim: rgba(200,151,58,.15);
-      --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
-      --blue: #4a8fd4; --blue-dim: rgba(74,143,212,.14);
-      --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --card-hover: #231f19;
+      --gold: #c8973a;
+      --gold-light: #e8bf6a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --blue: #4a8fd4;
+      --blue-dim: rgba(74,143,212,.12);
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Noto Serif SC', serif; background: var(--bg); color: var(--ink); line-height: 1.8; overflow-x: hidden; }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
-                  radial-gradient(ellipse 50% 40% at 92% 105%, rgba(74,143,212,.04) 0%, transparent 50%);
-      pointer-events: none; z-index: 0;
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    .wrap { position: relative; z-index: 1; width: min(900px, calc(100% - 40px)); margin: 0 auto; padding: 36px 0 96px; }
-    .topbar { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; font-size: 12px; flex-wrap: wrap; }
-    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% -5%, rgba(200,151,58,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 95% 100%, rgba(74,143,212,.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 80px;
+    }
+
+    /* ── NAV ── */
+    .topbar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 40px;
+      font-size: 12px;
+      color: var(--ink-faint);
+      flex-wrap: wrap;
+    }
+    .topbar a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color .2s;
+      letter-spacing: .3px;
+    }
     .topbar a:hover { color: var(--gold); }
     .topbar-sep { color: var(--ink-faint); }
-    .draft-banner {
-      background: rgba(200,151,58,.08); border: 1px solid var(--line); border-left: 3px solid var(--gold);
-      padding: 12px 18px; margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
-      font-size: 13px; color: var(--ink-muted);
+
+    /* ── HERO ── */
+    .hero {
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 40px;
     }
-    .draft-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; flex-shrink: 0; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
-    .hero { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
-    .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px; }
-    .hero h1 { font-size: clamp(26px, 4.5vw, 46px); font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px; }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      opacity: .8;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -.5px;
+    }
     .hero h1 em { font-style: normal; color: var(--gold); }
-    .hero-route { font-size: 13px; color: var(--gold); margin-bottom: 16px; letter-spacing: .5px; }
-    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; max-width: 680px; margin-bottom: 20px; }
-    .placeholder-area {
-      background: var(--surface); border: 1px dashed var(--line-faint);
-      padding: 60px 40px; text-align: center;
+    .hero-meta {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
-    .ph-icon { font-size: 36px; opacity: .2; margin-bottom: 14px; }
-    .ph-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--ink-faint); margin-bottom: 10px; }
-    .ph-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; max-width: 400px; margin: 0 auto; }
-    .structure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 32px; }
-    .structure-box { background: var(--card); border: 1px solid var(--line-faint); padding: 20px 24px; }
-    .structure-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
-    .structure-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
-    .structure-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; }
-    .nav-footer {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line-faint);
-      flex-wrap: wrap; gap: 12px;
+    .hero-date {
+      font-size: 13px;
+      color: var(--ink-faint);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
     }
-    .nav-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; color: var(--ink-muted); text-decoration: none;
-      border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+    .hero-route {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: .5px;
     }
-    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
-    @media (max-width: 640px) { .structure-grid { grid-template-columns: 1fr; } }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.85;
+      max-width: 680px;
+    }
+
+    /* ── TWO COLUMNS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .entry-card {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      padding: 28px 32px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s, border-color .2s;
+    }
+    .entry-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+    }
+    .entry-card:hover { background: var(--card-hover); border-color: var(--line); }
+    .entry-card:hover::before { transform: scaleY(1); }
+
+    .entry-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+      opacity: .7;
+    }
+    .entry-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .entry-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .entry-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .entry-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--gold);
+      border: 1px solid var(--line);
+      padding: 6px 16px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .entry-btn:hover { background: var(--gold-dim); }
+
+    /* ── NOTES BOX ── */
+    .notes {
+      background: var(--surface);
+      border: 1px solid var(--line-faint);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+    }
+    .notes-title {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      opacity: .8;
+    }
+    .notes ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .notes li {
+      font-size: 13px;
+      color: var(--ink-muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .notes li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: .5;
+    }
+
+    /* ── BACK LINK ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--ink-faint);
+      text-decoration: none;
+      border: 1px solid var(--line-faint);
+      padding: 8px 16px;
+      transition: all .2s;
+    }
+    .back-btn:hover { color: var(--gold); border-color: var(--line); }
+
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+      .entry-card { padding: 20px 22px; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
+
     <nav class="topbar">
       <a href="../../index.html">← 旅行目录</a>
       <span class="topbar-sep">/</span>
-      <span>第3天</span>
+      <span>第三天</span>
     </nav>
 
-    <div class="draft-banner">
-      <span class="draft-dot"></span>
-      <span>待写 · 行程尚未开始，结构框架已搭好，内容将在到达后逐步写入</span>
-    </div>
-
     <header class="hero">
-      <div class="hero-eyebrow" data-key="days.2.eyebrow">Day 03 · 2026-02-24</div>
-      <h1 data-key="days.2.title"><em>人与神的契约</em></h1>
-      <div class="hero-route">开罗</div>
-      <p class="hero-lead">继续沿宗教与文明的线索行走，探访伊斯兰开罗的核心地带，在修道传统与清真寺建筑之间展开第三天的观察。</p>
+      <div class="hero-eyebrow" data-key="days.2.eyebrow">Day 03 · 2026.02.24</div>
+      <h1 data-key="days.2.title">信仰的<em>寻踪</em></h1>
+      <div class="hero-meta">
+        <span class="hero-date">2026 · 02 · 24</span>
+        <span class="hero-route" data-key="days.2.route">开罗科普特区 → 东部沙漠 → 红海山脉</span>
+      </div>
+      <p class="hero-lead">
+        这一天走的是信仰的两端：城市里的古老教堂与荒野深处的修道院。从罗马堡垒上修起的悬空教堂，到藏着神圣家族传说的地下洞穴；从开罗出发，三小时穿越东部沙漠，在红海山脉脚下找到了基督教修道院制度的起源地。信仰在这里不是装饰，是生存策略。
+      </p>
     </header>
 
-    <div class="structure-grid">
-      <div class="structure-box">
-        <div class="structure-label">思考 · Think</div>
-        <div class="structure-title">哲学框架与背景资料</div>
-        <div class="structure-desc">这天的思考线将在出发前或当天整理写入——包括老师讲义、参考书目与个人预判。</div>
-      </div>
-      <div class="structure-box">
-        <div class="structure-label">行程 · Action</div>
-        <div class="structure-title">现场时间线与照片</div>
-        <div class="structure-desc">行程结束后，现场照片、地点记录与个人观察将按时间线整理写入。</div>
-      </div>
+    <div class="two-col">
+      <a class="entry-card" href="think/index.html">
+        <span class="entry-icon">⛪</span>
+        <div class="entry-label">思考 · Think</div>
+        <div class="entry-title">悬空教堂、阿布塞尔加与圣安东尼</div>
+        <div class="entry-desc">三个圣地的历史背景：罗马堡垒上建起的科普特教堂、神圣家族逃难的地下石窟，以及公元356年在沙漠中诞生的世界最古老修道院。苦修主义与沙漠教父的故事在这里展开。</div>
+        <span class="entry-btn">进入思考页 →</span>
+      </a>
+
+      <a class="entry-card" href="action/index.html">
+        <span class="entry-icon">🏜️</span>
+        <div class="entry-label">行程 · Action</div>
+        <div class="entry-title">科普特老城到红海沙漠</div>
+        <div class="entry-desc">08:30 出发，上午在科普特开罗的迷宫街巷里穿行；中午启程，三小时沙漠公路；傍晚抵达圣安东尼修道院，攀登一千多级木台阶，走上圣安东尼当年独居祈祷的山洞。</div>
+        <span class="entry-btn">进入行程页 →</span>
+      </a>
     </div>
 
-    <div class="placeholder-area">
-      <div class="ph-icon">𓂀</div>
-      <div class="ph-title">内容待写入</div>
-      <div class="ph-desc">第3天的行程还未开始。照片、现场感受与哲学资料将在到达后逐步补入这个页面。</div>
+    <div class="notes">
+      <div class="notes-title">记录说明</div>
+      <ul>
+        <li>思考页分三个部分：科普特老城两座教堂的建筑与传说史；圣安东尼其人与修道院的创立经过；苦修主义（Asceticism）与沙漠教父（Desert Fathers）的核心概念。</li>
+        <li>行程页按时间线走：悬空教堂 → 阿布塞尔加教堂 → 午餐 → 东部沙漠公路 → 修道院 → 圣安东尼山洞。</li>
+        <li>这一天的核心问题：为什么要去荒野？修道士选择沙漠，不是逃离，而是进入一种极度纯粹的对话状态——与神，与自己。</li>
+        <li>圣安东尼山洞（Cave of Saint Anthony）需要攀登约1000级陡峭木台阶，这条路本身就是一种仪式。</li>
+      </ul>
     </div>
 
-    <div class="nav-footer">
-      <a class="nav-btn" href="../day2/index.html">← 第2天</a>
-      <a class="nav-btn" href="../../index.html">旅行目录</a>
-      <a class="nav-btn" href="../day4/index.html">第4天 →</a>
-    </div>
+    <a class="back-btn" href="../../index.html">← 返回旅行目录</a>
+
   </div>
   <script src="../../assets/js/data-bind.js"></script>
   <script src="../../assets/js/edit-mode.js"></script>

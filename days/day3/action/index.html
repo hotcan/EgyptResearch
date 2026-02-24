@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第三天行程 · 科普特开罗到圣安东尼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --card-hover: #231f19;
+      --gold: #c8973a;
+      --gold-light: #e8bf6a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --blue: #4a8fd4;
+      --blue-dim: rgba(74,143,212,.14);
+      --purple: #6a4a8a;
+      --purple-dim: rgba(106,74,138,.14);
+      --green: #4a9e6e;
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
+      --rail: rgba(200,151,58,.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 8% -5%, rgba(106,74,138,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 92% 105%, rgba(74,143,212,.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 96px;
+    }
+
+    /* ── NAV ── */
+    .topbar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 40px;
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      opacity: .8;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.9;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      color: var(--gold);
+      letter-spacing: .3px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 40px 0 20px;
+    }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: .7;
+      white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--line-faint); }
+
+    /* ── SPLIT PANELS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .context-panel {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      padding: 24px 28px;
+    }
+    .context-panel h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .context-panel p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .context-panel p:last-child { margin-bottom: 0; }
+
+    /* ── JOURNEY MAP ── */
+    .journey-map {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      overflow-x: auto;
+    }
+    .journey-map-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: 16px;
+    }
+    .journey-stops {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      min-width: 600px;
+      flex-wrap: nowrap;
+    }
+    .journey-stop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+    .stop-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--gold);
+      flex-shrink: 0;
+    }
+    .stop-dot.church { background: var(--purple); box-shadow: 0 0 0 1px var(--purple-dim); border-color: var(--bg); box-shadow: 0 0 0 1px var(--purple); }
+    .stop-dot.desert { background: var(--gold-light); }
+    .stop-dot.monastery { background: var(--green); box-shadow: 0 0 0 1px var(--green); }
+    .stop-label { font-size: 11px; color: var(--ink-muted); text-align: center; line-height: 1.4; max-width: 70px; }
+    .stop-time { font-family: 'Cinzel', serif; font-size: 9px; color: var(--gold); opacity: .7; }
+    .stop-connector {
+      flex: 0.5;
+      height: 1px;
+      background: linear-gradient(to right, var(--rail), rgba(200,151,58,.15));
+      margin-bottom: 20px;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; list-style: none; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 88px;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--rail), transparent);
+    }
+    .event {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 0 28px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .event:last-child { padding-bottom: 0; }
+    .event-time {
+      text-align: right;
+      padding-top: 18px;
+      position: relative;
+    }
+    .event-time::after {
+      content: '';
+      position: absolute;
+      right: -35px;
+      top: 24px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--gold), 0 0 12px rgba(200,151,58,.4);
+    }
+    .event.church .event-time::after { background: var(--purple); box-shadow: 0 0 0 1px var(--purple); }
+    .event.transition .event-time::after { background: var(--gold-light); box-shadow: 0 0 0 1px var(--gold-light); }
+    .event.monastery .event-time::after { background: var(--green); box-shadow: 0 0 0 1px var(--green), 0 0 14px rgba(74,158,110,.5); }
+    .time-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: var(--gold);
+      display: block;
+      letter-spacing: 1px;
+    }
+    .event.church .time-label { color: var(--purple); filter: brightness(1.4); }
+    .event.transition .time-label { color: var(--gold-light); }
+    .event.monastery .time-label { color: var(--green); filter: brightness(1.2); }
+    .time-sub { font-size: 10px; color: var(--ink-faint); display: block; margin-top: 3px; }
+
+    /* ── EVENT CARD ── */
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      transition: border-color .2s;
+    }
+    .event-card:hover { border-color: var(--line); }
+    .event-body { padding: 20px 24px; }
+    .event-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .event-text { font-size: 14px; color: var(--ink-muted); line-height: 1.85; }
+    .event-text + .event-text { margin-top: 10px; }
+    .event-text strong { color: var(--ink); }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2px;
+      margin-top: 2px;
+    }
+    figure { margin: 0; background: var(--surface); position: relative; overflow: hidden; }
+    figure img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    figure:hover img { transform: scale(1.03); }
+    figcaption { padding: 10px 14px; border-top: 1px solid var(--line-faint); }
+    .cap-title { font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 3px; }
+    .cap-sub { font-size: 11px; color: var(--ink-faint); line-height: 1.5; }
+
+    /* ── PHOTO PLACEHOLDER ── */
+    .photo-ph {
+      background: var(--surface);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--ink-faint);
+      font-size: 12px;
+      border: 1px dashed var(--line-faint);
+    }
+    .photo-ph-icon { font-size: 24px; opacity: .3; }
+    .photo-ph-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; }
+
+    /* ── THINKING BLOCK ── */
+    .think-block {
+      margin-top: 14px;
+      background: var(--surface);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
+    }
+    .think-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: 8px;
+    }
+    .think-text { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+    .think-text + .think-text { margin-top: 8px; }
+    .think-text strong { color: var(--ink); }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      margin-top: 14px;
+      background: var(--surface);
+      border: 1px solid var(--purple-dim);
+      border-left: 3px solid var(--purple);
+      padding: 14px 18px;
+      filter: brightness(1.3);
+    }
+    .hl-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--purple);
+      filter: brightness(1.5);
+      opacity: .9;
+      margin-bottom: 8px;
+    }
+    .hl-text { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+
+    /* ── DESERT BOX ── */
+    .desert-box {
+      margin-top: 14px;
+      background: rgba(122,92,42,.08);
+      border: 1px solid rgba(200,151,58,.15);
+      border-left: 3px solid var(--gold-light);
+      padding: 14px 18px;
+    }
+    .desert-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+      opacity: .85;
+      margin-bottom: 8px;
+    }
+    .desert-text { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+
+    /* ── WEATHER NOTE ── */
+    .weather-note {
+      background: var(--surface);
+      border: 1px solid var(--line-faint);
+      padding: 16px 20px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .weather-icon { font-size: 22px; flex-shrink: 0; opacity: .8; }
+    .weather-text { font-size: 13px; color: var(--ink-muted); line-height: 1.7; }
+    .weather-text strong { color: var(--ink); }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-faint);
+      text-decoration: none;
+      border: 1px solid var(--line-faint);
+      padding: 8px 16px;
+      transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+      .timeline::before { left: 72px; }
+      .event { grid-template-columns: 72px 1fr; gap: 0 22px; }
+      .event-time::after { right: -28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../../index.html">← 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第三天概览</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">行程</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 03 · Action · 2026.02.24</div>
+      <h1>科普特老城到<em>红海沙漠</em></h1>
+      <p class="hero-lead">
+        从开罗城市肌理里最古老的一层开始——罗马堡垒上修起的教堂、地下洞穴里的圣迹。然后离开城市，穿越三小时的东部沙漠，在红海山脉脚下抵达那座已经运作了一千六百年的修道院。这一天的跨度，不只是公里数，是信仰地理的两端。
+      </p>
+      <div class="tags">
+        <span class="pill">科普特开罗</span>
+        <span class="pill">悬空教堂</span>
+        <span class="pill">阿布塞尔加教堂</span>
+        <span class="pill">东部沙漠公路</span>
+        <span class="pill">圣安东尼修道院</span>
+        <span class="pill">圣安东尼山洞</span>
+      </div>
+    </header>
+
+    <!-- Weather Note -->
+    <div class="weather-note">
+      <span class="weather-icon">☀️</span>
+      <div class="weather-text">
+        <strong>天气：</strong>10–22°C，早晚温差明显，建议携带厚外套。
+        修道院附近为沙漠气候，日照强烈。
+        <strong>特别提示：</strong>前往圣安东尼修道院单程车程约3小时，全天行程较长，请保证充足休息与饮水。
+      </div>
+    </div>
+
+    <!-- Journey Map -->
+    <div class="journey-map">
+      <div class="journey-map-label">今日路线概览</div>
+      <div class="journey-stops">
+        <div class="journey-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-label">酒店出发</div>
+          <div class="stop-time">08:30</div>
+        </div>
+        <div class="stop-connector"></div>
+        <div class="journey-stop">
+          <div class="stop-dot church"></div>
+          <div class="stop-label">悬空教堂</div>
+          <div class="stop-time">09:00</div>
+        </div>
+        <div class="stop-connector"></div>
+        <div class="journey-stop">
+          <div class="stop-dot church"></div>
+          <div class="stop-label">阿布塞尔加教堂</div>
+          <div class="stop-time">10:30</div>
+        </div>
+        <div class="stop-connector"></div>
+        <div class="journey-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-label">午餐</div>
+          <div class="stop-time">12:00</div>
+        </div>
+        <div class="stop-connector"></div>
+        <div class="journey-stop">
+          <div class="stop-dot desert"></div>
+          <div class="stop-label">东部沙漠公路</div>
+          <div class="stop-time">13:00</div>
+        </div>
+        <div class="stop-connector"></div>
+        <div class="journey-stop">
+          <div class="stop-dot monastery"></div>
+          <div class="stop-label">圣安东尼修道院</div>
+          <div class="stop-time">16:00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Context Panels -->
+    <div class="section-header">
+      <div class="section-eyebrow">CONTEXT · 背景</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:40px">
+      <div class="context-panel">
+        <h2>科普特开罗：城市里的古层</h2>
+        <p>科普特开罗（Coptic Cairo）位于今天开罗老城区，是古罗马堡垒"巴比伦"所在地。这里保存了开罗最古老的一层城市历史——罗马军事要塞、早期基督教教堂、科普特博物馆、犹太会堂，全部集中在方圆数百米内。</p>
+        <p>科普特人是埃及的土著基督徒，与伊斯兰征服之前的古埃及有直接的文化延续。他们的教堂藏在城市的缝隙里，不高调，但极古老。</p>
+      </div>
+      <div class="context-panel">
+        <h2>为什么要去那么远的沙漠</h2>
+        <p>圣安东尼修道院不在开罗周边，它在东部沙漠深处，距开罗约330公里。早期修道士选择这里，是为了彻底的隔绝——远离城市的诱惑、噪音和社会关系，在绝对的荒野中与自己和神对话。</p>
+        <p>长途驱车本身就是一种过渡仪式。城市越来越远，沙漠越来越广，当修道院出现在山脚时，你能感受到它为何建在这里。</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="section-header">
+      <div class="section-eyebrow">ITINERARY · 行程时间线</div>
+      <div class="section-line"></div>
+    </div>
+
+    <ul class="timeline">
+
+      <!-- 08:30 Depart -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">08:30</span>
+          <span class="time-sub">出发</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">酒店大堂集合，启程</div>
+            <p class="event-text">
+              请准时在酒店大堂集合。今天行程跨度大，早出发是保证傍晚能顺利到达修道院并有充裕参观时间的关键。
+            </p>
+            <p class="event-text">车辆穿越开罗市区驶向科普特老城区，沿途可见古城轮廓。</p>
+          </div>
+        </div>
+      </li>
+
+      <!-- 09:00 Hanging Church -->
+      <li class="event church">
+        <div class="event-time">
+          <span class="time-label">09:00</span>
+          <span class="time-sub">约1.5小时</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">悬空教堂（Al-Muʿallaqa）</div>
+            <p class="event-text">
+              抵达科普特开罗，步行进入老城街区。悬空教堂（圣母玛利亚教堂）是科普特基督教最具象征性的建筑，<strong>建在公元前后罗马巴比伦要塞的两座圆形塔楼之间</strong>，字面意思就是"悬浮"在古城门废墟之上。
+            </p>
+            <p class="event-text">
+              进入教堂内部：白色大理石柱廊、棕榈叶柱头、悬挂的象牙十字架、倒船底形木顶。注意地面——在某些地方可以看到教堂"悬空"结构下方的虚空。附属小博物馆收藏有科普特圣像（Icons）与古籍。
+            </p>
+
+            <div class="highlight-box">
+              <div class="hl-label">观察重点</div>
+              <div class="hl-text">这座教堂的隐蔽性是有意为之的——早期基督徒在罗马统治下以及后来在阿拉伯统治下，将信仰藏在地面以下或城门夹缝中。悬空的位置既是建筑奇迹，也是一种生存策略。</div>
+            </div>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">悬空教堂外观</span></div>
+            </figure>
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">内部柱廊</span></div>
+            </figure>
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">罗马塔楼基座</span></div>
+            </figure>
+          </div>
+        </div>
+      </li>
+
+      <!-- 10:30 Abu Serga -->
+      <li class="event church">
+        <div class="event-time">
+          <span class="time-label">10:30</span>
+          <span class="time-sub">约1小时</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">阿布塞尔加教堂（Abu Serga）</div>
+            <p class="event-text">
+              步行数分钟即可抵达。这是埃及最古老的教堂之一，建于公元4–5世纪，但更重要的是<strong>它底部的地下洞穴（The Crypt）</strong>——科普特传统认为，这是神圣家族逃难埃及时的落脚地，圣母玛利亚曾在此居住约三个月。
+            </p>
+            <p class="event-text">
+              下台阶进入地下：一个低矮潮湿的石洞，简朴的祭坛，点燃的蜡烛。注意洞穴偶尔会有尼罗河季节性洪水的水痕——科普特信徒视这层水为圣水。
+            </p>
+            <p class="event-text">
+              返回地面后，观察三殿式巴西利卡的建筑布局：24根大理石柱，其中一根黑色玄武岩（象征犹大），精美的象牙螺钿木雕圣像屏（Iconostasis）。
+            </p>
+
+            <div class="highlight-box">
+              <div class="hl-label">问题</div>
+              <div class="hl-text">神圣家族传说与实际历史之间的距离是多少？这类"圣地"的意义在于事件本身是否真实发生，还是在于几千年来人们对这里的信仰积累？</div>
+            </div>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">教堂入口</span></div>
+            </figure>
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">地下石窟（The Crypt）</span></div>
+            </figure>
+          </div>
+        </div>
+      </li>
+
+      <!-- 12:00 Lunch -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">12:00</span>
+          <span class="time-sub">午餐</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">午餐与启程准备</div>
+            <p class="event-text">
+              在科普特开罗附近用午餐。下午将进行长途驾驶，建议吃饱、备足水。从开罗出发前往圣安东尼修道院，单程约330公里，穿越东部沙漠，需要约3小时。
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <!-- 13:00 Desert Drive -->
+      <li class="event transition">
+        <div class="event-time">
+          <span class="time-label">13:00</span>
+          <span class="time-sub">约3小时车程</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">穿越东部沙漠：开罗 → 红海山脉</div>
+            <p class="event-text">
+              出城后，城市景观迅速消退，公路两侧变成一望无际的沙漠戈壁。这段路途本身值得充分感受：
+            </p>
+
+            <div class="desert-box">
+              <div class="desert-label">沙漠公路上的思考</div>
+              <div class="desert-text">圣安东尼选择在这里隐修，不是偶然。驱车穿越时，可以真切感受到这片沙漠是什么级别的"与世隔绝"——没有水源，没有遮阳，没有人烟。早期修道士徒步走进来，带着的只有信仰和极少量的食物。这种极度物质匮乏，被他们视为精神丰盈的前提。</div>
+            </div>
+
+            <p class="event-text" style="margin-top:12px">
+              公路最终沿红海山脉（Eastern Desert Mountains）蜿蜒，库尔齐姆山（Mount Qolzoum）出现在视野中时，修道院就在山脚下。
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <!-- 16:00 Monastery -->
+      <li class="event monastery">
+        <div class="event-time">
+          <span class="time-label">约16:00</span>
+          <span class="time-sub">修道院探访</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">圣安东尼修道院</div>
+            <p class="event-text">
+              抵达后，首先在修道院建筑群内参观：<strong>高大的防御城墙</strong>（历史上为抵御游牧部落袭击而建）、数座古老的石制教堂、修士居所，以及那口据说由圣安东尼祈祷而涌出的<strong>沙漠淡水泉</strong>。
+            </p>
+            <p class="event-text">
+              修道院图书馆藏有珍贵的科普特文手稿古籍，目前仍有修士在此居住、研究和修行——这是一座活着的古代场所，不是博物馆。
+            </p>
+
+            <div class="think-block">
+              <div class="think-label">现场感受</div>
+              <p class="think-text">1,700年前，第一批门徒在这里建起围墙，划出一块"世界之外的空间"。今天这些修士依然用同样的节奏生活：祈祷、劳作、沉默。时间在这里的密度感和在城市里完全不同。</p>
+            </div>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">修道院全景</span></div>
+            </figure>
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">防御城墙</span></div>
+            </figure>
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">古老教堂内部</span></div>
+            </figure>
+          </div>
+        </div>
+      </li>
+
+      <!-- Cave Climb -->
+      <li class="event monastery">
+        <div class="event-time">
+          <span class="time-label">傍晚</span>
+          <span class="time-sub">圣安东尼山洞</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">攀登圣安东尼山洞 · 约1,000级台阶</div>
+            <p class="event-text">
+              从修道院出发，攀登库尔齐姆山上方的<strong>圣安东尼山洞（Cave of Saint Anthony）</strong>。路程是一段约1,000多级陡峭木台阶，高度落差超过276米——这段攀登在体力上是真实的挑战。
+            </p>
+            <p class="event-text">
+              山洞本身不大，内部保存有科普特时期的古代壁画。最重要的不是洞穴的大小，而是这个位置：<strong>圣安东尼在这里独居了他人生最后几十年</strong>，眺望沙漠与红海，祈祷、冥想、偶尔接待来访者。在去世前，他叮嘱门徒秘密安葬他，以防止遗骸被作为"圣髑"崇拜。
+            </p>
+
+            <div class="think-block">
+              <div class="think-label">朝圣的意义</div>
+              <p class="think-text">攀登这段台阶本身是一种仪式——体力的消耗让你不能分心，一步一步，只有这条路。很多朝圣者说，这段攀登结束时，他们已经不再记得在想什么，只剩下当下这一步。</p>
+              <p class="think-text" style="margin-top:8px">圣安东尼大约是在公元271年走进沙漠，在公元356年去世——<strong>他在沙漠里度过了约85年</strong>。从20岁出头到105岁，他的大部分人生都在这片戈壁与山岩之间。</p>
+            </div>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">木台阶攀登途中</span></div>
+            </figure>
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">山洞入口</span></div>
+            </figure>
+            <figure>
+              <div class="photo-ph"><span class="photo-ph-icon">📷</span><span class="photo-ph-label">洞内科普特壁画</span></div>
+            </figure>
+          </div>
+        </div>
+      </li>
+
+      <!-- Return -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">返程</span>
+          <span class="time-sub">约3小时</span>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <div class="event-title">返回开罗</div>
+            <p class="event-text">
+              下山后驱车返回开罗，单程约3小时。夜晚的沙漠公路与白天有另一种景象。今天的两端——科普特老城的精巧与沙漠修道院的粗粝——构成了同一种信仰的两种身体形态。
+            </p>
+            <div class="desert-box">
+              <div class="desert-label">今天的核心问题</div>
+              <div class="desert-text">为什么要去荒野？修道士不是在逃离，而是在选择一种不同的感知框架——剥离掉城市生活的层层包裹，在匮乏中试图看清什么是真正必要的。这个问题不只属于公元3世纪的沙漠隐士。</div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../think/index.html">← 思考：圣地历史背景</a>
+      <a class="nav-btn" href="../../../index.html">旅行目录</a>
+      <a class="nav-btn" href="../../day4/index.html">第4天 →</a>
+    </div>
+
+  </div>
+
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+</body>
+</html>
