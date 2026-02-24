@@ -130,6 +130,8 @@
     // 通用动态 / Modal
     '.modal', '#modal', '#modal-overlay', '#modal-header', '#modal-body',
     '.filter-pills', '.tab-nav', '.em-fab',
+    // 数据绑定字段（只能通过 data/days.json 修改）
+    '[data-key]',
   ];
 
   /* ── 候选可编辑选择器 ────────────────────────────────────────── */
