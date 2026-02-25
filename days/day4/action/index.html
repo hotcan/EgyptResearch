@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>第四天行程 · 图书馆与地中海午餐</title>
+  <title>第四天行程 · 亚历山大图书馆的VIP导览</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -25,6 +25,8 @@
       --green: #4a9e6e;
       --green-dim: rgba(74,158,110,.13);
       --orange: #c8663a;
+      --amber: #b87a20;
+      --amber-dim: rgba(184,122,32,.15);
       --line: rgba(200,151,58,.18);
       --line-faint: rgba(255,255,255,.06);
       --rail: rgba(200,151,58,.35);
@@ -128,11 +130,7 @@
       flex-wrap: wrap;
       row-gap: 12px;
     }
-    .map-stop {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .map-stop { display: flex; align-items: center; gap: 10px; }
     .stop-dot {
       width: 8px; height: 8px;
       border-radius: 50%;
@@ -157,7 +155,6 @@
       border-top: 1px solid var(--line-faint);
       flex-wrap: wrap;
     }
-    .stat-item { }
     .stat-label {
       font-family: 'Cinzel', serif;
       font-size: 9px;
@@ -184,7 +181,7 @@
 
     .event {
       position: relative;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
     .event::before {
       content: '';
@@ -198,9 +195,10 @@
       box-shadow: 0 0 0 1px var(--gold), 0 0 10px rgba(200,151,58,.35);
     }
     .event.library::before { background: var(--lapis); box-shadow: 0 0 0 1px var(--lapis), 0 0 10px rgba(42,90,156,.5); }
-    .event.food::before { background: var(--orange); box-shadow: 0 0 0 1px var(--orange), 0 0 10px rgba(200,102,58,.4); }
+    .event.food::before   { background: var(--orange); box-shadow: 0 0 0 1px var(--orange), 0 0 10px rgba(200,102,58,.4); }
     .event.transit::before { background: var(--ink-faint); box-shadow: none; border-color: var(--bg); }
-    .event.pending::before { background: var(--bg); border: 2px solid var(--ink-faint); box-shadow: none; }
+    .event.meeting::before { background: var(--amber); box-shadow: 0 0 0 1px var(--amber), 0 0 10px rgba(184,122,32,.4); }
+    .event.castle::before  { background: var(--green); box-shadow: 0 0 0 1px var(--green), 0 0 10px rgba(74,158,110,.4); }
 
     .event-time {
       position: absolute;
@@ -214,13 +212,7 @@
       letter-spacing: .5px;
       line-height: 1.4;
     }
-    .event-time .sub {
-      display: block;
-      font-size: 9px;
-      color: var(--ink-faint);
-      margin-top: 2px;
-      letter-spacing: .3px;
-    }
+    .event-time .sub { display: block; font-size: 9px; color: var(--ink-faint); margin-top: 2px; letter-spacing: .3px; }
 
     .event-card {
       background: var(--card);
@@ -231,9 +223,10 @@
     }
     .event-card:hover { border-left-color: var(--gold-light); }
     .event.library .event-card { border-left-color: var(--lapis); }
-    .event.food .event-card { border-left-color: var(--orange); }
+    .event.food    .event-card { border-left-color: var(--orange); }
     .event.transit .event-card { border-left-color: var(--ink-faint); }
-    .event.pending .event-card { border-left-color: var(--ink-faint); opacity: .65; }
+    .event.meeting .event-card { border-left-color: var(--amber); }
+    .event.castle  .event-card { border-left-color: var(--green); }
 
     .event-type {
       font-family: 'Cinzel', serif;
@@ -244,9 +237,10 @@
       margin-bottom: 6px;
     }
     .event.library .event-type { color: var(--lapis); opacity: 1; }
-    .event.food .event-type { color: var(--orange); opacity: 1; }
+    .event.food    .event-type { color: var(--orange); opacity: 1; }
     .event.transit .event-type { color: var(--ink-faint); opacity: 1; }
-    .event.pending .event-type { color: var(--ink-faint); opacity: 1; }
+    .event.meeting .event-type { color: var(--amber); opacity: 1; }
+    .event.castle  .event-type { color: var(--green); opacity: 1; }
 
     .event-title {
       font-size: 17px;
@@ -276,29 +270,47 @@
     .event-body strong { color: var(--ink); font-weight: 600; }
     .event-body em { font-style: normal; color: var(--gold); }
 
-    /* ── PHOTO GRID ── */
+    /* ── PHOTO ── */
+    .photo-single {
+      margin-top: 16px;
+    }
+    .photo-single img {
+      width: 100%;
+      display: block;
+      filter: sepia(.10) brightness(.92);
+      border: 1px solid var(--line-faint);
+    }
+    .photo-single.portrait img {
+      max-height: 540px;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .photo-caption {
+      font-size: 11px;
+      color: var(--ink-faint);
+      padding: 6px 10px;
+      background: var(--surface);
+      border: 1px solid var(--line-faint);
+      border-top: none;
+      line-height: 1.5;
+    }
+
     .photo-grid {
       display: grid;
       gap: 4px;
       margin-top: 16px;
     }
-    .photo-grid.cols-1 { grid-template-columns: 1fr; }
     .photo-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-    .photo-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .photo-item img {
       width: 100%;
       display: block;
       filter: sepia(.12) brightness(.9);
       border: 1px solid var(--line-faint);
+      aspect-ratio: 4/3;
+      object-fit: cover;
     }
-    .photo-caption {
-      font-size: 11px;
-      color: var(--ink-faint);
-      padding: 5px 8px;
-      background: var(--surface);
-      border: 1px solid var(--line-faint);
-      border-top: none;
-      line-height: 1.5;
+    .photo-item.portrait img {
+      aspect-ratio: 3/4;
     }
 
     /* ── HIGHLIGHT BOX ── */
@@ -325,6 +337,98 @@
     }
     .highlight-box p:last-child { margin-bottom: 0; }
     .highlight-box strong { color: var(--ink); }
+    .highlight-box a { color: var(--lapis); text-decoration: none; border-bottom: 1px dotted; }
+    .highlight-box a:hover { color: #6a9fd4; }
+
+    /* ── AMBER BOX ── */
+    .amber-box {
+      background: var(--amber-dim);
+      border: 1px solid rgba(184,122,32,.3);
+      border-left: 3px solid var(--amber);
+      padding: 16px 20px;
+      margin-top: 14px;
+    }
+    .amber-box-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+    .amber-box p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+    .amber-box p:last-child { margin-bottom: 0; }
+    .amber-box strong { color: var(--ink); }
+
+    /* ── PERSON CARD ── */
+    .person-card {
+      background: var(--surface);
+      border: 1px solid var(--line-faint);
+      border-top: 3px solid var(--amber);
+      padding: 20px 24px;
+      margin-top: 16px;
+    }
+    .person-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: var(--amber);
+      border: 1px solid rgba(184,122,32,.35);
+      padding: 2px 8px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .person-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .person-title {
+      font-size: 12px;
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      letter-spacing: .5px;
+      margin-bottom: 14px;
+    }
+    .person-bio {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.85;
+    }
+    .person-bio p { margin-bottom: 8px; }
+    .person-bio p:last-child { margin-bottom: 0; }
+    .person-bio strong { color: var(--ink); }
+
+    /* ── ARTIFACT STRIP ── */
+    .artifact-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      margin-top: 14px;
+    }
+    .artifact-item { position: relative; }
+    .artifact-item img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: sepia(.15) brightness(.88);
+      border: 1px solid var(--line-faint);
+    }
+    .artifact-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      font-size: 10px;
+      color: rgba(232,224,208,.8);
+      padding: 10px 6px 5px;
+      line-height: 1.3;
+    }
 
     /* ── NAV FOOTER ── */
     .nav-footer {
@@ -355,7 +459,7 @@
       .timeline::before { left: 48px; }
       .event::before { left: -26px; }
       .event-time { left: -72px; width: 44px; font-size: 10px; }
-      .photo-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .artifact-strip { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -372,12 +476,13 @@
 
     <header class="hero">
       <div class="hero-eyebrow">Day 04 · Action · 2026.02.25</div>
-      <h1>图书馆的<em>VIP入场券</em></h1>
-      <p class="hero-lead">从开罗出发，驱车三小时抵达地中海之滨的亚历山大。在这座斐洛的故乡，我们以最特殊的方式进入了那座新建的亚历山大图书馆——馆长亲自带队，走进那些不对公众开放的空间。</p>
+      <h1>亚历山大图书馆的<em>VIP导览</em></h1>
+      <p class="hero-lead">从开罗北上三小时，抵达地中海之滨的亚历山大。这一天的核心是 Bibliotheca Alexandrina——这里不只是图书馆，更像一座博物馆：伊斯兰帷幔、古腾堡圣经、古埃及木乃伊、希腊罗马雕塑，以及萨达特总统纪念馆，都在同一栋建筑里。馆长 Ahmed A. Zayed 教授亲自接待了我们的小组。</p>
       <div class="tags">
         <span class="pill">开罗 → 亚历山大</span>
         <span class="pill">Bibliotheca Alexandrina</span>
-        <span class="pill">希腊餐厅</span>
+        <span class="pill">卡特贝城堡</span>
+        <span class="pill">归途·哲学对话</span>
       </div>
     </header>
 
@@ -406,8 +511,13 @@
         </div>
         <div class="map-line"></div>
         <div class="map-stop">
-          <div class="stop-dot dim"></div>
-          <div class="stop-name" style="color:var(--ink-faint)">下午 · 待定</div>
+          <div class="stop-dot"></div>
+          <div class="stop-name">卡特贝城堡</div>
+        </div>
+        <div class="map-line"></div>
+        <div class="map-stop">
+          <div class="stop-dot"></div>
+          <div class="stop-name">归途 <em>开罗</em></div>
         </div>
       </div>
       <div class="map-stat">
@@ -416,8 +526,12 @@
           <div class="stat-val">08:00 开罗</div>
         </div>
         <div class="stat-item">
-          <div class="stat-label">车程</div>
+          <div class="stat-label">车程（单程）</div>
           <div class="stat-val">约 220 km · 3小时</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">图书馆抵达</div>
+          <div class="stat-val">11:30 亚历山大</div>
         </div>
         <div class="stat-item">
           <div class="stat-label">日期</div>
@@ -434,95 +548,298 @@
         <div class="event-time">08:00<span class="sub">Cairo</span></div>
         <div class="event-card">
           <div class="event-type">TRANSIT · 出发</div>
-          <div class="event-title">从开罗出发</div>
-          <div class="event-sub">开罗 → 亚历山大 · 沙漠公路</div>
+          <div class="event-title">从开罗出发·沙漠公路</div>
+          <div class="event-sub">开罗 → 亚历山大 · Desert Road · 约3小时</div>
           <div class="event-body">
             <p>
               清早从酒店出发，走沙漠公路（Desert Road）北行。
-              车窗外是平坦的荒地与零星绿洲，
-              一路向地中海的方向推进。
-              三小时后，城市的气质会突然改变：
-              从开罗的伊斯兰棕黄，变成亚历山大的地中海蓝灰。
+              车窗外是平坦的荒地与零星绿洲，一路向地中海的方向推进。
+              这条公路连接着埃及两座最重要的城市：
+              伊斯兰的开罗与地中海的亚历山大，
+              两座城市的气质在220公里的距离里形成了鲜明对比。
+            </p>
+            <p>
+              在大巴上，和朋友聊起今天的目的地——斐洛、七十士译本、亚历山大学派——
+              越说越远，不知不觉就绕到了二谛和克尔凯郭尔。
+              抵达之前，我们已经在思想上先到了。
             </p>
           </div>
         </div>
       </div>
 
-      <!-- 11:00 图书馆 -->
+      <!-- 11:30 抵达图书馆 -->
       <div class="event library">
-        <div class="event-time">11:00<span class="sub">Alex.</span></div>
+        <div class="event-time">11:30<span class="sub">Alex.</span></div>
         <div class="event-card">
-          <div class="event-type">HIGHLIGHT · 亚历山大图书馆</div>
-          <div class="event-title">Bibliotheca Alexandrina · <em>VIP 参观</em></div>
-          <div class="event-sub">馆长带队 · 内部专属导览</div>
+          <div class="event-type">HIGHLIGHT · Bibliotheca Alexandrina</div>
+          <div class="event-title">抵达·<em>更像博物馆的图书馆</em></div>
+          <div class="event-sub">Bibliotheca Alexandrina · 亚历山大图书馆</div>
           <div class="event-body">
             <p>
-              现代的亚历山大图书馆于2002年建成开放，
-              由挪威建筑师事务所 Snøhetta 设计——
-              建筑外立面是一面巨大的圆形倾斜屋顶，
-              如同一个从地中海边破土而出的太阳圆盘，
-              上面刻满了来自世界各地语言的字符。
+              Bibliotheca Alexandrina 建于2002年，
+              由挪威建筑事务所 Snøhetta 设计——
+              圆形倾斜的屋顶如同从地中海边破土而出的太阳圆盘，
+              外立面刻满了来自世界各地语言的字符。
+              第一眼看到建筑本身，就已经读到了一层宣言：
+              <strong>知识没有边界，文字没有国籍</strong>。
             </p>
             <p>
-              今天我们得到了一个特殊机会：由图书馆<strong>馆长亲自带队</strong>，
-              进入通常不对公众开放的区域——
-              手稿修复室、古卷存档区、研究员工作空间。
-              这是一次以贵宾身份走进知识殿堂内部的体验。
+              进门之后，发现它远远不只是一座图书馆——
+              准确说，<em>更像一座博物馆</em>。
+              馆内分区陈列着来自不同文明、不同时代的珍品，
+              从伊斯兰帷幔到古腾堡圣经，从古埃及木乃伊到希腊罗马雕塑，
+              这座建筑本身就是一次文明的汇流。
             </p>
 
-            <div class="highlight-box">
-              <div class="highlight-box-label">BACKGROUND · 古代图书馆</div>
+            <div class="photo-single portrait">
+              <img src="entrance.jpg" alt="亚历山大图书馆外观">
+              <div class="photo-caption">亚历山大图书馆（Bibliotheca Alexandrina）外墙，外壁刻满人类各种文字。入口处的古埃及法老雕像与现代建筑并置——旧文明与新建筑的渡口。</div>
+            </div>
+
+            <div class="highlight-box" style="margin-top:16px;">
+              <div class="highlight-box-label">DIGITAL RESOURCE · DAR</div>
               <p>
-                古代亚历山大图书馆（Mouseion）约建于公元前3世纪托勒密一世时期，
-                是世界上最早的大型图书馆之一，鼎盛时藏书约40—70万卷莎草纸卷轴，
-                收纳了古典时代几乎所有已知的知识。
-              </p>
-              <p>
-                斐洛、欧几里得、埃拉托色尼、阿基米德、盖伦——
-                他们或在此研究，或将著作送抵此地。
-                图书馆的衰落与焚毁是古代史上最具争议的事件之一，
-                现代图书馆的重建，是对这段记忆的一次文化宣示。
+                图书馆还是<a href="https://dar.bibalex.org/en/landingPage/landingPage.aspx" target="_blank">DAR（Digital Archive Resources）</a>的主办机构——
+                致力于将稀有阿拉伯文手稿、伊斯兰典籍与古代文献数字化，
+                对全球研究者免费开放。
+                这是现代数字技术与古代知识保存的交汇点，
+                也是 <a href="https://www.bibalex.org/en/default" target="_blank">bibalex.org</a> 最具实质意义的项目之一。
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 午餐 希腊餐厅 -->
+      <!-- 12:00 主阅览室 -->
+      <div class="event library">
+        <div class="event-time">11:45<span class="sub">Reading</span></div>
+        <div class="event-card">
+          <div class="event-type">INTERIOR · 主阅览室</div>
+          <div class="event-title">光与书的<em>剧场</em></div>
+          <div class="event-sub">Main Reading Hall · 阶梯式七层通高空间</div>
+          <div class="event-body">
+            <p>
+              主阅览室是整座建筑最震撼的空间：
+              阶梯式七层书架从地面向上延伸，
+              自然光通过屋顶的透光格栅倾泻而下，
+              洒在每一排木制书桌上。
+              印刷机的历史实物陈列其中，
+              作为从抄本时代到印刷时代的见证者。
+            </p>
+            <p>
+              这不是静态展示的图书馆——有学者在其中工作，
+              有学生在其中阅读，
+              它仍然是一个活着的知识空间，
+              而不只是供人拍照的纪念碑。
+            </p>
+
+            <div class="photo-single">
+              <img src="reading_room.jpg" alt="亚历山大图书馆主阅览室">
+              <div class="photo-caption">从高处俯瞰主阅览室：阶梯式书架、自然采光天窗、木制书桌与散落其间的研究者。右侧可见早期印刷机实物展陈。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12:15 珍品巡礼 -->
+      <div class="event library">
+        <div class="event-time">12:15<span class="sub">Museum</span></div>
+        <div class="event-card">
+          <div class="event-type">COLLECTION · 珍品巡礼</div>
+          <div class="event-title">时间的<em>切片</em></div>
+          <div class="event-sub">从伊斯兰帷幔到古腾堡圣经 · 从木乃伊到萨达特铜像</div>
+          <div class="event-body">
+            <p>
+              如果说图书馆的主阅览室是关于<strong>理性与知识</strong>的空间，
+              那么珍品展区就是关于<strong>信仰与历史</strong>的空间。
+              四种文明、三种亚伯拉罕信仰，
+              在这一栋建筑里找到了共同的家。
+            </p>
+
+            <!-- 4-artifact strip -->
+            <div class="artifact-strip">
+              <div class="artifact-item">
+                <img src="kiswah.jpg" alt="天房基斯瓦·卡巴帷幔">
+                <div class="artifact-label">卡巴帷幔（Kiswah）</div>
+              </div>
+              <div class="artifact-item">
+                <img src="gutenberg.jpg" alt="古腾堡圣经1455年摹本">
+                <div class="artifact-label">古腾堡圣经·1455年</div>
+              </div>
+              <div class="artifact-item">
+                <img src="mummy.jpg" alt="古埃及木乃伊">
+                <div class="artifact-label">古埃及木乃伊</div>
+              </div>
+              <div class="artifact-item">
+                <img src="mosque_lamp.jpg" alt="马穆鲁克玻璃清真寺吊灯">
+                <div class="artifact-label">马穆鲁克清真寺吊灯</div>
+              </div>
+            </div>
+
+            <p style="margin-top:14px;">
+              <strong>卡巴帷幔（Kiswah）</strong>：覆盖麦加天房（Ka'aba）大门的黑色丝绸帷幔，
+              以黄金丝线刺绣《古兰经》经文，
+              每年由沙特阿拉伯制作新的替换。这里展示的是历史存件，是伊斯兰世界最神圣的手工艺之一。
+            </p>
+            <p>
+              <strong>古腾堡圣经摹本（Gutenberg Bible Facsimile）</strong>：
+              原版于1455年印刷，是人类历史上第一批用活字印刷机大规模生产的书籍，
+              结束了数千年的手抄本时代。这里的摹本忠实还原了页面布局与彩绘首字母。
+            </p>
+            <p>
+              此外还有来自<strong>尼罗河沿岸与亚历山大海湾水下考古</strong>的出土文物——
+              古埃及彩绘木乃伊、葬仪小像（Shabti）、石棺碎片，
+              以及马穆鲁克时期（13—16世纪）精工蓝釉的清真寺吊灯。
+              整个馆区横跨三千年，串联起法老、希腊、罗马、伊斯兰、现代五个时代。
+            </p>
+
+            <div class="amber-box">
+              <div class="amber-box-label">SADAT MEMORIAL · 萨达特纪念馆</div>
+              <p>
+                馆内单独辟有<strong>穆罕默德·安瓦尔·萨达特总统纪念馆</strong>（1918—1981）——
+                这位"为和平而活、为原则而死"的埃及总统的铜像静立其中，
+                旁边是他留下的话：
+              </p>
+              <p style="font-style:italic; color:var(--ink);">
+                "也许有一天，我们会再次相聚——不是为了吹嘘，
+                而是为了记忆、学习，并把我们这个时代的故事讲给孩子们听……"
+              </p>
+              <p>
+                在这座关于知识与记忆的建筑里，这句话有了额外的重量。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13:00 馆长会面 -->
+      <div class="event meeting">
+        <div class="event-time">13:00<span class="sub">Meeting</span></div>
+        <div class="event-card">
+          <div class="event-type">VIP · 馆长会谈</div>
+          <div class="event-title">与馆长 Ahmed A. Zayed <em>教授</em>的会面</div>
+          <div class="event-sub">Director General · Bibliotheca Alexandrina</div>
+          <div class="event-body">
+            <p>
+              参观结束后，我们有幸获邀与馆长 Ahmed A. Zayed 教授进行专题会谈。
+              在图书馆会客室落座，这次对话
+              让我们对这座机构的使命有了更直接的理解。
+            </p>
+
+            <div class="photo-single">
+              <img src="director_meeting.jpg" alt="与亚历山大图书馆馆长及工作团队合影">
+              <div class="photo-caption">与馆长 Prof. Ahmed A. Zayed 及图书馆团队合影，摄于馆内会客区。</div>
+            </div>
+
+            <div class="person-card">
+              <div class="person-tag">DIRECTOR GENERAL</div>
+              <div class="person-name">Prof. Ahmed Abdullah Zayed</div>
+              <div class="person-title">亚历山大图书馆馆长（2022年8月至今）</div>
+              <div class="person-bio">
+                <p>
+                  开罗大学文学院<strong>政治社会学教授</strong>（1991年至今），
+                  曾任文学院院长（2005—2009年）、
+                  埃及驻利雅得文化参赞（1998—2001年）、
+                  阿拉伯社会学协会副主席（1996—2016年）。
+                </p>
+                <p>
+                  著有九部研究现代化、埃及国家认同与政治社会学的专著，
+                  学术论文逾200篇。曾在卡塔尔大学、阿联酋大学、
+                  德国比勒菲尔德大学等多所国际院校任教，
+                  代表埃及两度出席联合国教科文组织社会与人文科学委员会。
+                </p>
+                <p>
+                  2025年荣获埃及<strong>尼罗河奖（社会科学类）</strong>；
+                  2004年获国家科学卓越奖。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13:30 希腊餐厅 -->
       <div class="event food">
         <div class="event-time">13:30<span class="sub">Lunch</span></div>
         <div class="event-card">
           <div class="event-type">FOOD · 午餐</div>
-          <div class="event-title">希腊餐厅</div>
-          <div class="event-sub">亚历山大 · 地中海料理</div>
+          <div class="event-title">希腊餐厅·<em>地中海血统</em></div>
+          <div class="event-sub">亚历山大 · Mediterranean Cuisine</div>
           <div class="event-body">
             <p>
-              亚历山大自古就是希腊化世界的中心，
-              这座城市的基因里有深深的地中海烙印。
-              今天的午餐选了一家希腊餐厅，
-              算是以最直接的方式，感受这座城市的另一重身份。
+              午餐选了一家希腊餐厅。
+              亚历山大自古就是希腊化世界的核心，
+              这座城市的基因里有很深的地中海烙印——
+              无论是饮食、建筑，还是街道的气质，
+              都和开罗截然不同。
             </p>
             <p>
-              橄榄油、鱼、烤肉、tzatziki——
-              和斐洛的哲学一样，这里的食物也是两种文明相遇的产物。
+              橄榄油、烤鱼、tzatziki——
+              这和斐洛的工作一样，是两种文明相遇之后的产物：
+              希腊的配方，埃及的食材，地中海的口感。
             </p>
           </div>
         </div>
       </div>
 
-      <!-- 下午 待定 -->
-      <div class="event pending">
-        <div class="event-time">15:00<span class="sub">TBD</span></div>
+      <!-- 15:00 卡特贝城堡 -->
+      <div class="event castle">
+        <div class="event-time">15:00<span class="sub">Citadel</span></div>
         <div class="event-card">
-          <div class="event-type">PENDING · 下午</div>
-          <div class="event-title">下午行程 · 待更新</div>
-          <div class="event-sub">亚历山大 · 待定</div>
+          <div class="event-type">LANDMARK · 卡特贝城堡</div>
+          <div class="event-title">卡特贝城堡·<em>错过与一只猫</em></div>
+          <div class="event-sub">Citadel of Qaitbay · 建于 1477 年 · 法罗斯灯塔遗址</div>
           <div class="event-body">
-            <p style="color:var(--ink-faint)">
-              本文撰写时，正在前往亚历山大的大巴上。
-              下午的行程待落地后补充。
-              可能的选项：卡特巴城堡、庞贝柱、亚历山大国立博物馆，
-              或是沿地中海散步。
+            <p>
+              午餐后路过了<strong>卡特贝城堡（Citadel of Qaitbay）</strong>——
+              这座建于1477年的要塞，正是矗立在古代法罗斯灯塔的遗址之上，
+              城墙的石料据说部分来自灯塔的残骸。
+              可惜抵达时已错过入场时间，只能在城堡外的港口边稍作停留。
+            </p>
+            <p>
+              没有进去反而得到了另一个画面：
+              地中海的阳光把城堡的米色石壁照得发亮，
+              渔船的倒影在宁静的港湾里晃动，
+              一只黑猫懒洋洋地坐在港口矮墙上，
+              对城堡浑然不在意。
+            </p>
+
+            <div class="photo-single">
+              <img src="citadel.jpg" alt="卡特贝城堡与港口黑猫">
+              <div class="photo-caption">卡特贝城堡与亚历山大港。城堡建于1477年，位于古代法罗斯灯塔的遗址之上。前景是那只完全不在意历史的港口黑猫。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15:30 归途 -->
+      <div class="event transit">
+        <div class="event-time">15:30<span class="sub">Return</span></div>
+        <div class="event-card">
+          <div class="event-type">TRANSIT · 归途</div>
+          <div class="event-title">返回开罗·大巴上的<em>哲学时间</em></div>
+          <div class="event-sub">亚历山大 → 开罗 · 3小时 · 与刘平教授的对话</div>
+          <div class="event-body">
+            <p>
+              归途同样是三小时。
+              在大巴上，和刘平教授继续聊今天的所见所想，
+              话题从亚历山大的历史走向了两个更当代的问题：
+            </p>
+            <p>
+              一是<strong>AI与机器人的意识与自由意志</strong>——
+              如果一台机器能对话、能判断、能表达，它有意识吗？
+              它有自由意志吗？它的"选择"和人的选择有什么本质区别？
+            </p>
+            <p>
+              二是<strong>悲悯的上帝</strong>——
+              教授提到了亚伯拉罕·赫舍尔（Abraham Joshua Heschel）的《先知》：
+              希伯来圣经里的上帝不是希腊哲学里的"不动的推动者"，
+              而是一个会愤怒、会悲悯、会为人的苦难而动容的神。
+              这和今天在图书馆看到的斐洛的 Logos 形成了鲜明对位。
+            </p>
+            <p>
+              三小时很快，两个问题都没有答案，但这没关系。
+              有些问题的价值不在于答案，而在于<em>沿途的风景</em>。
             </p>
           </div>
         </div>
@@ -537,5 +854,7 @@
     </footer>
 
   </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
 </body>
 </html>
