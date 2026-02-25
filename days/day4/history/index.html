@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四天历史 · 亚历山大城的思想激荡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0c09;
+  --surface: #161310;
+  --card: #1c1813;
+  --gold: #c8973a;
+  --gold-light: #e8bf6a;
+  --gold-dim: rgba(200,151,58,.12);
+  --lapis: #1a3a6c;
+  --lapis-light: #2a5a9c;
+  --lapis-dim: rgba(26,58,108,.18);
+  --hellas: #4a7a5a;
+  --hellas-light: #6aaa7a;
+  --hellas-dim: rgba(74,122,90,.15);
+  --ink: #e8e0d0;
+  --ink-muted: #8a7f6e;
+  --ink-faint: #4a4438;
+  --line: rgba(200,151,58,.18);
+  --line-faint: rgba(255,255,255,.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 5% -5%, rgba(26,58,108,.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 95% 110%, rgba(74,122,90,.07) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 36px 0 96px;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 40px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+.topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--gold); }
+.topbar-sep { color: var(--ink-faint); }
+
+/* ── HERO ── */
+.hero {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  opacity: .8;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -.5px;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-lead {
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.9;
+  max-width: 720px;
+}
+
+/* ── SECTION ── */
+.section { margin-bottom: 60px; }
+.section-num {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(200,151,58,.45);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.section-title em { font-style: normal; color: var(--gold); }
+.section-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--ink-muted);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line-faint);
+}
+
+/* ── PROSE ── */
+.prose p {
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.95;
+  margin-bottom: 18px;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose p strong { color: var(--ink); font-weight: 600; }
+.prose p em { font-style: normal; color: var(--gold); }
+
+/* ── ASIDE ── */
+.aside {
+  background: var(--surface);
+  border-left: 3px solid rgba(200,151,58,.35);
+  padding: 18px 22px;
+  margin: 28px 0;
+}
+.aside-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  opacity: .6;
+  margin-bottom: 10px;
+}
+.aside p {
+  font-size: 13px;
+  color: var(--ink-faint);
+  line-height: 1.85;
+  margin-bottom: 8px;
+}
+.aside p:last-child { margin-bottom: 0; }
+
+/* ── FIGURE CARD ── */
+.figure-card {
+  background: linear-gradient(145deg, rgba(26,20,40,.35), rgba(10,8,6,.8));
+  border: 1px solid rgba(200,151,58,.18);
+  border-top: 3px solid;
+  padding: 24px 26px;
+  margin-bottom: 16px;
+}
+.figure-card.philo { border-top-color: var(--lapis-light); }
+.figure-card.septuagint { border-top-color: var(--gold); }
+.figure-card.origen { border-top-color: var(--hellas-light); }
+
+.figure-icon { font-size: 30px; display: block; opacity: .7; margin-bottom: 12px; }
+.figure-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  padding: 2px 8px;
+  border: 1px solid;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.figure-tag.philo { color: var(--lapis-light); border-color: var(--lapis-light); }
+.figure-tag.septuagint { color: var(--gold); border-color: var(--gold); }
+.figure-tag.origen { color: var(--hellas-light); border-color: var(--hellas-light); }
+.figure-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.figure-dates {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.figure-desc {
+  font-size: 13px;
+  color: rgba(212,196,160,.65);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.figure-quote {
+  border-left: 2px solid rgba(200,151,58,.25);
+  padding-left: 14px;
+  font-size: 12px;
+  color: var(--ink-faint);
+  line-height: 1.75;
+  font-style: italic;
+}
+.figure-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-faint); }
+.ftag {
+  font-size: 10px;
+  padding: 2px 8px;
+  background: var(--gold-dim);
+  border: 1px solid rgba(200,151,58,.18);
+  color: var(--ink-muted);
+  font-family: 'Cinzel', serif;
+  letter-spacing: .5px;
+}
+
+/* ── CONCEPT FLOW ── */
+.concept-flow {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0;
+}
+.flow-step {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0 18px;
+  align-items: start;
+}
+.flow-num {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  color: var(--gold);
+  opacity: .5;
+  padding-top: 2px;
+  text-align: center;
+}
+.flow-body {
+  background: var(--gold-dim);
+  border: 1px solid var(--line-faint);
+  padding: 14px 18px;
+}
+.flow-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.flow-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.75; }
+
+/* ── KEY FACTS ROW ── */
+.key-facts {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.kf {
+  flex: 1;
+  min-width: 120px;
+  background: var(--gold-dim);
+  border: 1px solid var(--line-faint);
+  padding: 12px 14px;
+}
+.kf-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(200,151,58,.5);
+  margin-bottom: 4px;
+}
+.kf-value { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--line-faint);
+  margin: 48px 0;
+}
+
+/* ── NAV FOOTER ── */
+.nav-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--line-faint);
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 64px;
+}
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-muted);
+  text-decoration: none;
+  border: 1px solid var(--line-faint);
+  padding: 8px 16px;
+  transition: all .2s;
+}
+.nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+
+@media (max-width: 600px) {
+  .key-facts { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topbar">
+    <a href="../../../index.html">← 旅行目录</a>
+    <span class="topbar-sep">/</span>
+    <a href="../index.html">第四天</a>
+    <span class="topbar-sep">/</span>
+    <span style="color:var(--ink-faint)">历史</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Day 04 · History · 2026.02.25</div>
+    <h1>亚历山大城的<em>思想激荡</em></h1>
+    <p class="hero-lead">
+      一座城市，三次关键的思想事件：犹太哲人斐洛将希腊哲学嫁接进希伯来圣经，七十二名文士将《圣经》译成希腊文，亚历山大学派的教父们把基督教锻造成一套哲学体系。这三件事，共同奠定了西方思想史的理性地基。
+    </p>
+  </header>
+
+  <!-- ── SECTION I: PHILO ── -->
+  <section class="section">
+    <div class="section-num">I</div>
+    <div class="section-title">信仰与理性的初次握手：<em>斐洛</em></div>
+    <div class="section-sub">Philo of Alexandria · 约公元前20年—公元50年</div>
+
+    <div class="figure-card philo">
+      <span class="figure-icon">📜</span>
+      <span class="figure-tag philo">JEWISH PHILOSOPHER</span>
+      <div class="figure-name">亚历山大的斐洛 Philo of Alexandria</div>
+      <div class="figure-dates">约 20 BCE — 50 CE</div>
+      <div class="figure-desc">
+        斐洛是公元1世纪最重要的犹太裔哲学家，生活在亚历山大城这个世界上最大的犹太人侨民社区。
+        他的母语是希腊文，深受柏拉图和斯多葛学派熏陶，却也是虔诚的犹太教信徒。
+        这两种身份之间的张力，催生了他一生最重要的智识工程：
+        证明"<em>摩西就是更早的柏拉图</em>"，信仰与哲学并非对立，而是同一真理的两张面孔。
+      </div>
+      <div class="figure-quote">
+        "字面意思是肉体，寓意才是灵魂——读经如读人，皮肤之下另有乾坤。"
+        <br>—— 斐洛《寓意释经》意旨
+      </div>
+      <div class="figure-tags">
+        <span class="ftag">寓意解经</span>
+        <span class="ftag">Logos</span>
+        <span class="ftag">柏拉图主义</span>
+        <span class="ftag">斯多葛</span>
+        <span class="ftag">护教学先驱</span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        在公元1世纪，亚历山大城拥有当时世界最大的犹太人侨民社区。
+        这里的犹太人大多说希腊语，已不再使用希伯来文，
+        同时深受希腊哲学吸引——柏拉图的理型论、斯多葛派的Logos概念，
+        都是当时受过教育的知识分子的精神食粮。
+      </p>
+      <p>
+        但这产生了一个根本性的<strong>内心冲突</strong>：
+        如何既坚持祖辈的《希伯来圣经》信仰，又拥抱先进的希腊理性哲学？
+        斐洛的回答，是一种大胆的思想手术——他将希腊人的
+        <em>寓意解经法（Allegorical Exegesis）</em>，
+        第一次系统性地引入对《希伯来圣经》的解读。
+      </p>
+    </div>
+
+    <div class="aside">
+      <div class="aside-label">CORE CONCEPT · 寓意解经法</div>
+      <p>
+        斐洛认为，《希伯来圣经》不能只看字面意思。字面故事只是外壳（肉体），
+        其内核隐藏着深刻的哲学真理（灵魂）。
+      </p>
+      <p>
+        例如，《圣经》里亚伯拉罕、雅各等人物不仅仅是历史存在，
+        更是各种人类理智、美德或欲望的<strong>抽象化身</strong>。
+        亚当代表理性，夏娃代表感官，逐出伊甸园代表灵魂沉沦于物质世界。
+      </p>
+      <p>
+        斐洛借用了斯多葛哲学的<em>Logos</em>（理性/道）概念，
+        将其与《创世纪》中的神圣创造力相融合，
+        为后来基督教神学中的"道成肉身"（约翰福音1:1）铺垫了理论基础。
+      </p>
+    </div>
+
+    <div class="prose">
+      <p>
+        斐洛的这套融合，在他生前以及后世正统犹太教中均未被接纳——
+        拉比传统更偏向严格的律法解释，而非哲学寓意。
+        然而，他的思想遗产却以一种出人意料的方式延续下去：
+        迅速崛起的早期<strong>基督教</strong>，接过了他提供的整套理论工具，
+        并将其发展为教父神学的核心方法论。
+      </p>
+    </div>
+
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── SECTION II: SEPTUAGINT ── -->
+  <section class="section">
+    <div class="section-num">II</div>
+    <div class="section-title"><em>七十士译本</em>：第一个圣经译本的诞生</div>
+    <div class="section-sub">Septuagint · LXX · 约公元前3世纪—前2世纪</div>
+
+    <div class="key-facts">
+      <div class="kf">
+        <div class="kf-label">别名</div>
+        <div class="kf-value">七十贤士译本 / Septuagint / LXX</div>
+      </div>
+      <div class="kf">
+        <div class="kf-label">时间</div>
+        <div class="kf-value">约公元前3世纪—前2世纪</div>
+      </div>
+      <div class="kf">
+        <div class="kf-label">地点</div>
+        <div class="kf-value">亚历山大城（法罗斯岛）</div>
+      </div>
+      <div class="kf">
+        <div class="kf-label">卷数</div>
+        <div class="kf-value">46卷（含次经7卷）</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        在希腊化时期，埃及的犹太人大多不再使用希伯来文，
+        他们需要一个本民族圣典的希腊文版本。
+        于是，《圣经》历史上最重要的翻译事件，在亚历山大城悄然发生。
+      </p>
+    </div>
+
+    <div class="figure-card septuagint">
+      <span class="figure-icon">📖</span>
+      <span class="figure-tag septuagint">TRANSLATION EVENT</span>
+      <div class="figure-name">传说：法罗斯岛上的72间密室</div>
+      <div class="figure-dates">托勒密二世时期 · 约前3世纪</div>
+      <div class="figure-desc">
+        传说，埃及王托勒密二世为充实亚历山大图书馆藏书，
+        邀请耶路撒冷大祭司以利沙提供译者。
+        以色列十二支族各派六人，总计七十二名文士，
+        分别被安置在法罗斯岛上各自独立的小室中。
+        经七十二日，译文竟完全一致——这被后来的犹太教和基督教作家视为神迹佐证，
+        因此得名"七十士译本"（按约定俗成取整为70，简称LXX）。
+        详见约瑟夫·弗拉维《犹太古史》。
+      </div>
+      <div class="figure-tags">
+        <span class="ftag">首个圣经译本</span>
+        <span class="ftag">托勒密王朝</span>
+        <span class="ftag">通用希腊文</span>
+        <span class="ftag">法罗斯岛</span>
+      </div>
+    </div>
+
+    <div class="concept-flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div class="flow-body">
+          <div class="flow-title">第一正典（39卷）</div>
+          <div class="flow-desc">将《希伯来圣经》24卷编译为希腊文39卷。基督新教以此为《旧约》正典。</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div class="flow-body">
+          <div class="flow-title">次经（7卷）</div>
+          <div class="flow-desc">增补《希伯来圣经》之外的7卷，即第二正典。天主教与东正教将其纳入《旧约》，基督新教不采用。</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div class="flow-body">
+          <div class="flow-title">影响后世所有基督教《圣经》</div>
+          <div class="flow-desc">基督教《旧约》均源于此译本。中文《圣经》译本，同样以七十士译本为源头追溯。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aside">
+      <div class="aside-label">HISTORICAL NOTE · 学术界定论</div>
+      <p>
+        学术界认为，《摩西五经》部分最早于公元前3世纪在亚历山大城完成，
+        其余卷目陆续在前2世纪译毕。"七十二人神迹"的传说收录于《亚里斯提亚书信》，
+        历史真实性存疑，但翻译本身的历史影响毋庸置疑。
+      </p>
+    </div>
+
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── SECTION III: ALEXANDRIA SCHOOL ── -->
+  <section class="section">
+    <div class="section-num">III</div>
+    <div class="section-title">基督教哲学的理性基石：<em>亚历山大学派</em></div>
+    <div class="section-sub">School of Alexandria · 公元2—4世纪</div>
+
+    <div class="prose">
+      <p>
+        随着早期基督教在罗马帝国广泛传播，它遇到了一道严峻的文化门槛：
+        基督教最初在底层平民中流传，当它面对受过良好教育的希腊化罗马知识分子时，
+        常被嘲笑为"没有文化的迷信"。
+        早期基督徒迫切需要一套<em>高级的哲学语言</em>来武装自己。
+      </p>
+      <p>
+        凭借斐洛留下的思想遗产，亚历山大城顺理成章地诞生了早期基督教最重要的神学中心——
+        <strong>亚历山大学派</strong>，其摇篮即要理学校（Catechetical School of Alexandria）。
+        这是有记录以来最早的基督教神学院之一。
+      </p>
+    </div>
+
+    <div class="figure-card origen">
+      <span class="figure-icon">🏛️</span>
+      <span class="figure-tag origen">CHURCH FATHERS</span>
+      <div class="figure-name">克莱门特 &amp; 奥利金</div>
+      <div class="figure-dates">Clement（约150—215）· Origen（约185—254）</div>
+      <div class="figure-desc">
+        克莱门特是亚历山大学派的奠基人之一，他将希腊哲学视为上帝赐予外邦人的礼物，
+        认为它是引导异教世界走向基督教的"预备学校"。
+        奥利金则将这一工程推向顶峰——他的著作规模之大，在古代作者中几乎无人能及，
+        系统地以新柏拉图主义框架重构基督教神学。
+      </div>
+      <div class="figure-quote">
+        "哲学是神学的婢女（Ancilla Theologiae）。"
+        <br>—— 亚历山大学派核心命题
+      </div>
+      <div class="figure-tags">
+        <span class="ftag">寓意解经</span>
+        <span class="ftag">新柏拉图主义</span>
+        <span class="ftag">护教学</span>
+        <span class="ftag">要理学校</span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        克莱门特和奥利金接过斐洛的寓意解经法，用于解释基督教《圣经》，
+        并大胆吸收希腊哲学——尤其是新柏拉图主义的<em>流溢论（Emanation）</em>与
+        理型论（Theory of Forms）。
+        他们提出一个颠覆性观点：上帝不仅通过《圣经》启示犹太人，
+        也<strong>通过哲学启示了希腊人</strong>；
+        苏格拉底与柏拉图，不过是为外邦人准备的"预备学校"。
+      </p>
+      <p>
+        亚历山大学派的努力，使基督教从一种单纯的民间信仰，
+        升华为一门具有严密逻辑的<em>东方教父哲学</em>，
+        在整个罗马帝国知识阶层中赢得了合法性与尊重。
+        这一传统直接影响了4世纪的尼西亚信经、奥古斯丁神学，
+        并最终奠定了中世纪欧洲"信仰寻求理解"（fides quaerens intellectum）的核心范式。
+      </p>
+    </div>
+
+    <div class="aside">
+      <div class="aside-label">CONCEPT · 三次思想接力</div>
+      <p>
+        <strong>斐洛</strong>（公元1世纪）：提供方法论——寓意解经法，证明理性与信仰可以共存。
+      </p>
+      <p>
+        <strong>七十士译本</strong>（公元前3—2世纪）：提供文本基础——将《圣经》译成世界通用语，使其成为希腊化世界可以阅读和辩论的哲学文本。
+      </p>
+      <p>
+        <strong>亚历山大学派</strong>（公元2—4世纪）：完成制度化——在亚历山大城建立第一所系统性的基督教神学院，将前两者的遗产锻造成完整的神学体系。
+      </p>
+    </div>
+
+  </section>
+
+  <footer class="nav-footer">
+    <a class="nav-btn" href="../index.html">← 第四天概览</a>
+    <a class="nav-btn" href="../action/index.html">查看今日行程 →</a>
+  </footer>
+
+</div>
+</body>
+</html>
