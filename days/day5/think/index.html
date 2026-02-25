@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第五天思考 · 待定</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09; --surface: #161310; --card: #1c1813;
+      --gold: #c8973a; --gold-dim: rgba(200,151,58,.13);
+      --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
+      --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.8; min-height: 100vh; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% -5%, rgba(200,151,58,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 95% 100%, rgba(200,100,30,.05) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap {
+      position: relative; z-index: 1;
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto; padding: 36px 0 96px;
+    }
+    .topbar {
+      display: flex; gap: 20px; align-items: center;
+      margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+    .hero {
+      margin-bottom: 60px; padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: 4px; color: var(--gold); opacity: .8;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+      line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; }
+    .pending-box {
+      background: var(--surface);
+      border: 1px dashed rgba(200,151,58,.25);
+      padding: 56px 40px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .pending-glyph {
+      font-size: 32px; opacity: .2;
+      margin-bottom: 16px;
+    }
+    .pending-label {
+      font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 3px; color: var(--gold); opacity: .5;
+      margin-bottom: 12px;
+    }
+    .pending-text {
+      font-size: 14px; color: var(--ink-faint);
+      line-height: 1.8; max-width: 380px; margin: 0 auto;
+    }
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap; gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--ink-muted); text-decoration: none;
+      border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../../index.html">← 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第五天</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">思考</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 05 · Think · 2026.02.26</div>
+      <h1 data-key="days.4.think_title">思考<em>待定</em></h1>
+      <p class="hero-lead" data-key="days.4.think_lead">
+        这一天的思考内容将在行程结束后写入。
+      </p>
+    </header>
+
+    <div class="pending-box">
+      <div class="pending-glyph">𓂀</div>
+      <div class="pending-label">PENDING · 待写入</div>
+      <div class="pending-text">
+        这一天的思考内容尚未确定。<br>
+        行程结束后，个人观察、延伸思考与在GEM触发的问题将在这里沉淀。
+      </div>
+    </div>
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../action/index.html">← 今日行程</a>
+      <a class="nav-btn" href="../index.html">第五天概览</a>
+      <a class="nav-btn" href="../../day6/index.html">第六天 →</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+</body>
+</html>

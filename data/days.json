@@ -68,11 +68,17 @@
       "num": "05",
       "date": "2026·02·26",
       "eyebrow": "Day 05 · 2026.02.26",
-      "status": "pending",
-      "title": "埃及的<em>神秘与永恒</em>",
-      "card_title": "埃及的神秘与永恒",
-      "route": "开罗 ✈ 卢克索",
-      "desc": "在文明全景与城市切换之间的一天：白天回看埃及的宏大叙事，傍晚转场卢克索。"
+      "status": "live",
+      "title": "法老的<em>终极陈列室</em>",
+      "card_title": "法老的终极陈列室",
+      "route": "开罗 → 大埃及博物馆 ✈ 卢克索",
+      "action_title": "大埃及博物馆·<em>飞往卢克索</em>",
+      "action_lead": "09:00从开罗出发，前往位于吉萨的大埃及博物馆（GEM）。这是世界最大的考古博物馆，专为图坦卡蒙五千余件宝藏与胡夫太阳船而建。参观完毕后，乘坐19:00航班飞往卢克索，进入上埃及的另一个时间维度。",
+      "history_title": "法老的<em>终极陈列室</em>",
+      "history_subtitle": "Grand Egyptian Museum · Tutankhamun · Khufu Solar Boat · Ramesses II",
+      "think_title": "思考<em>待定</em>",
+      "think_lead": "这一天的思考内容将在行程结束后写入。",
+      "desc": "09:00从开罗出发前往大埃及博物馆（GEM），参观图坦卡蒙宝藏、胡夫太阳船、拉美西斯二世巨像。傍晚19:00航班飞往卢克索，开启上埃及之旅。"
     },
     {
       "num": "06",
