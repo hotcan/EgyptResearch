@@ -47,7 +47,7 @@
     .ph-icon { font-size: 36px; opacity: .2; margin-bottom: 14px; }
     .ph-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--ink-faint); margin-bottom: 10px; }
     .ph-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; max-width: 400px; margin: 0 auto; }
-    .structure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 32px; }
+    .structure-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 32px; }
     .structure-box { background: var(--card); border: 1px solid var(--line-faint); padding: 20px 24px; }
     .structure-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
     .structure-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
@@ -63,6 +63,7 @@
       border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
     }
     .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+    @media (max-width: 840px) { .structure-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .structure-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -88,14 +89,19 @@
 
     <div class="structure-grid">
       <div class="structure-box">
-        <div class="structure-label">思考 · Think</div>
-        <div class="structure-title">哲学框架与背景资料</div>
+        <div class="structure-label">历史 · History</div>
+        <div class="structure-title">历史背景与研究资料</div>
         <div class="structure-desc">这天的思考线将在出发前或当天整理写入——包括老师讲义、参考书目与个人预判。</div>
       </div>
       <div class="structure-box">
         <div class="structure-label">行程 · Action</div>
         <div class="structure-title">现场时间线与照片</div>
         <div class="structure-desc">行程结束后，现场照片、地点记录与个人观察将按时间线整理写入。</div>
+      </div>
+      <div class="structure-box">
+        <div class="structure-label">思考 · Think</div>
+        <div class="structure-title">个人旅行感受与思考</div>
+        <div class="structure-desc">行程结束后，个人观察、延伸思考与旅行中触发的问题将在这里沉淀。</div>
       </div>
     </div>
 

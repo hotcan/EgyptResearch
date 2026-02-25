@@ -118,12 +118,15 @@
       max-width: 680px;
     }
 
-    /* ── TWO COLUMNS ── */
+    /* ── THREE COLUMNS ── */
     .two-col {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2px;
       margin-bottom: 40px;
+    }
+    @media (max-width: 840px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
     }
     .entry-card {
       background: var(--card);
@@ -242,6 +245,7 @@
       .two-col { grid-template-columns: 1fr; }
       .entry-card { padding: 20px 22px; }
     }
+
   </style>
 </head>
 <body>
@@ -266,12 +270,12 @@
     </header>
 
     <div class="two-col">
-      <a class="entry-card" href="think/index.html">
+      <a class="entry-card" href="history/index.html">
         <span class="entry-icon">𓂀</span>
-        <div class="entry-label">思考 · Think</div>
+        <div class="entry-label">历史 · History</div>
         <div class="entry-title">古埃及众神关系图</div>
         <div class="entry-desc">在飞往开罗的路上，我把读到的古埃及神话体系整理成一张可以交互的关系地图。拉、奥西里斯、伊西斯……这不只是神话学知识，而是一套用来理解埃及文明底层逻辑的坐标系。</div>
-        <span class="entry-btn">进入思考页 →</span>
+        <span class="entry-btn">进入历史页 →</span>
       </a>
 
       <a class="entry-card" href="action/index.html">
@@ -281,15 +285,23 @@
         <div class="entry-desc">从警察博物馆到军事博物馆，再到一家温州90后女生开的 Nefertiti 奶茶店——这不是打卡，而是在同一片空间里看见国家叙事、历史积层与当代全球化流动如何叠压在一起。</div>
         <span class="entry-btn">进入行程页 →</span>
       </a>
+
+      <a class="entry-card" href="think/index.html">
+        <span class="entry-icon">💭</span>
+        <div class="entry-label">思考 · Think</div>
+        <div class="entry-title">奶茶店与温州人出海</div>
+        <div class="entry-desc">娜芙缇缇奶茶店的老板娘来自温州。这让我开始想一个更大的问题：温州人为什么能在全球任何角落先开一家店？这背后是什么样的生存逻辑？</div>
+        <span class="entry-btn">进入思考页 →</span>
+      </a>
     </div>
 
     <div class="notes">
       <div class="notes-title">记录说明</div>
       <ul>
-        <li>思考页保留了我对古埃及众神关系的原始整理，可以点击互动；这是进入埃及之前的知识底稿。</li>
+        <li>历史页保留了我对古埃及众神关系的原始整理，可以点击互动；这是进入埃及之前的知识底稿。</li>
         <li>行程页按时间线呈现城堡区域的走访，4张现场照片已写入。</li>
+        <li>思考页记录了 Nefertiti 奶茶店引发的联想：温州人在全球各地"先开一家店"的生存逻辑。</li>
         <li>第一天的重点不只是"去了哪里"——更重要的是，我如何在现场理解开罗历史的多重时间同时运行。</li>
-        <li>奶茶店那段观察我会持续扩写，它是这一天最鲜活的当代注脚。</li>
       </ul>
     </div>
 

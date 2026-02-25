@@ -1,904 +1,402 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第二天思考 · 古埃及朝代史</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-/* ── SITE NAV ── */
-.site-nav {
-  position: relative; z-index: 20;
-  display: flex; gap: 20px; align-items: center;
-  padding: 16px 24px; font-size: 12px;
-  border-bottom: 1px solid rgba(200,151,58,.12);
-  background: rgba(10,8,6,.6); backdrop-filter: blur(8px);
-  flex-wrap: wrap;
-}
-.site-nav a {
-  color: rgba(200,151,58,.6); text-decoration: none;
-  font-family: 'Cinzel', serif; letter-spacing: 1px; transition: color .2s;
-}
-.site-nav a:hover { color: #C9A84C; }
-.site-nav-sep { color: rgba(200,151,58,.25); }
-.site-nav-cur { color: rgba(212,196,160,.5); font-family: 'Cinzel', serif; letter-spacing: 1px; }
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第二天思考 · 吉萨与传承</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --gold: #c8973a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.8;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% -5%, rgba(200,151,58,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 95% 100%, rgba(74,143,212,.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 96px;
+    }
+    .topbar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 40px;
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
 
-/* ── CONTEXT STRIP ── */
-.context-strip { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 20px 20px 0; }
-.context-card {
-  background: rgba(26,58,92,.15); border: 1px solid rgba(200,151,58,.18);
-  border-left: 3px solid rgba(200,151,58,.5); padding: 14px 20px;
-  display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;
-}
-.context-eyebrow { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; color: #C9A84C; opacity: .7; margin-bottom: 4px; }
-.context-text { font-size: 13px; color: rgba(212,196,160,.75); line-height: 1.7; flex: 1; min-width: 240px; }
-.context-link {
-  align-self: center; white-space: nowrap; font-family: 'Cinzel', serif;
-  font-size: 11px; letter-spacing: 1px; color: #C9A84C; text-decoration: none;
-  border: 1px solid rgba(200,151,58,.3); padding: 6px 14px; transition: all .2s;
-}
-.context-link:hover { background: rgba(200,151,58,.1); }
-</style>
-<style>
-:root {
-  --gold: #C9A84C; --gold-light: #F0D080; --gold-dark: #8B6914;
-  --lapis: #1A3A5C; --lapis-light: #2A5480;
-  --sand: #F5E6C8; --sand-dark: #D4C4A0; --papyrus: #EDD9A3;
-  --black: #0A0806; --red-ancient: #8B2020; --teal: #1A7A6E;
-  --bg: #0D0B08;
-  --era-early: #7A5C2A; --era-old: #C4960A; --era-middle: #2A6090;
-  --era-new: #C9A84C; --era-late: #5A3A70; --era-ptolemaic: #1A7A6E;
-}
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      opacity: .8;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.9;
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg); color: var(--sand);
-  font-family: 'Noto Serif SC', serif; overflow-x: hidden; min-height: 100vh;
-}
-body::before {
-  content: ''; position: fixed; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 80% 60% at 15% -10%, rgba(201,168,76,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 90% 110%, rgba(26,58,92,.08) 0%, transparent 45%);
-}
+    /* ── PROSE ── */
+    .prose {
+      display: grid;
+      gap: 56px;
+      margin-bottom: 60px;
+    }
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--gold);
+      opacity: .9;
+      margin-bottom: 18px;
+    }
+    .prose p {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.95;
+      margin-bottom: 18px;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose p strong { color: var(--ink); font-weight: 600; }
+    .prose p em { font-style: normal; color: var(--gold); }
 
-/* ── STARS ── */
-.stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.star {
-  position: absolute; border-radius: 50%; background: #fff;
-  animation: twinkle var(--d, 4s) var(--delay, 0s) infinite ease-in-out alternate;
-  opacity: 0;
-}
-@keyframes twinkle { 0% { opacity: 0; } 50% { opacity: var(--o, .4); } 100% { opacity: 0; } }
+    /* ── HISTORY ASIDE ── */
+    .aside {
+      background: var(--surface);
+      border-left: 3px solid rgba(200,151,58,.4);
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .aside-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: .6;
+      margin-bottom: 10px;
+    }
+    .aside p {
+      font-size: 13px !important;
+      color: var(--ink-faint) !important;
+      line-height: 1.8 !important;
+      margin-bottom: 8px !important;
+    }
+    .aside p:last-child { margin-bottom: 0 !important; }
 
-/* ── HEADER ── */
-.main-header {
-  position: relative; z-index: 5; text-align: center;
-  padding: 48px 20px 32px; max-width: 900px; margin: 0 auto;
-}
-.hieroglyph-band {
-  font-size: 24px; letter-spacing: 8px; opacity: .25; margin-bottom: 16px;
-  color: var(--gold); font-family: serif;
-}
-.main-header h1 {
-  font-family: 'Cinzel Decorative', serif; font-size: clamp(20px, 4vw, 38px);
-  color: var(--gold-light); letter-spacing: 2px; margin-bottom: 10px; line-height: 1.2;
-}
-.main-header h1 span {
-  display: block; font-family: 'Noto Serif SC', serif; font-size: clamp(14px, 2vw, 20px);
-  color: rgba(212,196,160,.6); letter-spacing: 6px; font-weight: 300; margin-top: 6px;
-}
-.subtitle {
-  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px;
-  color: rgba(201,168,76,.5); margin-top: 14px;
-}
+    /* ── IMAGE BLOCK ── */
+    .img-block { margin: 32px 0; }
+    .img-block img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--line-faint);
+      filter: sepia(.15) brightness(.92);
+    }
+    .img-block figcaption {
+      font-size: 12px;
+      color: var(--ink-faint);
+      line-height: 1.7;
+      padding: 8px 12px;
+      background: var(--surface);
+      border: 1px solid var(--line-faint);
+      border-top: none;
+      font-style: italic;
+    }
 
-/* ── NAV TABS ── */
-.nav-tabs {
-  position: relative; z-index: 5;
-  display: flex; gap: 2px; max-width: 900px; margin: 0 auto 32px;
-  padding: 0 20px; flex-wrap: wrap;
-}
-.nav-tab {
-  flex: 1; min-width: 120px; padding: 12px 16px; background: rgba(26,58,92,.15);
-  border: 1px solid rgba(201,168,76,.15); color: rgba(212,196,160,.5);
-  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px;
-  cursor: pointer; transition: all .3s; white-space: nowrap; text-align: center;
-}
-.nav-tab:hover { background: rgba(201,168,76,.08); color: var(--gold); border-color: rgba(201,168,76,.3); }
-.nav-tab.active { background: rgba(201,168,76,.12); color: var(--gold-light); border-color: rgba(201,168,76,.4); border-bottom-color: transparent; }
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line-faint);
+    }
 
-/* ── CONTENT AREA ── */
-.content-area { position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 0 20px 80px; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-/* ── SECTION LABEL ── */
-.section-label {
-  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 4px;
-  color: rgba(201,168,76,.5); margin-bottom: 24px; padding-bottom: 12px;
-  border-bottom: 1px solid rgba(201,168,76,.1);
-}
-
-/* ── ERA FILTERS ── */
-.filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
-.filter-pill {
-  padding: 6px 14px; background: transparent; border: 1px solid rgba(201,168,76,.2);
-  color: rgba(212,196,160,.5); font-family: 'Cinzel', serif; font-size: 10px;
-  letter-spacing: 2px; cursor: pointer; transition: all .2s; white-space: nowrap;
-}
-.filter-pill:hover { border-color: rgba(201,168,76,.5); color: var(--sand); }
-.filter-pill.active { color: var(--sand); }
-.filter-pill[data-era="all"].active { background: rgba(201,168,76,.12); border-color: var(--gold); color: var(--gold); }
-.filter-pill[data-era="early"].active { background: rgba(122,92,42,.2); border-color: var(--era-early); color: #C8A060; }
-.filter-pill[data-era="old"].active { background: rgba(196,150,10,.15); border-color: var(--era-old); color: var(--era-old); }
-.filter-pill[data-era="middle"].active { background: rgba(42,96,144,.2); border-color: var(--era-middle); color: #5A9FD4; }
-.filter-pill[data-era="new"].active { background: rgba(201,168,76,.15); border-color: var(--era-new); color: var(--gold-light); }
-.filter-pill[data-era="late"].active { background: rgba(90,58,112,.2); border-color: var(--era-late); color: #9A6AC0; }
-.filter-pill[data-era="ptolemaic"].active { background: rgba(26,122,110,.2); border-color: var(--era-ptolemaic); color: #3AB8A8; }
-
-/* ── PHARAOH GRID ── */
-.pharaoh-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;
-}
-.pharaoh-card {
-  background: linear-gradient(145deg, rgba(26,58,92,.35), rgba(10,8,6,.75));
-  border: 1px solid rgba(201,168,76,.2); cursor: pointer;
-  transition: all .35s cubic-bezier(.175,.885,.32,1.275); position: relative; overflow: hidden;
-}
-.pharaoh-card:hover {
-  border-color: var(--gold); transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(201,168,76,.15);
-}
-.pharaoh-card.has-papyrus { box-shadow: 0 0 0 1px rgba(201,168,76,.25), inset 0 0 30px rgba(201,168,76,.04); }
-.pharaoh-card.has-papyrus:hover { box-shadow: 0 12px 40px rgba(201,168,76,.25), 0 0 0 1px var(--gold); }
-.pharaoh-card.hidden { display: none; }
-
-.pharaoh-avatar {
-  padding: 24px 20px 16px; text-align: center; position: relative;
-  border-bottom: 1px solid rgba(201,168,76,.1);
-}
-.pharaoh-glyph { font-size: 40px; display: block; margin-bottom: 8px; opacity: .8; }
-.pharaoh-era-badge {
-  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1.5px;
-  padding: 2px 8px; border: 1px solid; border-radius: 1px; display: inline-block;
-}
-
-.pharaoh-info { padding: 14px 18px 16px; }
-.pharaoh-name-zh { font-size: 16px; font-weight: 600; color: var(--sand); margin-bottom: 3px; }
-.pharaoh-name-latin { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1px; color: rgba(212,196,160,.45); margin-bottom: 8px; }
-.pharaoh-meta { font-size: 11px; color: rgba(212,196,160,.45); margin-bottom: 8px; line-height: 1.5; }
-.pharaoh-achievement { font-size: 12px; color: rgba(212,196,160,.65); line-height: 1.6; margin-bottom: 10px; }
-
-.papyrus-badges { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 10px; border-top: 1px solid rgba(201,168,76,.12); }
-.papyrus-badge {
-  font-size: 10px; padding: 2px 7px;
-  background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.35);
-  color: var(--gold); font-family: 'Cinzel', serif; letter-spacing: .5px;
-}
-
-/* ── DYNASTY TIMELINE TAB ── */
-.dynasty-timeline-wrap { margin: 0 0 32px; overflow-x: auto; }
-.dynasty-rail { display: flex; height: 64px; min-width: 700px; gap: 2px; }
-.era-block { position: relative; cursor: pointer; transition: filter .2s; }
-.era-block:hover .era-block-inner { opacity: 1; filter: brightness(1.15); }
-.era-block-inner {
-  height: 100%; opacity: .7; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 3px; transition: opacity .2s; padding: 0 6px;
-}
-.era-label-zh { font-family: 'Cinzel', serif; font-size: 11px; color: var(--sand); letter-spacing: 2px; white-space: nowrap; }
-.era-label-period { font-size: 9px; color: rgba(245,230,200,.55); white-space: nowrap; }
-
-.pharaoh-dots-row { position: relative; height: 36px; min-width: 700px; margin-top: 2px; }
-.pharaoh-dot {
-  position: absolute; top: 8px; width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid var(--bg); cursor: pointer; transform: translateX(-50%);
-  transition: transform .2s, box-shadow .2s; z-index: 2;
-}
-.pharaoh-dot:hover { transform: translateX(-50%) scale(1.5); z-index: 10; }
-.pharaoh-dot.has-papyrus { box-shadow: 0 0 0 2px var(--gold), 0 0 10px rgba(201,168,76,.6); }
-.pharaoh-dot-tip {
-  display: none; position: absolute; top: -32px; left: 50%; transform: translateX(-50%);
-  background: rgba(10,8,6,.9); border: 1px solid rgba(201,168,76,.3); padding: 4px 8px;
-  font-family: 'Cinzel', serif; font-size: 9px; color: var(--gold); white-space: nowrap; pointer-events: none;
-}
-.pharaoh-dot:hover .pharaoh-dot-tip { display: block; }
-
-.era-detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
-.era-detail-card {
-  border: 1px solid rgba(201,168,76,.15); border-left-width: 3px;
-  background: rgba(26,58,92,.08); padding: 18px 20px;
-}
-.era-detail-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
-.era-detail-name { font-family: 'Cinzel', serif; font-size: 13px; color: var(--sand); letter-spacing: 1px; }
-.era-detail-period { font-size: 11px; color: rgba(212,196,160,.4); font-family: 'Cinzel', serif; white-space: nowrap; }
-.era-detail-desc { font-size: 12px; color: rgba(212,196,160,.6); line-height: 1.7; margin-bottom: 14px; }
-.era-pharaoh-chips { display: flex; gap: 6px; flex-wrap: wrap; }
-.era-pharaoh-chip {
-  font-size: 11px; padding: 3px 10px; background: rgba(201,168,76,.08);
-  border: 1px solid rgba(201,168,76,.18); color: rgba(212,196,160,.65);
-  cursor: pointer; transition: all .2s; font-family: 'Cinzel', serif; letter-spacing: .5px;
-}
-.era-pharaoh-chip:hover { background: rgba(201,168,76,.15); color: var(--gold); border-color: rgba(201,168,76,.4); }
-.era-pharaoh-chip.linked { border-color: rgba(201,168,76,.4); color: var(--gold); }
-
-/* ── PAPYRUS ORIGINS TAB ── */
-.tab-intro { font-size: 14px; color: rgba(212,196,160,.6); line-height: 1.8; max-width: 700px; margin-bottom: 32px; }
-.papyrus-origin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-.papyrus-origin-card {
-  border: 1px solid rgba(201,168,76,.25); border-top-width: 2px;
-  background: linear-gradient(160deg, rgba(26,58,92,.18), rgba(10,8,6,.8)); padding: 22px 24px;
-  position: relative;
-}
-.papyrus-origin-header { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; flex-wrap: wrap; }
-.papyrus-origin-icon { font-size: 36px; flex-shrink: 0; opacity: .75; }
-.papyrus-origin-names { flex: 1; }
-.papyrus-origin-name { font-size: 17px; font-weight: 600; color: var(--sand); margin-bottom: 2px; }
-.papyrus-origin-en { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1px; color: rgba(212,196,160,.4); }
-.dynasty-badge {
-  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1px; color: var(--sand);
-  padding: 3px 9px; margin-top: 4px; display: inline-block; opacity: .9;
-}
-.papyrus-origin-year { font-family: 'Cinzel', serif; font-size: 11px; color: var(--gold); letter-spacing: 1px; margin-bottom: 6px; }
-.papyrus-origin-symbol { font-size: 12px; color: rgba(212,196,160,.5); margin-bottom: 12px; letter-spacing: .5px; }
-.papyrus-origin-note { font-size: 13px; color: rgba(212,196,160,.65); line-height: 1.75; margin-bottom: 16px; }
-
-.papyrus-timeline-bar { position: relative; height: 6px; background: rgba(201,168,76,.07); border: 1px solid rgba(201,168,76,.12); margin: 0 0 6px; }
-.papyrus-timeline-fill { position: absolute; top: 0; bottom: 0; }
-.papyrus-timeline-fill.dot { width: 3px; background: var(--gold); }
-.papyrus-timeline-fill.full { left: 0; right: 0; background: linear-gradient(to right, rgba(201,168,76,.1), rgba(201,168,76,.35), rgba(201,168,76,.1)); }
-.papyrus-timeline-label { font-size: 9px; color: rgba(201,168,76,.5); font-family: 'Cinzel', serif; letter-spacing: 1px; }
-
-.papyrus-connected { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(201,168,76,.12); }
-.papyrus-connected-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: rgba(201,168,76,.5); margin-bottom: 8px; }
-.pharaoh-chip {
-  display: inline-block; font-size: 11px; padding: 3px 10px; margin: 3px 4px 3px 0;
-  background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.2);
-  color: rgba(212,196,160,.7); cursor: pointer; transition: all .2s; font-family: 'Cinzel', serif;
-}
-.pharaoh-chip:hover { background: rgba(201,168,76,.18); color: var(--gold); border-color: var(--gold); }
-
-/* ── HISTORY EVENTS TAB ── */
-.event-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
-.event-card {
-  background: linear-gradient(145deg, rgba(26,58,92,.2), rgba(10,8,6,.8));
-  border: 1px solid rgba(201,168,76,.15); overflow: hidden;
-}
-.event-card-header { padding: 18px 22px 14px; border-bottom: 1px solid rgba(201,168,76,.08); }
-.event-num { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: rgba(201,168,76,.45); margin-bottom: 6px; }
-.event-title { font-size: 16px; font-weight: 600; color: var(--sand); line-height: 1.3; margin-bottom: 4px; }
-.event-year { font-family: 'Cinzel', serif; font-size: 11px; color: var(--gold); letter-spacing: 1px; }
-.event-card-body { padding: 16px 22px 18px; font-size: 13px; color: rgba(212,196,160,.65); line-height: 1.8; }
-.event-pharaoh-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(201,168,76,.1); }
-
-/* ── MODAL ── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75);
-  backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 20px;
-}
-.modal-overlay.open { display: flex; }
-.modal {
-  background: #0F0D0A; border: 1px solid rgba(201,168,76,.3); max-width: 600px; width: 100%;
-  max-height: 88vh; overflow-y: auto; position: relative;
-  animation: modalIn .3s cubic-bezier(.175,.885,.32,1.275);
-}
-@keyframes modalIn { from { opacity: 0; transform: scale(.92) translateY(12px); } to { opacity: 1; transform: none; } }
-.modal-close {
-  position: sticky; top: 12px; float: right; margin: 12px 16px 0 0;
-  background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.25); color: var(--gold);
-  width: 32px; height: 32px; cursor: pointer; font-size: 14px; z-index: 10;
-  display: flex; align-items: center; justify-content: center;
-}
-.modal-close:hover { background: rgba(201,168,76,.2); }
-.modal-header { padding: 28px 28px 0; }
-.modal-glyph { font-size: 48px; margin-bottom: 12px; display: block; opacity: .75; }
-.modal-name-zh { font-size: 24px; font-weight: 600; color: var(--sand); margin-bottom: 4px; }
-.modal-name-latin { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: rgba(212,196,160,.45); margin-bottom: 12px; }
-.modal-meta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
-.modal-badge {
-  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1px; padding: 3px 10px;
-  border: 1px solid; display: inline-block;
-}
-.modal-body { padding: 20px 28px 28px; }
-.modal-section { margin-bottom: 22px; }
-.modal-section-label {
-  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: rgba(201,168,76,.5);
-  margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid rgba(201,168,76,.1);
-}
-.modal-note { font-size: 14px; color: rgba(212,196,160,.75); line-height: 1.85; }
-.modal-facts { list-style: none; display: grid; gap: 7px; }
-.modal-facts li { font-size: 13px; color: rgba(212,196,160,.6); padding-left: 16px; position: relative; line-height: 1.6; }
-.modal-facts li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: .4; }
-.attr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.attr-item { background: rgba(26,58,92,.15); border: 1px solid rgba(201,168,76,.1); padding: 10px 14px; }
-.attr-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: rgba(201,168,76,.45); margin-bottom: 4px; }
-.attr-value { font-size: 13px; color: rgba(212,196,160,.75); line-height: 1.5; }
-.papyrus-link-item {
-  display: flex; gap: 12px; align-items: flex-start;
-  background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.15); padding: 12px 14px; margin-bottom: 8px;
-}
-.papyrus-link-icon { font-size: 22px; flex-shrink: 0; opacity: .7; }
-.papyrus-link-name { font-size: 13px; font-weight: 600; color: var(--gold); margin-bottom: 2px; }
-.papyrus-link-symbol { font-size: 11px; color: rgba(212,196,160,.5); }
-
-@media (max-width: 640px) {
-  .pharaoh-grid { grid-template-columns: 1fr 1fr; }
-  .era-detail-grid { grid-template-columns: 1fr; }
-  .papyrus-origin-grid { grid-template-columns: 1fr; }
-  .event-cards-grid { grid-template-columns: 1fr; }
-  .attr-grid { grid-template-columns: 1fr; }
-  .nav-tabs { flex-direction: column; }
-  .nav-tab { min-width: unset; }
-}
-</style>
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border: 1px solid var(--line-faint);
+      padding: 8px 16px;
+      transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+  </style>
 </head>
-<body>
+<body class="">
+  <div class="wrap">
 
-<div class="stars" id="stars"></div>
+    <nav class="topbar">
+      <a href="../../../index.html">← 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第二天</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">思考</span>
+    </nav>
 
-<nav class="site-nav">
-  <a href="../../../index.html">旅行目录</a>
-  <span class="site-nav-sep">/</span>
-  <a href="../index.html">第二天</a>
-  <span class="site-nav-sep">/</span>
-  <span class="site-nav-cur">思考 · 朝代史</span>
-</nav>
+    <header class="hero">
+      <div class="hero-eyebrow">Day 02 · Think · 2026.02.23</div>
+      <h1 data-key="days.1.think_title">吉萨与<em>传承</em></h1>
+      <p class="hero-lead" data-key="days.1.think_lead">哈夫拉的哥哥没有留在吉萨；金字塔有可能是天狼星人建的；哈利利市场卖着4500年前的符号；研究柏拉图的Hoda教授在晚餐桌上聊AI和儿童哲学。这一天的每一站都在绕同一个问题：什么东西真的能传下去，以什么形式。</p>
+    </header>
 
-<div class="context-strip">
-  <div class="context-card">
-    <div style="flex:1; min-width:240px;">
-      <div class="context-eyebrow">Day 02 · Think · 2026.02.23</div>
-      <p class="context-text">从哈利利市场带回四幅莎草纸画的那一刻，我想知道这些符号背后是哪段历史在说话。这里是古埃及朝代史的可交互版本——带有 ✦ 标记的法老与你的四幅画直接相关。</p>
-    </div>
-    <a class="context-link" href="../action/index.html">查看第二天行程 →</a>
-  </div>
-</div>
+    <div class="prose">
 
-<header class="main-header">
-  <div class="hieroglyph-band">𓇳 𓅃 𓉴 △ 𓆄 ☀️ 𓃀 🏛️ 🌺</div>
-  <h1 data-key="days.1.think_title">DYNASTIA AEGYPTI<span>古 埃 及 朝 代 史</span></h1>
-  <p class="subtitle" data-key="days.1.think_subtitle">Pharaohs · Dynasties · Papyrus Origins</p>
-</header>
+      <!-- 第一节 -->
+      <section>
+        <div class="section-label">I · 哈夫拉的哥哥去哪了</div>
+        <p>
+          站在吉萨高地，背对着三座金字塔，我问了一个很具体的问题：
+          为什么是三座？胡夫、哈夫拉、孟卡拉，三代法老，三座金字塔，整整齐齐排在同一条高地上。
+          但这三个人之间，其实还有一个人。
+        </p>
 
-<div class="nav-tabs">
-  <button class="nav-tab active" onclick="switchTab('pharaohs', this)">𓅃 法老图谱</button>
-  <button class="nav-tab" onclick="switchTab('timeline', this)">𓇳 朝代时间线</button>
-  <button class="nav-tab" onclick="switchTab('papyrus', this)">𓋴 莎草纸溯源</button>
-  <button class="nav-tab" onclick="switchTab('events', this)">𓏏 历史大事</button>
-</div>
-
-<div class="content-area">
-
-  <!-- TAB 1: PHARAOH GRID -->
-  <div class="tab-content active" id="tab-pharaohs">
-    <div class="section-label">PHARAOH ATLAS · 带 ✦ 标记的法老与你购买的莎草纸画直接相关</div>
-    <div class="filter-row" id="era-filters"></div>
-    <div class="pharaoh-grid" id="pharaoh-grid"></div>
-  </div>
-
-  <!-- TAB 2: DYNASTY TIMELINE -->
-  <div class="tab-content" id="tab-timeline">
-    <div class="section-label">DYNASTY TIMELINE · 公元前 3100 年至公元前 30 年</div>
-    <div class="dynasty-timeline-wrap">
-      <div class="dynasty-rail" id="dynasty-rail"></div>
-      <div class="pharaoh-dots-row" id="pharaoh-dots"></div>
-    </div>
-    <div class="era-detail-grid" id="era-details"></div>
-  </div>
-
-  <!-- TAB 3: PAPYRUS ORIGINS -->
-  <div class="tab-content" id="tab-papyrus">
-    <div class="section-label">PAPYRUS ORIGINS · 四幅莎草纸的朝代溯源</div>
-    <p class="tab-intro">从哈利利市场带回来的四张纸，不只是装饰品。每一幅画都有一条穿越数千年的历史线索，连接着古埃及最核心的王朝与符号体系。</p>
-    <div class="papyrus-origin-grid" id="papyrus-origin-grid"></div>
-  </div>
-
-  <!-- TAB 4: HISTORY EVENTS -->
-  <div class="tab-content" id="tab-events">
-    <div class="section-label">HISTORY EVENTS · 六个改变埃及的历史时刻</div>
-    <div class="event-cards-grid" id="event-cards"></div>
-  </div>
-
-</div>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-header" id="modal-header"></div>
-    <div class="modal-body" id="modal-body"></div>
-  </div>
-</div>
-
-<script>
-// ── DATA ──────────────────────────────────────────────────────────────────
-
-const ERAS = [
-  { id:'early', zh:'早王朝', en:'Early Dynastic', period:'3100–2686 BCE', years:414,
-    color:'var(--era-early)', desc:'上下埃及统一，象形文字发明，王权神格化开始。纳尔迈完成统一，第一、二王朝建立。历史上第一个统一大型国家政治实体之一。',
-    dynasties:'第一、二王朝', capital:'提尼斯 / 孟菲斯' },
-  { id:'old', zh:'古王国', en:'Old Kingdom', period:'2686–2181 BCE', years:505,
-    color:'var(--era-old)', desc:'金字塔时代。第三至第六王朝，法老权力达到顶峰，吉萨三大金字塔建成。马特神学体系化，法老被视为宇宙秩序的维护者。',
-    dynasties:'第三至第六王朝', capital:'孟菲斯' },
-  { id:'middle', zh:'中王国', en:'Middle Kingdom', period:'2055–1650 BCE', years:405,
-    color:'var(--era-middle)', desc:'重新统一后的复兴期。文学黄金时代，努比亚扩张，行政体系成熟。被后世称为古埃及文学与文化的经典时代。',
-    dynasties:'第十一至第十四王朝', capital:'底比斯 / 伊提塔维' },
-  { id:'new', zh:'新王国', en:'New Kingdom', period:'1550–1069 BCE', years:481,
-    color:'var(--era-new)', desc:'埃及帝国最强盛时期。驱逐喜克索斯，帝国扩张至叙利亚与努比亚。图坦卡蒙、阿肯那顿、拉美西斯二世均在此期。与四幅莎草纸画直接相关。',
-    dynasties:'第十八至第二十王朝', capital:'底比斯' },
-  { id:'late', zh:'晚期王朝', en:'Late Period', period:'664–332 BCE', years:332,
-    color:'var(--era-late)', desc:'亚述、波斯相继入侵与统治，本土王朝几度复辟。埃及独立性逐渐丧失，但传统文化仍顽强延续。',
-    dynasties:'第二十六至第三十一王朝', capital:'赛斯 / 孟菲斯' },
-  { id:'ptolemaic', zh:'托勒密', en:'Ptolemaic', period:'332–30 BCE', years:302,
-    color:'var(--era-ptolemaic)', desc:'亚历山大大帝征服后，希腊文化与埃及传统融合。末代法老克莱奥帕特拉七世于前30年自尽，三千年法老文明终结。',
-    dynasties:'托勒密王朝', capital:'亚历山大城' },
-];
-
-// papyrusLinks连接到下方PAPYRUS_PAINTINGS的id
-const PHARAOHS = [
-  { id:'narmer', zh:'纳尔迈 / 美尼斯', latin:'Narmer / Menes', era:'early',
-    dynasty:'第一王朝', reign:'约 3100 BCE', icon:'𓇳',
-    achievement:'统一上下埃及，建立第一王朝', papyrusLinks:[],
-    keyFacts:[
-      '纳尔迈调色板是现存最早的历史性铭文之一',
-      '白冠（上埃及）与红冠（下埃及）首次合一',
-      '孟菲斯建城传说与美尼斯相关联',
-      '开创了法老作为"两地之王"的王权格式',
-    ],
-    note:'纳尔迈和美尼斯是否是同一人，历史学界仍有争议，但纳尔迈调色板是埃及统一最清晰的物证。他开创的王权格式——双冠、权杖、法老的神格——延续了三千年不变。' },
-
-  { id:'djoser', zh:'左塞尔', latin:'Djoser', era:'old',
-    dynasty:'第三王朝', reign:'约 2670–2648 BCE', icon:'𓉴',
-    achievement:'建造萨卡拉阶梯金字塔，人类首座大型石构建筑', papyrusLinks:[],
-    keyFacts:[
-      '宰相伊姆霍特普设计了阶梯金字塔，用石头替代泥砖',
-      '萨卡拉综合建筑群是完整的仪式性死后王国',
-      '伊姆霍特普后被神化，成为智慧与医学之神',
-      '历史上第一位有名有姓的非王族建筑设计者',
-    ],
-    note:'左塞尔的阶梯金字塔是古代世界第一座大型石构建筑，开创了金字塔建造传统。他的建筑师伊姆霍特普是历史上第一位有名有姓的非王族人物——天才往往需要一位君主给他实验的机会。' },
-
-  { id:'khufu', zh:'胡夫', latin:'Khufu / Cheops', era:'old',
-    dynasty:'第四王朝', reign:'约 2589–2566 BCE', icon:'△',
-    achievement:'建造吉萨大金字塔，古代世界最高建筑', papyrusLinks:[],
-    keyFacts:[
-      '大金字塔高146.5米，保持世界最高建筑纪录近3800年',
-      '动员约2.3万工人，建造时间约20年',
-      '本人存世肖像只有一件极小的象牙雕像（约7厘米）',
-      '吉萨高原的天文朝向被认为对应猎户座腰带',
-    ],
-    note:'你今天早上站在面前的那座金字塔，就是胡夫的。他的陵墓内部的精密程度比任何想象的都要惊人——国王墓室、皇后墓室、大走廊，以及至今未完全解开的通风井谜团。讽刺的是，建造了世界最大建筑的法老，留下的唯一肖像小到可以放在手掌里。' },
-
-  { id:'hatshepsut', zh:'哈特谢普苏特', latin:'Hatshepsut', era:'new',
-    dynasty:'第十八王朝', reign:'约 1479–1458 BCE', icon:'𓆄',
-    achievement:'古埃及最成功的女性法老，扩大贸易路线至蓬特', papyrusLinks:[],
-    keyFacts:[
-      '以摄政王身份开始执政，后自称法老并戴双冠',
-      '壁画和雕像中以男性形象呈现，但铭文常用女性语法',
-      '德尔巴哈里神庙是其建筑杰作',
-      '继任者图特摩斯三世系统性地抹去她的名字和形象',
-    ],
-    note:'哈特谢普苏特统治埃及至少21年，但继任者几乎将她从所有纪念碑上抹去。她的存在是在近代才被埃及学家从碎片中重建的——"历史的撰写者"决定谁存在、谁消失。这和阿肯那顿被抹名是同一套权力逻辑。' },
-
-  { id:'thutmose3', zh:'图特摩斯三世', latin:'Thutmose III', era:'new',
-    dynasty:'第十八王朝', reign:'约 1479–1425 BCE', icon:'⚔️',
-    achievement:'17次军事远征，埃及帝国版图最大时期', papyrusLinks:[],
-    keyFacts:[
-      '被称为"埃及的拿破仑"，17次叙利亚-巴勒斯坦战役',
-      '帝国北至幼发拉底河，南至尼罗河第四瀑布',
-      '卡尔纳克神庙百柱厅是其建筑贡献',
-      '年记（Annals）是最早的战争年鉴之一',
-    ],
-    note:'他先被哈特谢普苏特压制约20年，后成为埃及史上最伟大的军事征服者。他在去世前系统抹去了哈特谢普苏特的记忆——权力的争夺延伸到了历史书写层面。谁控制了叙事，谁就控制了历史。' },
-
-  { id:'akhenaten', zh:'阿肯那顿 + 奈费尔提提', latin:'Akhenaten + Nefertiti', era:'new',
-    dynasty:'第十八王朝', reign:'约 1353–1336 BCE', icon:'☀️',
-    achievement:'史上最早的一神教改革实验，以阿顿（太阳盘）取代众神', papyrusLinks:['aten'],
-    keyFacts:[
-      '将首都迁至阿玛纳（阿肯阿顿），完全新建的城市',
-      '封闭阿蒙神庙，没收神庙财产，打击祭司集团',
-      '奈费尔提提胸像是古埃及最著名的雕像之一，现藏柏林',
-      '死后被继任者从历史中抹去，称"罪人"或"那个异教徒"',
-    ],
-    note:'阿肯那顿是世界历史上最早的一神教改革者之一，比摩西时代的说法还要早。他的改革彻底失败——但留下了一个视觉遗产：你买的那幅"拜日图"，太阳光末端伸出手掌赐予安卡（生命）。这是一场失败的宗教革命留下的图像。' },
-
-  { id:'tutankhamun', zh:'图坦卡蒙', latin:'Tutankhamun', era:'new',
-    dynasty:'第十八王朝', reign:'约 1332–1323 BCE', icon:'𓅃',
-    achievement:'恢复多神教秩序，其完整陵墓于1922年被发现，震惊世界', papyrusLinks:['tutankhamun','horus_eye','ankh'],
-    keyFacts:[
-      '约9岁登基，19岁去世，死因至今有争议',
-      '原名图坦卡顿（崇拜阿顿），改名图坦卡蒙（崇拜阿蒙），意在恢复旧宗教',
-      '1922年霍华德·卡特发现完整陵墓，3000余件陪葬品完好无损',
-      '黄金面具重约11公斤，纯金打造，是现代世界最著名的埃及文物',
-    ],
-    note:'图坦卡蒙算不上重要的法老，只活了19年，在位约10年，没有赫赫战功。他之所以成为现代世界最著名的埃及法老，完全是因为他的陵墓是唯一没被洗劫一空的王室陵墓。这是"幸存偏差"在历史学上最典型的案例之一。' },
-
-  { id:'ramesses2', zh:'拉美西斯二世', latin:'Ramesses II', era:'new',
-    dynasty:'第十九王朝', reign:'约 1279–1213 BCE', icon:'🏛️',
-    achievement:'在位66年，古埃及史上在位最长法老，阿布辛拜勒神庙建造者', papyrusLinks:['ankh'],
-    keyFacts:[
-      '在位长达66年，娶妻约200人，子女超过100人',
-      '卡迭什战役后签订世界最早的国际和平条约之一',
-      '阿布辛拜勒神庙以天文精度对准生日和加冕日的日出',
-      '埃及学家认为他可能是《出埃及记》中的法老',
-    ],
-    note:'拉美西斯二世把自己的名字刻在了埃及每一座重要建筑上——有时是真正建造的，有时是在前人的纪念碑上抹去旧名换上自己的。他活了大约90岁，亲眼看着帝国在晚年开始衰退。一个极度渴望被记住的人，确实被记住了。' },
-
-  { id:'cleopatra7', zh:'克莱奥帕特拉七世', latin:'Cleopatra VII Philopator', era:'ptolemaic',
-    dynasty:'托勒密王朝末期', reign:'约 51–30 BCE', icon:'🌺',
-    achievement:'最后一位独立统治埃及的法老，三千年法老文明的终点', papyrusLinks:['ankh'],
-    keyFacts:[
-      '托勒密王朝中唯一学习埃及语的成员，通晓9种语言',
-      '先后与凯撒、马克·安东尼结盟，试图维系埃及独立',
-      '前30年奥古斯都攻入埃及，克莱奥帕特拉自尽',
-      '她的死标志着法老时代终结，埃及成为罗马行省',
-    ],
-    note:'克莱奥帕特拉不是埃及人，而是马其顿希腊人——但她是托勒密王朝唯一愿意学习埃及语、融入本地文化的法老。她的死是三千年法老文明的句点。你今天买的安卡符号，在她死后不久就开始被科普特基督徒改造了。' },
-];
-
-const PAPYRUS_PAINTINGS = [
-  { id:'tutankhamun', zh:'图坦卡蒙黄金面具', en:'Tutankhamun Golden Mask', icon:'𓅃',
-    dynasty:'第十八王朝', era:'new', eraColor:'var(--era-new)',
-    year:'约 1332 BCE', symbol:'王权 · 身后名 · 幸存偏差',
-    timelinePos: 57,  // % from left, approx (3100-1332)/3070 * 100
-    isUniversal: false,
-    note:'图坦卡蒙在世时并非强势法老。他的黄金面具成为最著名的埃及符号，纯属幸存偏差——他的陵墓是唯一没被盗空的法老陵。我们以为他代表了法老时代，但他代表的只是"那个唯一保存完好的"。',
-    pharaohs:['tutankhamun','akhenaten'] },
-
-  { id:'aten', zh:'阿顿崇拜 · 拜日图', en:'Aten Worship Scene', icon:'☀️',
-    dynasty:'第十八王朝', era:'new', eraColor:'var(--era-new)',
-    year:'约 1353–1336 BCE', symbol:'太阳崇拜 · 一神教实验',
-    timelinePos: 56,
-    isUniversal: false,
-    note:'画面是法老家族向太阳光芒下跪，太阳光末端伸出手掌赐予安卡（生命符号）。这是阿肯那顿宗教改革的视觉语言——他试图把埃及改成一神教，最终失败，继任者把他的名字从历史记录里抹掉了。这幅画是一场失败的宗教革命留下的残影。',
-    pharaohs:['akhenaten','tutankhamun'] },
-
-  { id:'horus_eye', zh:'荷鲁斯 / 瓦吉特之眼', en:'Horus / Wadjet Eye', icon:'𓂀',
-    dynasty:'跨越所有朝代', era:'all', eraColor:'var(--gold)',
-    year:'跨越所有时代', symbol:'保护 · 治愈 · 完整',
-    timelinePos: 50,
-    isUniversal: true,
-    note:'荷鲁斯之眼是跨越所有王朝的护身符符号，起源于荷鲁斯与赛特的神话。这只眼睛被赛特挖出，由托特复原，因此象征"治愈与完整"。至今仍是全球最流行的纹身图案之一。符号的生命力往往比它诞生的文明更长。',
-    pharaohs:['tutankhamun'] },
-
-  { id:'ankh', zh:'安卡 · 生命之钥', en:'Ankh Cross', icon:'☥',
-    dynasty:'跨越所有朝代', era:'all', eraColor:'var(--gold)',
-    year:'跨越所有时代', symbol:'生命 · 永生 · 符号传承',
-    timelinePos: 50,
-    isUniversal: true,
-    note:'安卡是古埃及象形文字"生命"，后被科普特基督徒改造成科普特十字架（Crux Ansata）。今天在伊斯兰市场里被卖给中国游客——一个符号横跨多神教、基督教、伊斯兰商业的三次转世。这条符号的旅行路线，比我今天的行程远得多。',
-    pharaohs:['tutankhamun','ramesses2','cleopatra7'] },
-];
-
-const HISTORY_EVENTS = [
-  { num:'EVENT I', title:'上下埃及统一', era:'early', year:'约 3100 BCE', pharaohs:['narmer'],
-    body:'纳尔迈完成上下埃及统一，建立第一王朝。纳尔迈调色板同时展示了白冠和红冠，象征两地合一。这是人类历史上第一个统一的大型国家政治实体之一，奠定了三千年法老文明的基础架构。' },
-  { num:'EVENT II', title:'金字塔时代的高峰', era:'old', year:'约 2560 BCE', pharaohs:['djoser','khufu'],
-    body:'从左塞尔的阶梯金字塔到胡夫的大金字塔，古王国第三至第四王朝完成了人类建筑史上最宏伟的工程。金字塔的几何精度和天文对齐并非偶然——它是马特神学（宇宙秩序）的空间表达。吉萨三大金字塔今天仍是古代世界七大奇迹中唯一留存的。' },
-  { num:'EVENT III', title:'阿肯那顿的宗教革命', era:'new', year:'约 1353 BCE', pharaohs:['akhenaten'],
-    body:'阿肯那顿封闭阿蒙神庙，迁都阿玛纳，以阿顿（太阳盘）为唯一神。这是有史以来最早的系统性一神教改革之一。改革持续约17年，阿肯那顿死后被彻底逆转——其名字从所有纪念碑上被抹去，阿马纳城被废弃。你买的那幅拜日图，是这场革命留下的视觉遗物。' },
-  { num:'EVENT IV', title:'图坦卡蒙陵墓的发现', era:'new', year:'1922年（发现）', pharaohs:['tutankhamun'],
-    body:'1922年11月4日，英国埃及学家霍华德·卡特在帝王谷发现图坦卡蒙的完整陵墓。3000多件陪葬品完好保存，黄金面具成为20世纪最著名的考古发现。这个发现重新点燃了全球对古埃及的兴趣，也让一位生前平庸的法老，变成了现代世界最辨识度最高的古代符号。' },
-  { num:'EVENT V', title:'卡迭什战役与首份和平条约', era:'new', year:'约 1274 BCE', pharaohs:['ramesses2'],
-    body:'拉美西斯二世与赫梯帝国在卡迭什（现叙利亚）爆发大战，双方均宣称胜利。约15年后，双方签订《卡迭什条约》——这是现存最早的国际和平条约，副本保存于联合国纽约总部。战争的终点有时不是胜利，而是一纸对话。' },
-  { num:'EVENT VI', title:'法老时代的终结', era:'ptolemaic', year:'前 30 BCE', pharaohs:['cleopatra7'],
-    body:'克莱奥帕特拉七世自尽，埃及并入罗马帝国，三千年的法老文明就此终结。但符号体系并未消失——安卡被改造成科普特十字架，荷鲁斯之眼成为护身符，象形文字消失了，但那些图像的后代还在哈利利市场里被出售。文明可以消失，符号很难死亡。' },
-];
-
-// ── HELPERS ──────────────────────────────────────────────────────────────
-
-function getEra(id) { return ERAS.find(e => e.id === id); }
-function getPharaoh(id) { return PHARAOHS.find(p => p.id === id); }
-function getPainting(id) { return PAPYRUS_PAINTINGS.find(p => p.id === id); }
-
-const ERA_COLORS = {};
-ERAS.forEach(e => ERA_COLORS[e.id] = e.color);
-
-// ── STARS ─────────────────────────────────────────────────────────────────
-
-function createStars() {
-  const container = document.getElementById('stars');
-  for (let i = 0; i < 120; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 2 + .5;
-    s.style.cssText = `
-      left:${Math.random()*100}%; top:${Math.random()*100}%;
-      width:${size}px; height:${size}px;
-      --d:${3+Math.random()*5}s; --delay:${Math.random()*6}s; --o:${.1+Math.random()*.4};
-    `;
-    container.appendChild(s);
-  }
-}
-
-// ── TAB SWITCHING ─────────────────────────────────────────────────────────
-
-function switchTab(name, btn) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (name === 'timeline' && !document.getElementById('dynasty-rail').children.length) renderTimeline();
-}
-
-// ── ERA FILTERS ───────────────────────────────────────────────────────────
-
-function renderEraFilters() {
-  const row = document.getElementById('era-filters');
-  const allBtn = document.createElement('button');
-  allBtn.className = 'filter-pill active';
-  allBtn.dataset.era = 'all';
-  allBtn.textContent = '全部';
-  allBtn.onclick = () => filterPharaohs('all', allBtn);
-  row.appendChild(allBtn);
-  ERAS.forEach(era => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-pill';
-    btn.dataset.era = era.id;
-    btn.textContent = era.zh + ' ' + era.period;
-    btn.onclick = () => filterPharaohs(era.id, btn);
-    row.appendChild(btn);
-  });
-}
-
-function filterPharaohs(eraId, btn) {
-  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.pharaoh-card').forEach(card => {
-    card.classList.toggle('hidden', eraId !== 'all' && card.dataset.era !== eraId);
-  });
-}
-
-// ── PHARAOH GRID ──────────────────────────────────────────────────────────
-
-function renderPharaohs() {
-  const grid = document.getElementById('pharaoh-grid');
-  PHARAOHS.forEach(p => {
-    const era = getEra(p.era) || { color:'var(--gold)', zh:'' };
-    const hasPapyrus = p.papyrusLinks.length > 0;
-    const card = document.createElement('div');
-    card.className = 'pharaoh-card' + (hasPapyrus ? ' has-papyrus' : '');
-    card.dataset.era = p.era;
-    card.onclick = () => openPharaohModal(p);
-    card.innerHTML = `
-      <div class="pharaoh-avatar" style="background: linear-gradient(160deg, ${era.color}18, rgba(10,8,6,.6));">
-        <span class="pharaoh-glyph">${p.icon}</span>
-        <span class="pharaoh-era-badge" style="color:${era.color}; border-color:${era.color}50;">${era.zh}${hasPapyrus ? ' ✦' : ''}</span>
-      </div>
-      <div class="pharaoh-info">
-        <div class="pharaoh-name-zh">${p.zh}</div>
-        <div class="pharaoh-name-latin">${p.latin}</div>
-        <div class="pharaoh-meta">${p.dynasty} · ${p.reign}</div>
-        <div class="pharaoh-achievement">${p.achievement}</div>
-        ${hasPapyrus ? `<div class="papyrus-badges">${p.papyrusLinks.map(id => {
-          const pt = getPainting(id);
-          return `<span class="papyrus-badge">${pt ? pt.icon + ' ' + pt.zh.split('·')[0].trim() : id}</span>`;
-        }).join('')}</div>` : ''}
-      </div>`;
-    grid.appendChild(card);
-  });
-}
-
-// ── MODAL ─────────────────────────────────────────────────────────────────
-
-function openPharaohModal(p) {
-  const era = getEra(p.era) || { color:'var(--gold)', zh:'未知时代', zh:'', period:'' };
-  const eraColor = era.color;
-  document.getElementById('modal-header').innerHTML = `
-    <span class="modal-glyph">${p.icon}</span>
-    <div class="modal-name-zh">${p.zh}</div>
-    <div class="modal-name-latin">${p.latin}</div>
-    <div class="modal-meta-row">
-      <span class="modal-badge" style="color:${eraColor}; border-color:${eraColor}50;">${era.zh} ${era.period}</span>
-      <span class="modal-badge" style="color:rgba(212,196,160,.5); border-color:rgba(212,196,160,.15);">${p.dynasty}</span>
-      <span class="modal-badge" style="color:rgba(212,196,160,.5); border-color:rgba(212,196,160,.15);">${p.reign}</span>
-    </div>`;
-
-  const paintingSection = p.papyrusLinks.length > 0 ? `
-    <div class="modal-section">
-      <div class="modal-section-label">𓋴 莎草纸连接 · 与你购买的四幅画相关</div>
-      ${p.papyrusLinks.map(id => {
-        const pt = getPainting(id);
-        if (!pt) return '';
-        return `<div class="papyrus-link-item">
-          <span class="papyrus-link-icon">${pt.icon}</span>
-          <div>
-            <div class="papyrus-link-name">${pt.zh}</div>
-            <div class="papyrus-link-symbol">${pt.symbol}</div>
-          </div>
-        </div>`;
-      }).join('')}
-    </div>` : '';
-
-  document.getElementById('modal-body').innerHTML = `
-    <div class="modal-section">
-      <div class="modal-section-label">𓇳 历史背景</div>
-      <p class="modal-note">${p.note}</p>
-    </div>
-    <div class="modal-section">
-      <div class="modal-section-label">𓏏 关键史实</div>
-      <ul class="modal-facts">${p.keyFacts.map(f => `<li>${f}</li>`).join('')}</ul>
-    </div>
-    <div class="modal-section">
-      <div class="modal-section-label">𓃀 朝代信息</div>
-      <div class="attr-grid">
-        <div class="attr-item"><div class="attr-label">王朝</div><div class="attr-value">${p.dynasty}</div></div>
-        <div class="attr-item"><div class="attr-label">在位时间</div><div class="attr-value">${p.reign}</div></div>
-        <div class="attr-item"><div class="attr-label">历史时代</div><div class="attr-value">${era.zh} · ${era.en}</div></div>
-        <div class="attr-item"><div class="attr-label">当时首都</div><div class="attr-value">${era.capital || '—'}</div></div>
-      </div>
-    </div>
-    ${paintingSection}`;
-
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function openPharaohById(id) {
-  const p = getPharaoh(id);
-  if (p) openPharaohModal(p);
-}
-
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModal();
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-// ── DYNASTY TIMELINE ──────────────────────────────────────────────────────
-
-const TIMELINE_START = 3100; // BCE
-const TIMELINE_END = 30;     // BCE
-const TIMELINE_SPAN = TIMELINE_START - TIMELINE_END; // 3070 years
-
-function yearToPercent(yearBCE) {
-  return ((TIMELINE_START - yearBCE) / TIMELINE_SPAN * 100).toFixed(2);
-}
-
-function renderTimeline() {
-  const rail = document.getElementById('dynasty-rail');
-  const dotsRow = document.getElementById('pharaoh-dots');
-  const detailGrid = document.getElementById('era-details');
-
-  // Build era blocks (flex proportional to years)
-  ERAS.forEach(era => {
-    const block = document.createElement('div');
-    block.className = 'era-block';
-    block.style.flex = era.years;
-    block.title = era.zh + ' ' + era.period;
-    block.innerHTML = `
-      <div class="era-block-inner" style="background:${era.color};">
-        <span class="era-label-zh">${era.zh}</span>
-        <span class="era-label-period">${era.period}</span>
-      </div>`;
-    rail.appendChild(block);
-  });
-
-  // Approx year for each pharaoh (midpoint of reign)
-  const PHARAOH_YEARS = {
-    narmer:3100, djoser:2659, khufu:2577,
-    hatshepsut:1469, thutmose3:1452, akhenaten:1345,
-    tutankhamun:1327, ramesses2:1246, cleopatra7:40,
-  };
-
-  PHARAOHS.forEach(p => {
-    const year = PHARAOH_YEARS[p.id];
-    if (!year) return;
-    const era = getEra(p.era);
-    const hasPapyrus = p.papyrusLinks.length > 0;
-    const pct = yearToPercent(year);
-    const dot = document.createElement('div');
-    dot.className = 'pharaoh-dot' + (hasPapyrus ? ' has-papyrus' : '');
-    dot.style.left = pct + '%';
-    dot.style.background = era ? era.color : 'var(--gold)';
-    dot.onclick = () => openPharaohModal(p);
-    dot.innerHTML = `<div class="pharaoh-dot-tip">${p.zh}</div>`;
-    dotsRow.appendChild(dot);
-  });
-
-  // Era detail cards
-  ERAS.forEach(era => {
-    const pharaohsInEra = PHARAOHS.filter(p => p.era === era.id);
-    const card = document.createElement('div');
-    card.className = 'era-detail-card';
-    card.style.borderLeftColor = era.color;
-    const chips = pharaohsInEra.map(p => {
-      const linked = p.papyrusLinks.length > 0;
-      return `<span class="era-pharaoh-chip${linked ? ' linked' : ''}" onclick="openPharaohModal(getPharaoh('${p.id}'))">${p.icon} ${p.zh.split(' ')[0]}</span>`;
-    }).join('');
-    card.innerHTML = `
-      <div class="era-detail-header">
-        <span class="era-detail-name" style="color:${era.color}">${era.zh} · ${era.en}</span>
-        <span class="era-detail-period">${era.period}</span>
-      </div>
-      <p class="era-detail-desc">${era.desc}</p>
-      ${chips ? `<div class="era-pharaoh-chips">${chips}</div>` : ''}`;
-    detailGrid.appendChild(card);
-  });
-}
-
-// ── PAPYRUS ORIGINS ───────────────────────────────────────────────────────
-
-function renderPapyrusOrigins() {
-  const grid = document.getElementById('papyrus-origin-grid');
-  PAPYRUS_PAINTINGS.forEach(pt => {
-    const connectedPharaohs = PHARAOHS.filter(p => p.papyrusLinks.includes(pt.id));
-    const card = document.createElement('div');
-    card.className = 'papyrus-origin-card';
-    card.style.borderTopColor = pt.eraColor;
-
-    const timelineBar = pt.isUniversal
-      ? `<div class="papyrus-timeline-fill full"></div>`
-      : `<div class="papyrus-timeline-fill dot" style="left:${pt.timelinePos}%; background:${pt.eraColor};"></div>`;
-
-    const pharaohChips = connectedPharaohs.map(p =>
-      `<span class="pharaoh-chip" onclick="openPharaohById('${p.id}')">${p.icon} ${p.zh.split(' ')[0]}</span>`
-    ).join('');
-
-    card.innerHTML = `
-      <div class="papyrus-origin-header">
-        <span class="papyrus-origin-icon">${pt.icon}</span>
-        <div class="papyrus-origin-names">
-          <div class="papyrus-origin-name">${pt.zh}</div>
-          <div class="papyrus-origin-en">${pt.en}</div>
-          <span class="dynasty-badge" style="background:${pt.eraColor}CC;">${pt.dynasty}</span>
+        <div class="aside">
+          <div class="aside-label">历史注记 · 杰德夫拉</div>
+          <p>
+            胡夫死后，继位的不是哈夫拉，而是他的儿子<strong>杰德夫拉（Djedefre）</strong>，约公元前2566年登基，在位约8年。
+            他是第一位在称号中使用「拉之子（Sa Ra）」的法老，将王权的神学基础从荷鲁斯向太阳神拉做了一次迁移。
+          </p>
+          <p>
+            他没有在吉萨建金字塔，而是选择了以北约8公里的<strong>阿布拉瓦什（Abu Rawash）</strong>，
+            那里海拔更高，理论上更醒目。但他的金字塔后来几乎被夷平——罗马时期大量采石，
+            今天剩下的基本是碎石坑。他的石英岩头像残片，现藏于卢浮宫。
+          </p>
+          <p>
+            杰德夫拉之后，哈夫拉回到吉萨，继续在父亲的地盘上建造。
+            但这中间那8年，那个选择了另一座山头的人，几乎从历史中消失了。
+          </p>
         </div>
-      </div>
-      <div class="papyrus-origin-year">${pt.year}</div>
-      <div class="papyrus-origin-symbol">${pt.symbol}</div>
-      <p class="papyrus-origin-note">${pt.note}</p>
-      <div class="papyrus-timeline-bar">${timelineBar}</div>
-      <div class="papyrus-timeline-label">${pt.isUniversal ? '贯穿整个法老时代' : '新王国 第十八王朝'}</div>
-      ${connectedPharaohs.length ? `
-        <div class="papyrus-connected">
-          <div class="papyrus-connected-label">相关法老 · RELATED PHARAOHS</div>
-          ${pharaohChips}
-        </div>` : ''}`;
-    grid.appendChild(card);
-  });
-}
 
-// ── HISTORY EVENTS ────────────────────────────────────────────────────────
+        <p>
+          杰德夫拉的选择是一次<strong>主动断链</strong>——他没有延续吉萨，而是去了别的地方，
+          建了自己的东西，叫了新的称号。
+          但他的传承没有延续下去。哈夫拉重新接上了胡夫的链条，
+          三座金字塔排成一列，那个曾经中断的空白就这样被填平了。
+        </p>
+        <p>
+          历史的传承不总是顺延的。有时候中间有人跑了，
+          有时候后来的人回来把缺口补上，让断裂看起来从未发生。
+        </p>
+      </section>
 
-function renderHistoryEvents() {
-  const grid = document.getElementById('event-cards');
-  HISTORY_EVENTS.forEach(ev => {
-    const era = getEra(ev.era) || { color:'var(--gold)' };
-    const pharaohChips = ev.pharaohs.map(id => {
-      const p = getPharaoh(id);
-      return p ? `<span class="era-pharaoh-chip" onclick="openPharaohById('${id}')">${p.icon} ${p.zh.split(' ')[0]}</span>` : '';
-    }).join('');
-    const card = document.createElement('div');
-    card.className = 'event-card';
-    card.innerHTML = `
-      <div class="event-card-header">
-        <div class="event-num">${ev.num}</div>
-        <div class="event-title">${ev.title}</div>
-        <div class="event-year" style="color:${era.color};">${ev.year}</div>
-      </div>
-      <div class="event-card-body">
-        ${ev.body}
-        ${pharaohChips ? `<div class="event-pharaoh-row">${pharaohChips}</div>` : ''}
-      </div>`;
-    grid.appendChild(card);
-  });
-}
+      <!-- 第二节 -->
+      <section>
+        <div class="section-label">II · 外星人的问题，和去年柏林的下午</div>
+        <p>
+          站在金字塔脚下，不可避免地要想那个问题：
+          这真的是人造的吗？
+        </p>
+        <p>
+          去年在柏林的<strong>新博物馆</strong>也想过这个问题。
+          那里有著名的娜芙蒂蒂头像——就是那尊被德国1912年的考古队带走、
+          埃及政府要了一百年还没要回来的石灰石彩绘胸像。
+          我站在它面前，脑子里浮出的第一个念头是：
+          这不像是3400年前的东西，太现代了。
+          然后马上接上一个问题：为什么我会觉得「太现代」就一定需要更高级的解释？
+        </p>
 
-// ── INIT ──────────────────────────────────────────────────────────────────
+        <div class="aside">
+          <div class="aside-label">理论注记 · 天狼星与猎户座</div>
+          <p>
+            「天狼星人」理论的核心是：吉萨三座金字塔的排列对应猎户座腰带三星，
+            尼罗河对应银河——古埃及人是在地面上复制一套天象图。
+            这个说法来自研究者罗伯特·鲍维尔（Robert Bauval），1994年出版《猎户座之谜》。
+          </p>
+          <p>
+            天狼星（Sirius）在古埃及宗教中对应女神伊西斯，它的偕日升（每年第一次在日出前可见）
+            标志着尼罗河汛期开始和新年。金字塔内部有精确朝向特定星座的通道，
+            这是有考古依据的事实；但「外星建造」没有任何实物证据。
+            考古发现的工人村落、采石记录、工长涂鸦，都指向数万名有组织的人类劳动者。
+          </p>
+        </div>
 
-createStars();
-renderEraFilters();
-renderPharaohs();
-renderPapyrusOrigins();
-renderHistoryEvents();
-</script>
-<script src="../../../assets/js/data-bind.js"></script>
+        <p>
+          外星人理论的吸引力不在于它正确，而在于它<em>说出了一种真实的感受</em>：
+          我们站在这里，感到无法想象当时发生了什么。
+          不是技术上的无法想象——人类当然可以切石头、搭斜坡。
+          是社会组织上的无法想象：<strong>什么样的信仰系统，能让几万人心甘情愿地用一生去建造别人的墓？</strong>
+        </p>
+        <p>
+          石头传下来了。让这些石头成为可能的那套神学与社会合约，没有传下来。
+          我们看到的是结果，丢失的是前提。
+          然后我们说：这一定不是人类做的。
+        </p>
+        <p>
+          去年柏林的娜芙蒂蒂，今天开罗的「Neferdidi」奶茶——
+          同一个名字的两个变形，相隔3400年，一个在德国展柜里，一个在城堡出口卖波霸。
+          传承不问你的意愿，有时候它就是以这种形态抵达的。
+        </p>
+
+        <figure class="img-block">
+          <img src="berlin_nefertiti.jpg" alt="柏林新博物馆娜芙蒂蒂头像">
+          <figcaption>柏林新博物馆（Neues Museum）·娜芙蒂蒂彩绘石灰石胸像，约公元前1345年，新王国第十八王朝。1912年由德国考古队发掘带走，埃及政府索还逾百年未果。摄于2025年。</figcaption>
+        </figure>
+      </section>
+
+      <hr class="divider">
+
+      <!-- 第三节 -->
+      <section>
+        <div class="section-label">III · 金字塔与哈利利 · 文明的两副面孔</div>
+        <p>
+          从吉萨到哈利利，大约10公里，跨越了4500年。
+        </p>
+        <p>
+          金字塔是为永恒而建的，静默、几何、不可争辩。
+          哈利利市场建于1382年马穆鲁克时代，六百年后仍然是砍价、嘈杂、气味混合、
+          每隔三步有人拉住你说「just looking, my friend」。
+          两个地方看起来毫无关系——一个是文明的顶峰声明，一个是日常商业的延续机器。
+        </p>
+        <p>
+          但我在市场里买了四幅莎草纸画，每一幅都在使用一种叫<strong>「正面律」</strong>的绘画规则：
+          头侧面、眼正面、躯干正面、双腿侧面。
+          这套规则是古埃及画师从三千年前就在用的。
+          画的内容是图坦卡蒙、荷鲁斯之眼、安卡十字，
+          神学意义早就和大多数买家没有关系了，但<em>形式</em>活着。
+        </p>
+
+        <figure class="img-block">
+          <img src="canon_view.jpg" alt="内巴蒙狩猎图·正面律示例">
+          <figcaption>内巴蒙（Nebamun）墓室壁画局部，约公元前1350年，新王国第十八王朝，现藏大英博物馆。典型正面律：内巴蒙头部侧面、眼睛正面、躯干正面、双腿侧面——这套绘画规则在埃及延续了逾三千年，今天哈利利市场的莎草纸画仍在沿用。公共领域，来自维基共享资源。</figcaption>
+        </figure>
+        <p>
+          传承有时候是这样运作的：内容变了，壳子还在；
+          意义丢了，形状留了下来。
+          市场没有刻意保存这些符号，它只是在卖游客愿意买的东西，
+          而游客愿意买，是因为这些形状足够古老、足够异域、足够上墙。
+          这是一种没有意识的传承，却也是一种传承。
+        </p>
+      </section>
+
+      <!-- 第四节 -->
+      <section>
+        <div class="section-label">IV · 晚餐桌上的哲学传承</div>
+        <p>
+          晚上，Hoda教授来了。她在开罗大学研究古代哲学，主攻柏拉图和亚里士多德。
+          她的丈夫是希腊人，家里主要讲希腊语。
+        </p>
+        <p>
+          我们提到了儿童哲学和AI的影响。
+          具体来说，是这样一个问题：如果AI越来越能推理、能写作、能解释概念，
+          我们还需要教孩子独立思考吗？如果答案的生成越来越容易，
+          <strong>培养提问能力是否变得比培养答题能力更重要？</strong>
+        </p>
+        <p>
+          这个问题本身就是一个传承问题：每一代人都要决定把什么交给下一代。
+          柏拉图的对话录是一套提问训练，不是一套答案手册；
+          苏格拉底从不给出结论，他只是不停地问。
+          这套方式从雅典传到亚历山大，从阿拉伯译本传回欧洲，
+          然后经过中世纪、文艺复兴、启蒙运动，到达今晚开罗的这张餐桌。
+        </p>
+        <p>
+          AI是另一种传承机器：它把人类写下的所有东西压缩进权重，
+          输出看起来像思考的语言。但它传的是<em>模式</em>，不是追问背后的那种不安。
+          它能复制苏格拉底的对话格式，但不能复制那个让苏格拉底在广场上拦住陌生人的冲动。
+        </p>
+        <p>
+          Hoda在家用希腊语，用阿拉伯语和英语讲课，用英语和我们吃饭。
+          语言在她身上同时存在着好几条传承线，互不干扰，也互相渗透。
+        </p>
+      </section>
+
+      <!-- 第五节 -->
+      <section>
+        <div class="section-label">V · 语言这条最长的线</div>
+        <p>
+          梵文、古希腊语、拉丁语、英语——同一个印欧语系，跨越数千年。
+        </p>
+        <p>
+          「父亲」这个词：梵文 <em>pitár</em>，古希腊语 <em>patēr</em>，拉丁语 <em>pater</em>，英语 <em>father</em>。
+          同一个词根，没有人主动传递它，只是每一代人从父母那里学，
+          稍微变一点，再传给孩子。几千年就这么过去了。
+        </p>
+        <p>
+          这条语言的链条，比金字塔还要古老。
+          它没有纪念碑，没有刻意的保存，
+          只是人与人之间的口耳相传，从无名草原到今天所有说印欧系语言的地方。
+        </p>
+        <p>
+          胡夫的金字塔是主动的传承——用最贵的材料，以最大的规模，
+          宣告「我在这里，我不会消失」。
+          语言是被动的传承——没有人决定要保留它，它只是因为有用就活了下来。
+        </p>
+        <p style="color: var(--ink-faint); font-size: 13px; margin-top: 28px;">
+          第二天结束。这一天问的问题比第一天多，但答案还是没有变多。
+          传承是一条河，你只能站在下游看上游消失的地方，猜测水从哪里来的。
+        </p>
+      </section>
+
+    </div>
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../action/index.html">← 行程</a>
+      <a class="nav-btn" href="../index.html">第二天概览</a>
+      <a class="nav-btn" href="../history/index.html">历史：朝代史 →</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
   <script src="../../../assets/js/edit-mode.js"></script>
-</body>
-</html>
+
+
+</body></html>

@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一天思考 · 古埃及众神殿</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  .site-nav {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 16px 24px;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(200,151,58,.12);
+    background: rgba(10,8,6,.6);
+    backdrop-filter: blur(8px);
+    flex-wrap: wrap;
+  }
+  .site-nav a {
+    color: rgba(200,151,58,.6);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    transition: color .2s;
+  }
+  .site-nav a:hover { color: #C9A84C; }
+  .site-nav-sep { color: rgba(200,151,58,.25); }
+  .site-nav-cur { color: rgba(212,196,160,.5); font-family: 'Cinzel', serif; letter-spacing: 1px; }
+
+  .context-strip {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+  }
+  .context-card {
+    background: rgba(26,58,92,.15);
+    border: 1px solid rgba(200,151,58,.18);
+    border-left: 3px solid rgba(200,151,58,.5);
+    padding: 14px 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .context-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #C9A84C;
+    opacity: .7;
+    margin-bottom: 4px;
+  }
+  .context-text {
+    font-size: 13px;
+    color: rgba(212,196,160,.75);
+    line-height: 1.7;
+    flex: 1;
+    min-width: 240px;
+  }
+  .context-link {
+    align-self: center;
+    white-space: nowrap;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #C9A84C;
+    text-decoration: none;
+    border: 1px solid rgba(200,151,58,.3);
+    padding: 6px 14px;
+    transition: all .2s;
+  }
+  .context-link:hover { background: rgba(200,151,58,.1); }
+</style>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8B6914;
+    --lapis: #1A3A5C;
+    --lapis-light: #2A5480;
+    --sand: #F5E6C8;
+    --sand-dark: #D4C4A0;
+    --papyrus: #EDD9A3;
+    --black: #0A0806;
+    --red-ancient: #8B2020;
+    --teal: #1A7A6E;
+    --bg: #0D0B08;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--sand);
+    font-family: 'Noto Serif SC', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(26,58,92,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,105,20,0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+    opacity: var(--o, 0.6);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--o, 0.6); transform: scale(1); }
+    50% { opacity: 0.1; transform: scale(0.5); }
+  }
+
+  /* Header */
+  header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .hieroglyph-band {
+    font-size: 24px;
+    letter-spacing: 12px;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 20px;
+    font-family: serif;
+  }
+
+  h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(28px, 6vw, 56px);
+    color: var(--gold-light);
+    text-shadow: 0 0 40px rgba(201,168,76,0.5), 0 0 80px rgba(201,168,76,0.2);
+    letter-spacing: 4px;
+    line-height: 1.2;
+  }
+  h1 span {
+    display: block;
+    font-size: 0.45em;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--sand-dark);
+    letter-spacing: 8px;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  .subtitle {
+    margin-top: 16px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(201,168,76,0.6);
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* Navigation tabs */
+  .nav-tabs {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 40px auto;
+    max-width: 800px;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .nav-tab {
+    flex: 1;
+    padding: 14px 20px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(201,168,76,0.2);
+    color: rgba(201,168,76,0.5);
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .nav-tab:last-child { border-right: none; }
+  .nav-tab:hover { background: rgba(201,168,76,0.08); color: var(--gold); }
+  .nav-tab.active {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold-light);
+    box-shadow: inset 0 -2px 0 var(--gold);
+  }
+
+  /* Main content area */
+  .main {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ====== PANTHEON VIEW ====== */
+  .pantheon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .god-card {
+    background: linear-gradient(145deg, rgba(26,58,92,0.4), rgba(10,8,6,0.8));
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .god-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .god-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.2);
+  }
+  .god-card:hover::before { opacity: 1; }
+
+  .god-avatar {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+  }
+
+  .god-domain-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 3px 8px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+    border: 1px solid currentColor;
+  }
+
+  .god-info {
+    padding: 16px;
+  }
+
+  .god-name {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+  }
+  .god-name-zh {
+    font-size: 12px;
+    color: var(--sand-dark);
+    margin-top: 2px;
+    letter-spacing: 2px;
+  }
+
+  .god-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 10px;
+  }
+  .god-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--gold);
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* ====== RELATIONSHIP GRAPH ====== */
+  #relation-canvas-wrap {
+    position: relative;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 0;
+    overflow: hidden;
+    height: 580px;
+  }
+
+  #relation-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .canvas-legend {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--sand-dark);
+  }
+
+  .legend-line {
+    width: 28px;
+    height: 2px;
+  }
+
+  /* ====== BLESSINGS VIEW ====== */
+  .blessings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .blessing-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    background: linear-gradient(160deg, rgba(26,58,92,0.3), rgba(10,8,6,0.7));
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .blessing-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, transparent 50%, rgba(201,168,76,0.1) 50%);
+  }
+
+  .blessing-card:hover {
+    border-color: rgba(201,168,76,0.6);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.15);
+    transform: translateY(-2px);
+  }
+
+  .blessing-icon { font-size: 36px; margin-bottom: 12px; }
+
+  .blessing-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .blessing-gods {
+    font-size: 12px;
+    color: var(--gold);
+    opacity: 0.7;
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 10px;
+  }
+
+  .blessing-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--sand-dark);
+  }
+
+  /* ====== MODAL ====== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: linear-gradient(145deg, #0F1A2E, #0A0806);
+    border: 1px solid rgba(201,168,76,0.4);
+    max-width: 680px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .modal-avatar { font-size: 60px; }
+
+  .modal-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 24px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+  }
+
+  .modal-subtitle {
+    font-size: 13px;
+    color: var(--sand-dark);
+    margin-top: 4px;
+    letter-spacing: 2px;
+  }
+
+  .modal-body { padding: 28px; }
+
+  .modal-section {
+    margin-bottom: 24px;
+  }
+
+  .modal-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .modal-section p { line-height: 2; font-size: 14px; color: var(--sand); }
+
+  .attr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .attr-item {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 12px;
+  }
+
+  .attr-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    margin-bottom: 4px;
+  }
+
+  .attr-value {
+    font-size: 14px;
+    color: var(--sand);
+  }
+
+  .relations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .relation-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border: 1px solid rgba(201,168,76,0.1);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .relation-type {
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+    min-width: 60px;
+  }
+
+  .relation-name {
+    color: var(--gold-light);
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: rgba(201,168,76,0.3);
+  }
+  .relation-name:hover { color: var(--gold); }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    width: 32px; height: 32px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .modal-close:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+  /* Decorative divider */
+  .divider {
+    text-align: center;
+    margin: 40px 0 20px;
+    position: relative;
+    color: var(--gold);
+    opacity: 0.4;
+    font-size: 18px;
+    letter-spacing: 16px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4));
+  }
+  .divider::before { left: 0; }
+  .divider::after { right: 0; background: linear-gradient(to left, transparent, rgba(201,168,76,0.4)); }
+
+  /* Section header */
+  .section-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .section-header h2 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 22px;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+  }
+  .section-header p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--sand-dark);
+    letter-spacing: 2px;
+  }
+
+  /* Canvas tooltip */
+  .canvas-tooltip {
+    position: absolute;
+    background: rgba(13,11,8,0.95);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 10px 14px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 50;
+    display: none;
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    max-width: 160px;
+  }
+
+  /* Filter pills */
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    justify-content: center;
+  }
+
+  .filter-pill {
+    padding: 6px 16px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: transparent;
+    color: var(--sand-dark);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-pill:hover { border-color: var(--gold); color: var(--gold); }
+  .filter-pill.active { background: rgba(201,168,76,0.15); border-color: var(--gold); color: var(--gold-light); }
+
+  /* Scroll animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeUp 0.5s ease forwards; }
+
+  /* Story section */
+  .myth-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .myth-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(10,8,6,0.7);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .myth-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+
+  .myth-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    background: linear-gradient(135deg, rgba(26,58,92,0.3), transparent);
+  }
+
+  .myth-num {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+
+  .myth-title {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+  }
+
+  .myth-body {
+    padding: 16px 24px 20px;
+    font-size: 14px;
+    line-height: 2;
+    color: var(--sand-dark);
+  }
+
+  .myth-gods-row {
+    padding: 12px 24px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .myth-god-chip {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .myth-god-chip:hover { background: rgba(201,168,76,0.1); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: rgba(201,168,76,0.05); }
+  ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); }
+
+  @media (max-width: 600px) {
+    .nav-tab { font-size: 10px; padding: 12px 8px; letter-spacing: 0; }
+    .pantheon-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Site Nav -->
+<nav class="site-nav">
+  <a href="../../../index.html">旅行目录</a>
+  <span class="site-nav-sep">/</span>
+  <a href="../index.html">第一天</a>
+  <span class="site-nav-sep">/</span>
+  <span class="site-nav-cur">历史 · 众神殿</span>
+</nav>
+
+<!-- Context Strip -->
+<div class="context-strip">
+  <div class="context-card">
+    <div style="flex:1; min-width:240px;">
+      <div class="context-eyebrow">Day 01 · History · 2026.02.22</div>
+      <div class="context-text">在飞往开罗的航班上，我把读到的古埃及众神关系整理成这张可交互的关系图——不是为了背名字，而是为了在落地之后，脑子里有一套理解埃及文明底层逻辑的坐标系。点击任意神灵查看详情，切换「关系图」标签可以看到神灵之间的家族、同盟与对立关系。</div>
+    </div>
+    <a class="context-link" href="../action/index.html">查看第一天行程 →</a>
+  </div>
+</div>
+
+<!-- Starfield -->
+<div class="stars" id="stars"></div>
+
+<!-- Header -->
+<header>
+  <div class="hieroglyph-band">𓂀 𓅃 𓆣 𓋴 𓏏 𓊖 𓈖 𓂋 𓇯</div>
+  <h1 data-key="days.0.history_title">AEGYPTUS DEUS<span>埃 及 众 神 殿</span></h1>
+  <p class="subtitle" data-key="days.0.history_subtitle">Pantheon · Relationships · Sacred Blessings</p>
+</header>
+
+<!-- Navigation -->
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="switchTab('pantheon')">𓅃 众神殿</button>
+  <button class="nav-tab" onclick="switchTab('relations')">𓆣 神灵关系</button>
+  <button class="nav-tab" onclick="switchTab('blessings')">𓂀 神圣庇佑</button>
+  <button class="nav-tab" onclick="switchTab('myths')">𓇯 神话传说</button>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- PANTHEON TAB -->
+  <div id="tab-pantheon" class="tab-content active">
+    <div class="section-header">
+      <h2>埃及主神</h2>
+      <p>点击神灵，查看详细信息与神话故事</p>
+    </div>
+    <div class="filter-row" id="domain-filters"></div>
+    <div class="pantheon-grid" id="pantheon-grid"></div>
+  </div>
+
+  <!-- RELATIONS TAB -->
+  <div id="tab-relations" class="tab-content">
+    <div class="section-header">
+      <h2>神灵关系图谱</h2>
+      <p>悬停节点查看信息 · 点击查看详情</p>
+    </div>
+    <div id="relation-canvas-wrap">
+      <canvas id="relation-canvas"></canvas>
+      <div class="canvas-tooltip" id="canvas-tooltip"></div>
+      <div class="canvas-legend">
+        <div class="legend-item"><div class="legend-line" style="background:#C9A84C"></div>家族关系</div>
+        <div class="legend-item"><div class="legend-line" style="background:#1A7A6E"></div>友盟关系</div>
+        <div class="legend-item"><div class="legend-line" style="background:#8B2020;"></div>对立关系</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLESSINGS TAB -->
+  <div id="tab-blessings" class="tab-content">
+    <div class="section-header">
+      <h2>神圣庇佑领域</h2>
+      <p>古埃及人向众神祈求不同领域的庇护</p>
+    </div>
+    <div class="blessings-grid" id="blessings-grid"></div>
+  </div>
+
+  <!-- MYTHS TAB -->
+  <div id="tab-myths" class="tab-content">
+    <div class="section-header">
+      <h2>神话传说</h2>
+      <p>埃及最重要的神话故事</p>
+    </div>
+    <div class="myth-cards" id="myth-cards"></div>
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-header" id="modal-header"></div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const GODS = [
+  {
+    id: 'ra', name: 'Ra', zh: '拉', emoji: '☀️',
+    domain: '太阳', domainEn: 'SUN',
+    color: '#C9A84C',
+    desc: '拉是太阳神，被视为所有神灵之王。每天他乘坐太阳船从东方升起，穿越天空，在夜晚通过冥界再生。他是创造之神，生命的源泉。',
+    attributes: { '象征': '太阳圆盘、权杖', '崇拜中心': '赫利奥波利斯', '动物': '鹰、猫', '头衔': '众神之王' },
+    roles: ['创造', '太阳', '生命', '权力'],
+    relations: [
+      { type: '儿子', name: 'Thoth', zh: '托特' },
+      { type: '化身', name: 'Horus', zh: '荷鲁斯' },
+      { type: '敌对', name: 'Apep', zh: '阿贝普' }
+    ],
+    blessings: ['光明与生命', '权威与正义', '每日更新']
+  },
+  {
+    id: 'osiris', name: 'Osiris', zh: '奥西里斯', emoji: '🌿',
+    domain: '死亡', domainEn: 'DEATH',
+    color: '#2A5480',
+    desc: '奥西里斯是冥界之神、复活之神与农业之神。他被弟弟赛特杀死并肢解，妻子伊西斯将其复活。他是死亡与再生循环的象征。',
+    attributes: { '象征': '连枷、权杖、阿提夫王冠', '崇拜中心': '阿拜多斯', '动物': '公牛', '颜色': '绿色、黑色' },
+    roles: ['死亡', '复活', '农业', '审判'],
+    relations: [
+      { type: '妻子', name: 'Isis', zh: '伊西斯' },
+      { type: '儿子', name: 'Horus', zh: '荷鲁斯' },
+      { type: '兄弟', name: 'Set', zh: '赛特' },
+      { type: '姐妹', name: 'Nephthys', zh: '奈芙蒂斯' }
+    ],
+    blessings: ['来生平安', '农业丰收', '永恒复活']
+  },
+  {
+    id: 'isis', name: 'Isis', zh: '伊西斯', emoji: '🪶',
+    domain: '魔法', domainEn: 'MAGIC',
+    color: '#8B2020',
+    desc: '伊西斯是魔法女神、母性与治愈之神。她对丈夫奥西里斯的忠诚、对儿子荷鲁斯的守护，使她成为埃及最受敬仰的女神。她的翅膀能席卷大地。',
+    attributes: { '象征': '翅膀、宝座', '崇拜中心': '菲莱岛', '动物': '鸢、母牛', '头衔': '魔法女王' },
+    roles: ['魔法', '治愈', '母性', '保护'],
+    relations: [
+      { type: '丈夫', name: 'Osiris', zh: '奥西里斯' },
+      { type: '儿子', name: 'Horus', zh: '荷鲁斯' },
+      { type: '兄弟', name: 'Set', zh: '赛特' },
+      { type: '姐妹', name: 'Nephthys', zh: '奈芙蒂斯' }
+    ],
+    blessings: ['母亲与孩子保护', '魔法与治愈', '航海平安']
+  },
+  {
+    id: 'horus', name: 'Horus', zh: '荷鲁斯', emoji: '🦅',
+    domain: '天空', domainEn: 'SKY',
+    color: '#1A7A6E',
+    desc: '荷鲁斯是天空之神，以鹰为形。他的左眼是月亮，右眼是太阳。法老被视为荷鲁斯的化身。他与赛特的漫长战争，最终赢得了对埃及的统治权。',
+    attributes: { '象征': '荷鲁斯之眼（瓦吉特）', '崇拜中心': '埃德富', '动物': '鹰', '头衔': '两地之王' },
+    roles: ['天空', '王权', '战争', '保护'],
+    relations: [
+      { type: '父亲', name: 'Osiris', zh: '奥西里斯' },
+      { type: '母亲', name: 'Isis', zh: '伊西斯' },
+      { type: '敌对', name: 'Set', zh: '赛特' },
+      { type: '化身', name: 'Ra', zh: '拉' }
+    ],
+    blessings: ['王权保护', '战争胜利', '视力与健康']
+  },
+  {
+    id: 'thoth', name: 'Thoth', zh: '托特', emoji: '📜',
+    domain: '智慧', domainEn: 'WISDOM',
+    color: '#5A4080',
+    desc: '托特是智慧之神、书写之神、月亮之神和时间的记录者。他是神灵的书记官，在奥西里斯的审判厅记录亡者的灵魂重量。据说他发明了象形文字。',
+    attributes: { '象征': '朱鹭、芦苇笔、月亮', '崇拜中心': '赫尔莫波利斯', '动物': '朱鹭、狒狒', '头衔': '两次伟大者' },
+    roles: ['智慧', '书写', '月亮', '魔法'],
+    relations: [
+      { type: '父亲（说法之一）', name: 'Ra', zh: '拉' },
+      { type: '助手', name: 'Osiris', zh: '奥西里斯' },
+      { type: '同盟', name: 'Isis', zh: '伊西斯' }
+    ],
+    blessings: ['学习与智慧', '书写与文字', '月光庇护']
+  },
+  {
+    id: 'set', name: 'Set', zh: '赛特', emoji: '🌪️',
+    domain: '混乱', domainEn: 'CHAOS',
+    color: '#8B2020',
+    desc: '赛特是混乱、风暴与沙漠之神。他杀死了兄长奥西里斯，与侄子荷鲁斯长期争斗。尽管代表混乱，他也是抵御邪蛇阿贝普的守护者。',
+    attributes: { '象征': '赛特动物（神秘生物）', '崇拜中心': '奥姆博斯', '动物': '赛特兽、驴', '领域': '沙漠、雷暴' },
+    roles: ['混乱', '风暴', '沙漠', '力量'],
+    relations: [
+      { type: '兄弟', name: 'Osiris', zh: '奥西里斯' },
+      { type: '姐妹/妻子', name: 'Nephthys', zh: '奈芙蒂斯' },
+      { type: '敌对', name: 'Horus', zh: '荷鲁斯' }
+    ],
+    blessings: ['沙漠旅行保护', '风暴力量', '驱除恶蛇']
+  },
+  {
+    id: 'anubis', name: 'Anubis', zh: '阿努比斯', emoji: '🐺',
+    domain: '亡者', domainEn: 'DEAD',
+    color: '#2C2C2C',
+    desc: '阿努比斯是亡者的守护者和木乃伊化的保护神，以黑色胡狼为形。他引导亡魂前往审判厅，监督称量心脏的仪式，保护墓地不被侵犯。',
+    attributes: { '象征': '黑色胡狼、天平', '崇拜中心': '里科波利斯', '动物': '胡狼', '头衔': '死者之主' },
+    roles: ['亡者保护', '防腐术', '审判', '引导'],
+    relations: [
+      { type: '父亲（一说）', name: 'Osiris', zh: '奥西里斯' },
+      { type: '母亲（一说）', name: 'Nephthys', zh: '奈芙蒂斯' },
+      { type: '助手', name: 'Thoth', zh: '托特' }
+    ],
+    blessings: ['亡者安息', '墓地保护', '安全进入来世']
+  },
+  {
+    id: 'hathor', name: 'Hathor', zh: '哈托尔', emoji: '🎶',
+    domain: '爱与美', domainEn: 'LOVE',
+    color: '#8B4560',
+    desc: '哈托尔是爱、美、音乐、舞蹈、丰饶与喜悦的女神。她以母牛形象示人，也是天堂之母。她同时也有毁灭性的一面，传说曾奉命惩罚人类。',
+    attributes: { '象征': '母牛角与太阳盘、镜子、叉铃', '崇拜中心': '丹德拉', '动物': '母牛', '头衔': '西方的女主人' },
+    roles: ['爱', '美', '音乐', '丰饶'],
+    relations: [
+      { type: '有时视为', name: 'Ra', zh: '拉之眼' },
+      { type: '有时等同', name: 'Isis', zh: '伊西斯' }
+    ],
+    blessings: ['爱情与婚姻', '音乐与舞蹈', '母婴保护']
+  },
+  {
+    id: 'bastet', name: 'Bastet', zh: '芭丝特', emoji: '🐱',
+    domain: '猫与家', domainEn: 'HOME',
+    color: '#4A3060',
+    desc: '芭丝特是猫女神，家庭、生育和保护之神。起初以狮子形象出现，后来演变为温顺的家猫。她保护家庭免受邪灵和疾病的侵害，是重要的守护神。',
+    attributes: { '象征': '猫、叉铃、篮子', '崇拜中心': '布巴斯提斯', '动物': '猫', '头衔': '下埃及的保护者' },
+    roles: ['家庭保护', '生育', '音乐', '猫咪'],
+    relations: [
+      { type: '父亲', name: 'Ra', zh: '拉' },
+      { type: '兄弟（一说）', name: 'Thoth', zh: '托特' }
+    ],
+    blessings: ['家庭平安', '生育与健康', '抵御疾病邪灵']
+  },
+  {
+    id: 'nephthys', name: 'Nephthys', zh: '奈芙蒂斯', emoji: '🌙',
+    domain: '哀悼', domainEn: 'MOURNING',
+    color: '#1A3A5C',
+    desc: '奈芙蒂斯是哀悼与夜晚的女神，奥西里斯的妹妹，赛特的姐妹和妻子。尽管与赛特为伍，她仍协助伊西斯寻找并复活奥西里斯，是死者的保护者。',
+    attributes: { '象征': '房屋符号、翅膀', '崇拜中心': '塞比尼托斯', '动物': '鸢', '属性': '黑暗与夜晚' },
+    roles: ['哀悼', '保护', '夜晚', '魔法'],
+    relations: [
+      { type: '姐妹', name: 'Isis', zh: '伊西斯' },
+      { type: '丈夫', name: 'Set', zh: '赛特' },
+      { type: '兄弟', name: 'Osiris', zh: '奥西里斯' }
+    ],
+    blessings: ['逝者安慰', '夜晚保护', '家宅守护']
+  },
+  {
+    id: 'ptah', name: 'Ptah', zh: '普塔', emoji: '🏛️',
+    domain: '创造', domainEn: 'CREATION',
+    color: '#2A4060',
+    desc: '普塔是创造之神，工匠、艺术家和建筑师的守护神。孟菲斯神学认为他通过心意（思想）和口头（言语）创造了万物。他通常被描绘为木乃伊形态。',
+    attributes: { '象征': '权杖、迪德柱', '崇拜中心': '孟菲斯', '动物': '公牛（阿匹斯）', '头衔': '美的主人' },
+    roles: ['创造', '工艺', '艺术', '建筑'],
+    relations: [
+      { type: '妻子', name: 'Hathor', zh: '哈托尔（一说）' }
+    ],
+    blessings: ['工艺与创造', '艺术家庇护', '城市繁荣']
+  },
+  {
+    id: 'sekhmet', name: 'Sekhmet', zh: '赛克迈特', emoji: '🦁',
+    domain: '战争', domainEn: 'WAR',
+    color: '#8B4020',
+    desc: '赛克迈特是狮首女神，战争与治愈之神。她是拉的复仇之眼，曾被派去惩罚人类。她的呼吸创造了沙漠，她的力量能传播疾病也能治愈疾病。',
+    attributes: { '象征': '太阳圆盘与蛇形冠', '崇拜中心': '孟菲斯', '动物': '狮子', '头衔': '强大者' },
+    roles: ['战争', '疾病', '治愈', '力量'],
+    relations: [
+      { type: '丈夫', name: 'Ptah', zh: '普塔' },
+      { type: '化身之一', name: 'Hathor', zh: '哈托尔' }
+    ],
+    blessings: ['战士保护', '疾病治愈', '敌人惩罚']
+  }
+];
+
+const BLESSINGS = [
+  { icon: '☀️', title: '长寿与健康', gods: 'Ra · Sekhmet · Isis', desc: '向拉神祈求生命活力，向伊西斯祈求治愈，向赛克迈特祈求身体强健。古埃及人在太阳升起时向东方祈祷，保佑家人健康长寿。' },
+  { icon: '🌊', title: '尼罗河丰收', gods: 'Osiris · Hapy · Isis', desc: '奥西里斯的绿色之体象征尼罗河泥土的肥沃。每年洪水季节，祭司举行仪式祈求哈比神（洪水神）带来适度的尼罗河泛滥，确保农业丰收。' },
+  { icon: '🦅', title: '法老王权', gods: 'Horus · Ra · Ptah', desc: '荷鲁斯之眼是王权的象征，法老被视为活着的荷鲁斯。王权得到众神庇佑，拉赋予统治的光辉，普塔赋予建设的力量。' },
+  { icon: '💀', title: '安全进入来世', gods: 'Anubis · Osiris · Thoth', desc: '阿努比斯引导亡魂，称量其心脏是否比马特之羽轻。奥西里斯主持审判，托特记录结果。通过审判者得以进入阿鲁（天堂之地）。' },
+  { icon: '🏠', title: '家庭与生育', gods: 'Hathor · Bastet · Taweret', desc: '哈托尔护佑婚姻美满，芭丝特保护家庭平安，塔沃雷特（河马女神）守护孕妇与新生儿。家中常供奉这些神灵的小像。' },
+  { icon: '📚', title: '知识与书写', gods: 'Thoth · Seshat', desc: '托特是智慧与书写的神圣保护者，据说他将象形文字赐予人类。书记官和学者向他祈求清晰的思维和流畅的书写能力。' },
+  { icon: '⚔️', title: '战争与胜利', gods: 'Horus · Sekhmet · Montu', desc: '战争时期，士兵向荷鲁斯祈求鹰眼般的战略眼光，向赛克迈特祈求狮子般的力量，向蒙图（战神）祈求战场胜利。' },
+  { icon: '🌙', title: '夜晚与梦境', gods: 'Thoth · Nephthys · Khonsu', desc: '托特守护月夜，奈芙蒂斯庇护黑暗中的旅人。孔苏（月神）保护夜间旅行者并送来吉祥的梦境，驱散恶梦和夜行恶灵。' },
+  { icon: '🌊', title: '航海与贸易', gods: 'Isis · Horus · Sobek', desc: '伊西斯是水手的守护神，她展开的翅膀如同船帆。荷鲁斯之眼绘在船头驱邪，索贝克（鳄鱼神）平息水中危险。' },
+];
+
+const MYTHS = [
+  {
+    num: 'MYTH I',
+    title: '奥西里斯的死与复活',
+    gods: ['Osiris', 'Isis', 'Set', 'Horus'],
+    body: '赛特嫉妒兄长奥西里斯的统治，设计将其骗入木棺，沉入尼罗河。伊西斯遍寻天下，找回丈夫遗体，却被赛特分成14块散布各地。伊西斯与姐妹奈芙蒂斯以魔法收集残肢，以第一次防腐术复活了奥西里斯，使其成为冥界之王。他们的儿子荷鲁斯长大后，与赛特展开了漫长的统治权之争。'
+  },
+  {
+    num: 'MYTH II',
+    title: '创世神话——赫利奥波利斯',
+    gods: ['Ra'],
+    body: '在最初的混沌之水（努恩）中，太阳神阿图姆（拉的早期形态）站在原始山丘上，以自身之力创造了第一对神灵——舒（空气之神）与泰芙努特（湿气女神）。他们生下盖布（大地）与努特（天空）。努特和盖布生下奥西里斯、赛特、伊西斯和奈芙蒂斯，构成了埃及神灵的核心九神体系（大九神团）。'
+  },
+  {
+    num: 'MYTH III',
+    title: '荷鲁斯之眼的故事',
+    gods: ['Horus', 'Set', 'Thoth'],
+    body: '荷鲁斯与赛特争夺埃及统治权的漫长战斗中，赛特挖去了荷鲁斯的一只眼睛并将其分成六份。托特神以魔法将眼睛复原，这只神圣的眼睛被称为"瓦吉特眼"，成为治愈、保护与完整的象征。时至今日，荷鲁斯之眼仍是最著名的埃及护身符之一。'
+  },
+  {
+    num: 'MYTH IV',
+    title: '拉神与人类的故事',
+    gods: ['Ra', 'Sekhmet', 'Hathor'],
+    body: '据传拉神年老时，听说人类在密谋反对他，于是派出自己的眼睛——女神哈托尔，以赛克迈特（狮首女神）的形态降临惩罚人类。赛克迈特沉浸于杀戮，无法停止。拉神为了拯救幸存的人类，命人将大量红色啤酒泼在地上，赛克迈特误以为是血，喝醉后恢复了平静，人类因此得救。'
+  },
+  {
+    num: 'MYTH V',
+    title: '托特与月亮时光',
+    gods: ['Thoth', 'Ra'],
+    body: '古时候一年只有360天，努特（天空女神）被禁止在任何月份生育。托特与月神赌博，赢得了360天的1/72，共5天时光。这5天既不属于任何月份，于是努特在这5天中依次生下了奥西里斯、荷鲁斯长子、赛特、伊西斯和奈芙蒂斯，从此一年有了365天。'
+  },
+  {
+    num: 'MYTH VI',
+    title: '冥界审判——心脏称量',
+    gods: ['Anubis', 'Osiris', 'Thoth'],
+    body: '每个亡者死后，阿努比斯引导其灵魂前往杜阿特（冥界）的审判厅。亡者的心脏被放在天平一端，另一端是代表真理与正义的马特之羽。托特记录结果。若心脏轻于羽毛，亡者得以进入阿鲁天堂；若心脏被罪恶所重，便会被阿米特（鳄鱼狮狒混合怪）吞食，灵魂彻底消灭。'
+  },
+];
+
+// ===== RENDER =====
+function init() {
+  createStars();
+  renderPantheon();
+  renderBlessings();
+  renderMyths();
+  setupDomainFilters();
+}
+
+function createStars() {
+  const container = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      --d: ${2 + Math.random() * 4}s;
+      --delay: ${-Math.random() * 5}s;
+      --o: ${0.3 + Math.random() * 0.7};
+      width: ${1 + Math.random() * 2}px;
+      height: ${1 + Math.random() * 2}px;
+    `;
+    container.appendChild(s);
+  }
+}
+
+const DOMAINS = ['全部', '太阳', '死亡', '魔法', '天空', '智慧', '混乱', '亡者', '爱与美', '猫与家', '哀悼', '创造', '战争'];
+
+function setupDomainFilters() {
+  const row = document.getElementById('domain-filters');
+  DOMAINS.forEach((d, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-pill' + (i === 0 ? ' active' : '');
+    btn.textContent = d;
+    btn.onclick = () => {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      filterGods(d);
+    };
+    row.appendChild(btn);
+  });
+}
+
+function filterGods(domain) {
+  document.querySelectorAll('.god-card').forEach(card => {
+    if (domain === '全部' || card.dataset.domain === domain) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function renderPantheon() {
+  const grid = document.getElementById('pantheon-grid');
+  GODS.forEach((god, i) => {
+    const card = document.createElement('div');
+    card.className = 'god-card animate-in';
+    card.dataset.domain = god.domain;
+    card.style.animationDelay = `${i * 0.06}s`;
+    card.innerHTML = `
+      <div class="god-avatar" style="background: linear-gradient(145deg, ${god.color}22, #000)">
+        ${god.emoji}
+        <span class="god-domain-badge" style="color:${god.color}; border-color:${god.color}44">${god.domainEn}</span>
+      </div>
+      <div class="god-info">
+        <div class="god-name">${god.name}</div>
+        <div class="god-name-zh">${god.zh}</div>
+        <div class="god-tags">${god.roles.map(r => `<span class="god-tag">${r}</span>`).join('')}</div>
+      </div>
+    `;
+    card.onclick = () => openGodModal(god);
+    grid.appendChild(card);
+  });
+}
+
+function renderBlessings() {
+  const grid = document.getElementById('blessings-grid');
+  BLESSINGS.forEach((b, i) => {
+    const card = document.createElement('div');
+    card.className = 'blessing-card';
+    card.innerHTML = `
+      <div class="blessing-icon">${b.icon}</div>
+      <div class="blessing-title">${b.title}</div>
+      <div class="blessing-gods">${b.gods}</div>
+      <div class="blessing-desc">${b.desc}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function renderMyths() {
+  const container = document.getElementById('myth-cards');
+  MYTHS.forEach(myth => {
+    const card = document.createElement('div');
+    card.className = 'myth-card';
+    card.innerHTML = `
+      <div class="myth-header">
+        <div class="myth-num">${myth.num}</div>
+        <div class="myth-title">${myth.title}</div>
+      </div>
+      <div class="myth-body">${myth.body}</div>
+      <div class="myth-gods-row">
+        ${myth.gods.map(g => {
+          const god = GODS.find(x => x.id === g.toLowerCase()) || { name: g, zh: '' };
+          return `<span class="myth-god-chip" onclick="openGodById('${god.id || g}')">${god.emoji || ''} ${god.name || g}</span>`;
+        }).join('')}
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function openGodModal(god) {
+  const header = document.getElementById('modal-header');
+  const body = document.getElementById('modal-body');
+  
+  header.innerHTML = `
+    <div class="modal-avatar">${god.emoji}</div>
+    <div>
+      <div class="modal-title">${god.name}</div>
+      <div class="modal-subtitle">${god.zh} · ${god.domain}之神</div>
+    </div>
+  `;
+  
+  const attrsHtml = Object.entries(god.attributes).map(([k, v]) => `
+    <div class="attr-item">
+      <div class="attr-label">${k}</div>
+      <div class="attr-value">${v}</div>
+    </div>
+  `).join('');
+  
+  const relHtml = god.relations.map(r => {
+    const related = GODS.find(g => g.name === r.name);
+    return `
+      <div class="relation-item">
+        <span class="relation-type" style="color: ${r.type.includes('敌') ? '#8B2020' : '#1A7A6E'}">${r.type}</span>
+        <span class="relation-name" onclick="openGodByName('${r.name}')">${r.name} (${r.zh})</span>
+      </div>
+    `;
+  }).join('');
+  
+  body.innerHTML = `
+    <div class="modal-section">
+      <div class="modal-section-title">𓂀 神话描述</div>
+      <p>${god.desc}</p>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">𓏏 神灵属性</div>
+      <div class="attr-grid">${attrsHtml}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">𓆣 神灵关系</div>
+      <div class="relations-list">${relHtml}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">𓊖 庇佑领域</div>
+      <p>${god.blessings.join(' · ')}</p>
+    </div>
+  `;
+  
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function openGodByName(name) {
+  const god = GODS.find(g => g.name === name);
+  if (god) openGodModal(god);
+}
+
+function openGodById(id) {
+  const god = GODS.find(g => g.id === id.toLowerCase());
+  if (god) openGodModal(god);
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal-overlay') || e.currentTarget.classList.contains('modal-close')) {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+}
+
+// ===== TAB SWITCHING =====
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  
+  if (name === 'relations') {
+    setTimeout(drawRelationGraph, 50);
+  }
+}
+
+// ===== RELATION GRAPH =====
+let graphNodes = [];
+let graphEdges = [];
+let animFrame;
+
+const EDGES = [
+  { from: 'osiris', to: 'isis', type: 'family', label: '配偶' },
+  { from: 'osiris', to: 'horus', type: 'family', label: '父子' },
+  { from: 'osiris', to: 'set', type: 'enemy', label: '兄弟/对立' },
+  { from: 'osiris', to: 'nephthys', type: 'family', label: '姐弟' },
+  { from: 'isis', to: 'horus', type: 'family', label: '母子' },
+  { from: 'isis', to: 'nephthys', type: 'family', label: '姐妹' },
+  { from: 'isis', to: 'thoth', type: 'ally', label: '同盟' },
+  { from: 'ra', to: 'horus', type: 'ally', label: '化身' },
+  { from: 'ra', to: 'thoth', type: 'family', label: '父子' },
+  { from: 'ra', to: 'bastet', type: 'family', label: '父女' },
+  { from: 'horus', to: 'set', type: 'enemy', label: '对立' },
+  { from: 'thoth', to: 'anubis', type: 'ally', label: '共事' },
+  { from: 'anubis', to: 'osiris', type: 'ally', label: '侍奉' },
+  { from: 'set', to: 'nephthys', type: 'family', label: '配偶' },
+  { from: 'ptah', to: 'sekhmet', type: 'family', label: '配偶' },
+  { from: 'hathor', to: 'ra', type: 'ally', label: '拉之眼' },
+  { from: 'sekhmet', to: 'hathor', type: 'ally', label: '化身' },
+];
+
+function drawRelationGraph() {
+  const canvas = document.getElementById('relation-canvas');
+  const wrap = document.getElementById('relation-canvas-wrap');
+  canvas.width = wrap.offsetWidth;
+  canvas.height = wrap.offsetHeight;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  
+  // Layout nodes in a force-directed-like circle arrangement
+  if (graphNodes.length === 0) {
+    const N = GODS.length;
+    graphNodes = GODS.map((g, i) => {
+      const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
+      const r = Math.min(W, H) * 0.32;
+      return {
+        id: g.id,
+        god: g,
+        x: W / 2 + Math.cos(angle) * r,
+        y: H / 2 + Math.sin(angle) * r,
+        vx: 0, vy: 0,
+        radius: 26,
+      };
+    });
+  }
+  
+  graphEdges = EDGES.map(e => ({
+    ...e,
+    source: graphNodes.find(n => n.id === e.from),
+    target: graphNodes.find(n => n.id === e.to),
+  })).filter(e => e.source && e.target);
+  
+  let hoveredNode = null;
+  let dragging = null;
+  let mouseX = 0, mouseY = 0;
+  
+  function getEdgeColor(type) {
+    if (type === 'family') return '#C9A84C';
+    if (type === 'ally') return '#1A7A6E';
+    return '#8B2020';
+  }
+  
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    
+    // Draw edges
+    graphEdges.forEach(e => {
+      const highlight = hoveredNode && (e.source.id === hoveredNode.id || e.target.id === hoveredNode.id);
+      ctx.beginPath();
+      ctx.moveTo(e.source.x, e.source.y);
+      ctx.lineTo(e.target.x, e.target.y);
+      ctx.strokeStyle = getEdgeColor(e.type);
+      ctx.lineWidth = highlight ? 2.5 : 1;
+      ctx.globalAlpha = highlight ? 0.9 : 0.25;
+      if (e.type === 'enemy') {
+        ctx.setLineDash([6, 4]);
+      } else {
+        ctx.setLineDash([]);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.globalAlpha = 1;
+      
+      // Edge label on hover
+      if (highlight) {
+        const mx = (e.source.x + e.target.x) / 2;
+        const my = (e.source.y + e.target.y) / 2;
+        ctx.font = '10px Cinzel, serif';
+        ctx.fillStyle = getEdgeColor(e.type);
+        ctx.globalAlpha = 0.8;
+        ctx.textAlign = 'center';
+        ctx.fillText(e.label, mx, my - 4);
+        ctx.globalAlpha = 1;
+      }
+    });
+    
+    // Draw nodes
+    graphNodes.forEach(node => {
+      const isHovered = hoveredNode && hoveredNode.id === node.id;
+      const isRelated = hoveredNode && graphEdges.some(e => 
+        (e.source.id === hoveredNode.id && e.target.id === node.id) ||
+        (e.target.id === hoveredNode.id && e.source.id === node.id)
+      );
+      
+      // Glow
+      if (isHovered || isRelated) {
+        const grd = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 2.5);
+        grd.addColorStop(0, isHovered ? 'rgba(201,168,76,0.4)' : 'rgba(201,168,76,0.15)');
+        grd.addColorStop(1, 'transparent');
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
+      
+      // Circle background
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = node.god.color + (isHovered ? 'AA' : '44');
+      ctx.fill();
+      ctx.strokeStyle = isHovered ? node.god.color : 'rgba(201,168,76,0.4)';
+      ctx.lineWidth = isHovered ? 2 : 1;
+      ctx.stroke();
+      
+      // Emoji
+      ctx.font = `${isHovered ? 22 : 18}px serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(node.god.emoji, node.x, node.y - 2);
+      
+      // Name
+      ctx.font = `${isHovered ? 11 : 9}px Cinzel, serif`;
+      ctx.fillStyle = isHovered ? '#F0D080' : 'rgba(201,168,76,0.7)';
+      ctx.textBaseline = 'top';
+      ctx.fillText(node.god.name, node.x, node.y + node.radius + 4);
+    });
+  }
+  
+  canvas.onmousemove = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+    
+    if (dragging) {
+      dragging.x = mouseX;
+      dragging.y = mouseY;
+    }
+    
+    hoveredNode = graphNodes.find(n => {
+      const dx = n.x - mouseX, dy = n.y - mouseY;
+      return Math.sqrt(dx*dx + dy*dy) < n.radius + 6;
+    }) || null;
+    
+    canvas.style.cursor = hoveredNode ? 'pointer' : 'default';
+    
+    const tt = document.getElementById('canvas-tooltip');
+    if (hoveredNode) {
+      tt.style.display = 'block';
+      tt.style.left = (mouseX + 14) + 'px';
+      tt.style.top = (mouseY - 10) + 'px';
+      tt.innerHTML = `${hoveredNode.god.emoji} ${hoveredNode.god.name}<br><span style="color:#D4C4A0;font-size:10px">${hoveredNode.god.zh} · ${hoveredNode.god.domain}之神</span>`;
+    } else {
+      tt.style.display = 'none';
+    }
+    
+    draw();
+  };
+  
+  canvas.onmousedown = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    dragging = graphNodes.find(n => {
+      const dx = n.x - mx, dy = n.y - my;
+      return Math.sqrt(dx*dx + dy*dy) < n.radius + 6;
+    }) || null;
+  };
+  
+  canvas.onmouseup = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    const clicked = graphNodes.find(n => {
+      const dx = n.x - mx, dy = n.y - my;
+      return Math.sqrt(dx*dx + dy*dy) < n.radius + 6;
+    });
+    if (clicked && !dragging?.moved) openGodModal(clicked.god);
+    dragging = null;
+  };
+  
+  canvas.onmouseleave = () => {
+    hoveredNode = null;
+    dragging = null;
+    document.getElementById('canvas-tooltip').style.display = 'none';
+    draw();
+  };
+  
+  draw();
+}
+
+init();
+</script>
+<script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+</body>
+</html>

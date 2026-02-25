@@ -118,12 +118,15 @@
       max-width: 680px;
     }
 
-    /* ── TWO COLUMNS ── */
+    /* ── THREE COLUMNS ── */
     .two-col {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2px;
       margin-bottom: 40px;
+    }
+    @media (max-width: 840px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
     }
     .entry-card {
       background: var(--card);
@@ -266,29 +269,37 @@
     </header>
 
     <div class="two-col">
-      <a class="entry-card" href="think/index.html">
+      <a class="entry-card" href="history/index.html">
         <span class="entry-icon">𓃀</span>
-        <div class="entry-label">思考 · Think</div>
+        <div class="entry-label">历史 · History</div>
         <div class="entry-title">古埃及朝代史与法老图谱</div>
         <div class="entry-desc">从早王朝到托勒密，六个时代的法老走马灯。图坦卡蒙、阿肯那顿、拉美西斯二世……这四幅莎草纸画把我带进了新王国第十八王朝。这是一张可以点击的朝代地图。</div>
-        <span class="entry-btn">进入思考页 →</span>
+        <span class="entry-btn">进入历史页 →</span>
       </a>
 
       <a class="entry-card" href="action/index.html">
         <span class="entry-icon">🏛️</span>
         <div class="entry-label">行程 · Action</div>
         <div class="entry-title">吉萨高地到哈利利市场</div>
-        <div class="entry-desc">上午金字塔，中午如意坊，教堂关门后转进哈利利市场，带走四幅手写莎草纸画。计划外的一天，但符号连接点反而更清晰。</div>
+        <div class="entry-desc">上午金字塔，中午如意坊，下午转进哈利利市场，带走四幅手写莎草纸画。这一天的路线意外清晰，符号连接点比计划还密。</div>
         <span class="entry-btn">进入行程页 →</span>
+      </a>
+
+      <a class="entry-card" href="think/index.html">
+        <span class="entry-icon">💭</span>
+        <div class="entry-label">思考 · Think</div>
+        <div class="entry-title">莎草纸画与符号的旅行</div>
+        <div class="entry-desc">四幅画带回来的安卡、荷鲁斯之眼、阿顿……这些符号穿越了多神教、科普特教和伊斯兰集市，依然活着。符号比信仰更长寿。</div>
+        <span class="entry-btn">进入思考页 →</span>
       </a>
     </div>
 
     <div class="notes">
       <div class="notes-title">记录说明</div>
       <ul>
-        <li>思考页按朝代时间轴展示法老卡片，可点击查看详情；四幅莎草纸的朝代溯源在底部单独呈现。</li>
-        <li>行程页保留完整时间线与莎草纸画展示区，5个时间节点：吉萨、如意坊、教堂关门、哈利利市场、四幅画。</li>
-        <li>今天的核心发现：安卡符号从古埃及多神教，到科普特基督教，再到伊斯兰集市商品，这条符号旅行线比我今天的路线远得多。</li>
+        <li>历史页按朝代时间轴展示法老卡片，可点击查看详情；四幅莎草纸的朝代溯源在底部单独呈现。</li>
+        <li>行程页保留完整时间线与莎草纸画展示区：吉萨、如意坊、哈利利市场、四幅画。</li>
+        <li>思考页深入安卡符号的旅行史：从多神教到科普特基督教，再到伊斯兰集市商品，符号比信仰活得更久。</li>
         <li>第十八王朝是这一天的主轴：图坦卡蒙、阿肯那顿、奈费尔提提都在那里。</li>
       </ul>
     </div>

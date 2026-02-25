@@ -118,12 +118,15 @@
       max-width: 680px;
     }
 
-    /* ── TWO COLUMNS ── */
+    /* ── THREE COLUMNS ── */
     .two-col {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2px;
       margin-bottom: 40px;
+    }
+    @media (max-width: 840px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
     }
     .entry-card {
       background: var(--card);
@@ -266,12 +269,12 @@
     </header>
 
     <div class="two-col">
-      <a class="entry-card" href="think/index.html">
+      <a class="entry-card" href="history/index.html">
         <span class="entry-icon">⛪</span>
-        <div class="entry-label">思考 · Think</div>
+        <div class="entry-label">历史 · History</div>
         <div class="entry-title">悬空教堂、阿布塞尔加与圣安东尼</div>
         <div class="entry-desc">三个圣地的历史背景：罗马堡垒上建起的科普特教堂、神圣家族逃难的地下石窟，以及公元356年在沙漠中诞生的世界最古老修道院。苦修主义与沙漠教父的故事在这里展开。</div>
-        <span class="entry-btn">进入思考页 →</span>
+        <span class="entry-btn">进入历史页 →</span>
       </a>
 
       <a class="entry-card" href="action/index.html">
@@ -281,14 +284,22 @@
         <div class="entry-desc">08:30 出发，上午在科普特开罗的迷宫街巷里穿行；中午启程，三小时沙漠公路；傍晚抵达圣安东尼修道院，攀登一千多级木台阶，走上圣安东尼当年独居祈祷的山洞。</div>
         <span class="entry-btn">进入行程页 →</span>
       </a>
+
+      <a class="entry-card" href="think/index.html">
+        <span class="entry-icon">💭</span>
+        <div class="entry-label">思考 · Think</div>
+        <div class="entry-title">为什么要去荒野？</div>
+        <div class="entry-desc">圣安东尼选择沙漠，不是逃离，而是进入一种极度纯粹的存在状态。攀登千级台阶走到山洞——这条路本身就是一种仪式。现代人的"沙漠"在哪里？</div>
+        <span class="entry-btn">进入思考页 →</span>
+      </a>
     </div>
 
     <div class="notes">
       <div class="notes-title">记录说明</div>
       <ul>
-        <li>思考页分三个部分：科普特老城两座教堂的建筑与传说史；圣安东尼其人与修道院的创立经过；苦修主义（Asceticism）与沙漠教父（Desert Fathers）的核心概念。</li>
+        <li>历史页分三个部分：科普特老城两座教堂的建筑与传说史；圣安东尼其人与修道院的创立经过；苦修主义（Asceticism）与沙漠教父（Desert Fathers）的核心概念。</li>
         <li>行程页按时间线走：悬空教堂 → 阿布塞尔加教堂 → 午餐 → 东部沙漠公路 → 修道院 → 圣安东尼山洞。</li>
-        <li>这一天的核心问题：为什么要去荒野？修道士选择沙漠，不是逃离，而是进入一种极度纯粹的对话状态——与神，与自己。</li>
+        <li>思考页探讨"为什么要去荒野"这个问题——修道士选择沙漠是一种存在方式的选择，不只属于公元3世纪。</li>
         <li>圣安东尼山洞（Cave of Saint Anthony）需要攀登约1000级陡峭木台阶，这条路本身就是一种仪式。</li>
       </ul>
     </div>
