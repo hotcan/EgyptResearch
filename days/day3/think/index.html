@@ -154,6 +154,92 @@
       font-style: italic;
     }
 
+    /* ── PRECEPT TABLE ── */
+    .precept-wrap {
+      margin: 28px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .precept-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: .6;
+      margin-bottom: 6px;
+    }
+    .precept-note {
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-bottom: 14px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .precept-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 520px;
+    }
+    .precept-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--gold);
+      background: var(--surface);
+      border: 1px solid rgba(200,151,58,.18);
+      padding: 10px 13px;
+      text-align: left;
+      font-weight: 400;
+    }
+    .precept-table th .trad-sub {
+      display: block;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 9px;
+      color: var(--ink-faint);
+      letter-spacing: .3px;
+      margin-top: 3px;
+    }
+    .precept-table td {
+      border: 1px solid var(--line-faint);
+      padding: 9px 13px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      vertical-align: top;
+    }
+    .precept-table td.col-theme {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: rgba(200,151,58,.5);
+      background: var(--surface);
+      white-space: nowrap;
+      text-align: center;
+    }
+    .precept-table td.nil {
+      color: var(--ink-faint);
+      text-align: center;
+      font-size: 15px;
+      padding-top: 10px;
+    }
+    .precept-table .en {
+      display: block;
+      font-size: 10px;
+      color: var(--ink-faint);
+      font-style: italic;
+      margin-top: 2px;
+    }
+    /* 四传统共有行 — 高亮 */
+    .precept-table tr.shared td {
+      background: rgba(200,151,58,.05);
+    }
+    .precept-table tr.shared td.col-theme {
+      background: rgba(200,151,58,.10);
+      color: rgba(200,151,58,.75);
+    }
+    .precept-table tr:hover td { background: rgba(200,151,58,.04); }
+    .precept-table tr.shared:hover td { background: rgba(200,151,58,.08); }
+
     /* ── DIVIDER ── */
     .divider {
       border: none;
@@ -213,17 +299,12 @@
           生命本身就是工作与祷告交替填满的容器，直到死亡。
         </p>
         <p>
-          带着我们进圣安东尼山洞的修士块80岁了，
+          带着我们进圣安东尼山洞的修士快80岁了，
           动作缓慢，但腰杆挺直。
-          他一个人掌管着那把进山洞的钥匙，每天固定时间开门，
-          带着来访者走过那段台阶，然后原路折返。
-          已经这样过了多少年，没有人告诉我，我也没有问。
+          他掌管着进门的钥匙，交给来访者打开大门，带着来访者走过台阶，走进修士们吃饭的餐厅，进入世界上最古老的修道院和教堂。已经这样过了多少年，没有人告诉我，我也没有问。
         </p>
         <p>
-          修道院的外墙上曾经没有门——或者说，有门，但很小，很高，
-          只能靠绳索把食物和访客吊进去。
-          这不是隐喻，是建筑现实：
-          为了隔绝外界，入口被设计成物理上的困难。
+          修道院的外墙上曾经没有门，现在的门只开了100多年。在古代，只能靠绳索把食物和访客吊进去。为了隔绝外界，入口被设计成物理上的困难。
           <strong>进入这个地方，本身就是一种考验。</strong>
         </p>
 
@@ -327,19 +408,109 @@
           通过一系列的「不」，划定出一个人应当存在的边界。
         </p>
 
-        <div class="aside">
-          <div class="aside-label">比较 · 三种传统的基本戒律</div>
-          <p>
-            <strong>基督教（十诫）：</strong>不可拜别神、不可杀人、不可偷盗、不可贪恋……共十条，约束行为与意念。
-          </p>
-          <p>
-            <strong>佛教（五戒）：</strong>不杀生、不偷盗、不邪淫、不妄语、不饮酒。
-            针对在家信众；出家律令更严，数百条。
-          </p>
-          <p>
-            <strong>印度教（亚摩与尼亚摩）：</strong>不伤害（Ahimsa）、不说谎、不偷窃、节欲、不贪……
-            来自《瑜伽经》，同样以「不」为核心。
-          </p>
+        <div class="precept-wrap">
+          <div class="precept-label">比较 · 四种传统的基本戒律</div>
+          <div class="precept-note">金色底色行 = 四种传统均有对应戒律 · 「·」= 该传统无明确对应条目</div>
+          <table class="precept-table">
+            <thead>
+              <tr>
+                <th class="col-theme"></th>
+                <th>佛教<span class="trad-sub">五戒 · 在家信众</span></th>
+                <th>印度教<span class="trad-sub">亚摩五律 · 瑜伽经</span></th>
+                <th>道教<span class="trad-sub">老君五戒 · 十戒</span></th>
+                <th>基督教<span class="trad-sub">十诫 · 摩西律法</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ── 四传统共有 ── -->
+              <tr class="shared">
+                <td class="col-theme">杀生</td>
+                <td>不杀生</td>
+                <td>不伤害<span class="en">Ahimsa</span></td>
+                <td>不得杀生</td>
+                <td>不可杀人</td>
+              </tr>
+              <tr class="shared">
+                <td class="col-theme">偷盗</td>
+                <td>不偷盗</td>
+                <td>不偷窃<span class="en">Asteya</span></td>
+                <td>不得偷盗</td>
+                <td>不可偷盗</td>
+              </tr>
+              <tr class="shared">
+                <td class="col-theme">妄语</td>
+                <td>不妄语</td>
+                <td>诚实<span class="en">Satya</span></td>
+                <td>不得口是心非</td>
+                <td>不可作假见证</td>
+              </tr>
+              <!-- ── 三或两种共有 ── -->
+              <tr>
+                <td class="col-theme">邪淫</td>
+                <td>不邪淫</td>
+                <td>节欲<span class="en">Brahmacharya</span></td>
+                <td>不得淫邪败真</td>
+                <td>不可奸淫</td>
+              </tr>
+              <tr>
+                <td class="col-theme">贪欲</td>
+                <td class="nil">·</td>
+                <td>不贪<span class="en">Aparigraha</span></td>
+                <td>不得贪求无厌</td>
+                <td>不可贪恋邻人财物</td>
+              </tr>
+              <tr>
+                <td class="col-theme">酒 · 迷幻</td>
+                <td>不饮酒</td>
+                <td class="nil">·</td>
+                <td>不得饮酒食肉</td>
+                <td class="nil">·</td>
+              </tr>
+              <tr>
+                <td class="col-theme">孝亲 · 忠</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td>不得不忠不孝</td>
+                <td>当孝敬父母</td>
+              </tr>
+              <tr>
+                <td class="col-theme">嫉妒 · 害人</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td>不得阴贼潜谋、害物利己</td>
+                <td>不可贪恋邻人妻</td>
+              </tr>
+              <!-- ── 基督教特有 ── -->
+              <tr>
+                <td class="col-theme">独一神</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td>不可有别的神</td>
+              </tr>
+              <tr>
+                <td class="col-theme">偶像</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td>不可造偶像</td>
+              </tr>
+              <tr>
+                <td class="col-theme">神名</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td>不可妄称耶和华之名</td>
+              </tr>
+              <tr>
+                <td class="col-theme">安息日</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td class="nil">·</td>
+                <td>当守安息日为圣日</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <p>
