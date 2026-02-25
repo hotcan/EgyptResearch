@@ -200,6 +200,19 @@
       border-top: none;
       font-style: italic;
     }
+    .heschel-illustration {
+      margin: 28px 0;
+      border: 1px solid var(--line-faint);
+    }
+    .heschel-illustration figcaption {
+      font-size: 12px;
+      color: var(--ink-faint);
+      line-height: 1.7;
+      padding: 8px 12px;
+      background: var(--surface);
+      border-top: 1px solid var(--line-faint);
+      font-style: italic;
+    }
 
     /* ── CHAIN ── */
     .chain {
@@ -275,7 +288,7 @@
 
     <header class="hero">
       <div class="hero-eyebrow">Day 04 · Think · 2026.02.25</div>
-      <h1>认清真相后，<em>依然热爱</em></h1>
+      <h1 data-key="days.3.think_title">认清真相后，<em>依然热爱</em></h1>
       <p class="hero-lead">斐洛在两千年前就知道：同一个文本，可以有两层真理。字面是外壳，寓意才是内核。这一天在斐洛的故乡，我想到了佛教的二谛、克尔凯郭尔的纵身一跃、加缪在悬崖边缘的微笑——以及回程大巴上两个新的岔路：赫舍尔《先知》里那个会哭泣的上帝，和AI的意识与自由意志。</p>
     </header>
 
@@ -557,9 +570,83 @@
           历史对上帝是重要的。人的苦难触动了上帝。
         </p>
 
-        <figure class="img-block">
-          <img src="sadat.jpg" alt="萨达特总统纪念馆，亚历山大图书馆内">
-          <figcaption>亚历山大图书馆内的萨达特总统（Mohamed Anwar Sadat，1918—1981）纪念馆。铜像旁的铭文：「也许有一天，我们会再次相聚——不是为了吹嘘，而是为了记忆、学习，并把这个时代的故事讲给孩子们听……」这句话在赫舍尔的语境里有了另一层含义：记忆，是有感情的神学行为。</figcaption>
+        <figure class="heschel-illustration">
+          <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+            <!-- Background -->
+            <rect width="520" height="230" fill="#1c1813"/>
+            <!-- Outer border -->
+            <rect x="2" y="2" width="516" height="226" fill="none" stroke="#c8973a" stroke-width=".8" opacity=".22"/>
+
+            <!-- ══ HESCHEL (left) ══ -->
+            <!-- Kippah (skullcap) -->
+            <ellipse cx="115" cy="38" rx="22" ry="10" fill="#c8973a" opacity=".18" stroke="#c8973a" stroke-width="1" />
+            <!-- Head -->
+            <circle cx="115" cy="55" r="21" fill="none" stroke="#c8973a" stroke-width="1.5" opacity=".65"/>
+            <!-- Eyes — downward gaze, contemplative -->
+            <ellipse cx="108" cy="53" rx="4" ry="3" fill="#c8973a" opacity=".45"/>
+            <ellipse cx="122" cy="53" rx="4" ry="3" fill="#c8973a" opacity=".45"/>
+            <!-- Nose bridge line -->
+            <line x1="115" y1="55" x2="115" y2="63" stroke="#c8973a" stroke-width="1" opacity=".25"/>
+            <!-- Beard -->
+            <path d="M96 72 Q115 95 134 72 L140 115 Q115 128 90 115 Z" fill="#c8973a" opacity=".12" stroke="#c8973a" stroke-width="1"/>
+            <!-- Body / robe -->
+            <path d="M80 120 L68 210 Q115 220 162 210 L150 120 Z" fill="#c8973a" opacity=".07"/>
+            <line x1="80" y1="120" x2="68" y2="210" stroke="#c8973a" stroke-width="1" opacity=".3"/>
+            <line x1="150" y1="120" x2="162" y2="210" stroke="#c8973a" stroke-width="1" opacity=".3"/>
+            <!-- Collar line -->
+            <path d="M96 118 Q115 130 134 118" stroke="#c8973a" stroke-width="1" fill="none" opacity=".3"/>
+            <!-- Extended arm toward center -->
+            <path d="M148 145 Q195 140 238 130" stroke="#c8973a" stroke-width="1.5" fill="none" opacity=".35" stroke-dasharray="5,3"/>
+            <circle cx="148" cy="145" r="5" fill="#c8973a" opacity=".25"/>
+
+            <!-- ══ ROBOT / A.I. (right) ══ -->
+            <!-- Antenna -->
+            <line x1="405" y1="30" x2="405" y2="16" stroke="#c8973a" stroke-width="2" opacity=".55"/>
+            <circle cx="405" cy="12" r="4" fill="#c8973a" opacity=".65"/>
+            <!-- Signal waves from antenna -->
+            <path d="M398 20 Q390 14 398 8" stroke="#c8973a" stroke-width="1" fill="none" opacity=".3"/>
+            <path d="M412 20 Q420 14 412 8" stroke="#c8973a" stroke-width="1" fill="none" opacity=".3"/>
+            <!-- Head (rectangular) -->
+            <rect x="382" y="30" width="46" height="42" rx="6" fill="none" stroke="#c8973a" stroke-width="1.5" opacity=".6"/>
+            <rect x="384" y="32" width="42" height="38" rx="5" fill="#c8973a" opacity=".04"/>
+            <!-- Eyes (glowing) -->
+            <circle cx="395" cy="48" r="6" fill="#c8973a" opacity=".55"/>
+            <circle cx="415" cy="48" r="6" fill="#c8973a" opacity=".55"/>
+            <circle cx="395" cy="48" r="3" fill="#e8bf6a" opacity=".85"/>
+            <circle cx="415" cy="48" r="3" fill="#e8bf6a" opacity=".85"/>
+            <!-- Mouth (flat line with slight curve) -->
+            <path d="M396 62 Q405 65 414 62" stroke="#c8973a" stroke-width="1.2" fill="none" opacity=".45"/>
+            <!-- Body (torso) -->
+            <rect x="374" y="76" width="62" height="70" rx="6" fill="none" stroke="#c8973a" stroke-width="1.5" opacity=".5"/>
+            <rect x="376" y="78" width="58" height="66" rx="5" fill="#c8973a" opacity=".04"/>
+            <!-- Chest core (pulsing heart-like symbol?) -->
+            <circle cx="405" cy="108" r="13" fill="none" stroke="#c8973a" stroke-width="1.2" opacity=".5"/>
+            <circle cx="405" cy="108" r="7" fill="none" stroke="#c8973a" stroke-width="1" opacity=".35"/>
+            <circle cx="405" cy="108" r="3" fill="#c8973a" opacity=".3"/>
+            <!-- Arm extended toward center -->
+            <path d="M374 110 Q328 120 282 130" stroke="#c8973a" stroke-width="1.5" fill="none" opacity=".35" stroke-dasharray="5,3"/>
+            <circle cx="374" cy="110" r="5" fill="#c8973a" opacity=".25"/>
+
+            <!-- ══ CENTER SYMBOL ══ -->
+            <!-- Vertical divider (faint) -->
+            <line x1="260" y1="20" x2="260" y2="205" stroke="#c8973a" stroke-width=".5" opacity=".1"/>
+            <!-- Teardrop = divine pathos / compassion -->
+            <path d="M260 55 C260 55 240 90 240 115 C240 138 249 152 260 152 C271 152 280 138 280 115 C280 90 260 55 260 55 Z" fill="#c8973a" opacity=".12" stroke="#c8973a" stroke-width="1.2"/>
+            <!-- Inner gleam of teardrop -->
+            <ellipse cx="254" cy="112" rx="5" ry="8" fill="#e8bf6a" opacity=".25" transform="rotate(-15 254 112)"/>
+            <!-- ? symbol inside drop -->
+            <text x="260" y="125" font-size="20" fill="#c8973a" opacity=".3" text-anchor="middle" font-family="Georgia,serif">?</text>
+            <!-- Radiating lines from teardrop -->
+            <line x1="260" y1="50" x2="260" y2="42" stroke="#c8973a" stroke-width="1" opacity=".2"/>
+            <line x1="252" y1="52" x2="246" y2="46" stroke="#c8973a" stroke-width="1" opacity=".15"/>
+            <line x1="268" y1="52" x2="274" y2="46" stroke="#c8973a" stroke-width="1" opacity=".15"/>
+
+            <!-- ══ LABELS ══ -->
+            <text x="115" y="218" font-size="9" fill="#c8973a" opacity=".45" text-anchor="middle" font-family="Cinzel,serif" letter-spacing="2.5">HESCHEL</text>
+            <text x="405" y="218" font-size="9" fill="#c8973a" opacity=".45" text-anchor="middle" font-family="Cinzel,serif" letter-spacing="2.5">A · I</text>
+            <text x="260" y="178" font-size="10.5" fill="#8a7f6e" text-anchor="middle" font-family="serif" letter-spacing=".5">上帝会哭泣吗 · 机器会做梦吗</text>
+          </svg>
+          <figcaption>赫舍尔（Abraham Joshua Heschel，1907—1972）认为上帝是有位格、会悲悯的神，不是希腊哲学里的"不动的推动者"。AI的出现在回程大巴上引出了逆命题：当机器也能"感受"、也能"回应"，情感是否仍是神性与人性的独家标志？中间那滴泪，是两个问题共同悬挂的地方。</figcaption>
         </figure>
 
         <p>
