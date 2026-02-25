@@ -307,6 +307,27 @@ body::before {
 @media (max-width: 600px) {
   .key-facts { flex-direction: column; }
 }
+
+/* ── IMAGE BLOCK ── */
+.img-block {
+  margin: 36px 0;
+}
+.img-block img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--line-faint);
+  filter: sepia(.15) contrast(1.02);
+}
+.img-block figcaption {
+  font-size: 12px;
+  color: var(--ink-faint);
+  line-height: 1.7;
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line-faint);
+  border-top: none;
+  letter-spacing: .2px;
+}
 </style>
 </head>
 <body>
@@ -327,6 +348,11 @@ body::before {
       一座城市，三次关键的思想事件：犹太哲人斐洛将希腊哲学嫁接进希伯来圣经，七十二名文士将《圣经》译成希腊文，亚历山大学派的教父们把基督教锻造成一套哲学体系。这三件事，共同奠定了西方思想史的理性地基。
     </p>
   </header>
+
+  <figure class="img-block">
+    <img src="pharos_galle_1572.jpg" alt="法罗斯灯塔，Philip Galle 铜版画，1572年">
+    <figcaption>《亚历山大法罗斯灯塔》，Philip Galle 根据 Maerten van Heemskerck 原稿制作的铜版画，1572年。古代世界七大奇迹之一，高约137米，矗立于法罗斯岛，引导地中海船只驶入港口——也是这座智识城市对外宣示的第一张面孔。美国国家美术馆（NGA）藏，公共领域。</figcaption>
+  </figure>
 
   <!-- ── SECTION I: PHILO ── -->
   <section class="section">
