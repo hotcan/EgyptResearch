@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>第5天 · 埃及的神秘与永恒</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0e0c09; --surface: #161310; --card: #1c1813; --card-hover: #231f19;
@@ -67,7 +66,7 @@
     @media (max-width: 640px) { .structure-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
-<body>
+<body class="">
   <div class="wrap">
     <nav class="topbar">
       <a href="../../index.html">← 旅行目录</a>
@@ -75,33 +74,28 @@
       <span>第5天</span>
     </nav>
 
-    <div class="draft-banner">
-      <span class="draft-dot"></span>
-      <span>明日行程 · 09:00 大埃及博物馆 → 19:00 航班飞往卢克索</span>
-    </div>
-
     <header class="hero">
       <div class="hero-eyebrow" data-key="days.4.eyebrow">Day 05 · 2026.02.26</div>
       <h1 data-key="days.4.title">法老的<em>终极陈列室</em></h1>
       <div class="hero-route">开罗 → 大埃及博物馆 ✈ 卢克索</div>
-      <p class="hero-lead">世界最大的考古博物馆在金字塔脚下等了二十年。图坦卡蒙的5000余件宝藏、胡夫的4500年太阳船，今天终于能以完整面貌呈现。傍晚飞往卢克索，进入上埃及的另一个时间维度。</p>
+      <p class="hero-lead" data-key="days.4.desc"></p>
     </header>
 
     <div class="structure-grid">
-      <a class="structure-box" href="history/index.html" style="text-decoration:none; display:block; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
+      <a class="structure-box" href="history/index.html" style="text-decoration: none; display: block; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
         <div class="structure-label">历史 · History</div>
         <div class="structure-title">法老的终极陈列室</div>
         <div class="structure-desc">大埃及博物馆为何而建、图坦卡蒙宝藏、胡夫太阳船、拉美西斯二世，以及埃及文物归还争议。</div>
       </a>
-      <a class="structure-box" href="action/index.html" style="text-decoration:none; display:block; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
+      <a class="structure-box" href="action/index.html" style="text-decoration: none; display: block; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
         <div class="structure-label">行程 · Action</div>
-        <div class="structure-title">GEM·飞往卢克索</div>
-        <div class="structure-desc">09:00出发 → 大埃及博物馆全天参观 → 16:30前往机场 → 19:00航班 → 约20:00抵达卢克索。</div>
+        <div class="structure-title" data-key="days.4.action_title"></div>
+        <div class="structure-desc" data-key="days.4.action_lead"></div>
       </a>
-      <a class="structure-box" href="think/index.html" style="text-decoration:none; display:block; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
+      <a class="structure-box" href="think/index.html" style="text-decoration: none; display: block; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
         <div class="structure-label">思考 · Think</div>
-        <div class="structure-title">待定</div>
-        <div class="structure-desc">这一天的思考内容将在行程结束后写入。</div>
+        <div class="structure-title" data-key="days.4.think_title"></div>
+        <div class="structure-desc" data-key="days.4.think_lead"></div>
       </a>
     </div>
 
@@ -113,5 +107,5 @@
   </div>
   <script src="../../assets/js/data-bind.js"></script>
   <script src="../../assets/js/edit-mode.js"></script>
-</body>
-</html>
+
+</body></html>
