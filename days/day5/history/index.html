@@ -57,7 +57,7 @@ body::before {
 
 /* ── HERO ── */
 .hero {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   padding-bottom: 40px;
   border-bottom: 1px solid var(--line);
 }
@@ -80,6 +80,37 @@ body::before {
 }
 .hero-lead {
   font-size: 15px; color: var(--ink-muted); line-height: 1.9;
+}
+
+/* ── IMAGE BLOCKS ── */
+.img-block { margin: 32px 0; }
+.img-block img {
+  width: 100%; display: block;
+  border: 1px solid var(--line-faint);
+  filter: sepia(.1) brightness(.9);
+}
+.img-block figcaption {
+  font-size: 11px; color: var(--ink-faint);
+  line-height: 1.7; padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-faint);
+  border-top: none; font-style: italic;
+}
+.img-portrait {
+  margin: 32px auto;
+  max-width: 480px;
+}
+.img-portrait img {
+  width: 100%; display: block;
+  border: 1px solid var(--line-faint);
+  filter: sepia(.1) brightness(.9);
+}
+.img-portrait figcaption {
+  font-size: 11px; color: var(--ink-faint);
+  line-height: 1.7; padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-faint);
+  border-top: none; font-style: italic;
 }
 
 /* ── PROSE ── */
@@ -185,6 +216,7 @@ body::before {
 @media (max-width: 600px) {
   .stats-row { grid-template-columns: 1fr 1fr; }
   .object-grid { grid-template-columns: 1fr; }
+  .img-portrait { max-width: 100%; }
 }
 </style>
 </head>
@@ -208,6 +240,11 @@ body::before {
         大埃及博物馆（GEM）不只是一座博物馆，它是埃及向世界宣告：这些东西从来没有离开过这片土地——至少在精神上。
       </p>
     </header>
+
+    <figure class="img-block">
+      <img src="gem_exterior.jpg" alt="大埃及博物馆外观">
+      <figcaption>大埃及博物馆外观。三角形母题贯穿整个立面，半透明石灰岩外墙在日光下透出暖橙色漫射光。右侧可见方尖碑。摄于2026年2月26日。</figcaption>
+    </figure>
 
     <div class="prose">
 
@@ -295,6 +332,11 @@ body::before {
           2006年又被整体转移至GEM工地，在脚手架中等待了18年，
           最终在大厅中心找到了它最终的归宿。
         </p>
+
+        <figure class="img-portrait">
+          <img src="ramesses_atrium.jpg" alt="拉美西斯二世花岗岩巨像，大埃及博物馆大中庭">
+          <figcaption>GEM大中庭入口处的拉美西斯二世花岗岩巨像，高11米，重83吨。玻璃天顶将自然光引入大厅，与雕像形成呼应。</figcaption>
+        </figure>
       </section>
 
       <!-- 第三节 -->
@@ -329,6 +371,11 @@ body::before {
           一把折叠床、一件用象牙和黑檀木制成的写字台，以及47双凉鞋。
         </p>
 
+        <figure class="img-portrait">
+          <img src="tutankhamun_throne.jpg" alt="图坦卡蒙黄金御座">
+          <figcaption>图坦卡蒙黄金御座。木质骨架全身镀金，扶手两侧雕有眼镜蛇与雄鹰，靠背描绘图坦卡蒙与王后安克赫娜蒙的生活场景。这是埃及艺术中最精美的家具之一。</figcaption>
+        </figure>
+
         <div class="object-grid">
           <div class="object-card">
             <div class="object-name">黄金死亡面具</div>
@@ -359,6 +406,16 @@ body::before {
           </div>
         </div>
 
+        <figure class="img-block">
+          <img src="tutankhamun_chariot.jpg" alt="图坦卡蒙镀金战车">
+          <figcaption>图坦卡蒙镀金战车，GEM专属黑暗展厅。战车后方的玻璃屏风以白线描绘战场图案，与实物形成层叠的视觉效果。墓中共出土6辆战车。</figcaption>
+        </figure>
+
+        <figure class="img-block">
+          <img src="anubis_shrine.jpg" alt="阿努比斯神龛">
+          <figcaption>阿努比斯神龛，图坦卡蒙墓出土。黑色阿努比斯（胡狼形死神）卧于镀金木箱之上，神龛下方装有两根抬杠，供仪式行进使用。阿努比斯是引导亡灵进入冥界的守护神。</figcaption>
+        </figure>
+
         <p>
           GEM为图坦卡蒙宝藏专设<strong>图坦卡蒙画廊（Tutankhamun Galleries）</strong>，
           共占用两个楼层，面积约7000平方米。
@@ -382,6 +439,11 @@ body::before {
           组装复原后，这艘船长43.6米，高出水面约7米——
           是世界上现存最古老的整船实物，也是迄今出土的最完整的古代船只之一。
         </p>
+
+        <figure class="img-block">
+          <img src="solar_boat_wide.jpg" alt="胡夫太阳船，大埃及博物馆">
+          <figcaption>胡夫太阳船，GEM专属展厅。船长43.6米，由1224块雪松木板拼合，建造于约公元前2566年。馆内波浪形天花板是GEM建筑的标志性设计元素之一。</figcaption>
+        </figure>
 
         <div class="aside">
           <div class="aside-label">考古注记 · 太阳船的用途</div>
@@ -411,19 +473,35 @@ body::before {
 
       <!-- 第五节 -->
       <section>
-        <div class="section-label">V · 拉美西斯与三千年的陈列</div>
+        <div class="section-label">V · 阿肯纳顿、拉美西斯与三千年的陈列</div>
         <p>
           GEM的展览体系以时间轴为骨干，从<strong>史前埃及（约公元前5000年）</strong>
           一直延伸至<strong>古罗马统治时期（公元4世纪）</strong>，
           横跨近5000年，涵盖古王国、中王国、新王国、后期王朝与托勒密时代的重要文物。
         </p>
         <p>
+          在新王国的展品中，最引人注目的异类是<strong>阿肯纳顿时代</strong>（约公元前1353—前1335年）的文物。
+          阿肯纳顿是图坦卡蒙之父，他进行了埃及历史上最激进的宗教改革：
+          废除传统众神体系，确立以阿顿（太阳圆盘）为唯一神，
+          迁都至新建的阿玛纳城（Amarna），并以一种拉长、柔化、几乎是病态的风格重塑了埃及艺术。
+        </p>
+
+        <figure class="img-portrait">
+          <img src="akhenaten_head.jpg" alt="阿肯纳顿头像">
+          <figcaption>阿肯纳顿头像，GEM馆藏。其面部特征极具辨识度：拉长的头骨、细长的眼睛、突出的下颌。这种风格是阿玛尔那艺术的典型特征，与传统埃及雕塑判然不同。</figcaption>
+        </figure>
+
+        <p>
+          阿肯纳顿死后，继任者（包括图坦卡蒙）系统性地抹去了他的名字与画像，
+          拆毁了阿玛纳城，重新恢复了多神信仰。
+          这段历史直到近代才被考古学重新拼凑出来。
+          GEM将阿肯纳顿与图坦卡蒙并列展出，呈现了这段古埃及最戏剧性的历史插曲。
+        </p>
+        <p>
           除图坦卡蒙画廊外，GEM的另一个视觉核心是<strong>大中庭（Grand Atrium）</strong>——
           入口处矗立的拉美西斯二世花岗岩巨像俯视着整个大厅。
           拉美西斯二世（约公元前1303—前1213年）在位67年，被认为是古埃及最伟大的法老之一，
-          他在整个尼罗河流域留下了比任何其他法老更多的雕像和建筑——
-          包括今天尚存的阿布辛贝勒神庙（Abu Simbel），
-          正殿深处的四座雕像之一，每年两次在春分和秋分前后被晨光直接照亮。
+          他在整个尼罗河流域留下了比任何其他法老更多的雕像和建筑。
         </p>
         <p>
           GEM同时设有<strong>皇家木乃伊展厅</strong>，

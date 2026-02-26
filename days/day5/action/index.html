@@ -153,6 +153,11 @@
     .event.flight .event-time { color: #7ab3e0; }
     .event.flight .event-time::after { background: #7ab3e0; }
 
+    /* ── IMAGE BLOCK ── */
+    .img-block { margin: 20px 0 4px; }
+    .img-block img { width: 100%; display: block; border: 1px solid var(--line-faint); filter: sepia(.1) brightness(.9); }
+    .img-block figcaption { font-size: 11px; color: var(--ink-faint); padding: 6px 10px; background: var(--surface); border: 1px solid var(--line-faint); border-top: none; line-height: 1.6; font-style: italic; }
+
     /* ── NAV FOOTER ── */
     .nav-footer {
       display: flex; justify-content: space-between; align-items: center;
@@ -284,6 +289,10 @@
               俯视着通往所有展厅的大楼梯。
             </p>
           </div>
+          <figure class="img-block">
+            <img src="selfie_stairs.jpg" alt="大埃及博物馆大楼梯与法老雕像">
+            <figcaption>GEM大楼梯，两侧陈列古埃及法老雕像，通往各展厅。上午参观时摄。</figcaption>
+          </figure>
         </div>
       </div>
 
