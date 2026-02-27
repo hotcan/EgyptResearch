@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第六天思考 · 谁在保存历史，谁在读懂亡灵</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09; --surface: #161310; --card: #1c1813;
+      --gold: #c8973a; --gold-dim: rgba(200,151,58,.13);
+      --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
+      --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.8; min-height: 100vh; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% -5%, rgba(200,151,58,.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 95% 100%, rgba(200,100,30,.05) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap {
+      position: relative; z-index: 1;
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto; padding: 36px 0 96px;
+    }
+    .topbar {
+      display: flex; gap: 20px; align-items: center;
+      margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 60px; padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: 4px; color: var(--gold); opacity: .8;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+      line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; }
+
+    /* ── PROSE ── */
+    .prose { display: grid; gap: 56px; margin-bottom: 60px; }
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 16px; letter-spacing: 1px;
+      color: var(--gold); opacity: .9;
+      margin-bottom: 18px;
+    }
+    .prose p {
+      font-size: 15px; color: var(--ink-muted);
+      line-height: 1.95; margin-bottom: 18px;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose p strong { color: var(--ink); font-weight: 600; }
+    .prose p em { font-style: normal; color: var(--gold); }
+
+    /* ── COMPARISON TABLE ── */
+    .era-table {
+      width: 100%; border-collapse: collapse;
+      margin: 28px 0; font-size: 13px;
+    }
+    .era-table th {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 2px; color: var(--gold);
+      text-align: left; padding: 10px 14px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    .era-table td {
+      padding: 14px; color: var(--ink-muted);
+      border-bottom: 1px solid var(--line-faint);
+      vertical-align: top; line-height: 1.7;
+    }
+    .era-table tr:last-child td { border-bottom: none; }
+    .era-table td:first-child {
+      font-family: 'Cinzel', serif; font-size: 11px;
+      color: var(--gold); white-space: nowrap;
+      background: var(--surface);
+    }
+    .era-table td strong { color: var(--ink); }
+    .era-table td em { font-style: normal; color: var(--gold); }
+
+    /* ── ASIDE ── */
+    .aside {
+      background: var(--surface);
+      border-left: 3px solid rgba(200,151,58,.4);
+      padding: 20px 24px; margin: 28px 0;
+    }
+    .aside-label {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 3px; color: var(--gold); opacity: .6;
+      margin-bottom: 10px;
+    }
+    .aside p {
+      font-size: 13px !important;
+      color: var(--ink-faint) !important;
+      line-height: 1.8 !important;
+      margin-bottom: 8px !important;
+    }
+    .aside p:last-child { margin-bottom: 0 !important; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--line-faint); }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap; gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--ink-muted); text-decoration: none;
+      border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+    @media (max-width: 600px) {
+      .era-table { font-size: 12px; }
+      .era-table td { padding: 10px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../../index.html">&larr; 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第六天</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">思考</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 06 &middot; Think &middot; 2026.02.27</div>
+      <h1 data-key="days.5.think_title">谁在保存历史，<em>谁在读懂亡灵</em></h1>
+      <p class="hero-lead" data-key="days.5.think_lead">在帝王谷看到三千年前的鲜艳颜色，在卢克索博物馆看到科普特十字石刻。两件事让我想通了一个问题：文明能不能延续，不取决于石头够不够硬，而取决于有没有人还在读。</p>
+    </header>
+
+    <div class="prose">
+
+      <!-- 第一节：谁在保存历史 -->
+      <section>
+        <div class="section-label">I &middot; 谁在保存历史</div>
+        <p>
+          在帝王谷看到三千多年前的壁画颜色依然鲜艳，我第一反应是感叹自然条件的恩赐。帝王谷位于卢克索西岸的干燥山谷里，年降水量几乎为零，墓室凿在石灰岩内部，与外界隔绝了三千年。是沙漠的干燥气候保存了这些颜色——矿物颜料没有受潮、没有发霉、没有被微生物分解。站在塞提一世墓室里，抬头看到天花板上的深蓝色天空和金色星辰，那种蓝比我见过的任何一座中国古代壁画都要鲜艳。
+        </p>
+        <p>
+          但转念想想，古迹的保存从来不只是气候的问题，更是人的问题。
+        </p>
+        <p>
+          <strong>埃及本身并没有很好地保存自己的历史。</strong>几千年来，法老的陵墓被盗掘殆尽——帝王谷六十多座墓葬，只有图坦卡蒙一座因为入口被后来修建的工人小屋覆盖而幸免于难。其余全部被盗。神庙的石块被当作采石场，中世纪的开罗有不少建筑就是拿法老时代的石灰岩砌的。象形文字在公元四世纪失传之后，一千四百年间，没有一个埃及人能够读懂自己祖先写下的文字。
+        </p>
+        <p>
+          "埃及学"（Egyptology）这个学科本身就是西方人创立的。是拿破仑1798年远征埃及时带去的167名学者和科学家开启了现代埃及学——他们测量了金字塔、抄录了神庙铭文、绘制了尼罗河流域地图。图坦卡蒙的墓也是英国人Howard Carter在1922年发现的。在那之前，帝王谷只是卢克索西岸一片荒凉的山谷，当地人知道下面有东西，但谁也没有系统地去找。
+        </p>
+        <p>
+          <strong>中国的情况何其相似。</strong>敦煌学的开创者不是中国人。1900年，莫高窟的看守人王圆箓道士在清理洞窟积沙时偶然发现了一个封闭的藏经洞，里面堆满了从公元四世纪到十一世纪的经卷、绢画和文书，总数超过五万件。但当时的清政府无力也无意保护这批文物。1907年，英国人斯坦因用四锭马蹄银换走了大批经卷；1908年，法国人伯希和以更专业的眼光挑选了最精华的部分运回巴黎。陈寅恪先生后来说过一句沉痛的话："敦煌者，吾国学术之伤心史也。"
+        </p>
+        <p>
+          更让我感慨的是一个直接的对比：<strong>秦始皇兵马俑的彩绘。</strong>兵马俑比帝王谷的壁画晚了将近两千年，制作于公元前三世纪，但它们出土后在中国潮湿的空气中迅速氧化褪色，原本鲜艳的朱红、石绿、紫色颜料在接触空气后几分钟内就消失殆尽。今天我们在博物馆看到的兵马俑是灰扑扑的陶色，但它们下葬时其实和帝王谷的壁画一样是彩色的。这不仅是气候的悲剧——关中地区的湿度远高于帝王谷——也是技术和意识的悲剧：1974年发掘时，中国的文物保护技术还不足以在出土瞬间锁住颜色。
+        </p>
+        <p>
+          敦煌莫高窟的飞天壁画，比帝王谷晚了大约三千年，画在公元四世纪到十四世纪之间，但颜色保存状况远不如帝王谷。河西走廊的气候虽然干燥，但远不如上埃及绝对无雨的环境，加上地震、风沙侵蚀和历代人为破坏，很多洞窟的壁画已经严重剥落。今天去莫高窟参观，很多洞窟不对外开放，就是因为游客呼出的湿气会加速颜料脱落。
+        </p>
+        <p>
+          站在帝王谷的墓室里想这些事情，我的感受很复杂。文明的传承需要有人主动去记录、保存和研究。当本文明的后人忘记了这件事——或者没有能力做这件事——外来者反而成了保存者。斯坦因把敦煌经卷运到伦敦，拿破仑的学者把埃及铭文抄录成册带回巴黎。这是一个既讽刺又值得深思的现象：你自己家的东西，最后是别人替你保管的。而当你终于有能力保管的时候，东西已经不在你手里了。
+        </p>
+      </section>
+
+      <hr class="divider">
+
+      <!-- 第二节：壁画、亡灵书与罗塞塔石碑 -->
+      <section>
+        <div class="section-label">II &middot; 读懂亡灵</div>
+        <p>
+          帝王谷的壁画密密麻麻写着一种我们看不懂的文字和图像。导游会指着墙上的鹰头人身、狼头人身说那是荷鲁斯、阿努比斯，但壁画上大片大片的象形文字他基本跳过不讲。其实那些密密麻麻的文字和图像不是随意的装饰——它们大多来自古埃及的丧葬文献，统称为"亡灵书"（Book of the Dead）。更准确地说，这是多部文献的集合：包括门之书（Book of Gates）、冥界之书（Amduat）、洞穴之书（Book of Caverns）等等。不同的法老墓里画的是不同的文献，但主题都是同一个：法老死后灵魂的旅程。
+        </p>
+        <p>
+          <strong>这些书描述了法老死后灵魂穿越冥界的旅程。</strong>冥界之书（Amduat）把这趟旅程分成十二个小时，对应夜晚的十二个小时。每一个小时法老的灵魂（Ba）都要经过一道门，面对不同的守护者、敌人和考验。蛇神阿佩普（Apophis）是最大的敌人，每晚都试图吞噬太阳船；而法老必须帮助太阳神拉（Ra）击败阿佩普，才能在第十二个小时与太阳一起从东方重新升起。图坦卡蒙墓里有一幅著名的壁画，画了十二只排成一列的狒狒——那就是代表十二个小时的符号。狒狒是智慧与时间之神托特（Thoth）的化身，在黎明时分面向东方吟唱，迎接重生的太阳。
+        </p>
+        <p>
+          但这些文字在公元四世纪左右失传了。公元392年，罗马皇帝狄奥多西一世下令关闭所有异教神庙，古埃及的神庙被迫关闭，掌握象形文字的祭司阶层逐渐消亡。最后一条已知的象形文字铭文刻于公元394年，出自菲莱神庙（Philae）。从那以后，再没有人能读懂这些文字。<strong>一千四百年间，象形文字就在人们眼前，刻在神庙的墙上、方尖碑的表面、石棺的内壁——但无人能解。</strong>人们路过它们，拿它们的石头盖房子，在它们旁边放牧种地，却不知道上面写了什么。
+        </p>
+        <p>
+          转折出现在1799年。拿破仑远征埃及时，一名法军士兵在尼罗河三角洲的罗塞塔（Rosetta）镇修筑防御工事时，挖出了一块黑色花岗闪长岩石碑。这块石碑并不大——高约114厘米，宽约72厘米——但它上面刻有同一篇法令的三个版本：古埃及象形文字（Hieroglyphic）、世俗体（Demotic）和古希腊文。古希腊文是已知的语言，学者们能够直接阅读。这就提供了一把钥匙：如果三段文字说的是同一件事，那么通过已知的希腊文，就有可能倒推出未知的象形文字的含义。
+        </p>
+        <p>
+          但破译的过程远没有那么简单。石碑被英国人在战争中缴获带回伦敦后，欧洲学者们花了二十多年才找到突破口。此前人们一直以为象形文字是纯粹的表意文字——每一个符号代表一个概念，像中国的汉字一样。<strong>1822年，法国语言天才让-弗朗索瓦·商博良（Jean-Fran&ccedil;ois Champollion）终于破译了象形文字的核心原理。</strong>他发现象形文字不仅是表意符号，同时也是表音符号——有些符号代表辅音，可以拼读出发音。这个发现彻底改变了解读方向。商博良通过对比国王名字的椭圆形框（cartouche）中的符号与希腊文中对应的国王名字，一步步还原了整套象形文字的读法。
+        </p>
+        <p>
+          正是因为这次破译，我们今天才能站在帝王谷的墓室里，不只是看到"好看的画"，而是读懂墙上画的是什么——法老的灵魂如何登上太阳船，如何穿越冥界的黑暗，如何面对阿努比斯的心脏称重审判，如何在黎明时分与太阳一起从东方重生。没有罗塞塔石碑，没有商博良，这些壁画对我们来说就只是漂亮的图案，一堆鸟和蛇和眼睛的排列组合。我们会感叹它们的精美，但永远不会知道它们在说什么。
+        </p>
+        <p>
+          在卢克索博物馆的二楼，我看到一块不起眼的科普特十字石刻。科普特文字是古埃及语言的最后一个阶段，但它已经不用象形文字书写了——科普特人采用了希腊字母，外加几个世俗体字母来表示希腊语中没有的发音。从法老时代的象形文字，到托勒密时期的世俗体，到科普特时期的希腊字母，再到阿拉伯征服后的阿拉伯文字——这片土地上的文字换了三次，每一次更替都意味着前一种文明的记忆被覆盖了一层。法老的后人读不懂法老的文字，科普特人的后人如今说阿拉伯语。
+        </p>
+        <p style="color: var(--ink-faint); font-size: 13px; margin-top: 28px;">
+          幸运的是，石头上的字还在。花岗岩不会腐烂，石灰岩墙壁上的颜料在干燥的空气里可以撑过三千年。文字失传了一千四百年，但石头等得起。它们一直在那里，等待着有人来读。1822年商博良来了，石头等到了它的读者。
+        </p>
+      </section>
+
+    </div>
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../action/index.html">&larr; 行程：卢克索与帝王谷</a>
+      <a class="nav-btn" href="../index.html">第六天概览</a>
+      <a class="nav-btn" href="../../day7/index.html">第七天 &rarr;</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+
+</body></html>

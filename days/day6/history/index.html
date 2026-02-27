@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第六天历史 · 卢克索博物馆与帝王谷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0c09;
+  --surface: #161310;
+  --card: #1c1813;
+  --gold: #c8973a;
+  --gold-dim: rgba(200,151,58,.12);
+  --amber: rgba(200,151,58,.08);
+  --ink: #e8e0d0;
+  --ink-muted: #8a7f6e;
+  --ink-faint: #4a4438;
+  --line: rgba(200,151,58,.18);
+  --line-faint: rgba(255,255,255,.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 92% 110%, rgba(200,100,30,.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 36px 0 96px;
+}
+.topbar {
+  display: flex; gap: 20px; align-items: center;
+  margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+}
+.topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--gold); }
+.topbar-sep { color: var(--ink-faint); }
+
+/* ── HERO ── */
+.hero {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 11px; letter-spacing: 4px;
+  color: var(--gold); opacity: .8;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(26px, 4.5vw, 46px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--ink-faint); margin-bottom: 18px;
+}
+.hero-lead {
+  font-size: 15px; color: var(--ink-muted); line-height: 1.9;
+}
+
+/* ── IMAGE BLOCKS ── */
+.img-block { margin: 32px 0; }
+.img-block img {
+  width: 100%; display: block;
+  border: 1px solid var(--line-faint);
+  filter: sepia(.1) brightness(.9);
+}
+.img-block figcaption {
+  font-size: 11px; color: var(--ink-faint);
+  line-height: 1.7; padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-faint);
+  border-top: none; font-style: italic;
+}
+.img-portrait {
+  margin: 32px auto;
+  max-width: 480px;
+}
+.img-portrait img {
+  width: 100%; display: block;
+  border: 1px solid var(--line-faint);
+  filter: sepia(.1) brightness(.9);
+}
+.img-portrait figcaption {
+  font-size: 11px; color: var(--ink-faint);
+  line-height: 1.7; padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-faint);
+  border-top: none; font-style: italic;
+}
+
+/* ── PROSE ── */
+.prose { display: grid; gap: 56px; margin-bottom: 60px; }
+.section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 14px; letter-spacing: 1px;
+  color: var(--gold); opacity: .9;
+  margin-bottom: 20px;
+}
+.prose p {
+  font-size: 15px; color: var(--ink-muted);
+  line-height: 1.95; margin-bottom: 18px;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose p strong { color: var(--ink); font-weight: 600; }
+.prose p em { font-style: normal; color: var(--gold); }
+
+/* ── ASIDE ── */
+.aside {
+  background: var(--surface);
+  border-left: 3px solid rgba(200,151,58,.4);
+  padding: 20px 24px; margin: 28px 0;
+}
+.aside-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--gold); opacity: .6;
+  margin-bottom: 10px;
+}
+.aside p {
+  font-size: 13px !important;
+  color: var(--ink-faint) !important;
+  line-height: 1.8 !important;
+  margin-bottom: 8px !important;
+}
+.aside p:last-child { margin-bottom: 0 !important; }
+.aside p strong { color: var(--ink-muted) !important; }
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 28px 0;
+}
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--line-faint);
+  padding: 16px 18px;
+}
+.stat-num {
+  font-family: 'Cinzel', serif;
+  font-size: 22px; color: var(--gold);
+  margin-bottom: 4px;
+}
+.stat-desc {
+  font-size: 12px; color: var(--ink-faint);
+  line-height: 1.5;
+}
+
+/* ── OBJECT GRID ── */
+.object-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 28px 0;
+}
+.object-card {
+  background: var(--surface);
+  border: 1px solid var(--line-faint);
+  padding: 18px 20px;
+}
+.object-name {
+  font-size: 14px; font-weight: 600;
+  color: var(--ink); margin-bottom: 6px;
+}
+.object-en {
+  font-family: 'Cinzel', serif;
+  font-size: 10px; letter-spacing: 1px;
+  color: var(--gold); opacity: .7;
+  margin-bottom: 10px;
+}
+.object-desc {
+  font-size: 13px; color: var(--ink-faint); line-height: 1.7;
+}
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--line-faint); }
+
+/* ── NAV FOOTER ── */
+.nav-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px; border-top: 1px solid var(--line-faint);
+  flex-wrap: wrap; gap: 12px;
+}
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--ink-muted); text-decoration: none;
+  border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+}
+.nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+@media (max-width: 600px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .object-grid { grid-template-columns: 1fr; }
+  .img-portrait { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../../index.html">&larr; 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第六天</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">历史</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow" data-key="days.5.eyebrow">Day 06 · History · 2026.02.27</div>
+      <h1 data-key="days.5.history_title">卢克索博物馆与<em>帝王谷</em></h1>
+      <div class="hero-sub" data-key="days.5.history_subtitle">Luxor Museum · Valley of the Kings · Seti I · Tutankhamun · Ramessid Tombs</div>
+      <p class="hero-lead">
+        上午在卢克索博物馆看精选中的精选，下午进入帝王谷——法老们花了五百年在这条干涸的山谷里修建通往永生的通道。
+        从塞提一世最华美的KV17到图坦卡蒙最小的KV62，每一座墓都是一部用石壁写成的冥界旅行指南。
+      </p>
+    </header>
+
+    <div class="prose">
+
+      <!-- 第一节 -->
+      <section>
+        <div class="section-label">I &middot; 卢克索博物馆</div>
+        <p>
+          卢克索博物馆不大，和开罗的埃及博物馆或大埃及博物馆完全不是一个体量。
+          但它走的是另一条路：<strong>以质取胜</strong>。
+          馆藏不多，每一件都是精挑细选的重器，陈列空间宽裕，灯光精心设计，
+          不像开罗老馆那样把文物堆得喘不过气来。
+        </p>
+
+        <figure class="img-portrait">
+          <img src="../photos/pharaoh_statue.jpg" alt="卢克索博物馆法老雕像">
+          <figcaption>卢克索博物馆内的法老花岗岩雕像。馆内光线经过精心设计，每件展品都有足够的空间和灯光，让观者可以从容细看。</figcaption>
+        </figure>
+
+        <p>
+          馆内最让人印象深刻的藏品包括<strong>阿蒙霍特普三世</strong>的多座花岗岩雕像——
+          这位第十八王朝的法老是图坦卡蒙的祖父，统治时期是古埃及艺术的巅峰之一。
+          还有<strong>拉美西斯二世</strong>巨像的残件，即使只剩碎片，依然能感受到原作的气魄。
+        </p>
+        <p>
+          但最令我驻足的是一面<strong>塔拉塔特浮雕墙</strong>（talatat blocks）。
+          这些小型石块原本属于阿肯纳顿在卡纳克神庙修建的建筑，
+          他死后被继任者拆毁，石块被当作填充材料塞进后来的建筑地基中。
+          考古学家从地基里一块块挖出来，再像拼图一样重新组装。
+          复原后的浮雕展现了阿玛纳时期的日常生活——人物动态自然，线条流畅，
+          与传统埃及艺术的僵硬正面律截然不同。
+        </p>
+        <p>
+          看着这些浮雕，我不由得想到克诺索斯宫殿的<strong>米诺斯壁画</strong>。
+          两者年代相近（大约公元前1400—1300年），
+          两者都呈现出一种不同寻常的<em>自然主义</em>——
+          米诺斯人画海豚和跳牛的少年，阿玛纳人画法老一家在阳光下嬉戏。
+          在各自文明的艺术传统中，它们都是异类：充满动感、生活气息浓郁、不拘泥于规范。
+          这种跨地中海的美学巧合，让人忍不住猜想两个文明之间是否存在某种交流。
+        </p>
+
+        <figure class="img-block">
+          <img src="../photos/talatat_relief.jpg" alt="塔拉塔特浮雕墙">
+          <figcaption>卢克索博物馆的塔拉塔特浮雕墙。这些小型石块从阿肯纳顿时代的建筑废墟中打捞复原，展现了阿玛纳艺术特有的自然主义风格——人物姿态生动，线条柔和流畅。</figcaption>
+        </figure>
+
+        <p>
+          馆内还陈列着<strong>雅赫摩斯一世</strong>（Ahmose I）的木乃伊。
+          这位法老驱逐了占据下埃及一百余年的希克索斯人，
+          建立了第十八王朝，开启了新王国时代——古埃及最辉煌的篇章由此开始。
+          三千五百年后，他安静地躺在卢克索博物馆的玻璃柜里，面部轮廓依然清晰可辨。
+        </p>
+        <p>
+          还有一具<strong>身份不明的法老木乃伊</strong>，是从美国追索回来的。
+          埃及近年来一直在积极追讨流散海外的文物——
+          这具木乃伊的回归是这场漫长交涉的成果之一。
+          看着展柜旁的说明牌写着"从美国归还"（repatriated from the United States），
+          让人意识到围绕古物归属的角力远未结束。
+        </p>
+      </section>
+
+      <!-- 第二节 -->
+      <section>
+        <div class="section-label">II &middot; 帝王谷概览</div>
+        <p>
+          <strong>帝王谷</strong>（Valley of the Kings，阿拉伯语 Wadi al-Muluk）
+          是新王国时期（约公元前1550—前1070年）法老们的集中埋葬地，
+          位于尼罗河西岸，与东岸的底比斯（今卢克索）隔河相望。
+          古埃及人相信太阳在西方落下、进入冥界，
+          所以陵墓一律修在西岸——死者的国度在日落的方向。
+        </p>
+        <p>
+          为什么放弃金字塔？原因很实际：<strong>金字塔太招摇了</strong>。
+          古王国的法老们花几十年修建巨大的石头纪念碑，结果每一座都被盗掘一空。
+          到了新王国，法老们学聪明了——把陵墓藏进偏僻的山谷深处，
+          入口隐蔽，不留地面标记。
+          更妙的是，山谷上方有一座天然的金字塔形山峰——<strong>库尔恩山</strong>（al-Qurn），
+          古埃及人将它视为金字塔的象征替代品，既满足了宗教需要，又不至于暴露位置。
+        </p>
+        <p>
+          迄今为止，帝王谷共发现了<strong>63座已知陵墓</strong>，
+          编号从KV1到KV65（KV = King's Valley）。
+          并非所有墓主都是法老——一些高级官员和王室成员也葬于此——
+          但核心墓葬都属于第十八至第二十王朝的帝王。
+        </p>
+        <p>
+          这些陵墓能保存至今，很大程度上要感谢一个字：<strong>干</strong>。
+          帝王谷地处撒哈拉东缘，年降雨量几乎为零，
+          干燥到极致的沙漠气候让墓壁上的彩绘在三千多年后依然色彩鲜艳。
+          如果不是偶尔的山洪灌入（这也确实造成了一些损毁），
+          这些壁画可以说是自然界能提供的最理想保存条件下的产物。
+        </p>
+
+        <figure class="img-block">
+          <img src="../photos/valley_model.jpg" alt="帝王谷3D地形模型">
+          <figcaption>帝王谷3D地形模型，展示了山谷地形与各陵墓入口的分布。可以看到墓葬依山势深入岩层，入口经过刻意隐藏。上方的金字塔形山峰即为库尔恩山。</figcaption>
+        </figure>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- 第三节 -->
+      <section>
+        <div class="section-label">III &middot; 塞提一世 &middot; KV17</div>
+        <p>
+          <strong>塞提一世</strong>（Seti I，约公元前1294—前1279年在位）是拉美西斯二世的父亲，
+          第十九王朝的奠基者之一。
+          他的陵墓<strong>KV17</strong>由意大利探险家<strong>乔万尼·贝尔佐尼</strong>（Giovanni Belzoni）
+          于1817年发现，是帝王谷中最长、最深的一座——
+          全长<strong>137米</strong>，沿着斜坡和阶梯深入石灰岩山体。
+        </p>
+        <p>
+          KV17之所以被称为帝王谷中"最美的陵墓"，是因为它的装饰品质无出其右。
+          所有墙面都采用<strong>低浮雕</strong>技法——
+          先在白色石灰岩上雕刻出浅浅的图案轮廓，再施以彩绘。
+          这种做法比直接在墙上画画要费力得多，但效果远为精致：
+          人物从墙面微微凸起，在侧光下产生细腻的明暗变化。
+          <strong>每一寸墙面都被装饰覆盖</strong>，没有留白——
+          这在帝王谷的陵墓中是罕见的。
+        </p>
+
+        <figure class="img-block">
+          <img src="../photos/seti_wall.jpg" alt="塞提一世墓室壁画">
+          <figcaption>KV17内部壁画。低浮雕技法使人物从白色石灰岩壁面微微凸起，彩绘至今保持着鲜艳的色彩。墙面上描绘的是法老与众神的会面场景。</figcaption>
+        </figure>
+
+        <p>
+          墓室的天花板是另一个奇迹：<strong>深蓝色背景上布满金色的星座图案</strong>，
+          即著名的<strong>天文天花板</strong>。
+          其中最重要的图像是<strong>努特之书</strong>（Book of Nut）——
+          天空女神努特以拱形姿态覆盖整个天顶，
+          她的身体就是天穹，太阳从她口中升起、从身下降落，
+          完成每日的生死循环。
+        </p>
+        <p>
+          墙壁上则覆盖着两部完整的冥界文献：
+          <strong>《门之书》</strong>（Book of Gates）和<strong>《冥界之书》</strong>（Amduat）。
+          这两部文本是法老通往来世的完整"旅行指南"——
+          它们将夜晚分为<strong>十二个小时</strong>，
+          每个小时对应冥界的一个区域，
+          详细描述了法老的灵魂在每一关会遇到什么守卫、什么怪物、
+          需要念什么咒语、回答什么问题才能通过。
+          KV17的特殊之处在于，这两部文献在此<em>完整无缺</em>地呈现，
+          图文并茂，堪称古埃及丧葬文学的最高水平。
+        </p>
+
+        <figure class="img-block">
+          <img src="../photos/seti_golden.jpg" alt="塞提一世墓室金色壁画">
+          <figcaption>KV17深处的壁画，展现《门之书》中法老穿越冥界的场景。金黄色调与深蓝天顶交相辉映，三千两百年后色彩依然饱满。</figcaption>
+        </figure>
+      </section>
+
+      <!-- 第四节 -->
+      <section>
+        <div class="section-label">IV &middot; 图坦卡蒙 &middot; KV62</div>
+        <p>
+          1922年11月4日，英国考古学家<strong>霍华德·卡特</strong>
+          在帝王谷一个被碎石覆盖的角落发现了一级台阶。
+          顺着台阶挖下去，他找到了一扇封印完好的石门——
+          <strong>KV62</strong>，这是迄今发现的唯一一座几乎未被盗掘的法老陵墓。
+        </p>
+        <p>
+          墓主<strong>图坦卡蒙</strong>去世时年仅19岁（约公元前1323年），
+          在位不到十年，在古埃及历史上并不算显赫的法老。
+          但正是因为他死得早、葬得匆忙，
+          他的墓室意外地逃过了三千多年的盗墓者，
+          成为了古埃及考古史上最重要的单一发现。
+        </p>
+        <p>
+          按照王室标准，<strong>KV62非常小</strong>。
+          学界普遍认为这座墓原本不是为国王准备的——
+          可能是一座贵族墓被临时改作王陵使用，
+          因为图坦卡蒙死得太突然，来不及完成一座真正的法老级陵墓。
+          墓室的局促反而保护了它：入口很快被后来的建筑废料掩埋，
+          盗墓者找不到它的位置。
+        </p>
+        <p>
+          墓室内最让我震撼的不是金棺（那已经搬去了GEM），
+          而是墙上的<strong>十二狒狒壁画</strong>。
+          画面背景是温暖的金黄色，<strong>十二只端坐的狒狒</strong>排列成网格状——
+          它们代表《冥界之书》中<strong>夜晚的十二个小时</strong>。
+          狒狒在古埃及是<strong>透特</strong>（Thoth）的圣兽，
+          透特是时间与智慧之神，掌管着昼夜的计量。
+          每只狒狒守护夜晚的一个小时，
+          护送法老的灵魂穿越冥界的十二道关卡，直到黎明太阳重新升起。
+          画面简洁、对称、庄严，用最少的元素传达了古埃及人对死亡与重生的全部信念。
+        </p>
+
+        <figure class="img-block">
+          <img src="../photos/twelve_baboons.jpg" alt="图坦卡蒙墓十二狒狒壁画">
+          <figcaption>KV62墓室中的十二狒狒壁画。金色背景上，十二只端坐的狒狒代表夜晚的十二个小时，源自《冥界之书》（Amduat）。狒狒是时间之神透特的圣兽，守护法老穿越冥界的旅程。</figcaption>
+        </figure>
+
+        <p>
+          图坦卡蒙的木乃伊至今仍留在KV62中，
+          安放在一个<strong>恒温恒湿的玻璃展柜</strong>里。
+          他是帝王谷中唯一一位仍然安葬在自己陵墓中的法老——
+          其他法老的木乃伊要么被盗，要么被移送博物馆。
+          站在他面前，你看到的是一个十九岁少年的遗骸，
+          三千三百年前他被包裹在黄金和亚麻布中下葬，
+          如今他仍然在自己的墓里，只是身边的宝藏已经去了别处。
+        </p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- 第五节 -->
+      <section>
+        <div class="section-label">V &middot; 拉美西斯王朝</div>
+        <p>
+          帝王谷中大量陵墓属于第十九和第二十王朝的拉美西斯家族。
+          我们当天还进入了几座拉美西斯王朝的陵墓，
+          它们各有特色，但共享一个压倒性的特征：
+          <strong>从地面到天花板，每一寸墙壁都被丧葬文献覆盖</strong>。
+        </p>
+        <p>
+          <strong>梅伦普塔赫</strong>（Merenptah，KV8）是拉美西斯二世的儿子，
+          第十九王朝第四位法老。
+          他最著名的遗产是<strong>梅伦普塔赫石碑</strong>——
+          这块石碑上刻有已知最早提及"以色列"（Israel）的文字，
+          被称为"以色列石碑"。
+          他的花岗岩石棺至今仍留在墓室深处的安葬厅内，
+          体量巨大，无法搬运出去。
+        </p>
+
+        <figure class="img-portrait">
+          <img src="../photos/merenptah_sarco.jpg" alt="梅伦普塔赫石棺">
+          <figcaption>KV8中梅伦普塔赫的花岗岩石棺，至今仍留在原始安葬位置。石棺体量巨大，表面刻满了丧葬铭文和冥界图案。</figcaption>
+        </figure>
+
+        <p>
+          <strong>拉美西斯九世</strong>（Ramesses IX，KV6）属于第二十王朝，
+          是帝王谷中最容易进入的陵墓之一。
+          它的天花板保存着精美的<strong>天文图绘</strong>——
+          星座、星辰和天空女神的形象在深蓝色背景上排列。
+          墙壁上密密麻麻地写满了<strong>《亡灵书》</strong>（Book of the Dead）的经文，
+          字迹工整，图案精细，像是一本被放大了无数倍的古代手抄本。
+        </p>
+        <p>
+          <strong>拉美西斯四世</strong>（Ramesses IV，KV2）同为第二十王朝，
+          以天花板装饰保存之完好著称——
+          色彩几乎未受损，蓝色、金色、红色依然鲜艳如初。
+          墙壁上的文字详尽记录了法老来世旅程的每一个步骤，
+          文本量之大，像是要确保法老不遗漏任何一个通关要诀。
+        </p>
+        <p>
+          走过这些陵墓，一个共同的主题反复浮现：
+          这些法老在活着的时候就开始修建自己的墓，
+          花费数十年、动用大量人力物力，
+          只为确保一件事——<strong>死后能顺利抵达永生</strong>。
+          每一面墙都是一页说明书，每一幅画都是一张通行证，
+          每一段铭文都是一句通关密语。
+          他们对来世的投入，远超对此生的经营。
+          三千年后，我们站在他们的墓室里，
+          读着他们为永恒准备的旅行手册——
+          而他们期待的永生，或许正以这种方式实现了。
+        </p>
+      </section>
+
+    </div>
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../../day5/history/index.html">&larr; 第五天历史</a>
+      <a class="nav-btn" href="../index.html">第六天概览</a>
+      <a class="nav-btn" href="../action/index.html">行程 &rarr;</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+</body>
+</html>

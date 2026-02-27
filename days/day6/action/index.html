@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第六天行程 · 卢克索博物馆·帝王谷·尼罗河</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09; --surface: #161310; --card: #1c1813;
+      --gold: #c8973a; --gold-dim: rgba(200,151,58,.13);
+      --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
+      --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.8; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 92% 110%, rgba(200,100,30,.05) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap {
+      position: relative; z-index: 1;
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto; padding: 36px 0 96px;
+    }
+    .topbar {
+      display: flex; gap: 20px; align-items: center;
+      margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+      line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; margin-bottom: 18px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1.5px;
+      color: var(--ink-faint); border: 1px solid var(--line-faint);
+      padding: 4px 12px;
+    }
+
+    /* ── ROUTE MAP ── */
+    .route-map {
+      background: var(--surface); border: 1px solid var(--line-faint);
+      padding: 28px 32px; margin-bottom: 48px;
+    }
+    .route-label {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 3px; color: var(--gold); opacity: .6;
+      margin-bottom: 18px;
+    }
+    .route-stops {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap; margin-bottom: 24px; gap: 0;
+    }
+    .stop { display: flex; align-items: center; gap: 8px; }
+    .stop-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .stop-name { font-size: 13px; color: var(--ink); }
+    .stop-name em { font-style: normal; color: var(--gold); }
+    .stop-line {
+      width: 32px; height: 1px; background: var(--line);
+      flex-shrink: 0; margin: 0 4px;
+    }
+    .stop-line.flight { background: transparent; border-top: 1px dashed rgba(200,151,58,.4); }
+    .map-stat {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; border-top: 1px solid var(--line-faint); padding-top: 20px;
+    }
+    .stat-item { padding: 0 12px; }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-label { font-size: 10px; color: var(--ink-faint); letter-spacing: .5px; margin-bottom: 4px; }
+    .stat-val { font-size: 14px; color: var(--ink); font-weight: 600; }
+
+    /* ── TIMELINE ── */
+    .timeline { display: grid; gap: 2px; }
+    .event {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 0; align-items: start;
+    }
+    .event-time {
+      padding: 20px 16px 20px 0;
+      font-family: 'Cinzel', serif; font-size: 15px;
+      color: var(--gold); text-align: right; line-height: 1.2;
+      position: relative;
+    }
+    .event-time::after {
+      content: ''; position: absolute;
+      right: -1px; top: 28px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); opacity: .5;
+      transform: translateX(50%);
+    }
+    .event-time .sub {
+      display: block; font-size: 9px;
+      letter-spacing: 1px; color: var(--ink-faint);
+      margin-top: 2px; font-family: 'Cinzel', serif;
+    }
+    .event-card {
+      border-left: 1px solid var(--line-faint);
+      padding: 20px 0 20px 28px;
+      margin-left: 4px;
+    }
+    .event-type {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 2px; color: var(--ink-faint);
+      margin-bottom: 6px;
+    }
+    .event-title {
+      font-size: 18px; font-weight: 600; color: var(--ink);
+      margin-bottom: 4px; line-height: 1.3;
+    }
+    .event-title em { font-style: normal; color: var(--gold); }
+    .event-sub {
+      font-size: 12px; color: var(--ink-faint);
+      margin-bottom: 14px; line-height: 1.6;
+    }
+    .event-body p {
+      font-size: 14px; color: var(--ink-muted);
+      line-height: 1.9; margin-bottom: 12px;
+    }
+    .event-body p:last-child { margin-bottom: 0; }
+    .event-body p strong { color: var(--ink); }
+    .event-body p em { font-style: normal; color: var(--gold); }
+
+    /* event type colours */
+    .event.transit .event-time { color: var(--ink-faint); }
+    .event.transit .event-time::after { background: var(--ink-faint); opacity: .3; }
+    .event.museum .event-time::after { background: var(--gold); opacity: .8; }
+    .event.food .event-time::after { background: rgba(200,151,58,.6); }
+    .event.flight .event-time { color: #7ab3e0; }
+    .event.flight .event-time::after { background: #7ab3e0; }
+    .event.shop .event-time { color: var(--ink-faint); }
+    .event.shop .event-time::after { background: var(--ink-faint); opacity: .3; }
+    .event.scenic .event-time { color: #7ab3e0; }
+    .event.scenic .event-time::after { background: #7ab3e0; }
+    .event.market .event-time { color: var(--ink-faint); }
+    .event.market .event-time::after { background: var(--ink-faint); opacity: .3; }
+
+    /* ── IMAGE BLOCK ── */
+    .img-block { margin: 20px 0 4px; }
+    .img-block img { width: 100%; display: block; border: 1px solid var(--line-faint); filter: sepia(.1) brightness(.9); }
+    .img-block figcaption { font-size: 11px; color: var(--ink-faint); padding: 6px 10px; background: var(--surface); border: 1px solid var(--line-faint); border-top: none; line-height: 1.6; font-style: italic; }
+    .img-block.img-portrait { max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap; gap: 12px; margin-top: 48px;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--ink-muted); text-decoration: none;
+      border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+    @media (max-width: 600px) {
+      .map-stat { grid-template-columns: 1fr 1fr; }
+      .event { grid-template-columns: 64px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../../index.html">&larr; 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第六天</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">行程</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 06 &middot; Action &middot; 2026.02.27</div>
+      <h1 data-key="days.5.action_title">卢克索博物馆·帝王谷·<em>尼罗河</em></h1>
+      <p class="hero-lead" data-key="days.5.action_lead">
+        上午参观卢克索博物馆，下午深入帝王谷探访法老陵墓，傍晚乘坐三角帆船在尼罗河上看日落，晚间在卢克索夜市漫步。从东岸到西岸，从博物馆到墓穴，从尼罗河到夜市——卢克索的一天，是古埃及生与死的完整叙事。
+      </p>
+      <div class="tags">
+        <span class="pill">卢克索博物馆</span>
+        <span class="pill">帝王谷</span>
+        <span class="pill">尼罗河帆船</span>
+        <span class="pill">夜市</span>
+      </div>
+    </header>
+
+    <!-- 路线图 -->
+    <div class="route-map">
+      <div class="route-label">TODAY'S ROUTE</div>
+      <div class="route-stops">
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name"><em>卢克索</em>博物馆</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">帝王谷</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">纪念品店</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">尼罗河</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">夜市</span>
+        </div>
+      </div>
+      <div class="map-stat">
+        <div class="stat-item">
+          <div class="stat-label">出发</div>
+          <div class="stat-val">10:00 博物馆</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">帝王谷</div>
+          <div class="stat-val">约 13:00</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">帆船</div>
+          <div class="stat-val">17:00</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">夜市</div>
+          <div class="stat-val">20:00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 时间线 -->
+    <div class="timeline">
+
+      <!-- 10:00 卢克索博物馆 -->
+      <div class="event museum">
+        <div class="event-time">10:00<span class="sub">Museum</span></div>
+        <div class="event-card">
+          <div class="event-type">MUSEUM &middot; 卢克索博物馆</div>
+          <div class="event-title">卢克索博物馆&middot;<em>法老的雕塑殿堂</em></div>
+          <div class="event-sub">Luxor Museum &middot; 卢克索东岸</div>
+          <div class="event-body">
+            <p>
+              比开罗的埃及博物馆小很多，但展品精选。Amenhotep III和Ramesses II的雕塑是镇馆之宝。印象深刻的是一面由talatat石块重新拼合的彩绘浮雕墙，场景描绘日常生活，让我想到克里特岛米诺斯宫的壁画——两者都来自约公元前1400-1300年，都以充满活力的自然主义风格记录人的生活。馆内还有Ahmose一世的木乃伊（驱逐喜克索人、创建第十八王朝的法老），以及一具从美国归还的不知名法老木乃伊。
+            </p>
+          </div>
+          <figure class="img-block img-portrait">
+            <img src="../photos/pharaoh_statue.jpg" alt="卢克索博物馆法老雕塑">
+            <figcaption>卢克索博物馆内的法老雕塑。馆内展品虽少但件件精品，Amenhotep III与Ramesses II的雕像是镇馆之宝。</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 12:00 午餐 -->
+      <div class="event food">
+        <div class="event-time">12:00<span class="sub">Lunch</span></div>
+        <div class="event-card">
+          <div class="event-type">FOOD &middot; 午餐</div>
+          <div class="event-title">EL Saltana&middot;<em>埃及 Tagines</em></div>
+          <div class="event-sub">EL Saltana Cafe &amp; Restaurant &middot; 卢克索</div>
+          <div class="event-body">
+            <p>
+              在卢克索当地餐厅吃了一顿正宗的埃及午餐。Tagines是一种用陶罐慢炖的菜肴，番茄酱汁裹着羊肉和蔬菜，配上埃及面包。比在开罗吃的山寨中餐馆地道多了。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/tagines_lunch.jpg" alt="埃及Tagines午餐">
+            <figcaption>EL Saltana餐厅的Tagines午餐。陶罐慢炖的羊肉与蔬菜，配以埃及面包，是一顿地道的卢克索本地餐。</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 13:00 帝王谷 -->
+      <div class="event museum">
+        <div class="event-time">13:00<span class="sub">Museum</span></div>
+        <div class="event-card">
+          <div class="event-type">MUSEUM &middot; 帝王谷</div>
+          <div class="event-title">帝王谷&middot;<em>法老的永生之地</em></div>
+          <div class="event-sub">Valley of the Kings &middot; 卢克索西岸</div>
+          <div class="event-body">
+            <p>
+              下午来到帝王谷。入口处有一个3D地形模型，标注着这座山谷中已发现的63座陵墓的位置——从图特摩斯一世到拉美西斯十一世，跨越近五百年的新王国法老们选择了同一座山谷作为永恒的居所。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/valley_model.jpg" alt="帝王谷入口3D地形模型">
+            <figcaption>帝王谷入口处的3D地形模型，标注了山谷中已发现的63座法老陵墓的分布位置。</figcaption>
+          </figure>
+          <div class="event-body">
+            <p>
+              在我的强烈要求下，我们去了塞提一世的陵墓（KV17）——帝王谷最美的陵墓，真是令人叹为观止。137米深的墓道，每一寸墙壁都覆盖着精美的彩色浮雕。最震撼的是天文天花板——深蓝色底上绘满金色的星座图案。墙壁上是门之书和冥界之书的完整图解，描绘法老穿越十二个夜晚的旅程。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/seti_ceiling.jpg" alt="塞提一世陵墓天文天花板">
+            <figcaption>塞提一世陵墓（KV17）的天文天花板。深蓝色底色上绘满金色星座图案，是帝王谷中保存最精美的天文壁画。</figcaption>
+          </figure>
+          <div class="event-body">
+            <p>
+              参观完拉美西斯二世的儿子Merenptah的陵墓（KV8）。他的花岗岩石棺依然安放在墓室中。
+            </p>
+            <p>
+              从Merenptah出来后正巧路过图坦卡蒙的陵墓（KV62）。一时起了想进去的念头——跟领队借了700埃及镑，从门口的黄牛手里买了票。终于见到了这位19岁少年法老的木乃伊，安静地躺在恒温玻璃柜里。墓室墙上最著名的是那幅<strong>12只狒狒壁画</strong>——12只蓝色狒狒端坐在金色背景上，代表夜晚的12个小时。狒狒是时间之神托特的圣兽，守护法老穿越冥界的每一个小时。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/twelve_baboons.jpg" alt="图坦卡蒙墓室12只狒狒壁画">
+            <figcaption>图坦卡蒙墓室（KV62）内的12只狒狒壁画。蓝色狒狒端坐在金色背景上，代表夜晚的12个小时，守护法老穿越冥界。</figcaption>
+          </figure>
+          <figure class="img-block">
+            <img src="../photos/tut_mummy.jpg" alt="图坦卡蒙木乃伊">
+            <figcaption>图坦卡蒙的木乃伊安静地躺在恒温玻璃柜中。这位19岁的少年法老，是帝王谷中最著名的居民。</figcaption>
+          </figure>
+          <div class="event-body">
+            <p>
+              还参观了Ramesses IX（KV6）和Ramesses IV（KV2），墙上密密麻麻的壁画都是亡灵书的内容——法老们对身后世界的所有向往和恐惧，写满了每一寸墙面。帝王谷干燥的气候保存了这些三千多年前的颜色。如果在中国中原地区，颜色早就没了——秦始皇兵马俑比这里晚了近2000年，出土时的彩绘几乎全部氧化脱落。就算是敦煌莫高窟，飞天壁画上的颜色也基本消失殆尽，那比帝王谷晚了3000年。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16:00 纪念品商店 -->
+      <div class="event shop">
+        <div class="event-time">16:00<span class="sub">Shop</span></div>
+        <div class="event-card">
+          <div class="event-type">SHOP &middot; 纪念品商店</div>
+          <div class="event-title">石刻纪念品&middot;<em>似曾相识</em></div>
+          <div class="event-sub">帝王谷附近 &middot; 埃及石刻工坊</div>
+          <div class="event-body">
+            <p>
+              从帝王谷出来后去了一家石刻纪念品商店。这种先把你热情夸赞一番、然后说"买不买都无所谓"、最后不少人还是掏了钱的模式，让我想起了90年代中国旅行团的购物店——套路是一样的，跨越了文明和国界。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17:00 尼罗河帆船 -->
+      <div class="event scenic">
+        <div class="event-time">17:00<span class="sub">Scenic</span></div>
+        <div class="event-card">
+          <div class="event-type">SCENIC &middot; 尼罗河帆船</div>
+          <div class="event-title">帆船&middot;<em>尼罗河日落</em></div>
+          <div class="event-sub">卢克索尼罗河 &middot; Felucca 帆船</div>
+          <div class="event-body">
+            <p>
+              乘着传统的三角帆船（felucca）在尼罗河上缓缓行驶。凉风从河面吹来，两岸是棕榈树和远处的石灰岩山脉。太阳慢慢沉入西岸——那是帝王谷所在的方向，古埃及人认为西方是亡灵世界的入口。在尼罗河上看日落，心情非常舒适。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/felucca_sunset.jpg" alt="尼罗河帆船日落">
+            <figcaption>傍晚乘坐felucca三角帆船在尼罗河上漂行。太阳沉入西岸——帝王谷的方向，古埃及人心中亡灵世界的入口。</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 20:00 卢克索夜市 -->
+      <div class="event market">
+        <div class="event-time">20:00<span class="sub">Market</span></div>
+        <div class="event-card">
+          <div class="event-type">MARKET &middot; 卢克索夜市</div>
+          <div class="event-title">卢克索夜市&middot;<em>早睡早起</em></div>
+          <div class="event-sub">卢克索东岸 &middot; 夜市</div>
+          <div class="event-body">
+            <p>
+              回到酒店吃完晚餐后，去卢克索夜市溜达了一圈。随便逛了逛街头巷尾，看看当地的手工艺品和香料摊。没逛太久就早早回酒店睡了——明天凌晨4点半要起来，去乘坐鼎鼎大名的热气球。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/luxor_carriage.jpg" alt="卢克索夜晚马车">
+            <figcaption>卢克索夜晚街头的马车。傍晚的卢克索东岸，马车与霓虹交错，古老与现代并存。</figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div><!-- end timeline -->
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../history/index.html">&larr; 历史：卢克索博物馆与帝王谷</a>
+      <a class="nav-btn" href="../index.html">第六天概览</a>
+      <a class="nav-btn" href="../think/index.html">思考 &rarr;</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+</body>
+</html>
