@@ -354,6 +354,12 @@
       if (fig && !fig.querySelector('img')) fig.remove();
       else ph.remove();
     });
+    // 移除编辑模式创建的隐藏 file input
+    clone.querySelectorAll('input[type="file"][style*="display: none"], input[type="file"][style*="display:none"]').forEach(el => el.remove());
+    // 清除图片 URL 上的 cache-bust 参数 ?t=xxx
+    clone.querySelectorAll('img[src*="?t="]').forEach(img => {
+      img.setAttribute('src', img.getAttribute('src').replace(/\?t=\d+$/, ''));
+    });
     // 清除编辑属性
     clone.querySelectorAll('[data-em-id]').forEach(el => {
       el.removeAttribute('data-em-id');
