@@ -38,9 +38,14 @@
   function init() {
     fetch(prefix + 'data/days.json')
       .then(function (r) { return r.json(); })
-      .then(inject)
+      .then(function (data) {
+        inject(data);
+        // 通知 edit-mode.js 数据绑定已完成
+        document.dispatchEvent(new CustomEvent('data-bind-ready'));
+      })
       .catch(function (e) {
         // 静默失败：静态托管环境下保持 HTML 原有内容
+        document.dispatchEvent(new CustomEvent('data-bind-ready'));
       });
   }
 
