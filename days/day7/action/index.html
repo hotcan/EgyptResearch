@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第七天行程 · 卡纳克巨柱·卢克索夜色·飞往红海</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09; --surface: #161310; --card: #1c1813;
+      --gold: #c8973a; --gold-dim: rgba(200,151,58,.13);
+      --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
+      --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.8; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 92% 110%, rgba(200,100,30,.05) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap {
+      position: relative; z-index: 1;
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto; padding: 36px 0 96px;
+    }
+    .topbar {
+      display: flex; gap: 20px; align-items: center;
+      margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+      line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; margin-bottom: 18px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1.5px;
+      color: var(--ink-faint); border: 1px solid var(--line-faint);
+      padding: 4px 12px;
+    }
+
+    /* ── ROUTE MAP ── */
+    .route-map {
+      background: var(--surface); border: 1px solid var(--line-faint);
+      padding: 28px 32px; margin-bottom: 48px;
+    }
+    .route-label {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 3px; color: var(--gold); opacity: .6;
+      margin-bottom: 18px;
+    }
+    .route-stops {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap; margin-bottom: 24px; gap: 0;
+    }
+    .stop { display: flex; align-items: center; gap: 8px; }
+    .stop-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .stop-name { font-size: 13px; color: var(--ink); }
+    .stop-name em { font-style: normal; color: var(--gold); }
+    .stop-line {
+      width: 32px; height: 1px; background: var(--line);
+      flex-shrink: 0; margin: 0 4px;
+    }
+    .stop-line.flight { background: transparent; border-top: 1px dashed rgba(200,151,58,.4); }
+    .map-stat {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; border-top: 1px solid var(--line-faint); padding-top: 20px;
+    }
+    .stat-item { padding: 0 12px; }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-label { font-size: 10px; color: var(--ink-faint); letter-spacing: .5px; margin-bottom: 4px; }
+    .stat-val { font-size: 14px; color: var(--ink); font-weight: 600; }
+
+    /* ── TIMELINE ── */
+    .timeline { display: grid; gap: 2px; }
+    .event {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 0; align-items: start;
+    }
+    .event-time {
+      padding: 20px 16px 20px 0;
+      font-family: 'Cinzel', serif; font-size: 15px;
+      color: var(--gold); text-align: right; line-height: 1.2;
+      position: relative;
+    }
+    .event-time::after {
+      content: ''; position: absolute;
+      right: -1px; top: 28px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); opacity: .5;
+      transform: translateX(50%);
+    }
+    .event-time .sub {
+      display: block; font-size: 9px;
+      letter-spacing: 1px; color: var(--ink-faint);
+      margin-top: 2px; font-family: 'Cinzel', serif;
+    }
+    .event-card {
+      border-left: 1px solid var(--line-faint);
+      padding: 20px 0 20px 28px;
+      margin-left: 4px;
+    }
+    .event-type {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 2px; color: var(--ink-faint);
+      margin-bottom: 6px;
+    }
+    .event-title {
+      font-size: 18px; font-weight: 600; color: var(--ink);
+      margin-bottom: 4px; line-height: 1.3;
+    }
+    .event-title em { font-style: normal; color: var(--gold); }
+    .event-sub {
+      font-size: 12px; color: var(--ink-faint);
+      margin-bottom: 14px; line-height: 1.6;
+    }
+    .event-body p {
+      font-size: 14px; color: var(--ink-muted);
+      line-height: 1.9; margin-bottom: 12px;
+    }
+    .event-body p:last-child { margin-bottom: 0; }
+    .event-body p strong { color: var(--ink); }
+    .event-body p em { font-style: normal; color: var(--gold); }
+
+    /* event type colours */
+    .event.transit .event-time { color: var(--ink-faint); }
+    .event.transit .event-time::after { background: var(--ink-faint); opacity: .3; }
+    .event.museum .event-time::after { background: var(--gold); opacity: .8; }
+    .event.food .event-time::after { background: rgba(200,151,58,.6); }
+    .event.flight .event-time { color: #7ab3e0; }
+    .event.flight .event-time::after { background: #7ab3e0; }
+    .event.shop .event-time { color: var(--ink-faint); }
+    .event.shop .event-time::after { background: var(--ink-faint); opacity: .3; }
+    .event.scenic .event-time { color: #7ab3e0; }
+    .event.scenic .event-time::after { background: #7ab3e0; }
+    .event.market .event-time { color: var(--ink-faint); }
+    .event.market .event-time::after { background: var(--ink-faint); opacity: .3; }
+
+    /* ── IMAGE BLOCK ── */
+    .img-block { margin: 20px 0 4px; }
+    .img-block img { width: 100%; display: block; border: 1px solid var(--line-faint); filter: sepia(.1) brightness(.9); }
+    .img-block figcaption { font-size: 11px; color: var(--ink-faint); padding: 6px 10px; background: var(--surface); border: 1px solid var(--line-faint); border-top: none; line-height: 1.6; font-style: italic; }
+    .img-block.img-portrait { max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap; gap: 12px; margin-top: 48px;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--ink-muted); text-decoration: none;
+      border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+    @media (max-width: 600px) {
+      .map-stat { grid-template-columns: 1fr 1fr; }
+      .event { grid-template-columns: 64px 1fr; }
+    }
+  </style>
+</head>
+<body class="">
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../../index.html">&larr; 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第七天</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">行程</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 07 · Action · 2026.02.28</div>
+      <h1 data-key="days.6.action_title">卡纳克巨柱·<em>卢克索夜色·飞往红海</em></h1>
+      <p class="hero-lead" data-key="days.6.action_lead">中午退房后前往卡纳克神庙，在134根巨柱的多柱大厅中仰望三千年前的天空。傍晚到卢克索神庙等日落，亲眼见证灯光亮起后神庙的昼夜双重面貌。夜间驱车前往机场，飞往红海边的沙姆沙伊赫，从法老的黄沙世界正式切换至蔚蓝海洋模式。</p>
+      <div class="tags">
+        <span class="pill">卡纳克神庙</span>
+        <span class="pill">卢克索神庙</span>
+        <span class="pill">✈ 沙姆沙伊赫</span>
+      </div>
+    </header>
+
+    <!-- 路线图 -->
+    <div class="route-map">
+      <div class="route-label">TODAY'S ROUTE</div>
+      <div class="route-stops">
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">酒店退房</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name"><em>卡纳克</em>神庙</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name"><em>卢克索</em>神庙</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">卢克索机场</span>
+        </div>
+        <div class="stop-line flight"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name"><em>沙姆沙伊赫</em></span>
+        </div>
+      </div>
+      <div class="map-stat">
+        <div class="stat-item">
+          <div class="stat-label">退房</div>
+          <div class="stat-val">12:00</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">卡纳克</div>
+          <div class="stat-val">约 13:00</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">神庙</div>
+          <div class="stat-val">17:00</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">飞机</div>
+          <div class="stat-val">22:00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 时间线 -->
+    <div class="timeline">
+
+      <!-- 12:00 退房 -->
+      <div class="event transit">
+        <div class="event-time">12:00<span class="sub">Depart</span></div>
+        <div class="event-card">
+          <div class="event-type">TRANSIT · 退房出发</div>
+          <div class="event-title">告别卢克索酒店·<em>启程</em></div>
+          <div class="event-sub">卢克索东岸酒店</div>
+          <div class="event-body">
+            <p>
+              中午退房。拖着行李箱走过酒店大堂，最后看了一眼窗外的尼罗河——昨天傍晚就是在那条河上坐帆船看日落的。河面上依然有三角帆在晃，岸边的棕榈树在正午的阳光下一动不动。行李塞上大巴，告别这座住了两晚的酒店。接下来的目标是卢克索最重要的两座神庙：先去卡纳克，再去卢克索神庙等日落。从古代底比斯的寺庙群开始，在今晚的飞机上结束——卢克索的最后半天，要把剩下的震撼全部收完。
+            </p>
+          </div>
+          <!-- 📷 照片待补充: 酒店退房或大巴出发场景 -->
+        </div>
+      </div>
+
+      <!-- 13:00 卡纳克神庙 -->
+      <div class="event museum">
+        <div class="event-time">13:00<span class="sub">Temple</span></div>
+        <div class="event-card">
+          <div class="event-type">MUSEUM · 卡纳克神庙</div>
+          <div class="event-title">卡纳克神庙·<em>134根巨柱的天空</em></div>
+          <div class="event-sub">Karnak Temple Complex · 卢克索东岸</div>
+          <div class="event-body">
+            <p>
+              从入口走进卡纳克，首先迎面而来的是巨大的<strong>第一塔门</strong>——这座未完工的门楼高达43米，光是站在它的阴影下就能感受到法老们想要压倒一切的野心。穿过塔门，沿着<strong>公羊头斯芬克斯大道</strong>往里走，两侧是一排排公羊头人身的斯芬克斯雕像，每一尊的双蹄之间都护着一尊小小的法老像。这不是一座神庙，这是一座<em>神庙之城</em>——两千年里，从第十二王朝到托勒密王朝，每一位法老都在这里加盖、扩建、覆写前人的痕迹，直到它变成了今天这个庞大到难以用一个下午走完的建筑群。
+            </p>
+            <p>
+              然后就是<strong>多柱大厅</strong>。134根巨柱。当你真正走进去的那一刻，所有事先看过的照片和纪录片都失效了。中央两排最高的12根柱子高达<em>21米</em>，顶端是完全张开的纸莎草花柱头，大到据说<strong>15个人可以站在一根柱顶上</strong>。每一寸石面都刻满了象形文字和浮雕——法老向阿蒙-拉献祭、战胜敌人、接受神的祝福。三千年前，这些柱子之间是有屋顶的，阳光只能从高处的天窗缝隙中泄入，整个大厅笼罩在半明半暗的神圣光线中。站在这些石头巨人之间抬头看天——柱顶之间露出的那一小块蓝天——会产生一种很强烈的感觉：<em>凡人仰望神明时，被巨大体量包围的压倒性震撼</em>。这不是建筑，这是权力和信仰凝固成的石头森林。
+            </p>
+            <p>
+              走出多柱大厅继续往里，是<strong>圣湖</strong>——一个巨大的长方形人工湖，祭司们每天清晨在这里净身。湖边立着一只巨大的圣甲虫雕像。再往深处走，可以看到<strong>哈特谢普苏特方尖碑</strong>——这位女法老竖立的花岗岩方尖碑高近30米，至今仍然挺立。旁边是<strong>图特摩斯三世的节庆大厅</strong>，里面有一根根形状奇特的帐篷柱，据说是模仿军帐的造型。整个卡纳克就是一部用石头写成的编年史——两千年的建造、改写、覆盖、拆毁、重建，全部叠加在同一片土地上，像一本被无数人反复书写的羊皮纸。
+            </p>
+          </div>
+          <!-- 📷 照片待补充: 卡纳克第一塔门全景 -->
+          <!-- 📷 照片待补充: 公羊头斯芬克斯大道 -->
+          <!-- 📷 照片待补充: 多柱大厅仰拍巨柱与天空 -->
+          <!-- 📷 照片待补充: 圣湖与圣甲虫雕像 -->
+          <!-- 📷 照片待补充: 哈特谢普苏特方尖碑 -->
+        </div>
+      </div>
+
+      <!-- 17:00 卢克索神庙 -->
+      <div class="event scenic">
+        <div class="event-time">17:00<span class="sub">Temple</span></div>
+        <div class="event-card">
+          <div class="event-type">SCENIC · 卢克索神庙</div>
+          <div class="event-title">卢克索神庙·<em>日落与夜灯</em></div>
+          <div class="event-sub">Luxor Temple · 卢克索东岸 · 日落至夜景</div>
+          <div class="event-body">
+            <p>
+              下午五点到达卢克索神庙。入口处，<strong>拉美西斯二世</strong>的两尊巨型坐像沐浴在金色的夕阳里，石头表面被三千年的风沙打磨出一层温润的光泽。旁边立着一根方尖碑——原本是一对，另一根在1831年被穆罕默德·阿里作为礼物送给了法国，现在矗立在巴黎<em>协和广场</em>的正中央。站在这根孤零零的方尖碑下面抬头看，会突然意识到一个奇妙的<strong>时空交接</strong>：它的孪生兄弟此刻正站在塞纳河畔，被巴黎的车流和游客包围着。古埃及、奥斯曼帝国、法兰西帝国、现代旅游业——所有的时间线在这个入口处交汇。
+            </p>
+            <p>
+              我们特意在日落前进去，为的就是等那个<em>昼夜转换</em>的瞬间。太阳从西边沉下去，金色的光线从神庙的柱廊间穿过来，三千年前的石柱拖出长长的影子。然后太阳完全落下，天色暗下来，灯光亮起——整座神庙在一瞬间变了一个世界。暖黄色的灯光从地面向上打，照亮了白天肉眼看不清的浮雕细节，柱子的纹理、墙上的象形文字、法老的面容，全都在夜色中浮现出来。<em>沉浸式感受神庙在璀璨灯光下的神秘夜景，体验绝无仅有的昼夜双重魅力</em>——这句话写在旅行手册上显得很俗套，但当你真正站在夜晚的卢克索神庙里，会承认它说的全是真的。夜晚的卢克索神庙，比白天更动人。
+            </p>
+            <p>
+              神庙深处有一个让人惊叹的细节：<strong>阿布·哈加格清真寺</strong>。一座伊斯兰清真寺，直接建在了法老时代的柱廊之上。清真寺的地板就是古埃及神庙的屋顶。从神庙内部往上看，清真寺的宣礼塔从法老的石柱之间探出头来——<em>三千年的时间被垂直压缩在了几米的高度差里</em>。伊斯兰的礼拜大厅坐落在法老的廊柱大厅之上，两个时代的建筑像三明治一样叠在一起。这不是破坏，这是延续——同一块土地上，人们换了信仰，换了语言，换了文字，但从未停止在这里祈祷。
+            </p>
+          </div>
+          <!-- 📷 照片待补充: 卢克索神庙入口拉美西斯二世坐像与方尖碑（日落光线） -->
+          <!-- 📷 照片待补充: 柱廊间的日落光影 -->
+          <!-- 📷 照片待补充: 夜灯亮起后的神庙全景 -->
+          <!-- 📷 照片待补充: 阿布·哈加格清真寺与法老石柱的叠加 -->
+        </div>
+      </div>
+
+      <!-- 20:00 前往机场 -->
+      <div class="event transit">
+        <div class="event-time">20:00<span class="sub">Depart</span></div>
+        <div class="event-card">
+          <div class="event-type">TRANSIT · 前往机场</div>
+          <div class="event-title">告别底比斯·<em>前往机场</em></div>
+          <div class="event-sub">卢克索市区 &rarr; 卢克索国际机场 · 约30分钟</div>
+          <div class="event-body">
+            <p>
+              从卢克索神庙出来，回头看了一眼灯火通明的柱廊——拉美西斯的石像在暖光中安静地坐着，和三千年前一样。大巴驶过卢克索的街道，路灯下的尼罗河闪着碎金。底比斯——这座荷马笔下的<strong>"百门之城"</strong>——在两天里给了太多。从卢克索博物馆的法老雕塑到帝王谷的壁画墓室，从卡纳克134根巨柱撑起的天空到卢克索神庙昼夜交替的魔术，每一站都背负着三千年的重量。现在要离开了。机场就在城外不远处，大约半小时车程。
+            </p>
+          </div>
+          <!-- 📷 照片待补充: 夜晚离开卢克索的车窗景色 -->
+        </div>
+      </div>
+
+      <!-- 22:00 飞往沙姆沙伊赫 -->
+      <div class="event flight">
+        <div class="event-time">22:00<span class="sub">Flight</span></div>
+        <div class="event-card">
+          <div class="event-type">FLIGHT · 卢克索 &rarr; 沙姆沙伊赫</div>
+          <div class="event-title">飞往<em>沙姆沙伊赫</em></div>
+          <div class="event-sub">卢克索 LXR &rarr; 沙姆沙伊赫 SSH · 约1小时</div>
+          <div class="event-body">
+            <p>
+              从尼罗河谷飞向红海海岸，从法老的遗迹飞向现代的度假城市。一个小时的航程，窗外从漆黑的沙漠变成了海岸线上星星点点的灯光。下了飞机，空气里有一股跟卢克索完全不同的味道——潮湿的、带着海盐的风。<em>从黄沙与古老神明，正式切换至蔚蓝的海洋模式！</em>旅行的节奏在这里拐了一个急弯：前六天是博物馆、金字塔、陵墓、神庙，接下来是大海、珊瑚礁和潜水。
+            </p>
+            <p>
+              落地之后打开手机刷新闻，看到一条重磅消息：<strong>美国和以色列对伊朗发动了联合军事打击</strong>。心里咯噔了一下——沙姆沙伊赫位于西奈半岛最南端，隔着蒂朗海峡对面就是沙特阿拉伯，往东北方向不远就是以色列边境。这座以潜水和海滩闻名的度假城市，突然多了一层地缘政治的紧张感。回想一下这个地方的历史：1967年六日战争，以色列占领西奈；1973年赎罪日战争，埃及反攻；1979年戴维营协议，西奈归还埃及；2005年沙姆沙伊赫连环爆炸案——这里从来就不只是一个度假村。红海的蔚蓝水面下，一直藏着中东地缘博弈的暗流。
+            </p>
+          </div>
+          <!-- 📷 照片待补充: 卢克索机场或飞机窗外夜景 -->
+        </div>
+      </div>
+
+    </div><!-- end timeline -->
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../history/index.html">&larr; 历史：众神的石柱森林</a>
+      <a class="nav-btn" href="../index.html">第七天概览</a>
+      <a class="nav-btn" href="../think/index.html">思考 &rarr;</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+
+
+</body></html>

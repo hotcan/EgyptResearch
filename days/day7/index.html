@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>第7天 · 废墟中的新生</title>
+  <title>第7天 · 巨柱之间的日落</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -27,26 +27,12 @@
     .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
     .topbar a:hover { color: var(--gold); }
     .topbar-sep { color: var(--ink-faint); }
-    .draft-banner {
-      background: rgba(200,151,58,.08); border: 1px solid var(--line); border-left: 3px solid var(--gold);
-      padding: 12px 18px; margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
-      font-size: 13px; color: var(--ink-muted);
-    }
-    .draft-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; flex-shrink: 0; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
     .hero { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
     .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px; }
     .hero h1 { font-size: clamp(26px, 4.5vw, 46px); font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px; }
     .hero h1 em { font-style: normal; color: var(--gold); }
     .hero-route { font-size: 13px; color: var(--gold); margin-bottom: 16px; letter-spacing: .5px; }
     .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; max-width: 680px; margin-bottom: 20px; }
-    .placeholder-area {
-      background: var(--surface); border: 1px dashed var(--line-faint);
-      padding: 60px 40px; text-align: center;
-    }
-    .ph-icon { font-size: 36px; opacity: .2; margin-bottom: 14px; }
-    .ph-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--ink-faint); margin-bottom: 10px; }
-    .ph-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; max-width: 400px; margin: 0 auto; }
     .structure-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 32px; }
     .structure-box { background: var(--card); border: 1px solid var(--line-faint); padding: 20px 24px; }
     .structure-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
@@ -75,40 +61,29 @@
       <span>第7天</span>
     </nav>
 
-    <div class="draft-banner">
-      <span class="draft-dot"></span>
-      <span>待写 · 行程尚未开始，结构框架已搭好，内容将在到达后逐步写入</span>
-    </div>
-
     <header class="hero">
-      <div class="hero-eyebrow" data-key="days.6.eyebrow">Day 07 · 2026-02-28</div>
-      <h1 data-key="days.6.title"><em>废墟中的新生</em></h1>
-      <div class="hero-route">卢克索 ✈ 沙姆沙伊赫</div>
-      <p class="hero-lead">帝王谷与哈特谢普苏特神庙上午，下午飞往红海岸边。旅程在古代废墟与度假城市之间突然换挡。</p>
+      <div class="hero-eyebrow" data-key="days.6.eyebrow">Day 07 · 2026.02.28</div>
+      <h1 data-key="days.6.title">巨柱之间的<em>日落</em></h1>
+      <div class="hero-route" data-key="days.6.route">卡纳克神庙 → 卢克索神庙 ✈ 沙姆沙伊赫</div>
+      <p class="hero-lead" data-key="days.6.desc"></p>
     </header>
 
     <div class="structure-grid">
-      <div class="structure-box">
+      <a class="structure-box" href="history/index.html" style="text-decoration: none; display: block; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
         <div class="structure-label">历史 · History</div>
-        <div class="structure-title">历史背景与研究资料</div>
-        <div class="structure-desc">这天的思考线将在出发前或当天整理写入——包括老师讲义、参考书目与个人预判。</div>
-      </div>
-      <div class="structure-box">
+        <div class="structure-title" data-key="days.6.history_title"></div>
+        <div class="structure-desc">卡纳克神庙两千年建造史、阿蒙-拉崇拜、巨柱大厅134根石柱、卢克索神庙从阿蒙霍特普三世到亚历山大大帝的千年演变。</div>
+      </a>
+      <a class="structure-box" href="action/index.html" style="text-decoration: none; display: block; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
         <div class="structure-label">行程 · Action</div>
-        <div class="structure-title">现场时间线与照片</div>
-        <div class="structure-desc">行程结束后，现场照片、地点记录与个人观察将按时间线整理写入。</div>
-      </div>
-      <div class="structure-box">
+        <div class="structure-title" data-key="days.6.action_title"></div>
+        <div class="structure-desc" data-key="days.6.action_lead"></div>
+      </a>
+      <a class="structure-box" href="think/index.html" style="text-decoration: none; display: block; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(200,151,58,.35)'" onmouseout="this.style.borderColor=''">
         <div class="structure-label">思考 · Think</div>
-        <div class="structure-title">个人旅行感受与思考</div>
-        <div class="structure-desc">行程结束后，个人观察、延伸思考与旅行中触发的问题将在这里沉淀。</div>
-      </div>
-    </div>
-
-    <div class="placeholder-area">
-      <div class="ph-icon">𓂀</div>
-      <div class="ph-title">内容待写入</div>
-      <div class="ph-desc">第7天的行程还未开始。照片、现场感受与哲学资料将在到达后逐步补入这个页面。</div>
+        <div class="structure-title" data-key="days.6.think_title"></div>
+        <div class="structure-desc" data-key="days.6.think_lead"></div>
+      </a>
     </div>
 
     <div class="nav-footer">
