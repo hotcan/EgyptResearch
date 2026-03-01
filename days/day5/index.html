@@ -15,12 +15,6 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { position: relative; font-family: 'Noto Serif SC', serif; background: var(--bg); color: var(--ink); line-height: 1.8; overflow-x: hidden; }
-    body::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
-                  radial-gradient(ellipse 50% 40% at 92% 105%, rgba(74,143,212,.04) 0%, transparent 50%);
-      pointer-events: none; z-index: 0;
-    }
     .wrap { position: relative; z-index: 1; width: min(900px, calc(100% - 40px)); margin: 0 auto; padding: 36px 0 96px; }
     .topbar { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; font-size: 12px; flex-wrap: wrap; }
     .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
