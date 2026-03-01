@@ -29,6 +29,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
+  position: relative;
   font-family: 'Noto Serif SC', serif;
   background: var(--bg);
   color: var(--ink);
@@ -38,7 +39,7 @@ body {
 }
 body::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   background:
     radial-gradient(ellipse 70% 50% at 5% -5%, rgba(26,58,108,.10) 0%, transparent 55%),

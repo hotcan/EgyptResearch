@@ -16,12 +16,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
+      position: relative;
       font-family: 'Noto Serif SC', serif;
       background: var(--bg); color: var(--ink);
       line-height: 1.8; overflow-x: hidden;
     }
     body::before {
-      content: ''; position: fixed; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background:
         radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
         radial-gradient(ellipse 50% 40% at 92% 110%, rgba(200,100,30,.05) 0%, transparent 50%);

@@ -6,11 +6,6 @@
 (function () {
   'use strict';
 
-  // Fix: iOS full-page screenshots show color banding with position:fixed gradients
-  var _fix = document.createElement('style');
-  _fix.textContent = 'body{position:relative}body::before,body::after{position:absolute!important}';
-  document.head.appendChild(_fix);
-
   // 根据当前页面路径深度计算到根目录的相对路径
   // /index.html               → depth=0 → prefix=''
   // /days/day1/index.html     → depth=2 → prefix='../../'

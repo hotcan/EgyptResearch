@@ -95,6 +95,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
+    position: relative;
     background: var(--bg);
     color: var(--sand);
     font-family: 'Noto Serif SC', serif;
@@ -105,7 +106,7 @@
   /* Starfield background */
   body::before {
     content: '';
-    position: fixed;
+    position: absolute;
     inset: 0;
     background: 
       radial-gradient(ellipse at 20% 50%, rgba(26,58,92,0.3) 0%, transparent 60%),

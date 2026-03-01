@@ -53,11 +53,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
+  position: relative;
   background: var(--bg); color: var(--sand);
   font-family: 'Noto Serif SC', serif; overflow-x: hidden; min-height: 100vh;
 }
 body::before {
-  content: ''; position: fixed; inset: 0; pointer-events: none;
+  content: ''; position: absolute; inset: 0; pointer-events: none;
   background:
     radial-gradient(ellipse 80% 60% at 15% -10%, rgba(90,58,112,.06) 0%, transparent 50%),
     radial-gradient(ellipse 60% 50% at 90% 110%, rgba(58,106,74,.06) 0%, transparent 45%);

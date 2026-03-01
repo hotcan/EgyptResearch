@@ -14,9 +14,9 @@
       --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Noto Serif SC', serif; background: var(--bg); color: var(--ink); line-height: 1.8; overflow-x: hidden; }
+    body { position: relative; font-family: 'Noto Serif SC', serif; background: var(--bg); color: var(--ink); line-height: 1.8; overflow-x: hidden; }
     body::before {
-      content: ''; position: fixed; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
                   radial-gradient(ellipse 50% 40% at 92% 105%, rgba(74,143,212,.04) 0%, transparent 50%);
       pointer-events: none; z-index: 0;
