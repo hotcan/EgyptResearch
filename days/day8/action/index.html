@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第八天行程 · 红海浮潜·四季酒店的蓝与白</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09; --surface: #161310; --card: #1c1813;
+      --gold: #c8973a; --gold-dim: rgba(200,151,58,.13);
+      --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
+      --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.8; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 92% 110%, rgba(74,143,212,.06) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap {
+      position: relative; z-index: 1;
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto; padding: 36px 0 96px;
+    }
+    .topbar {
+      display: flex; gap: 20px; align-items: center;
+      margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+      line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; margin-bottom: 18px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1.5px;
+      color: var(--ink-faint); border: 1px solid var(--line-faint);
+      padding: 4px 12px;
+    }
+
+    /* ── ROUTE MAP ── */
+    .route-map {
+      background: var(--surface); border: 1px solid var(--line-faint);
+      padding: 28px 32px; margin-bottom: 48px;
+    }
+    .route-label {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 3px; color: var(--gold); opacity: .6;
+      margin-bottom: 18px;
+    }
+    .route-stops {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap; margin-bottom: 24px;
+    }
+    .stop { display: flex; align-items: center; gap: 8px; }
+    .stop-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .stop-name { font-size: 13px; color: var(--ink); }
+    .stop-name em { font-style: normal; color: var(--gold); }
+    .stop-line {
+      width: 32px; height: 1px; background: var(--line);
+      flex-shrink: 0; margin: 0 4px;
+    }
+    .map-stat {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; border-top: 1px solid var(--line-faint); padding-top: 20px;
+    }
+    .stat-item { padding: 0 12px; }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-label { font-size: 10px; color: var(--ink-faint); letter-spacing: .5px; margin-bottom: 4px; }
+    .stat-val { font-size: 14px; color: var(--ink); font-weight: 600; }
+
+    /* ── TIMELINE ── */
+    .timeline { display: grid; gap: 2px; }
+    .event {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 0; align-items: start;
+    }
+    .event-time {
+      padding: 20px 16px 20px 0;
+      font-family: 'Cinzel', serif; font-size: 15px;
+      color: var(--gold); text-align: right; line-height: 1.2;
+      position: relative;
+    }
+    .event-time::after {
+      content: ''; position: absolute;
+      right: -1px; top: 28px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); opacity: .5;
+      transform: translateX(50%);
+    }
+    .event-time .sub {
+      display: block; font-size: 9px;
+      letter-spacing: 1px; color: var(--ink-faint);
+      margin-top: 2px; font-family: 'Cinzel', serif;
+    }
+    .event-card {
+      border-left: 1px solid var(--line-faint);
+      padding: 20px 0 20px 28px;
+      margin-left: 4px;
+    }
+    .event-type {
+      font-family: 'Cinzel', serif; font-size: 9px;
+      letter-spacing: 2px; color: var(--ink-faint);
+      margin-bottom: 6px;
+    }
+    .event-title {
+      font-size: 18px; font-weight: 600; color: var(--ink);
+      margin-bottom: 4px; line-height: 1.3;
+    }
+    .event-title em { font-style: normal; color: var(--gold); }
+    .event-sub {
+      font-size: 12px; color: var(--ink-faint);
+      margin-bottom: 14px; line-height: 1.6;
+    }
+    .event-body p {
+      font-size: 14px; color: var(--ink-muted);
+      line-height: 1.9; margin-bottom: 12px;
+    }
+    .event-body p:last-child { margin-bottom: 0; }
+    .event-body p strong { color: var(--ink); }
+    .event-body p em { font-style: normal; color: var(--gold); }
+
+    /* event type colours */
+    .event.transit .event-time { color: var(--ink-faint); }
+    .event.transit .event-time::after { background: var(--ink-faint); opacity: .3; }
+    .event.scenic .event-time { color: #7ab3e0; }
+    .event.scenic .event-time::after { background: #7ab3e0; }
+    .event.food .event-time::after { background: rgba(200,151,58,.6); }
+
+    /* ── IMAGE BLOCK ── */
+    .img-block { margin: 20px 0 4px; }
+    .img-block img { width: 100%; display: block; border: 1px solid var(--line-faint); filter: sepia(.1) brightness(.9); }
+    .img-block figcaption { font-size: 11px; color: var(--ink-faint); padding: 6px 10px; background: var(--surface); border: 1px solid var(--line-faint); border-top: none; line-height: 1.6; font-style: italic; }
+    .img-block.img-portrait { max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap; gap: 12px; margin-top: 48px;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--ink-muted); text-decoration: none;
+      border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+    @media (max-width: 600px) {
+      .map-stat { grid-template-columns: 1fr 1fr; }
+      .event { grid-template-columns: 64px 1fr; }
+    }
+  </style>
+</head>
+<body class="">
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../../../index.html">&larr; 旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../index.html">第八天</a>
+      <span class="topbar-sep">/</span>
+      <span style="color:var(--ink-faint)">行程</span>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 08 · Action · 2026.03.01</div>
+      <h1 data-key="days.7.action_title">红海浮潜·<em>四季酒店的蓝与白</em></h1>
+      <p class="hero-lead" data-key="days.7.action_lead">上午十点半出发坐船去红海浮潜，下午两点半回到酒店。之后在四季酒店的泳池和海滩区闲逛——和前几天的神庙、沙漠、博物馆完全不同的世界。傍晚六点半，一顿海鲜晚餐结束了这个悠闲的度假日。</p>
+      <div class="tags">
+        <span class="pill">红海浮潜</span>
+        <span class="pill">四季酒店</span>
+        <span class="pill">海鲜晚餐</span>
+      </div>
+    </header>
+
+    <!-- 路线图 -->
+    <div class="route-map">
+      <div class="route-label">TODAY'S ROUTE</div>
+      <div class="route-stops">
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name"><em>四季</em>酒店</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">出海<em>浮潜</em></span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name"><em>四季</em>酒店</span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name">泳池·<em>海滩</em></span>
+        </div>
+        <div class="stop-line"></div>
+        <div class="stop">
+          <span class="stop-dot"></span>
+          <span class="stop-name"><em>海鲜</em>晚餐</span>
+        </div>
+      </div>
+      <div class="map-stat">
+        <div class="stat-item">
+          <div class="stat-label">出海</div>
+          <div class="stat-val">10:30</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">浮潜</div>
+          <div class="stat-val">约 3h</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">回酒店</div>
+          <div class="stat-val">14:30</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">晚餐</div>
+          <div class="stat-val">18:30</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 时间线 -->
+    <div class="timeline">
+
+      <!-- 10:30 出发 -->
+      <div class="event transit">
+        <div class="event-time">10:30<span class="sub">Depart</span></div>
+        <div class="event-card">
+          <div class="event-type">TRANSIT · 出发出海</div>
+          <div class="event-title">从四季酒店·<em>出海浮潜</em></div>
+          <div class="event-sub">Four Seasons Resort Sharm el-Sheikh → 码头</div>
+          <div class="event-body">
+            <p>
+              昨晚凌晨三点才到酒店，直接昏睡过去。早上醒来拉开窗帘——<em>蓝</em>。纯粹的、没有被黄沙稀释过的蓝色。前七天的视觉记忆几乎全是金色和土色：金字塔的石灰岩、卢克索的砂岩柱、帝王谷的赭色山脊。现在窗外是<strong>红海</strong>，一整面没有边界的蓝。
+            </p>
+            <p>
+              十点半出发，坐大巴去码头登船。一路上能看到沙姆沙伊赫的全貌：沙漠色调的建筑群沿着海岸线排开，中间穿插着棕榈树和三角梅。这座城市是从沙漠里"种"出来的度假村——和卢克索那种千年古城的质感完全不同。
+            </p>
+          </div>
+          <figure class="img-block img-portrait">
+            <img src="../photos/IMG_1733.jpg" alt="CAESAR 1号潜水船">
+            <figcaption>码头停泊的CAESAR 1号——今天出海浮潜的座驾</figcaption>
+          </figure>
+          <figure class="img-block">
+            <img src="../photos/IMG_1736.jpg" alt="沙姆沙伊赫海上冒险入口">
+            <figcaption>沙姆沙伊赫的码头区——"The real sea safari adventure at Sharm El-Sheikh"</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 11:00 浮潜 -->
+      <div class="event scenic">
+        <div class="event-time">11:00<span class="sub">Snorkel</span></div>
+        <div class="event-card">
+          <div class="event-type">SCENIC · 红海浮潜</div>
+          <div class="event-title">红海浮潜·<em>珊瑚礁与蓝色深渊</em></div>
+          <div class="event-sub">Red Sea · 沙姆沙伊赫近海海域</div>
+          <div class="event-body">
+            <p>
+              船驶出港口，沿着海岸线往南开。左舷是大海，右舷是<strong>西奈半岛</strong>的红色山脊——赤裸的岩壁被阳光烤出一层金红色的光泽，和脚下湛蓝的海水形成极端的对比。船在一片珊瑚区停下来，穿上救生衣，戴好面镜和呼吸管，翻身下水。
+            </p>
+            <p>
+              水下世界在一瞬间打开。<em>红海的能见度惊人</em>——水面以下十几米的珊瑚礁清晰可见，五彩斑斓的热带鱼在珊瑚丛中穿梭。前几天看到的都是三千年前人类雕刻的石头，而脚下这些珊瑚是<strong>活的建筑</strong>，它们已经在这里生长了几百万年。法老的神庙是石头的森林，红海的珊瑚礁也是——只不过建造它的不是人，而是珊瑚虫日复一日的分泌与堆积。
+            </p>
+            <p>
+              浮在水面上看着下面的鱼群来回游，突然觉得这是七天来最"空"的时刻——不用想法老，不用想王朝更迭，不用想宗教流变。只需要呼吸、漂浮、看鱼。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/IMG_1493.jpg" alt="红海帆船与西奈山脉">
+            <figcaption>红海上的帆船，背后是西奈半岛的红色山脊——沙漠与大海在这里直接对撞</figcaption>
+          </figure>
+          <figure class="img-block">
+            <img src="../photos/IMG_1682.jpg" alt="红海浮潜">
+            <figcaption>红海浮潜——七天来第一次不用仰头看石柱，而是低头看珊瑚</figcaption>
+          </figure>
+          <figure class="img-block">
+            <img src="../photos/IMG_1524.jpg" alt="西奈海岸贝都因棚屋">
+            <figcaption>从船上看西奈海岸——荒漠之中的贝都因棚屋，身后是戈壁与山脉</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 14:30 返回酒店 -->
+      <div class="event transit">
+        <div class="event-time">14:30<span class="sub">Return</span></div>
+        <div class="event-card">
+          <div class="event-type">TRANSIT · 返回酒店</div>
+          <div class="event-title">回到岸上·<em>从蓝色回到金色</em></div>
+          <div class="event-sub">码头 → Four Seasons Resort</div>
+          <div class="event-body">
+            <p>
+              船靠岸，浑身带着海水的咸味和阳光的热度回到酒店。三个多小时的海上时间在体感上比前几天任何一段"三小时"都短——没有赶路、没有讲解、没有排队，只是单纯地浮在水面上。回到酒店大堂时有一种恍惚感：昨天还站在三千年前的石柱之间，今天就躺在红海的碧波上了。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15:00 四季酒店 -->
+      <div class="event scenic">
+        <div class="event-time">15:00<span class="sub">Resort</span></div>
+        <div class="event-card">
+          <div class="event-type">SCENIC · 四季酒店</div>
+          <div class="event-title">四季酒店·<em>泳池与海滩</em></div>
+          <div class="event-sub">Four Seasons Resort · Sharm el-Sheikh</div>
+          <div class="event-body">
+            <p>
+              下午在酒店里闲逛。<strong>四季酒店</strong>依山面海而建，层层叠叠的白色建筑中间种满了三角梅和九重葛——粉红、玫红、白色的花瀑布一样从每一面墙上倾泻下来。和之前住的开罗万豪、卢克索的尼罗河畔酒店是完全不同的风情：这里没有法老的影子，没有金字塔远景，只有<em>纯粹的度假氛围</em>。
+            </p>
+            <p>
+              穿过花园走到<strong>私人海滩</strong>。一排排白色遮阳伞和木制躺椅整齐排列在沙滩上，棕榈树在风中轻轻晃动。海水清澈到近岸处能直接看到海底的沙子。远处海面上偶尔有快艇划过，拉出一道白色的尾迹。躺在沙滩椅上，什么也不想做——这在过去七天是不可能的事。每一天都塞满了博物馆、神庙、陵墓、讲座，从早到晚马不停蹄。而今天的任务就是：<em>什么都不做</em>。
+            </p>
+          </div>
+          <figure class="img-block">
+            <img src="../photos/IMG_1479.jpg" alt="四季酒店主建筑">
+            <figcaption>四季酒店的阿拉伯风格主建筑——沙色墙壁、棕榈树和满墙的三角梅</figcaption>
+          </figure>
+          <figure class="img-block">
+            <img src="../photos/IMG_1746.jpg" alt="四季酒店私人海滩">
+            <figcaption>酒店的私人海滩——白色遮阳伞、躺椅和棕榈树，七天来第一次什么都不用想</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 18:30 海鲜晚餐 -->
+      <div class="event food">
+        <div class="event-time">18:30<span class="sub">Dinner</span></div>
+        <div class="event-card">
+          <div class="event-type">FOOD · 海鲜晚餐</div>
+          <div class="event-title">红海<em>海鲜</em>晚餐</div>
+          <div class="event-sub">沙姆沙伊赫 · 海鲜餐厅</div>
+          <div class="event-body">
+            <p>
+              傍晚出酒店吃海鲜。红海的海鲜和前几天在开罗、卢克索吃的完全是两个世界——这里是真正的<em>海边城市</em>的吃法。新鲜的烤鱼、虾、鱿鱼，配上当地的酱料和新鲜蔬菜。坐在露天的桌子前，海风吹过来，能听到远处海浪的声音。
+            </p>
+            <p>
+              吃饭的时候忍不住感慨：同一个国家，开罗是五千年的废墟和两千万人的混乱，卢克索是石柱和墓室，沙姆沙伊赫是椰风海韵。<em>埃及的跨度</em>，远比我来之前想象的大得多。
+            </p>
+          </div>
+          <figure class="img-block img-portrait">
+            <img src="../photos/IMG_1772.jpg" alt="四季酒店花园">
+            <figcaption>酒店花园的白色九重葛——在沙漠气候中种出来的热带天堂</figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div><!-- end timeline -->
+
+    <div class="nav-footer">
+      <a class="nav-btn" href="../history/index.html">&larr; 历史：西奈半岛的归还之路</a>
+      <a class="nav-btn" href="../index.html">第八天概览</a>
+      <a class="nav-btn" href="../think/index.html">思考 &rarr;</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+</body></html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第八天思考 · 距离战争200公里</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0c09;
+  --surface: #161310;
+  --card: #1c1813;
+  --gold: #c8973a;
+  --gold-dim: rgba(200,151,58,.12);
+  --ink: #e8e0d0;
+  --ink-muted: #8a7f6e;
+  --ink-faint: #4a4438;
+  --line: rgba(200,151,58,.18);
+  --line-faint: rgba(255,255,255,.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg); color: var(--ink);
+  line-height: 1.8; min-height: 100vh; overflow-x: hidden;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 92% 110%, rgba(74,143,212,.05) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+.wrap {
+  position: relative; z-index: 1;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto; padding: 36px 0 96px;
+}
+.topbar {
+  display: flex; gap: 20px; align-items: center;
+  margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+}
+.topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--gold); }
+.topbar-sep { color: var(--ink-faint); }
+
+/* ── HERO ── */
+.hero { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+.hero-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+  line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; }
+
+/* ── PROSE ── */
+.prose { display: grid; gap: 56px; margin-bottom: 60px; }
+.section-label {
+  font-family: 'Cinzel', serif; font-size: 14px;
+  letter-spacing: 1px; color: var(--gold); opacity: .9; margin-bottom: 20px;
+}
+.prose p { font-size: 15px; color: var(--ink-muted); line-height: 1.95; margin-bottom: 18px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose p strong { color: var(--ink); font-weight: 600; }
+.prose p em { font-style: normal; color: var(--gold); }
+
+/* ── ASIDE ── */
+.aside {
+  background: var(--surface); border-left: 3px solid rgba(200,151,58,.4);
+  padding: 20px 24px; margin: 28px 0;
+}
+.aside-label {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3px; color: var(--gold); opacity: .6; margin-bottom: 10px;
+}
+.aside p { font-size: 13px !important; color: var(--ink-faint) !important; line-height: 1.8 !important; margin-bottom: 8px !important; }
+.aside p:last-child { margin-bottom: 0 !important; }
+.aside p strong { color: var(--ink-muted) !important; }
+
+/* ── IMAGE BLOCKS ── */
+.img-block { margin: 32px 0; }
+.img-block img { width: 100%; display: block; border: 1px solid var(--line-faint); filter: sepia(.1) brightness(.9); }
+.img-block figcaption {
+  font-size: 11px; color: var(--ink-faint); line-height: 1.7; padding: 8px 12px;
+  background: var(--surface); border: 1px solid var(--line-faint); border-top: none; font-style: italic;
+}
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--line-faint); }
+
+/* ── NAV FOOTER ── */
+.nav-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px; border-top: 1px solid var(--line-faint);
+  flex-wrap: wrap; gap: 12px;
+}
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--ink-muted); text-decoration: none;
+  border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+}
+.nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+</style>
+</head>
+<body class="">
+<div class="wrap">
+
+  <nav class="topbar">
+    <a href="../../../index.html">&larr; 旅行目录</a>
+    <span class="topbar-sep">/</span>
+    <a href="../index.html">第八天</a>
+    <span class="topbar-sep">/</span>
+    <span style="color:var(--ink-faint)">思考</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Day 08 · Think · 2026.03.01</div>
+    <h1 data-key="days.7.think_title">距离战争<em>200公里</em></h1>
+    <p class="hero-lead" data-key="days.7.think_lead">这个地方离最近的以色列边境只有200公里，但你完全感受不到战争的威胁。西奈半岛最南端的这座城市依然游客如织，就像阿布扎比和迪拜——尽管有导弹袭击，平民生活照常进行。</p>
+  </header>
+
+  <div class="prose">
+
+    <!-- Section I -->
+    <section>
+      <div class="section-label">I · 距离的悖论</div>
+      <p>
+        躺在四季酒店的沙滩椅上，能看到远处海面上隐约的岛屿轮廓。那是<strong>蒂朗岛</strong>——沙特阿拉伯的领土，也是1967年六日战争的导火索。纳赛尔封锁蒂朗海峡，切断以色列的红海航线，以色列随即发动闪电战。这片我正看着的平静海面，58年前是一条被战争引爆的封锁线。
+      </p>
+      <p>
+        从沙姆沙伊赫到以色列最南端的城市<strong>埃拉特</strong>，直线距离不到<em>200公里</em>。中间隔着的是塔巴口岸——1989年才通过国际仲裁从以色列手中收回的最后一块西奈领土。再往北看，整个西奈半岛在过去70年中经历了三次战争、三次占领、三次归还。脚下这片沙滩在1967年到1982年之间归以色列管辖，当时这里叫<em>"Ophira"</em>。
+      </p>
+      <p>
+        但此刻，什么都感觉不到。海风是温柔的，太阳是慵懒的，水是碧蓝的。附近的沙滩上有俄罗斯游客在晒太阳，有德国夫妇在给珊瑚鱼拍照，有埃及本地家庭带着孩子在浅水区嬉戏。<em>今天上午我们浮潜的那片海域，三十年前是以色列海军的巡逻区。</em>时间抹平了一切痕迹——或者说，旅游业抹平了一切痕迹。
+      </p>
+
+      <figure class="img-block">
+        <img src="../photos/IMG_1758.jpg" alt="四季酒店海滩">
+        <figcaption>四季酒店的私人海滩——远处海面上的岛屿是蒂朗岛，1967年六日战争的导火索就在这片水域</figcaption>
+      </figure>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section II -->
+    <section>
+      <div class="section-label">II · 生活照常继续</div>
+      <p>
+        昨晚到达酒店时，手机推送里还在滚动美国和以色列联合打击伊朗的新闻。今天早上起来看到的第一条消息是也门胡塞武装的回应声明。这些事情就发生在我们所在位置的东北方向——直线距离不到两千公里。
+      </p>
+      <p>
+        但这不是沙姆沙伊赫独有的现象。<strong>阿布扎比</strong>和<strong>迪拜</strong>也是一样。2022年1月，胡塞武装的弹道导弹击中了阿布扎比的石油设施，同一天迪拜的购物中心里游客依旧人头攒动。2024年伊朗向以色列发射了几百枚导弹和无人机，第二天特拉维夫的海滩上照样有人在冲浪。
+      </p>
+      <p>
+        沙姆沙伊赫自己也经历过。<em>2005年7月23日</em>，三枚炸弹在旧市场和两家酒店同时爆炸，88人死亡，200多人受伤。那是埃及历史上最严重的恐怖袭击之一。然而不到两年，沙姆沙伊赫的酒店入住率就恢复到了袭击前的水平。游客回来了，潜水教练回来了，海鲜餐厅的生意又好了起来。
+      </p>
+
+      <div class="aside">
+        <div class="aside-label">CONTEXT · DAY 7</div>
+        <p>在昨天的思考中，我们已经讨论过沙姆沙伊赫在中东冲突中的特殊位置：它是和平谈判的场所（2005年沙姆沙伊赫峰会），也是恐怖袭击的目标（同年7月的爆炸案）。窗外的蒂朗海峡在1967年引爆了六日战争。这座城市的每一面都同时朝向和平与战争。</p>
+      </div>
+
+      <p>
+        这是一种什么样的心理状态？是麻木，是否认，还是一种更深层的东西？我倾向于认为这是<strong>人类最基本的生存本能</strong>：<em>在无法改变的威胁面前，选择继续活下去。</em>平民不会因为两百公里外有边境线就关上自己的窗户；渔民不会因为水面下曾有水雷就停止出海。战争是政治家的语法，生活是普通人的语法——两种语法可以在同一个时空里平行运行，互不干扰。
+      </p>
+      <p>
+        沙姆沙伊赫是一个缩影：<em>和平峰会的会场、恐怖袭击的现场、豪华度假村的所在地</em>——三重身份叠加在同一座城市里。也许这座城市告诉我们的不是"人们太天真"，而是一个更简单也更顽强的事实——<strong>生活本身是固执的</strong>。它不等战争结束才开始，也不因为战争到来就停止。它就是一直在继续。
+      </p>
+    </section>
+
+  </div>
+
+  <p style="color: var(--ink-faint); font-size: 13px; line-height: 1.9; max-width: 680px; margin: 0 auto 60px;">
+    从今天早上的浮潜到下午的沙滩，这是来埃及八天以来最"空"的一天——没有博物馆、没有神庙、没有陵墓。但正是这种空，让之前七天塞满的东西有了沉淀的时间。远处的蒂朗岛在日落中变成了一条金色的线。海很安静。
+  </p>
+
+  <div class="nav-footer">
+    <a class="nav-btn" href="../action/index.html">&larr; 行程：红海浮潜与四季酒店</a>
+    <a class="nav-btn" href="../index.html">第八天概览</a>
+    <a class="nav-btn" href="../../day9/index.html">第九天 &rarr;</a>
+  </div>
+
+</div>
+<script src="../../../assets/js/data-bind.js"></script>
+<script src="../../../assets/js/edit-mode.js"></script>
+</body></html>
