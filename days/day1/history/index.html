@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>第一天思考 · 古埃及众神殿</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  .site-nav {
+  .topbar {
     position: relative;
     z-index: 20;
     display: flex;
@@ -14,21 +14,20 @@
     align-items: center;
     padding: 16px 24px;
     font-size: 12px;
-    border-bottom: 1px solid rgba(200,151,58,.12);
+    border-bottom: 1px solid var(--gold-dim);
     background: rgba(10,8,6,.6);
     backdrop-filter: blur(8px);
     flex-wrap: wrap;
   }
-  .site-nav a {
-    color: rgba(200,151,58,.6);
+  .topbar a {
+    color: var(--ink-muted);
     text-decoration: none;
     font-family: 'Cinzel', serif;
     letter-spacing: 1px;
     transition: color .2s;
   }
-  .site-nav a:hover { color: #C9A84C; }
-  .site-nav-sep { color: rgba(200,151,58,.25); }
-  .site-nav-cur { color: rgba(212,196,160,.5); font-family: 'Cinzel', serif; letter-spacing: 1px; }
+  .topbar a:hover { color: var(--gold); }
+  .topbar-sep { color: var(--ink-faint); }
 
   .context-strip {
     position: relative;
@@ -39,7 +38,7 @@
   }
   .context-card {
     background: rgba(26,58,92,.15);
-    border: 1px solid rgba(200,151,58,.18);
+    border: 1px solid var(--line);
     border-left: 3px solid rgba(200,151,58,.5);
     padding: 14px 20px;
     display: flex;
@@ -51,7 +50,7 @@
     font-family: 'Cinzel', serif;
     font-size: 10px;
     letter-spacing: 3px;
-    color: #C9A84C;
+    color: var(--gold);
     opacity: .7;
     margin-bottom: 4px;
   }
@@ -68,28 +67,37 @@
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 1px;
-    color: #C9A84C;
+    color: var(--gold);
     text-decoration: none;
     border: 1px solid rgba(200,151,58,.3);
     padding: 6px 14px;
     transition: all .2s;
   }
-  .context-link:hover { background: rgba(200,151,58,.1); }
+  .context-link:hover { background: var(--gold-dim); }
 </style>
 <style>
   :root {
-    --gold: #C9A84C;
+    --bg: #0e0c09;
+    --surface: #161310;
+    --card: #1c1813;
+    --gold: #c8973a;
+    --gold-dim: rgba(200,151,58,.12);
     --gold-light: #F0D080;
     --gold-dark: #8B6914;
+    --ink: #e8e0d0;
+    --ink-muted: #8a7f6e;
+    --ink-faint: #4a4438;
+    --line: rgba(200,151,58,.18);
+    --line-faint: rgba(255,255,255,.06);
+    --blue: #4a8fd4;
     --lapis: #1A3A5C;
     --lapis-light: #2A5480;
-    --sand: #F5E6C8;
-    --sand-dark: #D4C4A0;
-    --papyrus: #EDD9A3;
-    --black: #0A0806;
+    --sand: #e8e0d0;
+    --sand-dark: #8a7f6e;
+    --papyrus: #8a7f6e;
+    --black: #0e0c09;
     --red-ancient: #8B2020;
     --teal: #1A7A6E;
-    --bg: #0D0B08;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -145,7 +153,7 @@
   }
 
   h1 {
-    font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Cinzel', serif;
     font-size: clamp(28px, 6vw, 56px);
     color: var(--gold-light);
     text-shadow: 0 0 40px rgba(201,168,76,0.5), 0 0 80px rgba(201,168,76,0.2);
@@ -444,7 +452,7 @@
   .modal-avatar { font-size: 60px; }
 
   .modal-title {
-    font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Cinzel', serif;
     font-size: 24px;
     color: var(--gold-light);
     letter-spacing: 2px;
@@ -575,7 +583,7 @@
     margin-bottom: 32px;
   }
   .section-header h2 {
-    font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Cinzel', serif;
     font-size: 22px;
     color: var(--gold-light);
     letter-spacing: 4px;
@@ -707,6 +715,20 @@
   ::-webkit-scrollbar-track { background: rgba(201,168,76,0.05); }
   ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); }
 
+  /* ── NAV FOOTER ── */
+  .nav-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 24px; border-top: 1px solid var(--line-faint);
+    flex-wrap: wrap; gap: 12px;
+    max-width: 1200px; margin: 64px auto 0; padding-left: 20px; padding-right: 20px;
+  }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--ink-muted); text-decoration: none;
+    border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+  }
+  .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+
   @media (max-width: 600px) {
     .nav-tab { font-size: 10px; padding: 12px 8px; letter-spacing: 0; }
     .pantheon-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -716,12 +738,12 @@
 <body>
 
 <!-- Site Nav -->
-<nav class="site-nav">
+<nav class="topbar">
   <a href="../../../index.html">旅行目录</a>
-  <span class="site-nav-sep">/</span>
+  <span class="topbar-sep">/</span>
   <a href="../index.html">第一天</a>
-  <span class="site-nav-sep">/</span>
-  <span class="site-nav-cur">历史 · 众神殿</span>
+  <span class="topbar-sep">/</span>
+  <span style="color:var(--ink-faint)">历史 · 众神殿</span>
 </nav>
 
 <!-- Context Strip -->
@@ -1431,7 +1453,13 @@ function drawRelationGraph() {
 
 init();
 </script>
+
+<div class="nav-footer">
+  <a class="nav-btn" href="../action/index.html">← 今日行程</a>
+  <a class="nav-btn" href="../index.html">第一天概览</a>
+</div>
+
 <script src="../../../assets/js/data-bind.js"></script>
-  <script src="../../../assets/js/edit-mode.js"></script>
+<script src="../../../assets/js/edit-mode.js"></script>
 </body>
 </html>

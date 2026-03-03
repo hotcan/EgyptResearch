@@ -4,51 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>第三天思考 · 信仰的寻踪</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── SITE NAV ── */
-.site-nav {
+/* ── TOPBAR NAV ── */
+.topbar {
   position: relative; z-index: 20;
   display: flex; gap: 20px; align-items: center;
   padding: 16px 24px; font-size: 12px;
-  border-bottom: 1px solid rgba(200,151,58,.12);
+  border-bottom: 1px solid var(--gold-dim);
   background: rgba(10,8,6,.6); backdrop-filter: blur(8px);
   flex-wrap: wrap;
 }
-.site-nav a {
-  color: rgba(200,151,58,.6); text-decoration: none;
+.topbar a {
+  color: var(--ink-muted); text-decoration: none;
   font-family: 'Cinzel', serif; letter-spacing: 1px; transition: color .2s;
 }
-.site-nav a:hover { color: #C9A84C; }
-.site-nav-sep { color: rgba(200,151,58,.25); }
-.site-nav-cur { color: rgba(212,196,160,.5); font-family: 'Cinzel', serif; letter-spacing: 1px; }
+.topbar a:hover { color: var(--gold); }
+.topbar-sep { color: var(--ink-faint); }
 
 /* ── CONTEXT STRIP ── */
 .context-strip { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 20px 20px 0; }
 .context-card {
-  background: rgba(26,58,92,.15); border: 1px solid rgba(200,151,58,.18);
+  background: rgba(26,58,92,.15); border: 1px solid var(--line);
   border-left: 3px solid rgba(200,151,58,.5); padding: 14px 20px;
   display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;
 }
-.context-eyebrow { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; color: #C9A84C; opacity: .7; margin-bottom: 4px; }
+.context-eyebrow { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; color: var(--gold); opacity: .7; margin-bottom: 4px; }
 .context-text { font-size: 13px; color: rgba(212,196,160,.75); line-height: 1.7; flex: 1; min-width: 240px; }
 .context-link {
   align-self: center; white-space: nowrap; font-family: 'Cinzel', serif;
-  font-size: 11px; letter-spacing: 1px; color: #C9A84C; text-decoration: none;
+  font-size: 11px; letter-spacing: 1px; color: var(--gold); text-decoration: none;
   border: 1px solid rgba(200,151,58,.3); padding: 6px 14px; transition: all .2s;
 }
-.context-link:hover { background: rgba(200,151,58,.1); }
+.context-link:hover { background: var(--gold-dim); }
 </style>
 <style>
 :root {
-  --gold: #C9A84C; --gold-light: #F0D080; --gold-dark: #8B6914;
+  --bg: #0e0c09; --surface: #161310; --card: #1c1813;
+  --gold: #c8973a; --gold-dim: rgba(200,151,58,.12);
+  --gold-light: #F0D080; --gold-dark: #8B6914;
+  --ink: #e8e0d0; --ink-muted: #8a7f6e; --ink-faint: #4a4438;
+  --line: rgba(200,151,58,.18); --line-faint: rgba(255,255,255,.06);
+  --blue: #4a8fd4;
   --lapis: #1A3A5C; --lapis-light: #2A5480;
-  --sand: #F5E6C8; --sand-dark: #D4C4A0; --papyrus: #EDD9A3;
-  --black: #0A0806; --red: #8B2020;
+  --sand: #e8e0d0; --sand-dark: #8a7f6e; --papyrus: #8a7f6e;
+  --black: #0e0c09; --red: #8B2020;
   --coptic: #5A3A70; --coptic-light: #7A5A90; --coptic-dim: rgba(90,58,112,.2);
   --desert: #7A5C2A; --desert-light: #C8A060; --desert-dim: rgba(122,92,42,.15);
   --cross: #3A6A4A; --cross-light: #5A9A6A; --cross-dim: rgba(58,106,74,.15);
-  --bg: #0D0B08;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -77,7 +80,7 @@ body {
   color: var(--gold); font-family: serif;
 }
 .main-header h1 {
-  font-family: 'Cinzel Decorative', serif; font-size: clamp(20px, 4vw, 38px);
+  font-family: 'Cinzel', serif; font-size: clamp(20px, 4vw, 38px);
   color: var(--gold-light); letter-spacing: 2px; margin-bottom: 10px; line-height: 1.2;
 }
 .main-header h1 span {
@@ -226,20 +229,19 @@ body {
 .tl-event.highlight .tl-body { border-color: rgba(201,168,76,.3); background: rgba(201,168,76,.07); }
 .tl-event.highlight .tl-year::after { box-shadow: 0 0 0 2px var(--gold), 0 0 20px rgba(201,168,76,.6); }
 
-/* ── PAGE NAV FOOTER ── */
-.page-nav {
+/* ── NAV FOOTER ── */
+.nav-footer {
   display: flex; justify-content: space-between; align-items: center;
-  margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(201,168,76,.12);
+  margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line-faint);
   max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px;
   flex-wrap: wrap; gap: 12px;
 }
-.page-nav-btn {
+.nav-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 1px;
-  color: rgba(201,168,76,.6); text-decoration: none;
-  border: 1px solid rgba(201,168,76,.2); padding: 8px 16px; transition: all .2s;
+  font-size: 12px; color: var(--ink-muted); text-decoration: none;
+  border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
 }
-.page-nav-btn:hover { color: var(--gold); border-color: rgba(201,168,76,.5); background: rgba(201,168,76,.06); }
+.nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
 
 @media (max-width: 640px) {
   .site-grid { grid-template-columns: 1fr; }
@@ -254,12 +256,12 @@ body {
 
 <div class="stars" id="stars"></div>
 
-<nav class="site-nav">
+<nav class="topbar">
   <a href="../../../index.html">旅行目录</a>
-  <span class="site-nav-sep">/</span>
+  <span class="topbar-sep">/</span>
   <a href="../index.html">第三天</a>
-  <span class="site-nav-sep">/</span>
-  <span class="site-nav-cur">历史</span>
+  <span class="topbar-sep">/</span>
+  <span style="color:var(--ink-faint)">历史</span>
 </nav>
 
 <div class="context-strip">
@@ -601,9 +603,9 @@ body {
 
 </div><!-- /content-area -->
 
-<div class="page-nav">
-  <a class="page-nav-btn" href="../index.html">← 返回第三天概览</a>
-  <a class="page-nav-btn" href="../action/index.html">行程页 →</a>
+<div class="nav-footer">
+  <a class="nav-btn" href="../action/index.html">← 今日行程</a>
+  <a class="nav-btn" href="../index.html">第三天概览</a>
 </div>
 
 <script>
