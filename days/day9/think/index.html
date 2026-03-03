@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第九天思考 · 同源的裂痕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0c09;
+  --surface: #161310;
+  --card: #1c1813;
+  --gold: #c8973a;
+  --gold-dim: rgba(200,151,58,.12);
+  --ink: #e8e0d0;
+  --ink-muted: #8a7f6e;
+  --ink-faint: #4a4438;
+  --line: rgba(200,151,58,.18);
+  --line-faint: rgba(255,255,255,.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  position: relative;
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg); color: var(--ink);
+  line-height: 1.8; min-height: 100vh; overflow-x: hidden;
+}
+.wrap {
+  position: relative; z-index: 1;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto; padding: 36px 0 96px;
+}
+.topbar {
+  display: flex; gap: 20px; align-items: center;
+  margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+}
+.topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--gold); }
+.topbar-sep { color: var(--ink-faint); }
+
+/* ── HERO ── */
+.hero { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+.hero-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+  line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; }
+
+/* ── PROSE ── */
+.prose { display: grid; gap: 56px; margin-bottom: 60px; }
+.section-label {
+  font-family: 'Cinzel', serif; font-size: 14px;
+  letter-spacing: 1px; color: var(--gold); opacity: .9; margin-bottom: 20px;
+}
+.prose p { font-size: 15px; color: var(--ink-muted); line-height: 1.95; margin-bottom: 18px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose p strong { color: var(--ink); font-weight: 600; }
+.prose p em { font-style: normal; color: var(--gold); }
+
+/* ── ASIDE ── */
+.aside {
+  background: var(--surface); border-left: 3px solid rgba(200,151,58,.4);
+  padding: 20px 24px; margin: 28px 0;
+}
+.aside-label {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3px; color: var(--gold); opacity: .6; margin-bottom: 10px;
+}
+.aside p { font-size: 13px !important; color: var(--ink-faint) !important; line-height: 1.8 !important; margin-bottom: 8px !important; }
+.aside p:last-child { margin-bottom: 0 !important; }
+.aside p strong { color: var(--ink-muted) !important; }
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--line-faint); }
+
+/* ── NAV FOOTER ── */
+.nav-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px; border-top: 1px solid var(--line-faint);
+  flex-wrap: wrap; gap: 12px;
+}
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--ink-muted); text-decoration: none;
+  border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+}
+.nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+</style>
+</head>
+<body class="">
+<div class="wrap">
+
+  <nav class="topbar">
+    <a href="../../../index.html">← 旅行目录</a>
+    <span class="topbar-sep">/</span>
+    <a href="../index.html">第九天</a>
+    <span class="topbar-sep">/</span>
+    <span style="color:var(--ink-faint)">思考</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Day 09 · Think · 2026.03.02</div>
+    <h1 data-key="days.8.think_title">同源的<em>裂痕</em></h1>
+    <p class="hero-lead" data-key="days.8.think_lead">中午刘教授回顾了亚伯拉罕三宗教的简史。犹太教、基督教、伊斯兰教同出一源，却成了今天中东冲突的三条主线。同为伊斯兰教的逊尼派和什叶派也在打——信仰这个东西，有些时候真的无法调和。</p>
+  </header>
+
+  <div class="prose">
+
+    <!-- Section I -->
+    <section>
+      <div class="section-label">I · 同一个亚伯拉罕</div>
+      <p>
+        中午在沙姆沙伊赫飞开罗之前，刘教授做了一个简短的回顾——亚伯拉罕三大宗教的基本脉络。这个话题在旅途中已经反复出现过：第一天在萨拉丁城堡的清真寺里，第三天在科普特开罗的教堂里，第四天在亚历山大图书馆的斐洛讨论中。但直到今天坐在一起系统听一遍，才真正感受到一个简单事实的重量——<em>犹太教、基督教、伊斯兰教，追根溯源都是同一个人的后代。</em>
+      </p>
+      <p>
+        <strong>亚伯拉罕</strong>是三大宗教共同承认的先祖。犹太人认为自己是亚伯拉罕与妻子撒拉之子以撒的后裔；阿拉伯人（伊斯兰传统）认为自己是亚伯拉罕与侍女夏甲之子以实玛利的后裔；基督教则在犹太教的基础上接纳了耶稣作为弥赛亚。三棵大树，同一条根。
+      </p>
+      <p>
+        故事本可以到此为止——同源，分流，各自生长。但真实的历史远比这复杂。分流之后不是和平共处，而是<em>两千年的冲突、迫害、征服与反征服</em>。十字军东征是基督徒打穆斯林，大流散是基督徒和穆斯林迫害犹太人，以色列建国后是犹太人和穆斯林打，中间还夹杂着基督教内部的东西教会大分裂、新教改革中的宗教战争……
+      </p>
+      <p>
+        同一个上帝的子民，为什么打成了这样？
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section II -->
+    <section>
+      <div class="section-label">II · 教派内部的裂痕</div>
+      <p>
+        如果说三大宗教之间的冲突还可以用"不同信仰"来解释，那么<strong>同一宗教内部</strong>的冲突就更令人费解了。
+      </p>
+      <p>
+        伊斯兰教的<strong>逊尼派</strong>和<strong>什叶派</strong>之争，根源不在教义，而在于先知穆罕默德去世后的<em>继承权</em>问题。逊尼派认为继承人应由推选产生（阿布·伯克尔），什叶派认为应由先知的血亲继承（阿里）。公元680年的卡尔巴拉战役中，阿里之子侯赛因被杀，什叶派从此成为"殉道者的信仰"。一千三百多年过去了，这条裂痕不仅没有愈合，反而在地缘政治的放大下变得更深。
+      </p>
+      <p>
+        今天的中东版图上，<em>逊尼派</em>的沙特、阿联酋、埃及、约旦站在一边；<em>什叶派</em>的伊朗、伊拉克南部、黎巴嫩真主党、也门胡塞武装站在另一边。昨天晚上手机推送的美以打击伊朗新闻，表面上是美以和伊朗的冲突，底下还有一层是逊尼派阵营与什叶派阵营的角力。而我们刚刚离开的沙姆沙伊赫，正坐在这两个阵营的交界处。
+      </p>
+
+      <div class="aside">
+        <div class="aside-label">CONTEXT · DAY 8</div>
+        <p>在昨天的思考中，我们讨论了沙姆沙伊赫"距离战争200公里"的悖论——和平峰会的场所、恐怖袭击的现场、豪华度假村的所在地，三重身份叠加在同一座城市。今天的问题从距离延伸到了根源：<strong>为什么信同一个神的人会彼此杀戮？</strong></p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section III -->
+    <section>
+      <div class="section-label">III · 信仰的不可调和</div>
+      <p>
+        这十天旅途下来，看过了清真寺、科普特教堂、犹太会堂遗址、法老神庙，有一个感受越来越清晰：<em>信仰一旦形成，就很难被说服改变。</em>
+      </p>
+      <p>
+        这不是理性层面的问题。你不能用逻辑说服一个什叶派穆斯林"其实阿布·伯克尔的继承权更合理"，就像你不能用证据说服一个犹太人"耶稣确实是弥赛亚"。信仰的底层不是论证，而是<strong>身份认同</strong>——我是谁，我属于哪个群体，我的先祖受过什么苦难。卡尔巴拉的殉难对什叶派而言不是一段可以讨论的历史，而是一个被反复纪念和重演的创伤叙事，它定义了"我们是谁"。
+      </p>
+      <p>
+        而身份认同一旦和"神圣"挂钩，妥协就变成了<em>背叛</em>。世俗冲突可以谈判——领土可以分割、资源可以共享、权力可以分配。但宗教冲突触碰的是"什么是对的"这个层面，而在信徒看来，神给出的答案只有一个。两个阵营都确信自己站在真理那边，这不是谈判桌上让一让就能解决的事。
+      </p>
+      <p>
+        从亚伯拉罕到今天，四千年过去了。同源的三大宗教各自发展出了庞大的神学体系、教法传统、政治结构。每一次分裂都在制造新的身份边界，每一次冲突都在加固这些边界。<strong>起点越近，分歧越痛</strong>——因为那意味着"你本该和我一样，但你偏不"。兄弟之间的仇恨，往往比陌生人之间更深。
+      </p><figure class="img-block img-portrait"><img src="../photos/fcfa09c9148a721c8ed351a3ca2ec99f_1772568323178.jpg" alt="fcfa09c9148a721c8ed351a3ca2ec99f"><figcaption><span style="color: rgb(138, 127, 110); font-size: 15px; background-color: rgb(14, 12, 9);">正在思考的我。</span></figcaption></figure>
+    </section>
+
+  </div>
+
+  <p style="color: var(--ink-faint); font-size: 13px; line-height: 1.9; max-width: 680px; margin: 0 auto 60px;">
+    飞机降落在开罗。从机场到酒店的路上，车窗外闪过一座清真寺和一座科普特教堂，隔着不到一百米。在埃及，两种信仰的建筑经常比邻而立。也许这就是这片土地的日常——裂痕一直在，但生活也一直在。
+  </p>
+
+  <div class="nav-footer">
+    <a class="nav-btn" href="../index.html">← 第九天概览</a>
+    <a class="nav-btn" href="../../day8/think/index.html">← 第八天思考</a>
+    <a class="nav-btn" href="../../day10/index.html">第十天 →</a>
+  </div>
+
+</div>
+<script src="../../../assets/js/data-bind.js"></script>
+<script src="../../../assets/js/edit-mode.js"></script>
+
+</body></html>

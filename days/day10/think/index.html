@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十天思考 · 一个人的旅途</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0c09;
+  --surface: #161310;
+  --card: #1c1813;
+  --gold: #c8973a;
+  --gold-dim: rgba(200,151,58,.12);
+  --ink: #e8e0d0;
+  --ink-muted: #8a7f6e;
+  --ink-faint: #4a4438;
+  --line: rgba(200,151,58,.18);
+  --line-faint: rgba(255,255,255,.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  position: relative;
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg); color: var(--ink);
+  line-height: 1.8; min-height: 100vh; overflow-x: hidden;
+}
+.wrap {
+  position: relative; z-index: 1;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto; padding: 36px 0 96px;
+}
+.topbar {
+  display: flex; gap: 20px; align-items: center;
+  margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+}
+.topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--gold); }
+.topbar-sep { color: var(--ink-faint); }
+
+/* ── HERO ── */
+.hero { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+.hero-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+  line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; }
+
+/* ── PROSE ── */
+.prose { display: grid; gap: 56px; margin-bottom: 60px; }
+.section-label {
+  font-family: 'Cinzel', serif; font-size: 14px;
+  letter-spacing: 1px; color: var(--gold); opacity: .9; margin-bottom: 20px;
+}
+.prose p { font-size: 15px; color: var(--ink-muted); line-height: 1.95; margin-bottom: 18px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose p strong { color: var(--ink); font-weight: 600; }
+.prose p em { font-style: normal; color: var(--gold); }
+
+/* ── ASIDE ── */
+.aside {
+  background: var(--surface); border-left: 3px solid rgba(200,151,58,.4);
+  padding: 20px 24px; margin: 28px 0;
+}
+.aside-label {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3px; color: var(--gold); opacity: .6; margin-bottom: 10px;
+}
+.aside p { font-size: 13px !important; color: var(--ink-faint) !important; line-height: 1.8 !important; margin-bottom: 8px !important; }
+.aside p:last-child { margin-bottom: 0 !important; }
+.aside p strong { color: var(--ink-muted) !important; }
+
+/* ── IMAGE BLOCKS ── */
+.img-block { margin: 32px 0; }
+.img-block img { width: 100%; display: block; border: 1px solid var(--line-faint); filter: sepia(.1) brightness(.9); }
+.img-block figcaption {
+  font-size: 11px; color: var(--ink-faint); line-height: 1.7; padding: 8px 12px;
+  background: var(--surface); border: 1px solid var(--line-faint); border-top: none; font-style: italic;
+}
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--line-faint); }
+
+/* ── NAV FOOTER ── */
+.nav-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px; border-top: 1px solid var(--line-faint);
+  flex-wrap: wrap; gap: 12px;
+}
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--ink-muted); text-decoration: none;
+  border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+}
+.nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+</style>
+</head>
+<body class="">
+<div class="wrap">
+
+  <nav class="topbar">
+    <a href="../../../index.html">← 旅行目录</a>
+    <span class="topbar-sep">/</span>
+    <a href="../index.html">第十天</a>
+    <span class="topbar-sep">/</span>
+    <span style="color:var(--ink-faint)">思考</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Day 10 · Think · 2026.03.03</div>
+    <h1 data-key="days.9.think_title">一个人的<em>旅途</em></h1>
+    <p class="hero-lead" data-key="days.9.think_lead">大部分团友已经回了上海，我多得了一天独自探索开罗的机会。一个人走在穆伊兹街上，想起了独自去过的西藏、尼泊尔和迈泰奥拉——一个人在旅途的时候，能让我静静地回到自己。</p>
+  </header>
+
+  <div class="prose">
+
+    <!-- Section I -->
+    <section>
+      <div class="section-label">I · 独行的奢侈</div>
+      <p>
+        这次旅行的前九天都是跟团——导游讲解、集体行动、固定时间。这没什么不好，尤其在埃及这种信息量巨大的地方，有专业讲解省去了很多自学成本。但团队旅行有一个不可避免的代价：<strong>你无法按自己的节奏停留</strong>。在卡纳克神庙想多待半小时不行，在帝王谷想多看一个墓不行，在博物馆想对着一件展品发呆也不行。
+      </p>
+      <p>
+        今天终于有了一整天的自由。从伊斯兰艺术博物馆出来，让Gemini帮我规划了步行路线——AI成了我的"私人导游"。这种感觉太好了：没有集合时间，不用等人，饿了就吃，累了就坐，感兴趣就多看一会儿，不感兴趣就跳过。在<em>费沙维咖啡馆</em>坐了半个小时，什么也没做，就是喝茶看人。这在团队行程中是不可能的奢侈。
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section II -->
+    <section>
+      <div class="section-label">II · 西藏、尼泊尔、迈泰奥拉</div>
+      <p>
+        回想起以前一个人旅行的经历——独自去过<strong>西藏</strong>、<strong>尼泊尔</strong>、<strong>希腊</strong>。每一次独行都有一个共同的感受：一个人走在异国的街头，反而能最清楚地听到自己内心的声音。
+      </p>
+      <p>
+        在西藏的时候，走在拉萨八廓街上，周围全是转经的藏民，脚步声和转经筒的嗡嗡声混在一起。在尼泊尔的加德满都，坐在杜巴广场的台阶上看鸽子，身边是倒塌的神庙和玩耍的小孩。在希腊的<strong>迈泰奥拉</strong>，一个人站在悬崖顶的修道院前，脚下是几百米深的峡谷，对面是一根根拔地而起的巨石柱，修道士们六百年前就在这些石柱顶上修建了修道院——和第三天去的圣安东尼修道院一样，都是人类为了接近神而选择的极端地形。风从峡谷里灌上来，整个世界安静得只剩风声。
+      </p>
+      <p>
+        这些时刻有一个共同点：<em>周围越是陌生，自己反而越是清晰。</em>日常生活里，身份、角色、责任层层叠叠，像洋葱一样把"我"包裹得严严实实。但当你一个人站在一个完全陌生的地方，这些层层包裹都被剥离了——剩下的那个"我"，是最本真的那个。
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section III -->
+    <section>
+      <div class="section-label">III · 穆伊兹街的下午</div>
+      <p>
+        今天下午走在穆伊兹街上，那种熟悉的感觉又回来了。阳光从马穆鲁克建筑的缝隙里斜射下来，空气里弥漫着香料和面包的味道，两边的小店主用阿拉伯语招呼着路人，偶尔有骑小摩托的人从身边经过。我什么都听不懂，但这种"听不懂"反而让人放松——不需要社交，不需要回应，只需要走路和看。
+      </p>
+      <p>
+        最后在费沙维坐下来的时候，脑子里突然冒出一个念头：这十天的旅行，信息量太大了。金字塔、木乃伊、神庙、壁画、亡灵书、宗教冲突、文物归还、巨柱与斗拱……每一天都在往大脑里塞东西。而今天下午的独行，是旅途中第一次真正的<em>"消化时间"</em>。不是在接收，而是在沉淀。
+      </p>
+    </section>
+
+  </div>
+
+  <p style="color: var(--ink-faint); font-size: 13px; line-height: 1.9; max-width: 680px; margin: 0 auto 60px;">
+    薄荷茶喝到只剩杯底的糖渣。站起来离开费沙维的时候，天已经开始暗了。走出哈利利市场，路灯亮起来，远处传来清真寺的唤礼声。开罗的最后一个下午，给了这次旅行一个意想不到的完美收尾。不是金字塔，不是神庙，而是一条中世纪的街道和一杯薄荷茶。
+  </p>
+
+  <div class="nav-footer">
+    <a class="nav-btn" href="../action/index.html">← 行程：从法老到苏丹</a>
+    <a class="nav-btn" href="../index.html">第十天概览</a>
+    <a class="nav-btn" href="../../day11/index.html">第十一天 →</a>
+  </div>
+
+</div>
+<script src="../../../assets/js/data-bind.js"></script>
+<script src="../../../assets/js/edit-mode.js"></script>
+
+</body></html>

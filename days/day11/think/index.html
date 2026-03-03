@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旅程总结 · 十一天的收获</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0c09;
+  --surface: #161310;
+  --card: #1c1813;
+  --gold: #c8973a;
+  --gold-dim: rgba(200,151,58,.12);
+  --ink: #e8e0d0;
+  --ink-muted: #8a7f6e;
+  --ink-faint: #4a4438;
+  --line: rgba(200,151,58,.18);
+  --line-faint: rgba(255,255,255,.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  position: relative;
+  font-family: 'Noto Serif SC', serif;
+  background: var(--bg); color: var(--ink);
+  line-height: 1.8; min-height: 100vh; overflow-x: hidden;
+}
+.wrap {
+  position: relative; z-index: 1;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto; padding: 36px 0 96px;
+}
+.topbar {
+  display: flex; gap: 20px; align-items: center;
+  margin-bottom: 40px; font-size: 12px; flex-wrap: wrap;
+}
+.topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--gold); }
+.topbar-sep { color: var(--ink-faint); }
+
+/* ── HERO ── */
+.hero { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+.hero-eyebrow {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(26px, 4.5vw, 46px); font-weight: 700;
+  line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; }
+
+/* ── PROSE ── */
+.prose { display: grid; gap: 56px; margin-bottom: 60px; }
+.section-label {
+  font-family: 'Cinzel', serif; font-size: 14px;
+  letter-spacing: 1px; color: var(--gold); opacity: .9; margin-bottom: 20px;
+}
+.prose p { font-size: 15px; color: var(--ink-muted); line-height: 1.95; margin-bottom: 18px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose p strong { color: var(--ink); font-weight: 600; }
+.prose p em { font-style: normal; color: var(--gold); }
+
+/* ── ASIDE ── */
+.aside {
+  background: var(--surface); border-left: 3px solid rgba(200,151,58,.4);
+  padding: 20px 24px; margin: 28px 0;
+}
+.aside-label {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3px; color: var(--gold); opacity: .6; margin-bottom: 10px;
+}
+.aside p { font-size: 13px !important; color: var(--ink-faint) !important; line-height: 1.8 !important; margin-bottom: 8px !important; }
+.aside p:last-child { margin-bottom: 0 !important; }
+.aside p strong { color: var(--ink-muted) !important; }
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--line-faint); }
+
+/* ── NAV FOOTER ── */
+.nav-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px; border-top: 1px solid var(--line-faint);
+  flex-wrap: wrap; gap: 12px;
+}
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--ink-muted); text-decoration: none;
+  border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
+}
+.nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topbar">
+    <a href="../../../index.html">&larr; 旅行目录</a>
+    <span class="topbar-sep">/</span>
+    <a href="../index.html">第十一天</a>
+    <span class="topbar-sep">/</span>
+    <span style="color:var(--ink-faint)">总结</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Day 11 · Summary · 2026.03.04</div>
+    <h1 data-key="days.10.think_title">十一天的<em>收获</em></h1>
+    <p class="hero-lead" data-key="days.10.think_lead">从金字塔到穆伊兹街，从亡灵书到薄荷茶——十一天的埃及之旅，在历史、建筑、信仰和哲学四个维度上留下了深深的印记。</p>
+  </header>
+
+  <div class="prose">
+
+    <!-- Section I -->
+    <section>
+      <div class="section-label">I · 三层历史</div>
+      <p>
+        十一天下来，脑子里装进了<strong>三条平行的历史线</strong>。
+      </p>
+      <p>
+        第一条是<em>古埃及的三千年</em>。从纳尔迈统一上下埃及开始，到古王国时期祖孙三代在吉萨建起金字塔，到新王国时期图坦卡蒙、拉美西斯二世在卢克索和帝王谷留下壁画与神庙，再到托勒密王朝与罗马征服——这条线在大埃及博物馆的图坦卡蒙宝藏、卢克索博物馆的法老雕像、帝王谷的亡灵书壁画、卡纳克134根巨柱的大厅里一一对上了实物。最后一天在老馆看到胡夫那尊只有拇指大小的雕像时，三千年的尺度突然变得具体了。
+      </p>
+      <p>
+        第二条是<em>亚伯拉罕三宗教的两千年</em>。犹太教、基督教、伊斯兰教——同一个先祖，三条分流。在科普特开罗的悬空教堂里触摸了基督教在埃及的最早痕迹，在亚历山大图书馆讨论了斐洛如何用希腊哲学重新解读犹太经典，在圣安东尼修道院爬了一千多级台阶理解苦修的意义。第九天刘教授的回顾让三条线汇聚到同一个问题：为什么同源的信仰会成为冲突的根源？
+      </p>
+      <p>
+        第三条是<em>伊斯兰教在埃及的一千四百年</em>。从公元641年阿拉伯征服到法蒂玛王朝建立开罗城，从萨拉丁的城堡到马穆鲁克的穹顶和珐琅灯，从奥斯曼帝国的衰落到现代埃及。最后一天在穆伊兹街上走过的每一栋建筑，都是这条时间线的实物注脚。三层历史叠加在同一片土地上——这就是埃及。
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section II -->
+    <section>
+      <div class="section-label">II · 建筑的奇迹</div>
+      <p>
+        这次旅行最直接的冲击来自<strong>建筑</strong>。
+      </p>
+      <p>
+        <strong>金字塔</strong>是第一记重锤。站在吉萨高地上，面对胡夫金字塔230万块石头垒起的146米高墙，所有照片和纪录片都失效了。四千五百年前没有铁器、没有车轮、没有起重机，这东西是怎么立起来的？至今没有定论。旁边的狮身人面像安静地蹲着，和四千年前一样。
+      </p>
+      <p>
+        <strong>神庙</strong>是第二记。卡纳克神庙134根巨柱撑起的大厅，站在里面抬头看天的那一刻，感受到了法老们想要压倒一切的野心。卢克索神庙的日落与夜灯是魔术——同一座建筑在白天和夜晚是两个完全不同的世界。阿布·哈加格清真寺直接建在法老柱廊之上，三千年的时间被垂直压缩在几米的高度差里。
+      </p>
+      <p>
+        <strong>帝王谷</strong>是第三记。塞提一世陵墓里那些三千年前的壁画，颜色依然鲜艳得像昨天画的。图坦卡蒙墓穴小得出人意料，但墙上那12只狒狒——代表夜晚的12个小时——安静地注视着每一个走进来的人。
+      </p>
+      <p>
+        最后一天，<strong>穆伊兹街</strong>的马穆鲁克建筑给了一个完全不同的冲击——不是法老的巨石压迫感，而是伊斯兰几何美学的精密与繁复。祖韦伊拉门上的宣礼塔、嘉拉温建筑群的穹顶、木雕窗棂的光影……<em>从石头到木头，从法老到苏丹，建筑的语言变了，但对不朽的追求没变。</em>
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section III -->
+    <section>
+      <div class="section-label">III · 蓝色与红色</div>
+      <p>
+        旅程的节奏在第八天突然切换。前七天是密集的博物馆、神庙、陵墓、沙漠——信息过载到大脑需要定期重启。第八天飞到沙姆沙伊赫，从黄沙切换到<em>碧蓝</em>。红海浮潜、四季酒店的沙滩、海鲜晚餐——什么都不用想的一天。
+      </p>
+      <p>
+        但蓝色的背后藏着<strong>红色</strong>。到达沙姆沙伊赫的那个晚上，手机推送弹出了美以联合空袭伊朗的新闻。这座度假城市距以色列边境只有200公里，远处的蒂朗岛曾是六日战争的导火索，脚下的沙滩在1982年前属于以色列管辖。2005年这里刚发生过炸弹袭击，88人死亡。
+      </p>
+      <p>
+        但生活照常继续。俄罗斯游客在晒太阳，德国夫妇在给珊瑚鱼拍照，埃及家庭带着孩子在浅水区嬉戏。<em>和平与战争可以在同一个时空里平行运行</em>——这是沙姆沙伊赫教给我的。逊尼派的海湾国家和什叶派的伊朗在对抗，但两百公里外的度假村里，人们只关心今天的浪够不够大。
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section IV -->
+    <section>
+      <div class="section-label">IV · 哲学的沉淀</div>
+      <p>
+        这趟旅行最意想不到的收获，不是来自眼睛，而是来自<strong>大巴上和饭桌旁的对话</strong>。
+      </p>
+      <p>
+        在亚历山大回开罗的三小时车程上，从斐洛的寓意解经聊到佛教的二谛，从克尔凯郭尔的信仰之跃聊到加缪的荒谬，从赫舍尔的《先知》聊到AI是否需要苦修。这些对话把每天看到的具体事物——一块石碑、一面壁画、一座清真寺——接入了更大的思考框架。
+      </p>
+      <p>
+        圣安东尼修道院的一千多级台阶让我理解了<strong>苦修</strong>：肉体的极限是大脑停止噪音的方式。帝王谷的亡灵书让我思考古埃及人对<strong>死亡</strong>的理解：不是终结，而是另一段旅程的开始。卡纳克的巨柱和紫禁城的金柱让我比较东西方文明对<strong>不朽</strong>的不同回答：石头vs.木头，永恒vs.更替。穆伊兹街的漫步让我体验了<strong>独行</strong>的价值：信息过载之后，需要一段沉默来消化。
+      </p>
+      <p>
+        第四天在大巴上讨论的那个问题，也许是这次旅行最深的哲学收获——<em>认清真相后，依然热爱</em>。加缪说西西弗斯是幸福的，因为他在无意义中选择了继续。赫舍尔说先知的本质不是预言未来，而是对当下的苦难保持敏感。十一天的埃及教会了我：五千年的文明终将化为尘土，但人类依然在建造金字塔、书写亡灵书、修建清真寺——<strong>这种"明知会消逝仍要创造"的顽固，就是人之为人最动人的部分。</strong>
+      </p>
+    </section>
+
+  </div>
+
+  <p style="color: var(--ink-faint); font-size: 13px; line-height: 1.9; max-width: 680px; margin: 0 auto 60px;">
+    飞机从开罗起飞，窗外的尼罗河三角洲渐渐缩小成一块绿色的拼图。再远一点，沙漠的黄和红海的蓝在地平线上交汇。十一天前我带着一本《古埃及史》来到这里，现在带着塞满了照片和想法的脑袋回去。埃及没有给我答案——它给了我更好的问题。
+  </p>
+
+  <div class="nav-footer">
+    <a class="nav-btn" href="../index.html">&larr; 第十一天概览</a>
+    <a class="nav-btn" href="../../day10/think/index.html">&larr; 第十天思考</a>
+    <a class="nav-btn" href="../../../index.html">旅行目录</a>
+  </div>
+
+</div>
+<script src="../../../assets/js/data-bind.js"></script>
+<script src="../../../assets/js/edit-mode.js"></script>
+</body></html>

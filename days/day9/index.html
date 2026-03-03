@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>第9天 · 回到尼罗河</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0e0c09; --surface: #161310; --card: #1c1813; --card-hover: #231f19;
@@ -21,31 +20,22 @@
     .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
     .topbar a:hover { color: var(--gold); }
     .topbar-sep { color: var(--ink-faint); }
-    .draft-banner {
-      background: rgba(200,151,58,.08); border: 1px solid var(--line); border-left: 3px solid var(--gold);
-      padding: 12px 18px; margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
-      font-size: 13px; color: var(--ink-muted);
-    }
-    .draft-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; flex-shrink: 0; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
     .hero { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
     .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: var(--gold); opacity: .8; margin-bottom: 14px; }
     .hero h1 { font-size: clamp(26px, 4.5vw, 46px); font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 14px; letter-spacing: -.5px; }
     .hero h1 em { font-style: normal; color: var(--gold); }
     .hero-route { font-size: 13px; color: var(--gold); margin-bottom: 16px; letter-spacing: .5px; }
-    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; max-width: 680px; margin-bottom: 20px; }
-    .placeholder-area {
-      background: var(--surface); border: 1px dashed var(--line-faint);
-      padding: 60px 40px; text-align: center;
+    .hero-lead { font-size: 15px; color: var(--ink-muted); line-height: 1.9; max-width: 680px; }
+    .content-section {
+      background: var(--surface); border: 1px solid var(--line-faint);
+      padding: 40px; margin-bottom: 32px;
     }
-    .ph-icon { font-size: 36px; opacity: .2; margin-bottom: 14px; }
-    .ph-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--ink-faint); margin-bottom: 10px; }
-    .ph-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; max-width: 400px; margin: 0 auto; }
-    .structure-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 32px; }
-    .structure-box { background: var(--card); border: 1px solid var(--line-faint); padding: 20px 24px; }
-    .structure-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
-    .structure-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
-    .structure-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.7; }
+    .content-section p {
+      font-size: 15px; color: var(--ink-muted); line-height: 1.9; margin-bottom: 16px;
+    }
+    .content-section p:last-child { margin-bottom: 0; }
+    .content-section em { font-style: normal; color: var(--gold); }
+    .content-section strong { color: var(--ink); font-weight: 600; }
     .nav-footer {
       display: flex; justify-content: space-between; align-items: center;
       margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line-faint);
@@ -57,11 +47,9 @@
       border: 1px solid var(--line-faint); padding: 8px 16px; transition: all .2s;
     }
     .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
-    @media (max-width: 840px) { .structure-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .structure-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
-<body>
+<body class="">
   <div class="wrap">
     <nav class="topbar">
       <a href="../../index.html">← 旅行目录</a>
@@ -69,49 +57,33 @@
       <span>第9天</span>
     </nav>
 
-    <div class="draft-banner">
-      <span class="draft-dot"></span>
-      <span>待写 · 行程尚未开始，结构框架已搭好，内容将在到达后逐步写入</span>
-    </div>
-
     <header class="hero">
-      <div class="hero-eyebrow" data-key="days.8.eyebrow">Day 09 · 2026-03-02</div>
+      <div class="hero-eyebrow" data-key="days.8.eyebrow">Day 09 · 2026.03.02</div>
       <h1 data-key="days.8.title">回到<em>尼罗河</em></h1>
       <div class="hero-route" data-key="days.8.route">沙姆沙伊赫 ✈ 开罗</div>
-      <p class="hero-lead" data-key="days.8.desc">下午从沙姆沙伊赫飞回开罗，结束红海的蓝色假日，重返尼罗河畔。</p>
+      <p class="hero-lead" data-key="days.8.desc">下午从沙姆沙伊赫飞回开罗。在飞机上读了大半本古埃及历史，为明天的埃及博物馆老馆做准备。晚上在新开罗的如意坊吃了一顿中餐，回到酒店休息。轻松的一天，期待明天。</p>
     </header>
 
-    <div class="structure-grid">
-      <div class="structure-box">
-        <div class="structure-label">历史 · History</div>
-        <div class="structure-title">历史背景与研究资料</div>
-        <div class="structure-desc">这天的思考线将在出发前或当天整理写入——包括老师讲义、参考书目与个人预判。</div>
-      </div>
-      <div class="structure-box">
-        <div class="structure-label">行程 · Action</div>
-        <div class="structure-title">现场时间线与照片</div>
-        <div class="structure-desc">行程结束后，现场照片、地点记录与个人观察将按时间线整理写入。</div>
-      </div>
-      <div class="structure-box">
-        <div class="structure-label">思考 · Think</div>
-        <div class="structure-title">个人旅行感受与思考</div>
-        <div class="structure-desc">行程结束后，个人观察、延伸思考与旅行中触发的问题将在这里沉淀。</div>
-      </div>
-    </div>
-
-    <div class="placeholder-area">
-      <div class="ph-icon">𓂀</div>
-      <div class="ph-title">内容待写入</div>
-      <div class="ph-desc">第9天的行程还未开始。照片、现场感受与哲学资料将在到达后逐步补入这个页面。</div>
+    <div class="content-section">
+      <p>
+        休整日。下午从沙姆沙伊赫飞回开罗，结束了两天的<em>红海蓝色假日</em>。
+      </p>
+      <p>
+        飞机上翻了大半本古埃及历史——明天要去的<strong>埃及博物馆老馆</strong>收藏了超过十二万件文物，是世界上最重要的古埃及收藏之一。和前几天在大埃及博物馆（GEM）看到的以图坦卡蒙为核心的策展不同，老馆的展陈更加传统，按时代排列，能看到更完整的古埃及文明全貌。提前补课，希望明天能看得更深。
+      </p>
+      <p>
+        晚上在新开罗的<strong>如意坊</strong>又吃了一顿中餐。旅行第九天，中餐的出现频率比预想的高——开罗、卢克索、沙姆沙伊赫，每座城市都能找到中国餐馆。回到酒店，早早休息，<em>期待明天的埃及博物馆</em>。
+      </p>
     </div>
 
     <div class="nav-footer">
       <a class="nav-btn" href="../day8/index.html">← 第8天</a>
       <a class="nav-btn" href="../../index.html">旅行目录</a>
+      <a class="nav-btn" href="think/index.html">思考：同源的裂痕 →</a>
       <a class="nav-btn" href="../day10/index.html">第10天 →</a>
     </div>
   </div>
   <script src="../../assets/js/data-bind.js"></script>
   <script src="../../assets/js/edit-mode.js"></script>
-</body>
-</html>
+
+</body></html>
