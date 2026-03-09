@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第二天行程 · 吉萨到哈利利</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c09;
+      --surface: #161310;
+      --card: #1c1813;
+      --card-hover: #231f19;
+      --gold: #c8973a;
+      --gold-light: #e8bf6a;
+      --gold-dim: rgba(200,151,58,.15);
+      --ink: #e8e0d0;
+      --ink-muted: #8a7f6e;
+      --ink-faint: #4a4438;
+      --blue: #4a8fd4;
+      --blue-dim: rgba(74,143,212,.14);
+      --green: #4a9e6e;
+      --line: rgba(200,151,58,.18);
+      --line-faint: rgba(255,255,255,.06);
+      --rail: rgba(200,151,58,.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 8% -5%, rgba(200,151,58,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 92% 105%, rgba(74,143,212,.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 96px;
+    }
+
+    /* ── NAV ── */
+    .topbar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 40px;
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .topbar a { color: var(--ink-muted); text-decoration: none; transition: color .2s; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-sep { color: var(--ink-faint); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      opacity: .8;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.9;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      color: var(--gold);
+      letter-spacing: .3px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 40px 0 20px;
+    }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      opacity: .7;
+      white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--line-faint); }
+
+    /* ── SPLIT PANELS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .context-panel {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      padding: 24px 28px;
+    }
+    .context-panel h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .context-panel p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .context-panel p:last-child { margin-bottom: 0; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; list-style: none; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 88px;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--rail), transparent);
+    }
+    .event {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 0 28px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .event:last-child { padding-bottom: 0; }
+    .event-time {
+      text-align: right;
+      padding-top: 18px;
+      position: relative;
+    }
+    .event-time::after {
+      content: '';
+      position: absolute;
+      right: -35px;
+      top: 24px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--gold), 0 0 12px rgba(200,151,58,.4);
+    }
+    .time-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: var(--gold);
+      display: block;
+      letter-spacing: 1px;
+    }
+    .time-sub { font-size: 10px; color: var(--ink-faint); display: block; margin-top: 3px; }
+
+    /* ── EVENT CARD ── */
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--line-faint);
+      transition: border-color .2s;
+    }
+    .event-card:hover { border-color: var(--line); }
+    .event-body { padding: 20px 24px; }
+    .event-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .event-text { font-size: 14px; color: var(--ink-muted); line-height: 1.85; }
+    .event-text + .event-text { margin-top: 10px; }
+    .event-text strong { color: var(--ink); }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2px;
+      margin-top: 2px;
+    }
+    figure { margin: 0; background: var(--surface); position: relative; overflow: hidden; }
+    figure img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    figure:hover img { transform: scale(1.03); }
+    figcaption { padding: 10px 14px; border-top: 1px solid var(--line-faint); }
+    .cap-title { font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 3px; }
+    .cap-sub { font-size: 11px; color: var(--ink-faint); line-height: 1.5; }
+
+    /* ── PHOTO PLACEHOLDER ── */
+    .photo-ph {
+      background: var(--surface);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--ink-faint);
+      font-size: 12px;
+      border: 1px dashed var(--line-faint);
+    }
+    .photo-ph-icon { font-size: 24px; opacity: .3; }
+    .photo-ph-label { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; }
+
+    /* ── THINKING BLOCK ── */
+    .think-block {
+      margin-top: 14px;
+      background: var(--surface);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
+    }
+    .think-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: 8px;
+    }
+    .think-text { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+    .think-text + .think-text { margin-top: 8px; }
+    .think-text strong { color: var(--ink); }
+
+    /* ── PHILOSOPHY CARD ── */
+    .phil-card {
+      margin-top: 14px;
+      background: var(--surface);
+      border: 1px solid var(--blue-dim);
+      border-left: 3px solid var(--blue);
+      padding: 14px 18px;
+    }
+    .phil-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--blue);
+      opacity: .8;
+      margin-bottom: 8px;
+    }
+    .phil-text { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+    .phil-text strong { color: var(--ink); }
+    .phil-source { margin-top: 8px; font-size: 11px; color: var(--ink-faint); font-style: italic; }
+
+    /* ── PAPYRUS SHOWCASE ── */
+    .papyrus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 2px;
+    }
+    .papyrus-item {
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+    .papyrus-item img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    .papyrus-item:hover img { transform: scale(1.04); }
+    .papyrus-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(10,8,6,.9));
+      padding: 20px 14px 12px;
+    }
+    .papyrus-name {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+    .papyrus-sub { font-size: 11px; color: var(--ink-faint); }
+
+    /* ── SUMMARY ── */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 28px 32px;
+      margin-top: 48px;
+    }
+    .summary-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 14px;
+      opacity: .8;
+    }
+    .summary-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
+    .summary-text { font-size: 14px; color: var(--ink-muted); line-height: 1.9; }
+    .summary-text + .summary-text { margin-top: 10px; }
+    .summary-text strong { color: var(--ink); }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-faint);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border: 1px solid var(--line-faint);
+      padding: 8px 16px;
+      transition: all .2s;
+    }
+    .nav-btn:hover { color: var(--gold); border-color: var(--line); background: var(--gold-dim); }
+
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+      .papyrus-grid { grid-template-columns: 1fr 1fr; }
+      .timeline::before { left: 20px; }
+      .event { grid-template-columns: 1fr; gap: 8px; }
+      .event-time { text-align: left; padding-top: 0; padding-left: 36px; }
+      .event-time::after { right: auto; left: 0; top: 4px; }
+    }
+  </style>
+</head>
+<body class="">
+  <div class="wrap">
+
+    <nav class="topbar">
+      <a href="../index.html">← 第二天概览</a>
+      <span class="topbar-sep">/</span>
+      <a href="../../../index.html">旅行目录</a>
+      <span class="topbar-sep">/</span>
+      <a href="../think/index.html">思考：朝代史 →</a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">Day 02 · Action · 2026.02.23</div>
+      <h1 data-key="days.1.action_title">吉萨到哈利利：<em>计划外的一天</em></h1>
+      <p class="hero-lead" data-key="days.1.action_lead">
+        上午在吉萨高地面对金字塔和狮身人面像，中午在如意坊吃了一顿意外舒服的中餐，
+        下午教堂关门，于是转去哈利利市场——在那里买了四幅手写莎草纸画，
+        带回来的不是纪念品，而是四张关于古埃及信仰的浓缩符号。
+        这一天我没有按计划走，但走出来的东西反而更真实。
+      </p>
+      <div class="tags">
+        <span class="pill">吉萨高地</span>
+        <span class="pill">金字塔</span>
+        <span class="pill">狮身人面像</span>
+        <span class="pill">如意坊</span>
+        <span class="pill">哈利利市场</span>
+        <span class="pill">莎草纸画</span>
+      </div>
+    </header>
+
+    <!-- OVERVIEW PANELS -->
+    <div class="section-header">
+      <span class="section-eyebrow">今日概览</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col">
+      <div class="context-panel">
+        <h2>上午 · 吉萨高地</h2>
+        <p>金字塔不需要提前做功课就能震到你。但有了昨天在飞机上读的来世神学框架，站在面前的感觉会不一样——你看的不只是一堆巨石，而是一套把宇宙观建筑化的工程答案。</p>
+        <p>狮身人面像和三大金字塔的方位关系、与地平线的对齐方式，在现场才能真正感受到那种"刻意的精度"。这不是偶然的，它是4500年前的人类对"永恒秩序"的一次精确声明。</p>
+        <div class="phil-card" style="margin-top:14px">
+          <div class="phil-label">老师资料 · 来世观与金字塔神学</div>
+          <p class="phil-text">
+            古王国时期金字塔建造的核心是<strong>马特（Ma'at）神学</strong>：法老作为宇宙秩序的维护者，其死亡与复活不是个人事件，而是文明秩序的延续仪式。金字塔的几何精度（朝向、角度）本身就是这套宇宙秩序的空间表达——吉萨三大金字塔排列被认为对应猎户座腰带星群，将天上的永恒秩序落地为建筑。
+          </p>
+          <p class="phil-source">— 课堂讲义 · 古埃及历史与文明</p>
+        </div>
+      </div>
+
+      <div class="context-panel">
+        <h2>下午 · 哈利利市场</h2>
+        <p>哈利利是开罗最古老的集市之一，建于14世纪马穆鲁克时代。今天卖的是香料、铜器、银饰、莎草纸——我在那里买了四幅手写莎草纸画，每一幅背后都有一套古埃及符号体系，正好接上前一天在飞机上整理的众神关系图。</p>
+        <div class="phil-card" style="margin-top:14px">
+          <div class="phil-label">参考资料 · 科普特艺术与图像传统</div>
+          <p class="phil-text">
+            莎草纸（papyrus）是古埃及最重要的书写材料，由尼罗河沿岸莎草植物茎干压制而成。今天旅游市场上的莎草纸画延续了古埃及壁画的图像传统——<strong>正面律（法则）</strong>：人物头部侧面、眼睛正面、躯干正面、双腿侧面，这种混合视角并非"不会画"，而是古埃及人刻意展示人体"最完整信息"的表意方式。图坦卡蒙面具、荷鲁斯之眼、安卡十字架均是流传至今使用最广的埃及象征符号。
+          </p>
+          <p class="phil-source">— The Treasures of Coptic Art · Cawdat Gabra</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section-header">
+      <span class="section-eyebrow">行程时间线</span>
+      <div class="section-line"></div>
+    </div>
+
+    <ol class="timeline">
+
+      <!-- EVENT 1: GIZA -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">上午</span>
+          <span class="time-sub">吉萨高地</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">金字塔与狮身人面像：尺度压迫感</div>
+            <p class="event-text">
+              从开罗城区驱车过来，沿路还是普通城市的面貌——然后金字塔就突然出现在楼房背后，
+              没有任何过渡。这种"切换"是吉萨特有的体验：古代与现代之间没有缓冲带，
+              它们直接并排站在同一条地平线上。
+            </p>
+            <p class="event-text">
+              狮身人面像比我想象的小——或者说，金字塔比任何想象的都要大，
+              以至于旁边的一切都被缩小了。它面朝正东，对应春分和秋分日出方向，
+              这不是装饰，而是一套天文校准系统。
+              古埃及人是用建筑来记时的，而不是用时钟。
+            </p>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <img src="../../../assets/day2/giza_portrait.jpg" alt="吉萨高地金字塔前合影" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">吉萨高地</div>
+                <div class="cap-sub">两座金字塔在背后，沙漠铺到天边，云很低</div>
+              </figcaption>
+            </figure>
+            <figure>
+              <img src="../../../assets/day2/sphinx_cap.jpg" alt="给狮身人面像戴上 Hotcan 帽子" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">狮身人面像</div>
+                <div class="cap-sub">给它戴了顶 Hotcan 帽子——它面无表情地接受了</div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="event-body" style="border-top: 1px solid var(--line-faint);">
+            <div class="think-block">
+              <div class="think-label">现场思考</div>
+              <p class="think-text">
+                昨天在飞机上整理的众神关系图，在这里找到了对应的空间锚点。
+                拉（Ra）是太阳神，金字塔的朝向本质上是在追着太阳运动轨迹做空间对齐——
+                建筑不只是给死者住的，而是给太阳神的运行路径留的接口。
+                这让"法老与太阳神合一"这句话从抽象概念变成了一个具体的工程逻辑。
+              </p>
+            </div>
+          </div>
+        </article>
+      </li>
+
+      <!-- EVENT 2: LUNCH -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">中午</span>
+          <span class="time-sub">如意坊</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">如意坊：开罗也有中餐</div>
+            <p class="event-text">
+              如意坊是开罗的中餐馆，在华人圈里口碑不错。点了几个家常菜，
+              吃到了这几天以来第一顿真正意义上的"熟悉的味道"。
+            </p>
+            <p class="event-text">
+              旅行里的中餐时刻往往会让人产生一种奇妙的双重感——
+              你坐在开罗吃炒饭，窗外是阿拉伯语招牌和塞满人的街道，
+              但嘴里的味道把你瞬间拉回到某个下午的家里。
+              这种"飞地感"本身就是全球化的日常切面，
+              和昨天城堡里的 Nefertiti 奶茶是同一类现象，只是方向反过来了。
+            </p>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <img src="../../../assets/day2/ruyi_restaurant.jpg" alt="如意坊招牌" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">如意坊</div>
+                <div class="cap-sub">Lucky House Chinese Restaurant——中文招牌挂在开罗街头</div>
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+      </li>
+
+      <!-- EVENT 3: KHAN EL KHALILI -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">下午</span>
+          <span class="time-sub">哈利利市场</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">哈利利市场：14世纪的商业逻辑还在运转</div>
+            <p class="event-text">
+              Khan el-Khalili 建于1382年，马穆鲁克苏丹巴尔古格时代。
+              六百多年过去，这里还是开罗最密集的商业地带之一——
+              香料、铜制品、银饰、皮革、莎草纸，
+              在迷宫式的窄巷里铺开，声音、气味和颜色同时压过来。
+            </p>
+            <p class="event-text">
+              我不太喜欢砍价，但这里没法不砍——开价和落价之间往往差一倍。
+              这套议价逻辑本身就是一种市场文化，摊主不会因为你不砍价就尊重你，
+              他们只是会觉得你没搞清楚规则。
+              最后买了四幅手写莎草纸画，带回来能挂的那种。
+            </p>
+          </div>
+          <div class="photo-grid">
+            <figure>
+              <img src="../../../assets/day2/khalili_market.jpg" alt="哈利利市场巷道" loading="lazy" />
+              <figcaption>
+                <div class="cap-title">哈利利市场</div>
+                <div class="cap-sub">窄巷里铺开的铜器、布料和香料，光从深处打来</div>
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+      </li>
+
+      <!-- EVENT 5: PAPYRUS PAINTINGS -->
+      <li class="event">
+        <div class="event-time">
+          <span class="time-label">战利品</span>
+          <span class="time-sub">四幅莎草纸</span>
+        </div>
+        <article class="event-card">
+          <div class="event-body">
+            <div class="event-title">四幅莎草纸画：带走四个古埃及符号</div>
+            <p class="event-text">
+              挑这四幅的时候其实有点刻意——我想挑几个在古埃及符号体系里最核心、
+              同时在视觉上最有辨识度的图案。对照昨天整理的众神关系图，
+              这四幅正好覆盖了王权、太阳崇拜、保护与永生四个维度。
+            </p>
+          </div>
+          <div class="papyrus-grid">
+            <div class="papyrus-item">
+              <img src="../../../assets/day2/papyrus_tutankhamun.jpg" alt="图坦卡蒙黄金面具莎草纸画" onerror="this.parentElement.style.background='#1c1813'; this.style.display='none'; this.parentElement.querySelector('.papyrus-ph')&amp;&amp;(this.parentElement.querySelector('.papyrus-ph').style.display='flex')" loading="lazy">
+              <div class="papyrus-ph" style="display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:var(--ink-faint); font-size:12px; background:var(--surface);">
+                <div style="font-size:28px; opacity:.2;">𓅃</div>
+                <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px;">图坦卡蒙面具</div>
+              </div>
+              <div class="papyrus-caption">
+                <div class="papyrus-name">图坦卡蒙 · Tutankhamun</div>
+                <div class="papyrus-sub">黄金面具 · 王权符号</div>
+              </div>
+            </div>
+            <div class="papyrus-item">
+              <img src="../../../assets/day2/papyrus_aten.jpg" alt="阿肯那顿拜日图莎草纸画" onerror="this.parentElement.style.background='#1c1813'; this.style.display='none'; this.parentElement.querySelector('.papyrus-ph')&amp;&amp;(this.parentElement.querySelector('.papyrus-ph').style.display='flex')" loading="lazy">
+              <div class="papyrus-ph" style="display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:var(--ink-faint); font-size:12px; background:var(--surface);">
+                <div style="font-size:28px; opacity:.2;">☀️</div>
+                <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px;">拜日图</div>
+              </div>
+              <div class="papyrus-caption">
+                <div class="papyrus-name">阿顿崇拜 · Aten Worship</div>
+                <div class="papyrus-sub">太阳光芒赐福 · 家族礼拜场景</div>
+              </div>
+            </div>
+            <div class="papyrus-item">
+              <img src="../../../assets/day2/papyrus_horus_eye.jpg" alt="荷鲁斯之眼莎草纸画" onerror="this.parentElement.style.background='#1c1813'; this.style.display='none'; this.parentElement.querySelector('.papyrus-ph')&amp;&amp;(this.parentElement.querySelector('.papyrus-ph').style.display='flex')" loading="lazy">
+              <div class="papyrus-ph" style="display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:var(--ink-faint); font-size:12px; background:var(--surface);">
+                <div style="font-size:28px; opacity:.2;">𓂀</div>
+                <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px;">荷鲁斯之眼</div>
+              </div>
+              <div class="papyrus-caption">
+                <div class="papyrus-name">瓦吉特之眼 · Wadjet Eye</div>
+                <div class="papyrus-sub">荷鲁斯之眼 · 治愈与保护</div>
+              </div>
+            </div>
+            <div class="papyrus-item">
+              <img src="../../../assets/day2/papyrus_ankh.jpg" alt="安卡十字架莎草纸画" onerror="this.parentElement.style.background='#1c1813'; this.style.display='none'; this.parentElement.querySelector('.papyrus-ph')&amp;&amp;(this.parentElement.querySelector('.papyrus-ph').style.display='flex')" loading="lazy">
+              <div class="papyrus-ph" style="display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:var(--ink-faint); font-size:12px; background:var(--surface);">
+                <div style="font-size:28px; opacity:.2;">☥</div>
+                <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px;">安卡十字架</div>
+              </div>
+              <div class="papyrus-caption">
+                <div class="papyrus-name">安卡 · Ankh</div>
+                <div class="papyrus-sub">生命之钥 · 永生象征</div>
+              </div>
+            </div>
+          </div>
+          <div class="event-body" style="border-top: 1px solid var(--line-faint);">
+            <div class="think-block">
+              <div class="think-label">四幅画的符号解读</div>
+              <p class="think-text">
+                <strong>图坦卡蒙面具</strong>：最被现代世界识别的埃及王权符号，但图坦卡蒙本人在历史上并不算重要法老，他的陵墓因为意外地保存完好才让他"出名"。这幅画里装的其实是"幸存偏差"——我们以为他代表法老时代，但他代表的只是唯一没被盗空的那一个。
+              </p>
+              <p class="think-text" style="margin-top:8px;">
+                <strong>拜日图（阿顿崇拜）</strong>：画面是法老家族向太阳光芒下跪，太阳光末端伸出手掌赐予安卡（生命符号）。这是阿肯那顿宗教改革的视觉语言——他试图把埃及从多神教改成一神教（只崇拜阿顿/太阳盘），最终失败，继任者把他的名字从历史记录里抹掉了。这幅画是一场失败的宗教革命的残影。
+              </p>
+              <p class="think-text" style="margin-top:8px;">
+                <strong>荷鲁斯之眼（瓦吉特）</strong>：昨天在交互关系图里整理过——这只眼睛是荷鲁斯与赛特争斗中被挖出、又被托特复原的那只。它是"治愈与完整"的符号，今天仍然是护身符界的顶流，世界各地的纹身图案榜上常年在列。符号的生命力往往比它诞生的文明更长。
+              </p>
+              <p class="think-text" style="margin-top:8px;">
+                <strong>安卡（Ankh）</strong>：这个形状是埃及象形文字里"生命"的写法，后来被早期科普特基督徒借用，演变成科普特十字架（Coptic Cross）——原本代表古埃及多神教生命概念的符号，被新的信仰体系吸收并赋予了新的意义。正好是今天两个原计划地点（金字塔+科普特教堂）的符号连接点。
+              </p>
+            </div>
+            <div class="phil-card">
+              <div class="phil-label">参考资料 · 安卡与科普特十字架的传承</div>
+              <p class="phil-text">
+                安卡符号（☥）在古埃及象形文字系统中意为"生命"，常见于神灵手持或赐予凡人的场景中。早期科普特基督徒在埃及本土发展出<strong>科普特十字架（Crux Ansata）</strong>——保留了安卡顶部的环形，将其与基督信仰中的十字形结合，形成独特的视觉传承。这是文化符号如何跨越宗教边界、在新的信仰体系中重新获得意义的典型案例。
+              </p>
+              <p class="phil-source">— The Treasures of Coptic Art · Cawdat Gabra</p>
+            </div>
+          </div>
+        </article>
+      </li>
+
+    </ol>
+
+    <!-- SUMMARY -->
+    <div class="summary-card">
+      <div class="summary-eyebrow">Day 02 · Summary</div>
+      <div class="summary-title">吉萨、哈利利，和晚餐桌上的希腊语</div>
+      <p class="summary-text">
+        上午在金字塔面前确认了"宇宙秩序被建筑化"的感受，
+        下午在集市里带走了四个古埃及核心符号——
+        王权（图坦卡蒙）、太阳崇拜（阿顿）、保护（荷鲁斯之眼）和永生（安卡）。
+      </p>
+      <p class="summary-text">
+        其中安卡那条线最有意思：<strong>一个古埃及多神教的"生命符号"，被科普特基督徒改造成十字架的一部分，然后作为旅游商品在六百年历史的伊斯兰集市里被出售给中国游客</strong>。
+        这条符号的旅行路线，比今天的行程路线要远得多。
+      </p>
+      <p class="summary-text">
+        晚餐时开罗大学的Hoda教授加入——她研究古代哲学，主攻柏拉图和亚里士多德，
+        后天会陪我们去亚历山大图书馆。
+        意外的是，她丈夫是希腊人，家里主要讲希腊语，英语反而用得少一些。
+        于是我们就切到了希腊语，聊她的研究和家庭——
+        一个在开罗研究古希腊哲学、在家里说希腊语的埃及女学者，
+        这个组合本身就让人觉得很亲切，也很有意思。
+      </p>
+    </div>
+
+    <!-- NAV FOOTER -->
+    <div class="nav-footer">
+      <a class="nav-btn" href="../index.html">← 第二天概览</a>
+      <a class="nav-btn" href="../../../index.html">旅行目录</a>
+      <a class="nav-btn" href="../think/index.html">思考：朝代史 →</a>
+    </div>
+
+  </div>
+  <script src="../../../assets/js/data-bind.js"></script>
+  <script src="../../../assets/js/edit-mode.js"></script>
+
+
+</body></html>
